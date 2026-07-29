@@ -9,7 +9,15 @@ body {
   margin: 0 4%;
 }
 
-h1 {
+.logo {
+  display: flex;
+  justify-content: center;
+}
+.logo img {
+  margin: 0 1em;
+}
+.logo h1 {
+  text-align: left;
   text-transform: uppercase;
   font-size: 3em;
 }
@@ -26,8 +34,10 @@ h1 {
     </style>
   </head>
   <body>
-    <h1>Malspiikki Entertainment</h1>
-    <p>a tiny game studio</p>
+    <div class="logo">
+      <img src="malspiikki.svg" alt="" width="100" />
+      <h1>Malspiikki<br />Entertainment</h1>
+    </div>
     <div class="game">
       <img src="screenshots/sanapato.png" alt=="" class="game_image" />
       <div class="game_description">Help the beaver solve daily challenges in <a href="./sanapato/">Sanapato</a>.</div>
