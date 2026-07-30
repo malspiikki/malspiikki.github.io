@@ -11630,59 +11630,40 @@ var mountVersusConfig = (container, _navigate, onStart) => {
     title.className = "config-title";
     title.textContent = t("versus");
     layout.appendChild(title);
-    const settings = document.createElement("div");
-    settings.className = "config-settings";
-    const inputSection = document.createElement("div");
-    inputSection.className = "config-section";
-    const p1Label = document.createElement("div");
-    p1Label.className = "config-subsection-title";
-    p1Label.textContent = t("player1");
-    inputSection.appendChild(p1Label);
-    inputSection.appendChild(
-      createRadioGroup(
-        INPUT_OPTIONS,
-        () => config.p1Input,
-        inputLabel,
-        inputEmoji,
-        (v2) => !isInputAvailable(v2),
+    const p1Group = createRadioGroup(
+      INPUT_OPTIONS,
+      () => config.p1Input,
+      inputLabel,
+      inputEmoji,
+      (v2) => !isInputAvailable(v2),
+      (v2) => {
+        config.p1Input = v2;
+        syncUrl();
+      }
+    );
+    const p2Group = createRadioGroup(
+      INPUT_OPTIONS,
+      () => config.p2Input,
+      inputLabel,
+      inputEmoji,
+      (v2) => !isInputAvailable(v2),
+      (v2) => {
+        config.p2Input = v2;
+        syncUrl();
+      }
+    );
+    const matchLengthRow = createRow(
+      t("matchLength"),
+      createNumberInput(
+        config.gameDurationSeconds / 60,
         (v2) => {
-          config.p1Input = v2;
+          config.gameDurationSeconds = v2 * 60;
           syncUrl();
-        }
+        },
+        1,
+        99
       )
     );
-    const p2Label = document.createElement("div");
-    p2Label.className = "config-subsection-title";
-    p2Label.textContent = t("player2");
-    inputSection.appendChild(p2Label);
-    inputSection.appendChild(
-      createRadioGroup(
-        INPUT_OPTIONS,
-        () => config.p2Input,
-        inputLabel,
-        inputEmoji,
-        (v2) => !isInputAvailable(v2),
-        (v2) => {
-          config.p2Input = v2;
-          syncUrl();
-        }
-      )
-    );
-    inputSection.appendChild(
-      createRow(
-        t("matchLength"),
-        createNumberInput(
-          config.gameDurationSeconds / 60,
-          (v2) => {
-            config.gameDurationSeconds = v2 * 60;
-            syncUrl();
-          },
-          1,
-          99
-        )
-      )
-    );
-    settings.appendChild(inputSection);
     const buttons = document.createElement("div");
     buttons.className = "config-buttons";
     const backBtn = document.createElement("div");
@@ -11697,8 +11678,24 @@ var mountVersusConfig = (container, _navigate, onStart) => {
       startBtn.onclick = () => onStart(config);
     }
     buttons.appendChild(startBtn);
-    settings.appendChild(buttons);
     if (devVisible) {
+      const settings = document.createElement("div");
+      settings.className = "config-settings";
+      const inputSection = document.createElement("div");
+      inputSection.className = "config-section";
+      const p1Label = document.createElement("div");
+      p1Label.className = "config-subsection-title";
+      p1Label.textContent = t("player1");
+      inputSection.appendChild(p1Label);
+      inputSection.appendChild(p1Group);
+      const p2Label = document.createElement("div");
+      p2Label.className = "config-subsection-title";
+      p2Label.textContent = t("player2");
+      inputSection.appendChild(p2Label);
+      inputSection.appendChild(p2Group);
+      inputSection.appendChild(matchLengthRow);
+      settings.appendChild(inputSection);
+      settings.appendChild(buttons);
       settings.appendChild(
         buildFormulaSettingsSection(config.randomConfig, restartSearch)
       );
@@ -11720,7 +11717,13 @@ var mountVersusConfig = (container, _navigate, onStart) => {
       columns.appendChild(preview);
       layout.appendChild(columns);
     } else {
-      layout.appendChild(settings);
+      const card = document.createElement("div");
+      card.className = "versus-card";
+      card.appendChild(createRow(t("player1"), p1Group));
+      card.appendChild(createRow(t("player2"), p2Group));
+      card.appendChild(matchLengthRow);
+      card.appendChild(buttons);
+      layout.appendChild(card);
     }
     container.appendChild(layout);
     if (devVisible) {

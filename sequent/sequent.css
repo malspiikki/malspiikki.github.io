@@ -770,18 +770,65 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   padding: 0.6em 2em;
   min-width: 5em;
 }
-/* Versus config in its default trim (dev sections hidden via §): a single
-   centred column, so the wide two-column scaffolding would just look empty. */
+/* Versus config in its default trim (dev sections hidden via §): title over
+   one framed card, placed at the golden section like the main menu. The
+   spacer floors mirror .menu's: the top one reserves room for the fixed
+   language switcher. */
 .versus-config-simple {
-  justify-content: center;
+  justify-content: flex-start;
+}
+.versus-config-simple::before,
+.versus-config-simple::after {
+  content: '';
+  flex-basis: 0;
+  flex-shrink: 1;
+}
+.versus-config-simple::before {
+  flex-grow: 1;
+  min-height: 4rem;
+}
+.versus-config-simple::after {
+  flex-grow: 1.618;
 }
 .versus-config-simple .config-title {
   text-align: center;
+  align-self: center;
   padding-left: 0;
 }
-.versus-config-simple .config-buttons {
-  justify-content: center;
-  margin-top: 0.5em;
+.versus-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2em;
+  width: min(28em, 100%);
+  box-sizing: border-box;
+  padding: 1.5em 2em;
+  background-color: #fff8;
+  border: 4px solid #f80;
+  border-radius: 20px;
+}
+.versus-card .config-toggles {
+  margin: 0;
+  justify-content: flex-end;
+}
+.versus-card .config-buttons {
+  margin-top: 0.3em;
+}
+.versus-card .config-buttons .button {
+  flex: 1;
+  text-align: center;
+}
+/* Narrow screens: the label-left / control-right rows would squeeze the
+   picker grid into a ragged wrap, so each row collapses to label above
+   control instead. */
+@media (max-width: 600px) {
+  .versus-card .config-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.4em;
+  }
+  .versus-card .config-toggles {
+    justify-content: flex-start;
+  }
 }
 
 .menu {
