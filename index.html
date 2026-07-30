@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Malspiikki Entertainment</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="favicon.png" sizes="32x32" type="image/png" />
@@ -15,24 +17,39 @@ body {
 .logo {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin: 3rem 0;
 }
 .logo img {
-  margin: 0 1em;
+  width: clamp(60px, 20vw, 100px);
+  height: auto;
 }
 .logo h1 {
+  margin: 0;
   text-align: left;
   text-transform: uppercase;
-  font-size: 3em;
+  font-size: clamp(1.75rem, 9vw, 3em);
+}
+
+@media (max-width: 600px) {
+  .logo {
+    flex-direction: column;
+  }
+  .logo h1 {
+    text-align: center;
+  }
 }
 
 .game {
   width: 400px;
+  max-width: 100%;
 }
 .game_image {
   width: 400px;
-}
-.game_description {
-  text-wrap: nowrap;
+  max-width: 100%;
+  height: auto;
 }
     </style>
   </head>
@@ -42,7 +59,7 @@ body {
       <h1>Malspiikki<br />Entertainment</h1>
     </div>
     <div class="game">
-      <img src="screenshots/sanapato.png" alt=="" class="game_image" />
+      <img src="screenshots/sanapato.png" alt="Sanapato screenshot" class="game_image" />
       <div class="game_description">Help the beaver solve daily challenges in <a href="./sanapato/">Sanapato</a>.</div>
     </div>
   </body>
