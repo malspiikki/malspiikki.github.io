@@ -6849,6 +6849,7 @@ var mountCampaign = (container, navigate2, session2) => {
   let listingEl = createListing(ws, selectLevel);
   let pausePopupOpen = false;
   let pausePopup = null;
+  let pausePopupLocale = getLocale();
   let congrats = null;
   const togglePausePopup = () => {
     pausePopupOpen = !pausePopupOpen;
@@ -6911,8 +6912,9 @@ var mountCampaign = (container, navigate2, session2) => {
       )
     );
     if (pausePopupOpen) {
-      if (!pausePopup) {
+      if (!pausePopup || pausePopupLocale !== getLocale()) {
         pausePopup = createPausePopup(closePausePopup, exitToMenu);
+        pausePopupLocale = getLocale();
       }
       container.appendChild(pausePopup.el);
     } else {
@@ -7088,6 +7090,7 @@ var mountRandom = (container, navigate2, session2, onNewChallenge) => {
   };
   let pausePopupOpen = false;
   let pausePopup = null;
+  let pausePopupLocale = getLocale();
   let congrats = null;
   const togglePausePopup = () => {
     pausePopupOpen = !pausePopupOpen;
@@ -7156,8 +7159,9 @@ var mountRandom = (container, navigate2, session2, onNewChallenge) => {
       )
     );
     if (pausePopupOpen) {
-      if (!pausePopup) {
+      if (!pausePopup || pausePopupLocale !== getLocale()) {
         pausePopup = createPausePopup(closePausePopup, exitToMenu, openSettings);
+        pausePopupLocale = getLocale();
       }
       container.appendChild(pausePopup.el);
     } else {
@@ -8223,6 +8227,7 @@ var mountVersus = (container, navigate2, pool2, versusConfig) => {
   let gameOver = false;
   let paused = false;
   let pauseMenu = null;
+  let pauseMenuLocale = getLocale();
   let resultScreen = null;
   let timerEl = null;
   let lemmaSession1 = null;
@@ -8455,7 +8460,10 @@ var mountVersus = (container, navigate2, pool2, versusConfig) => {
       if (!resultScreen) resultScreen = buildResultScreen();
       root.appendChild(resultScreen.el);
     } else if (paused) {
-      if (!pauseMenu) pauseMenu = buildPauseMenu();
+      if (!pauseMenu || pauseMenuLocale !== getLocale()) {
+        pauseMenu = buildPauseMenu();
+        pauseMenuLocale = getLocale();
+      }
       root.appendChild(pauseMenu.el);
     } else {
       pauseMenu = null;
@@ -10335,6 +10343,7 @@ var mountTutorial = (container, navigate2, startStop) => {
   };
   let paused = false;
   let pausePopup = null;
+  let pausePopupLocale = getLocale();
   let ladderOpen = false;
   let ladderPopup = null;
   let lemmaSession = null;
@@ -10720,11 +10729,12 @@ var mountTutorial = (container, navigate2, startStop) => {
     screen.appendChild(buildOwl());
     container.appendChild(screen);
     if (paused) {
-      if (!pausePopup) {
+      if (!pausePopup || pausePopupLocale !== getLocale()) {
         pausePopup = createPausePopup(
           () => setPaused(false),
           () => navigate2("menu")
         );
+        pausePopupLocale = getLocale();
       }
       container.appendChild(pausePopup.el);
     } else {
