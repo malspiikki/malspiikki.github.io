@@ -1,0 +1,1999 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Math&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --gaze-color: #48f;
+  --branch-color: #fca;
+  --misc-color: transparent;
+}
+
+html {
+  height: 100%;
+  overflow: hidden;
+}
+body {
+  background-color: #ffeedd;
+  font-family: 'Noto Sans', 'Noto Sans Math', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: 'wdth' 100;
+  font-size: 1.2em;
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+  margin: 0;
+  user-select: none;
+}
+html.loading body {
+  visibility: hidden;
+}
+.bench {
+  width: 100vw;
+  height: 100dvh;
+  box-sizing: border-box;
+  padding: 0.5em 0;
+  position: relative;
+  display: grid;
+  grid-template-rows: min-content min-content 1fr min-content;
+  grid-template-columns: min-content minmax(0, 1fr) min-content;
+  grid-template-areas:
+    'topbar   topbar topbar'
+    'left     main   right'
+    'left     status right'
+    'controls controls controls';
+  container-type: inline-size;
+  container-name: bench;
+}
+.bench.rules-hidden .left .rule:not(.pinned),
+.bench.rules-hidden .main .rule:not(.pinned),
+.bench.rules-hidden .right .rule:not(.pinned) {
+  display: none;
+}
+.bench-topbar {
+  grid-area: topbar;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: start;
+  padding: 0 0.5em 1em;
+}
+.bench-topbar-left {
+  display: flex;
+  align-items: center;
+}
+.bench-topbar-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.bench-topbar .quiz-menu-btn {
+  position: relative;
+  width: 1.2em;
+  height: 1.2em;
+  line-height: 1.2em;
+  border-color: transparent;
+}
+.bench-topbar .bench-rules-btn {
+  position: relative;
+  width: 1.2em;
+  height: 1.2em;
+  line-height: 1.2em;
+  border-color: transparent;
+}
+.bench-topbar-center {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+.bench-zoom {
+  display: flex;
+  gap: 0.5em;
+}
+.bench-zoom .button {
+  position: relative;
+  font-family: inherit;
+  height: 1.2em;
+  line-height: 1.2em;
+  border-color: transparent;
+}
+.bench-zoom .button.zoom-reset {
+  width: 1.2em;
+}
+.bench-zoom .button.zoom-step {
+  width: 1.9em;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* A centered row of groups (Lemma · Branch · Gaze) with free space at the outer
+   edges; each group wraps onto its own line once they no longer all fit. */
+.controls {
+  grid-area: controls;
+  position: relative;
+  z-index: 4;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.5em 1em;
+  padding: 20px 0.5em 0.5em;
+}
+@container bench (min-width: 640px) {
+  .bench {
+    padding: 1em 0;
+  }
+  .bench-topbar {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+  .controls .button {
+    min-width: 1.5em;
+  }
+  .controls {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+}
+.controls-group {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
+  border-bottom: 0.5em solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 0.5em;
+}
+.controls-group.gaze {
+  border-bottom-color: var(--gaze-color);
+}
+.controls-group.hot {
+  border-bottom-color: #c33;
+}
+.controls-nav {
+  border-bottom-color: var(--branch-color);
+}
+.controls-misc {
+  border-bottom-color: var(--misc-color);
+}
+.controls-undo-inner {
+  display: contents;
+}
+.main {
+  grid-area: main;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1em;
+  z-index: 1;
+}
+.left {
+  grid-area: left;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  z-index: 1;
+  padding-left: 1em;
+  padding-right: 25px;
+  overflow-y: auto;
+  min-height: 0;
+  direction: rtl;
+}
+.left > * {
+  direction: ltr;
+}
+.right {
+  grid-area: right;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  z-index: 1;
+  padding-right: 1em;
+  padding-left: 25px;
+  overflow-y: auto;
+  min-height: 0;
+}
+.playarea {
+  --base-tree-zoom: 1;
+  grid-column: 1 / -1;
+  grid-row: 2 / 4;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  align-items: safe center;
+  justify-content: safe end;
+  min-height: 0;
+  scroll-behavior: smooth;
+  padding: 4em 16em 6em 16em;
+  scroll-padding: 4em 16em 6em 16em;
+  scrollbar-width: none;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 6em,
+    black calc(100% - 6em),
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 6em,
+    black calc(100% - 6em),
+    transparent
+  );
+}
+.playarea::-webkit-scrollbar {
+  display: none;
+}
+.playarea.solved {
+  padding-bottom: 1em;
+  scroll-padding-bottom: 1em;
+  mask-image: none;
+  -webkit-mask-image: none;
+}
+.hud {
+  position: relative;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.6em;
+  opacity: 0.6;
+  user-select: text;
+  text-align: center;
+}
+.rule {
+  position: relative;
+  min-width: 260px;
+}
+.key-hint {
+  background: #000;
+  color: #fff;
+  text-transform: uppercase;
+  font-family: monospace;
+  font-weight: bold;
+  line-height: 40px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  border-radius: 20px;
+  padding: 0;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+.left .rule > .key-hint {
+  position: absolute;
+  top: 0;
+  right: -20px;
+}
+.left .rule .gaze-hint-stack {
+  position: absolute;
+  top: 45px;
+  left: 100%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+.right .rule > .key-hint {
+  position: absolute;
+  top: 0;
+  left: -20px;
+}
+.right .rule .gaze-hint-stack {
+  position: absolute;
+  top: 45px;
+  right: 100%;
+  transform: translateX(50%);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+.key-hint.cold {
+  background: #36c;
+}
+.key-hint.cold.ghost {
+  opacity: 0.2;
+}
+.key-hint.wide {
+  width: auto;
+  min-width: 40px;
+  padding: 0 8px;
+  border-radius: 999px;
+}
+/* Rule-card key hints (the primary keybind badge, not the nested gaze stack)
+   take the branch accent. */
+.rule > .key-hint {
+  background: var(--branch-color);
+  color: #444;
+}
+.main .rule .key-hint {
+  position: absolute;
+  bottom: -20px;
+  left: 20px;
+}
+
+/* Single-player: the control bar doubles as the controls legend. With
+   pointer/touch active it is the clickable button row; when a keyboard or
+   gamepad is the active device the same bar drops its pressable chrome and
+   reveals each verb's gaze-family binding via .legend-bind chips — same
+   slot, same verbs, same disabled-state dimming, so the layout never shifts
+   on a device flip. The lemma editor bar is exempt: it is the editor
+   itself, interactive on every device. Congrats buttons likewise stay
+   interactive. Scoped to .mode-single so Versus is unaffected. */
+html.mode-single:not(.input-pointer)
+  .controls:not(:has(.congrabuttons)):not(.lemma-editor)
+  .button {
+  pointer-events: none;
+  background-color: transparent;
+  border-color: transparent;
+  color: inherit;
+}
+html.mode-single:not(.input-pointer) .bench-topbar .quiz-menu-btn,
+html.mode-single:not(.input-pointer) .bench-topbar .bench-rules-btn,
+html.mode-single:not(.input-pointer) .bench-topbar .bench-zoom {
+  visibility: hidden;
+}
+
+.button {
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+  background-color: #fff8;
+  border: 3px solid #000;
+  border-radius: 10px;
+  display: inline-block;
+  text-align: center;
+  font-size: 1.2em;
+  padding: 0.6em;
+  opacity: 1;
+  text-wrap: nowrap;
+  margin: 0;
+}
+.button.mutating {
+  background-color: #000;
+  border-color: #000;
+  color: #fed;
+}
+.button:not(.disabled):hover {
+  background-color: #fff;
+}
+.button.mutating:not(.disabled):hover {
+  background-color: #222;
+}
+.button.active,
+.button.active:hover {
+  background-color: #ffeedd;
+  border-color: #f80;
+}
+.button.disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+/* Key-legend chips inside control-bar buttons: latent while pointer/touch is
+   active (the buttons are self-evident), revealed per device otherwise —
+   keyboard shows key labels, gamepad shows pad glyphs. Absolutely positioned
+   above the verb so the chips never participate in layout: a device flip
+   swaps chrome for chips without reflowing the bar. Keycap look. */
+.legend-bind {
+  display: none;
+  position: absolute;
+  top: -1.1em;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1em;
+  line-height: 1.4;
+  min-width: 1em;
+  border: 1px solid #964;
+  border-radius: 5px;
+  padding: 0 0.3em;
+  background-color: #ffeedd;
+  color: #000;
+  white-space: nowrap;
+}
+html.mode-single.input-keyboard .controls .legend-bind.for-keyboard,
+html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
+  display: inline-block;
+}
+.rule.hint {
+  user-select: text;
+  cursor: default;
+  background-color: #d4b896;
+  border: 3px solid #8a6f4a;
+  border-radius: 6px;
+  display: inline-block;
+  text-align: center;
+  font-size: 1.2em;
+  padding: 0.6em;
+  text-wrap: nowrap;
+  margin: 0;
+  color: #3a2a14;
+  box-shadow: 1px 1px 0 rgba(80, 50, 20, 0.25);
+}
+.rule.disabled {
+  opacity: 0.5;
+}
+.rule.disabled > .key-hint,
+.rule.disabled > .gaze-hint-stack {
+  visibility: hidden;
+}
+.button.toggle {
+  position: relative;
+}
+.button.toggle .led {
+  position: absolute;
+  top: 5px;
+  right: 6px;
+  width: 10px;
+  height: 4px;
+  border-radius: 1px;
+  background-color: #400;
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.6);
+}
+.button.toggle .led.on {
+  background-color: #f22;
+  box-shadow:
+    0 0 4px #f22,
+    0 0 8px #f66;
+}
+.hurray {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  position: absolute;
+  top: 4em;
+  left: 0;
+  right: 0;
+  font-size: 2em;
+  text-align: center;
+  z-index: 1;
+  white-space: nowrap;
+  filter: sepia(1) saturate(3) brightness(1.05);
+  user-select: text;
+}
+.par {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.7;
+  margin-top: 0.3em;
+}
+.breakdown {
+  font-size: 0.7em;
+}
+.close {
+  position: fixed;
+  top: 0.4em;
+  right: 1em;
+}
+.lang-switcher {
+  position: fixed;
+  top: 0.6em;
+  right: 1em;
+  z-index: 30;
+  color: #000;
+  user-select: none;
+  font-size: 1.1em;
+}
+.lang-switcher-button {
+  cursor: pointer;
+  padding: 0.7em 1.2em;
+  background-color: #fffc;
+  border: 2px solid #000;
+  border-radius: 10px;
+  min-width: 10em;
+  box-sizing: border-box;
+  white-space: nowrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5em;
+}
+.lang-switcher-button:hover {
+  background-color: #fff;
+}
+.lang-switcher-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.4em;
+  padding: 0 0 0.8em 0;
+  background-color: #fff;
+  border: 2px solid #000;
+  border-radius: 10px;
+  min-width: 100%;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.lang-switcher-menu[hidden] {
+  display: none;
+}
+.lang-switcher-item {
+  cursor: pointer;
+  padding: 0.7em 1.4em;
+}
+.lang-switcher-item:hover {
+  background-color: #ffeedd;
+}
+.lang-switcher-item.active {
+  font-weight: bold;
+}
+.lang-switcher-menu hr {
+  margin: 0;
+  border: none;
+  border-top: 1px solid #0003;
+}
+.congrabuttons {
+  display: flex;
+  gap: 1em;
+}
+.congrabuttons .button {
+  position: relative;
+}
+.button-label {
+  user-select: none;
+}
+.button-label.short {
+  display: none;
+}
+.rule-label {
+  user-select: text;
+}
+.rule-label.short {
+  display: none;
+}
+.shroud {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  background-color: #000e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pause-shroud {
+  z-index: 20;
+}
+.pause-popup {
+  background-color: #fff2;
+  border: 4px solid #f80;
+  border-radius: 20px;
+  padding: 3em 4em;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+}
+.pause-title {
+  font-size: 2em;
+  font-weight: bold;
+  user-select: text;
+}
+.pause-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1em;
+}
+.pause-buttons .button {
+  position: relative;
+  padding: 1em 1.2em;
+  color: #000;
+  opacity: 1;
+}
+.pause-buttons .button.disabled {
+  opacity: 0.5;
+}
+.pause-buttons-spacer {
+  height: 1em;
+}
+.level-select {
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  background-color: #fff2;
+  border: 4px solid #f80;
+  border-radius: 40px;
+  padding: 2em 0;
+  overflow: auto;
+  color: #fff;
+}
+.levels {
+  display: table;
+  width: 100%;
+}
+.level {
+  display: table-row;
+  line-height: 1.8em;
+}
+.level.active {
+  background-color: #420;
+}
+.level:hover {
+  background-color: #964;
+  cursor: pointer;
+}
+.level .title {
+  display: table-cell;
+  padding: 0 1em;
+}
+.level .rules {
+  display: table-cell;
+  text-align: left;
+}
+.level .goal {
+  display: table-cell;
+  text-align: right;
+  padding-right: 1em;
+}
+.level .pinned {
+  color: #fc8;
+}
+
+.random-config {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 2em;
+  gap: 1.5em;
+  overflow-y: auto;
+}
+.config-title {
+  font-size: 2em;
+  font-weight: bold;
+  text-align: left;
+  align-self: stretch;
+  padding-left: 0.5em;
+  user-select: text;
+}
+.config-columns {
+  display: flex;
+  gap: 3em;
+  align-items: flex-start;
+  width: 100%;
+}
+.config-settings {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+.config-preview {
+  flex: 2 1 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+.config-preview-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+  max-height: 70vh;
+  overflow-x: visible;
+  overflow-y: hidden;
+}
+.config-preview-item {
+  padding: 0.3em 0.5em;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5em;
+  user-select: text;
+}
+.config-preview-count {
+  min-width: 1.5em;
+  text-align: right;
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+.config-preview-item.approximate {
+  opacity: 0.4;
+}
+.config-stats {
+  font-size: 0.85em;
+  opacity: 0.6;
+  user-select: text;
+}
+.config-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  width: 100%;
+  max-width: 400px;
+}
+.config-section-title {
+  font-size: 1.3em;
+  font-weight: bold;
+  border-bottom: 2px solid #0003;
+  padding-bottom: 0.3em;
+  user-select: text;
+}
+.config-subsection-title {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 0.5em;
+  user-select: text;
+}
+.config-toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  margin: 0.3em 0;
+}
+.config-toggles .button {
+  width: 2.5em;
+  height: 2.5em;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.config-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1em;
+}
+.config-label {
+  flex: 1;
+  user-select: text;
+  cursor: text;
+}
+.config-input {
+  width: 5em;
+  font-size: 1em;
+  padding: 0.3em 0.5em;
+  border: 2px solid #0003;
+  border-radius: 6px;
+  background: #fffc;
+  font-family: inherit;
+  text-align: right;
+  user-select: text;
+}
+.config-input:focus {
+  outline: none;
+  border-color: #f80;
+}
+.config-buttons {
+  display: flex;
+  gap: 1em;
+}
+.config-buttons .button {
+  padding: 0.6em 2em;
+  min-width: 5em;
+}
+
+.menu {
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 0 1rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  /* Spacing is carried by the golden spacers below, not by a uniform gap. */
+  gap: 0;
+}
+/* Golden-section placement. The free space left over above and below the
+   composition is split 1 : φ, so the block settles at the optical centre
+   instead of the geometric one — a touch high, which is what reads as
+   balanced. The upper spacer's min-height doubles as the reserve for the
+   position:fixed language switcher: when the menu is too tall to centre, the
+   spacers collapse to that floor and the panel scrolls, so the title can
+   never slide under the switcher. */
+.menu::before,
+.menu::after {
+  content: '';
+  flex-basis: 0;
+  flex-shrink: 1;
+}
+.menu::before {
+  flex-grow: 1;
+  min-height: 6rem;
+}
+.menu::after {
+  flex-grow: 1.618;
+}
+.system {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  box-sizing: border-box;
+  padding: 1em;
+  gap: 1em;
+  overflow: hidden;
+}
+.system-title {
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+}
+.system-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+.system-item {
+  font-size: 1.5em;
+  padding: 0.6em 1.5em;
+}
+.system-back {
+  align-self: flex-start;
+  padding: 0.4em 1em;
+  text-decoration: none;
+}
+.system-doc {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  margin: 0;
+  white-space: pre;
+  font-size: 1.4em;
+  line-height: 1.4;
+  padding: 0.5em 1em 8em 1em;
+  user-select: text;
+}
+/* Design-system gallery (secret menu). Specimens reuse the production button
+   classes so they track the real styles; a strip may also carry bench-topbar
+   so the topbar descendant selectors apply — the flex declarations below win
+   over .bench-topbar's grid by appearing later in the file. */
+.gallery {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  box-sizing: border-box;
+  padding: 1em;
+  gap: 1em;
+  overflow: hidden;
+}
+.gallery-doc {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  padding: 0.5em 1em 8em;
+}
+.gallery-section {
+  margin-bottom: 2.5em;
+}
+.gallery-section-title {
+  font-size: 1.6em;
+  font-weight: bold;
+  margin-bottom: 0.3em;
+}
+.gallery-prose {
+  max-width: 40em;
+  line-height: 1.4;
+  margin: 0 0 1em;
+  user-select: text;
+}
+.gallery-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 1.5em;
+  padding: 0;
+}
+.gallery-strip-top {
+  align-items: flex-start;
+}
+.gallery-specimen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+}
+.gallery-caption {
+  font-size: 0.9em;
+  opacity: 0.7;
+}
+/* Tree specimens: same markup as the playarea, at a smaller documentation
+   scale (the playarea sizes its tree via .playarea > .tree-node). The right
+   padding reserves room for the rule labels, which hang off the inference
+   lines (absolutely positioned) and don't contribute layout width. */
+.gallery-tree {
+  padding-right: 3.5em;
+}
+.gallery-tree > .tree-node {
+  font-size: 1.4em;
+}
+/* Color swatches: translucent values render straight on the page background,
+   as they do in play. The border is gallery chrome, not a documented color. */
+.gallery-swatch {
+  width: 5em;
+  height: 3.5em;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+.gallery-swatch-note {
+  font-size: 0.8em;
+  opacity: 0.7;
+  max-width: 11em;
+  text-align: center;
+}
+.gallery-type-sample {
+  font-size: 1.4em;
+  line-height: 1.5;
+}
+.gallery-mono-sample {
+  margin: 0;
+  font-size: 1.1em;
+  line-height: 1.3;
+}
+.menu-title {
+  /* Sized so the set name measures about φ² times the width of the mode-button
+     column beneath it. At 5em the two-word name ran 3.1× the column and read as
+     a banner sitting on an unrelated list. */
+  font-size: 4.25em;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  user-select: none;
+  /* The title is a two-word name, so cap it against the viewport and let it
+     break onto a second line rather than overflow on narrow screens. */
+  max-width: 90vw;
+  text-align: center;
+  line-height: 1.1;
+  /* One golden step up from the 2em rhythm between the buttons themselves
+     (2em × φ ≈ 62px): enough to read as a title rather than a fourth item,
+     without opening a void that splits the screen in two. */
+  margin-bottom: 3.875rem;
+}
+/* Studio mark, bottom-right of the title screen. The size and inset mirror the
+   canvas geometry the sibling game draws its copy with — width capped at both
+   15% of the viewport width and 12% of its short side, inset by 4% of the short
+   side — so the mark lands in the same place across the studio's title screens.
+   aspect-ratio reserves the box before the hot-linked SVG arrives. */
+.studio-logo {
+  position: fixed;
+  right: 4vmin;
+  bottom: 4vmin;
+  z-index: 30;
+  width: min(15vw, 12vmin);
+  aspect-ratio: 504 / 445;
+}
+.studio-logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.menu-modes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+}
+.menu-mode {
+  font-size: 1.5em;
+  padding: 0.8em 2em;
+  min-width: 6em;
+}
+.rules-sheet {
+  display: none;
+}
+.pinned-strip {
+  display: none;
+}
+.tree-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.tree-premises {
+  display: flex;
+  gap: 4em;
+  justify-content: center;
+  align-items: flex-end;
+}
+.tree-inference {
+  position: relative;
+  align-self: stretch;
+  margin: 0.3em -1em;
+  border-top: 2px solid #000;
+}
+.tree-rule-label {
+  position: absolute;
+  left: 100%;
+  margin-left: 0.3em;
+  top: -0.7em;
+  font-size: 0.8em;
+  white-space: nowrap;
+  padding: 0 0.2em;
+  user-select: text;
+}
+.tree-sequent {
+  white-space: nowrap;
+  padding: 0.1em 0.5em;
+  border-radius: 10px;
+  background-color: transparent;
+  user-select: text;
+}
+.playarea > .tree-node {
+  padding-bottom: 1.5em;
+  font-size: calc(2em * var(--base-tree-zoom, 1) * var(--tree-zoom, 1));
+}
+.tree-active > .tree-sequent {
+  background-color: #fcaa;
+}
+.tree-closed-active {
+  position: relative;
+}
+.tree-closed-marker {
+  width: 2em;
+  height: 1.5em;
+  background-color: #fcaa;
+  border-radius: 10px;
+  margin: 0 auto;
+}
+.tree-node > .tree-sequent {
+  transition: color 0.25s ease-out;
+}
+.turnstile {
+  transition: color 0.25s ease-out;
+}
+.tree-node.tree-checking > .tree-sequent .turnstile {
+  color: #fff;
+}
+.tree-node.tree-verified > .tree-sequent,
+.tree-node.tree-faded > .tree-sequent,
+.tree-node.tree-proven > .tree-sequent {
+  filter: sepia(1) hue-rotate(100deg) saturate(3) brightness(0.85);
+  transition:
+    color 0.25s ease-out,
+    filter 0.6s ease-out,
+    opacity 0.3s ease-out;
+}
+.tree-node.tree-faded > .tree-sequent {
+  opacity: 0.2;
+}
+.tree-node.tree-verified > .tree-inference,
+.tree-node.tree-faded > .tree-inference,
+.tree-node.tree-proven > .tree-inference {
+  opacity: 0.2;
+}
+.tree-node > .tree-inference {
+  transition: opacity 0.3s ease-out;
+}
+.connective {
+  text-align: center;
+  border-radius: 6px;
+  background-color: transparent;
+  color: #000b;
+}
+.connective.active {
+  color: #0008;
+}
+.parenthesis {
+  color: #000b;
+}
+.ghost-node .connective,
+.ghost-node .connective.active,
+.ghost-node .parenthesis,
+.level-select .connective,
+.level-select .connective.active,
+.level-select .parenthesis {
+  color: inherit;
+}
+.gazed {
+  border-bottom: 0.15em solid var(--gaze-color);
+}
+.button.cursor {
+  outline: 3px solid #f80;
+  outline-offset: 2px;
+}
+.tree-sequent.ghost,
+.tree-inference.ghost {
+  opacity: 0.55;
+  pointer-events: none;
+  filter: grayscale(1) brightness(0.8) sepia(1) hue-rotate(180deg) saturate(6);
+}
+.tree-sequent.ghost {
+  background-color: transparent;
+}
+.tree-inference.ghost {
+  border-top-color: #666;
+}
+.tree-inference.ghost > .tree-rule-label {
+  opacity: 0.7;
+}
+
+/* === Mobile layout === */
+@media (max-width: 600px) {
+  body {
+    overflow-x: hidden;
+  }
+  .bench {
+    overflow-x: hidden;
+    padding-bottom: 0;
+  }
+  /* Subtask 2: Shrink playarea padding & masks */
+  .playarea {
+    --base-tree-zoom: 0.6;
+    padding: 4em 1em 10em 1em;
+    scroll-padding: 4em 1em 10em 1em;
+    mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      black 1em,
+      black calc(100% - 1em),
+      transparent
+    );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      black 1em,
+      black calc(100% - 1em),
+      transparent
+    );
+  }
+  .rule {
+    min-width: auto;
+  }
+
+  .playarea.solved {
+    padding-bottom: 5em;
+  }
+
+  .button-label.long {
+    display: none;
+  }
+  .lang-switcher-name {
+    display: none;
+  }
+  .lang-switcher-button {
+    min-width: unset;
+  }
+  .lang-switcher-menu {
+    min-width: 10em;
+  }
+  .button-label.short {
+    display: inline;
+  }
+  .rule-label.long {
+    display: none;
+  }
+  .rule-label.short {
+    display: inline;
+  }
+
+  /* Keep keyboard hints inside rule cards */
+  .left .rule > .key-hint {
+    right: 0;
+  }
+  .right .rule > .key-hint {
+    left: 0;
+  }
+  .main .rule .key-hint {
+    bottom: 0;
+  }
+  .left .rule .gaze-hint-stack {
+    left: auto;
+    right: 0;
+    transform: none;
+  }
+  .right .rule .gaze-hint-stack {
+    right: auto;
+    left: 0;
+    transform: none;
+  }
+
+  /* Hide keyboard hints until a physical key is pressed */
+  .key-hint {
+    display: none;
+  }
+  .keyboard-detected .key-hint {
+    display: inline-block;
+  }
+  /* Gaze hints stay visible even without a physical keyboard: the arrow */
+  /* glyph matches the on-screen gaze direction buttons. */
+  .gaze-hint-stack .key-hint {
+    display: inline-block;
+  }
+
+  /* Subtask 4: Responsive menu & popups */
+  .menu-title {
+    font-size: 2.5em;
+    /* No padding: the base rule's margins already space the title, and the
+       extra 2em of air here is what pushed the wrapped name up under the
+       switcher on short screens. The base rule's margin already spaces it. */
+    padding: 0;
+  }
+  .level-select {
+    width: 95%;
+    height: 95%;
+    border-radius: 20px;
+    padding: 1em;
+  }
+  .levels {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+  }
+  .level {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #fff4;
+    border-radius: 10px;
+    padding: 0.5em 0.8em;
+    line-height: 1.4em;
+  }
+  .level .title,
+  .level .rules,
+  .level .goal {
+    display: block;
+    padding: 0;
+    text-align: left;
+  }
+  .level .title {
+    font-weight: bold;
+  }
+  .level .rules {
+    font-size: 0.9em;
+    opacity: 0.8;
+  }
+  .level .goal {
+    margin-top: 0.2em;
+  }
+  .pause-popup {
+    padding: 1.5em 2em;
+  }
+
+  /* Subtask 5: Rule panels as bottom sheet on mobile — moved to container query */
+
+  /* === Random config on mobile === */
+  .random-config {
+    height: 100dvh;
+    padding: 1em;
+    gap: 1em;
+  }
+  .config-title {
+    font-size: 1.5em;
+  }
+  .config-columns {
+    flex-direction: column;
+    gap: 1.5em;
+  }
+  .config-settings {
+    width: 100%;
+  }
+  .config-section {
+    max-width: none;
+  }
+  .config-preview {
+    width: 100%;
+  }
+  .config-preview-list {
+    max-height: none;
+  }
+  .config-buttons {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .config-buttons .button {
+    flex: 1;
+    min-width: 0;
+    padding: 0.6em 1em;
+    text-align: center;
+  }
+}
+
+/* === Rules overlay — applies below 900px bench width === */
+@container bench (max-width: 900px) {
+  .bench .left,
+  .bench .main,
+  .bench .right {
+    display: none;
+  }
+  .bench:not(.rules-hidden) .controls {
+    display: none;
+  }
+  .bench:not(.rules-hidden) .rules-sheet {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-height: 45dvh;
+    z-index: 10;
+    background-color: #ffeeddf0;
+    border-top: 0.5em solid rgba(0, 0, 0, 0.3);
+    padding: 1em 0.5em;
+    gap: 0.5em;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .bench:not(.rules-hidden) .rules-sheet::after {
+    content: '';
+    position: sticky;
+    bottom: -0.5em;
+    left: 0;
+    right: 0;
+    height: 2em;
+    flex-shrink: 0;
+    pointer-events: none;
+    background: linear-gradient(to bottom, transparent, #ffeeddf0);
+  }
+  .bench:not(.rules-hidden) .rules-sheet.gaze {
+    border-top-color: var(--gaze-color);
+  }
+  .bench:not(.rules-hidden) .rules-sheet.hot {
+    border-top-color: #c33;
+  }
+  .bench:not(.rules-hidden) .playarea {
+    padding: 5em 1em 50dvh 1em;
+    scroll-padding: 5em 1em 50dvh 1em;
+  }
+  .rules-sheet-center {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 0.5em;
+    margin-bottom: 0.5em;
+  }
+  .rules-sheet-sides {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 0.5em;
+  }
+  .rules-sheet-sides .rules-sheet-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+  }
+  .rules-sheet .rule {
+    min-width: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+  }
+  .rules-sheet-col .rule[data-group='axiom'] + .rule[data-group='structural'] {
+    margin-top: 0.5em;
+  }
+  .rules-sheet .rule[data-group='structural'] + .rule[data-group='logical'] {
+    margin-top: 0.5em;
+  }
+  .rules-sheet .rule .key-hint {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    font-size: 0.7em;
+    border-radius: 12px;
+  }
+  .rules-sheet .rule .gaze-hint-stack {
+    position: absolute;
+    top: 28px;
+    right: 2px;
+    left: auto;
+    transform: none;
+    width: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .rules-sheet .rule .gaze-hint-stack .key-hint {
+    position: static;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    font-size: 0.7em;
+    border-radius: 12px;
+  }
+  .has-pinned .bench {
+    padding-bottom: 6em;
+  }
+  .has-pinned-many .bench {
+    padding-bottom: 11.3em;
+  }
+  .has-pinned-many .playarea {
+    padding-bottom: 15.5em;
+    scroll-padding-bottom: 15.5em;
+  }
+  .pinned-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 1fr;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 4;
+    gap: 0.5em;
+    padding: 0.5em;
+    background-color: #ffeeddf0;
+  }
+  .pinned-strip .rule {
+    min-width: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+  }
+  .pinned-strip .rule .key-hint {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    font-size: 0.7em;
+    border-radius: 12px;
+  }
+  .pinned-strip .rule .gaze-hint-stack {
+    position: absolute;
+    top: 28px;
+    right: 2px;
+    left: auto;
+    transform: none;
+    width: 24px;
+    justify-content: center;
+  }
+  .pinned-strip .rule .gaze-hint-stack .key-hint {
+    position: static;
+  }
+  .bench.rules-hidden::after {
+    content: '';
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 9em;
+    background: linear-gradient(to top, #ffeedd, #ffeedd 4.5em, transparent);
+    pointer-events: none;
+    z-index: 3;
+  }
+  .bench.rules-hidden.has-pinned::after {
+    height: 13.5em;
+    background: linear-gradient(to top, #ffeedd, #ffeedd 9em, transparent);
+  }
+  .bench.rules-hidden.has-pinned-many::after {
+    height: 19em;
+    background: linear-gradient(to top, #ffeedd, #ffeedd 14.5em, transparent);
+  }
+}
+
+/* --- Versus mode --- */
+.versus-screen {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  background: #ffeedd;
+}
+.versus-arena {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+.versus-half {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+.versus-half + .versus-half {
+  border-left: 2px solid #ccc;
+}
+.versus-half .bench {
+  width: 100%;
+  height: 100%;
+}
+.versus-half-npc .bench {
+  pointer-events: none;
+}
+.versus-half-npc .bench > .left,
+.versus-half-npc .bench > .main,
+.versus-half-npc .bench > .right,
+.versus-half-npc .bench-topbar,
+.versus-half-npc .rules-sheet,
+.versus-half-npc .controls {
+  visibility: hidden;
+}
+/* The tutorial's owl tutor: a portrait (bigger than the proposition birds)
+   pinned to the board's lower-right corner, speech bubble above it with the
+   current stop's message. Sits outside .bench; pointer-events off so it
+   never eats the board's clicks. */
+.tutor-owl {
+  position: absolute;
+  right: 0.8em;
+  bottom: 0.8em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4em;
+  max-width: 18em;
+  pointer-events: none;
+  /* Above the bench's bottom fade gradient (z-index 3), below popups. */
+  z-index: 4;
+}
+.tutor-owl-bubble {
+  background-color: #fff;
+  border: 2px solid #964;
+  border-radius: 12px;
+  border-bottom-right-radius: 2px;
+  padding: 0.5em 0.8em;
+  font-size: 0.8em;
+  /* Shift the bubble left of the portrait so its sharp corner points at
+     the owl's mouth — reads more like the owl is talking. */
+  margin-right: 5em;
+  /* The owl overlay is pointer-transparent (.tutor-owl) so clicks fall
+     through to the board; re-enable events on just the bubble rectangle so
+     its text can be selected without the face or margins capturing input. */
+  pointer-events: auto;
+  user-select: text;
+}
+.tutor-owl-para + .tutor-owl-para {
+  margin-top: 0.5em;
+}
+/* Chapter intro page: no board, just the topic navigation centered on the
+   screen. */
+.tutorial-intro {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+/* Welcome page: the owl solves a fixed exemplar before anything is asked
+   of the player. The board is watch-only — pointer events off — and fills
+   the space above the Start button. */
+.tutorial-welcome {
+  flex-direction: column;
+  padding-bottom: 2em;
+  /* The intro page is height: 100% inside the overflow-hidden screen; the
+     padding must stay inside that height or the page overflows and every
+     active-node scrollIntoView bobs the whole layout. */
+  box-sizing: border-box;
+}
+.tutorial-demo {
+  pointer-events: none;
+  align-self: stretch;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.tutorial-demo .playarea {
+  flex: 1;
+  padding: 2em 4em;
+  scroll-padding: 2em 4em;
+}
+/* On small screens the demo tree must stay whole in view — the player
+   cannot pan a watch-only board, and the narration points at branches. */
+@media (max-width: 600px) {
+  .tutorial-demo .playarea {
+    --base-tree-zoom: 0.4;
+    padding: 1em 0.5em 8em 0.5em;
+    scroll-padding: 1em 0.5em 8em 0.5em;
+  }
+}
+/* While the owl plays a presolved foundation, the board ignores the
+   pointer; keyboard and gamepad actions are swallowed in the dispatch.
+   The topbar chrome (menu, zoom) is not gameplay — it stays live. */
+.tutorial-presolving .bench {
+  pointer-events: none;
+}
+.tutorial-presolving .bench .bench-topbar {
+  pointer-events: auto;
+}
+/* Skip completion screen: the solved screen's counterpart for skipped
+   (unsolvable) challenges — a confirmation line above the same topic
+   navigation row. */
+.tutorial-skipped {
+  flex-wrap: wrap;
+  align-content: center;
+}
+.tutorial-skipped-note {
+  flex-basis: 100%;
+  text-align: center;
+}
+/* Conjecture entry: the live goal preview centered above the formula
+   editor bar. */
+.conjecture-entry {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.conjecture-preview-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.conjecture-preview {
+  font-size: 1.6em;
+}
+.tutor-owl-face {
+  font-size: 3.5em;
+  line-height: 1;
+}
+/* Keyboard/gamepad slots: hide the pointer/touch control bar and topbar */
+/* buttons (rule cards stay visible). Congrats buttons remain visible. */
+.versus-half-keys .controls:not(:has(.congrabuttons)) {
+  visibility: hidden;
+}
+/* The inline lemma editor bar stays visible in keyboard/gamepad slots: it is
+   the cursor's canvas, not an on-screen mirror of physical keys. */
+.versus-half-keys .controls.lemma-editor {
+  visibility: visible;
+}
+.versus-half-keys .bench-topbar .bench-rules-btn,
+.versus-half-keys .bench-topbar .bench-zoom {
+  visibility: hidden;
+}
+.versus-half .playarea {
+  padding-left: 3em;
+  padding-right: 3em;
+  scroll-padding-left: 3em;
+  scroll-padding-right: 3em;
+}
+.versus-half + .versus-half {
+  border-left: none;
+}
+.versus-thermo {
+  width: 5em;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  /* Sit above the benches' controls bar (z-index 4), which shares the
+     screen-level stacking context, so the menu button isn't painted under it. */
+  position: relative;
+  z-index: 5;
+}
+/* Match the bench-topbar icon buttons, but straddle the key hint over the top
+   edge (the thermo column is too narrow for a side badge). */
+.versus-menu-btn {
+  flex-shrink: 0;
+  align-self: center;
+  position: relative;
+  width: 1.2em;
+  height: 1.2em;
+  line-height: 1.2em;
+  font-size: 1.5em;
+  border-color: transparent;
+  margin: 1.2em 0 0.6em;
+}
+.versus-thermo-clock {
+  flex-shrink: 0;
+  text-align: center;
+  font-size: 1.3em;
+  font-variant-numeric: tabular-nums;
+  padding: 0.3em 0;
+  border-bottom: 1px solid #ccc;
+}
+.versus-thermo-rows {
+  /* Fill the column so the fade is a fixed band at the bottom of the visible
+     area: scores only fade as they reach the bottom (and on scroll overflow). */
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 0.3em 0;
+  scrollbar-width: none;
+  mask-image: linear-gradient(to bottom, black calc(100% - 4em), transparent);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black calc(100% - 4em),
+    transparent
+  );
+}
+.versus-thermo-rows::-webkit-scrollbar {
+  display: none;
+}
+.versus-thermo-row {
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+}
+.versus-thermo-cell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-variant-numeric: tabular-nums;
+  padding: 0.15em 0;
+  opacity: 0.5;
+}
+.versus-thermo-cell.current {
+  opacity: 1;
+}
+.versus-thermo-cell.p1,
+.versus-thermo-cell.p2 {
+  color: #000;
+}
+.versus-thermo-moves {
+  font-size: 1.4em;
+}
+.versus-thermo-points {
+  font-size: 0.85em;
+}
+.versus-thermo-total {
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  border-bottom: 1px solid #ccc;
+}
+.versus-thermo-cell.total {
+  opacity: 1;
+  font-size: 1.4em;
+  font-weight: bold;
+  padding: 0.3em 0;
+}
+/* Curriculum ladder: the tutorial's roadmap and navigation in one — every
+   beat is a clickable row, the current one highlighted, chapters as muted
+   headers between groups. */
+.tutorial-ladder {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  padding: 0 0.4em 0 0.6em;
+  font-size: 0.85em;
+  text-align: left;
+}
+.tutorial-ladder-chapter {
+  margin-top: 0.9em;
+  font-size: 0.7em;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.45;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 0.12em 0.2em;
+}
+.tutorial-ladder-chapter:hover {
+  opacity: 0.85;
+}
+.tutorial-ladder-chapter.current {
+  opacity: 1;
+  font-weight: bold;
+}
+.tutorial-ladder-chapter:first-child {
+  margin-top: 0;
+}
+.tutorial-ladder-row {
+  cursor: pointer;
+  padding: 0.12em 0.2em 0.12em 0.6em;
+  border-radius: 4px;
+  opacity: 0.55;
+  line-height: 1.3;
+}
+.tutorial-ladder-row:hover {
+  opacity: 0.85;
+}
+.tutorial-ladder-row.current {
+  opacity: 1;
+  font-weight: bold;
+}
+.tutorial-ladder-glyphs {
+  margin-left: 0.35em;
+  font-size: 0.9em;
+  opacity: 0.6;
+  font-weight: normal;
+}
+.tutorial-ladder-number {
+  margin-right: 0.4em;
+  font-size: 0.85em;
+  opacity: 0.6;
+  font-weight: normal;
+  font-variant-numeric: tabular-nums;
+}
+/* --- Solo tutorial screen --- */
+/* One board filling the viewport; the positioned ancestor for the owl and
+   the breadcrumb. */
+.tutorial-screen {
+  position: relative;
+  height: 100dvh;
+  background: #ffeedd;
+  overflow: hidden;
+}
+/* Current-position breadcrumb: the ambient "where am I" indicator in the
+   top-right corner; clicking it opens the chapter index overlay. Not a
+   gameplay control, so it wears the topbar chrome look (transparent
+   border) like the menu and zoom buttons. */
+.tutorial-crumb {
+  position: absolute;
+  top: 0.5em;
+  right: 0.6em;
+  z-index: 4;
+  font-size: 0.85em;
+  border-color: transparent;
+}
+/* The chapter index as an on-demand overlay (the ladder markup unchanged);
+   reuses the pause popup's panel look. */
+.tutorial-ladder-popup {
+  padding: 1.5em 2em;
+  min-width: 16em;
+  max-height: 85dvh;
+  overflow-y: auto;
+}
+.tutorial-ladder-popup .tutorial-ladder {
+  font-size: 1em;
+  /* The ladder is width:100% + own padding; content-box sizing would push
+     the padding past the popup's content area and summon a horizontal
+     scrollbar. */
+  box-sizing: border-box;
+}
+/* Presolved foundation: the frozen part of the tree the player can't undo.
+   Only the node's own sequent and inference line dim, so nested frozen
+   nodes don't compound their opacity. */
+.tree-frozen > .tree-sequent,
+.tree-frozen > .tree-inference {
+  opacity: 0.45;
+}
+.versus-half:first-child .rules-sheet {
+  right: calc(50% + 2.5em);
+}
+.versus-half:last-child .rules-sheet {
+  left: calc(50% + 2.5em);
+}
+.versus-result {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  gap: 1em;
+  padding: 1.5em;
+  box-sizing: border-box;
+  z-index: 100;
+}
+.versus-breakdown-title {
+  font-size: 2em;
+  font-weight: bold;
+}
+/* End-of-match breakdown. Per-level wrapper rows (.vb-level) on a shared grid via
+   subgrid, so columns align across rows while each row stays a discrete element.
+   Each cell carries a latent .vb-cell-label shown only in the collapsed card mode,
+   so narrow-screen reflow is a stylesheet-only change. */
+.versus-breakdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, auto) auto minmax(8em, auto) repeat(4, auto);
+  gap: 0.15em 0.7em;
+  align-items: center;
+  background: #fff;
+  color: #000;
+  padding: 1em 1.4em 1.2em;
+  border-radius: 0.4em;
+  /* Leave room for the title, the actions row and the overlay padding so the
+     whole stack stays within the viewport; the grid scrolls internally. */
+  max-height: calc(100dvh - 9em);
+  max-width: 95vw;
+  overflow: auto;
+  font-variant-numeric: tabular-nums;
+}
+.vb-level {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+  align-items: center;
+}
+.vb-header {
+  align-items: baseline;
+  padding-bottom: 0.3em;
+}
+.vb-title-name {
+  font-weight: bold;
+}
+.vb-title-name.p1 {
+  grid-column: 1 / 4;
+  text-align: left;
+}
+.vb-title-name.p2 {
+  grid-column: 8 / 11;
+  text-align: right;
+}
+.vb-title-spacer {
+  grid-column: 5 / 7;
+}
+/* Score totals sit in the Points column (col 4 / col 7), centred like the Points
+   cells so each total reads as that column's sum. */
+.vb-title-score-cell {
+  text-align: center;
+}
+.vb-title-score-cell.p1 {
+  grid-column: 4;
+}
+.vb-title-score-cell.p2 {
+  grid-column: 7;
+}
+.vb-title-score {
+  font-size: 1.7em;
+  font-weight: bold;
+  line-height: 1;
+}
+.vb-subhead {
+  font-size: 0.8em;
+  opacity: 0.55;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.25em;
+  margin-bottom: 0.15em;
+}
+.vb-subcell {
+  text-align: center;
+}
+.vb-cell {
+  padding: 0.12em 0;
+  text-align: center;
+}
+.vb-cell-label {
+  display: none;
+}
+.vb-cell.pts .vb-cell-value {
+  font-weight: bold;
+}
+.vb-goal {
+  text-align: left;
+}
+.vb-sec-start {
+  border-left: 1px solid #e3e3e3;
+  padding-left: 0.6em;
+}
+.versus-breakdown-actions {
+  margin-top: 2em;
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+}
+
+/* Minimal safe fallback when too narrow for the table: rows stack into cards and
+   the latent per-cell labels appear. A polished card design is a later pass. */
+@media (max-width: 720px) {
+  .versus-breakdown-grid {
+    display: block;
+  }
+  .vb-subhead {
+    display: none;
+  }
+  .vb-level {
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 0.3em;
+    padding: 0.5em 0.7em;
+    margin-bottom: 0.5em;
+  }
+  .vb-level.vb-header {
+    border: none;
+    padding: 0 0 0.4em;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.3em 0.6em;
+  }
+  .vb-title-spacer {
+    display: none;
+  }
+  .vb-cell {
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+    text-align: left;
+  }
+  .vb-cell-label {
+    display: block;
+    opacity: 0.5;
+  }
+  .vb-sec-start {
+    border-left: none;
+    padding-left: 0;
+  }
+}
