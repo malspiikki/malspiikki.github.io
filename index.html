@@ -31,6 +31,16 @@ body {
   text-align: left;
   text-transform: uppercase;
   font-size: clamp(1.75rem, 9vw, 3em);
+  /* An em value so both lines share one leading; a unitless line-height
+     would be recomputed against each line's own font-size. */
+  line-height: 1.05em;
+}
+/* Sized so the second line comes out as wide as the first. The ratio is the
+   measured width of MALSPIIKKI over ENTERTAINMENT, so it only holds for a
+   sans-serif of roughly these proportions. */
+.logo h1 span {
+  display: block;
+  font-size: 0.69em;
 }
 
 @media (max-width: 600px) {
@@ -118,7 +128,7 @@ body {
   <body>
     <div class="logo">
       <img src="malspiikki.svg" alt="" width="100" />
-      <h1>Malspiikki<br />Entertainment</h1>
+      <h1>Malspiikki<span>Entertainment</span></h1>
     </div>
     <div class="gallery">
       <div class="game">
