@@ -42,14 +42,76 @@ body {
   }
 }
 
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 400px));
+  justify-content: center;
+  gap: 2.5rem;
+  margin: 0 auto 3rem;
+}
+
+/* The window and the title lead to the same place, so they light up together. */
 .game {
-  width: 400px;
-  max-width: 100%;
+  --lean: 1;
+}
+.game:has(:any-link:hover),
+.game:has(:any-link:focus-visible) {
+  --lean: 1.04;
+}
+
+.game_window {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+}
+.game_window::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, 0.25),
+    inset 0 0 24px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
 }
 .game_image {
-  width: 400px;
-  max-width: 100%;
-  height: auto;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  /* Lean in towards the window rather than lifting the card. */
+  transform: scale(var(--lean));
+  transition: transform 0.4s ease;
+}
+
+.game_title {
+  margin: 0.75em 0 0.3em;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.game_title a {
+  color: inherit;
+  text-decoration: none;
+}
+.game:has(:any-link:hover) .game_title a,
+.game:has(:any-link:focus-visible) .game_title a {
+  text-decoration: underline;
+}
+.game_title a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+.game_description {
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .game_image {
+    transform: none;
+    transition: none;
+  }
 }
     </style>
   </head>
@@ -58,9 +120,17 @@ body {
       <img src="malspiikki.svg" alt="" width="100" />
       <h1>Malspiikki<br />Entertainment</h1>
     </div>
-    <div class="game">
-      <img src="screenshots/sanapato.png" alt="Sanapato screenshot" class="game_image" />
-      <div class="game_description">Help the beaver solve daily challenges in <a href="./sanapato/">Sanapato</a>.</div>
+    <div class="gallery">
+      <div class="game">
+        <!-- Same destination as the title link, so it is hidden from assistive
+             tech to keep one entry per game in the links list. The alt text is
+             only a fallback for a missing screenshot. -->
+        <a class="game_window" href="./sanapato/" aria-hidden="true" tabindex="-1">
+          <img src="screenshots/sanapato.png" alt="Sanapato — a beaver beside a pyramid of word tiles." class="game_image" />
+        </a>
+        <h2 class="game_title"><a href="./sanapato/">Sanapato</a></h2>
+        <p class="game_description">Help the beaver solve daily challenges.</p>
+      </div>
     </div>
   </body>
 </html>
