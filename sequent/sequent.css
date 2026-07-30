@@ -770,6 +770,19 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   padding: 0.6em 2em;
   min-width: 5em;
 }
+/* Versus config in its default trim (dev sections hidden via §): a single
+   centred column, so the wide two-column scaffolding would just look empty. */
+.versus-config-simple {
+  justify-content: center;
+}
+.versus-config-simple .config-title {
+  text-align: center;
+  padding-left: 0;
+}
+.versus-config-simple .config-buttons {
+  justify-content: center;
+  margin-top: 0.5em;
+}
 
 .menu {
   width: 100vw;

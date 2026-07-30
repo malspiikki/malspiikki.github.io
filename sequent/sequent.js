@@ -11508,6 +11508,14 @@ var mountVersusConfig = (container, _navigate, onStart) => {
   const config = parseVersusConfigFromParams(
     new URLSearchParams(window.location.search)
   );
+  let devPresses = 0;
+  let devVisible = false;
+  const onDevKey = () => {
+    devPresses += 1;
+    if (devPresses < 3) return;
+    devVisible = !devVisible;
+    rerender();
+  };
   const syncUrl = () => {
     const params = new URLSearchParams(window.location.search);
     setVersusConfigParams(config, params);
@@ -11577,10 +11585,7 @@ var mountVersusConfig = (container, _navigate, onStart) => {
       }
     }
   };
-  let previewWorker = createPreviewWorker(
-    config.randomConfig,
-    handleResult
-  );
+  let previewWorker = void 0;
   const restartSearch = () => {
     syncUrl();
     entries2 = [];
@@ -11619,22 +11624,16 @@ var mountVersusConfig = (container, _navigate, onStart) => {
   const rerender = () => {
     container.innerHTML = "";
     const layout = document.createElement("div");
-    layout.className = "random-config versus-config";
+    layout.className = "random-config versus-config" + (devVisible ? "" : " versus-config-simple");
     layout.appendChild(createLangSwitcher());
     const title = document.createElement("div");
     title.className = "config-title";
     title.textContent = t("versus");
     layout.appendChild(title);
-    const columns = document.createElement("div");
-    columns.className = "config-columns";
     const settings = document.createElement("div");
     settings.className = "config-settings";
     const inputSection = document.createElement("div");
     inputSection.className = "config-section";
-    const inputSectionTitle = document.createElement("div");
-    inputSectionTitle.className = "config-section-title";
-    inputSectionTitle.textContent = t("players");
-    inputSection.appendChild(inputSectionTitle);
     const p1Label = document.createElement("div");
     p1Label.className = "config-subsection-title";
     p1Label.textContent = t("player1");
@@ -11669,6 +11668,20 @@ var mountVersusConfig = (container, _navigate, onStart) => {
         }
       )
     );
+    inputSection.appendChild(
+      createRow(
+        t("matchLength"),
+        createNumberInput(
+          config.gameDurationSeconds / 60,
+          (v2) => {
+            config.gameDurationSeconds = v2 * 60;
+            syncUrl();
+          },
+          1,
+          99
+        )
+      )
+    );
     settings.appendChild(inputSection);
     const buttons = document.createElement("div");
     buttons.className = "config-buttons";
@@ -11685,48 +11698,56 @@ var mountVersusConfig = (container, _navigate, onStart) => {
     }
     buttons.appendChild(startBtn);
     settings.appendChild(buttons);
-    settings.appendChild(
-      buildFormulaSettingsSection(config.randomConfig, restartSearch, [
-        createRow(
-          t("matchLength"),
-          createNumberInput(
-            config.gameDurationSeconds / 60,
-            (v2) => {
-              config.gameDurationSeconds = v2 * 60;
-              syncUrl();
-            },
-            1,
-            99
-          )
-        )
-      ])
-    );
-    columns.appendChild(settings);
-    const preview = document.createElement("div");
-    preview.className = "config-preview";
-    const previewTitle = document.createElement("div");
-    previewTitle.className = "config-section-title";
-    previewTitle.textContent = t("preview");
-    preview.appendChild(previewTitle);
-    const stats = document.createElement("div");
-    stats.className = "config-stats";
-    preview.appendChild(stats);
-    const list = document.createElement("div");
-    list.className = "config-preview-list";
-    preview.appendChild(list);
-    columns.appendChild(preview);
-    layout.appendChild(columns);
+    if (devVisible) {
+      settings.appendChild(
+        buildFormulaSettingsSection(config.randomConfig, restartSearch)
+      );
+      const columns = document.createElement("div");
+      columns.className = "config-columns";
+      columns.appendChild(settings);
+      const preview = document.createElement("div");
+      preview.className = "config-preview";
+      const previewTitle = document.createElement("div");
+      previewTitle.className = "config-section-title";
+      previewTitle.textContent = t("preview");
+      preview.appendChild(previewTitle);
+      const stats = document.createElement("div");
+      stats.className = "config-stats";
+      preview.appendChild(stats);
+      const list = document.createElement("div");
+      list.className = "config-preview-list";
+      preview.appendChild(list);
+      columns.appendChild(preview);
+      layout.appendChild(columns);
+    } else {
+      layout.appendChild(settings);
+    }
     container.appendChild(layout);
-    restartSearch();
+    if (devVisible) {
+      restartSearch();
+    } else {
+      stopClock();
+      if (previewWorker) {
+        previewWorker.terminate();
+        previewWorker = void 0;
+      }
+    }
   };
   const onGamepadChange = () => rerender();
   window.addEventListener("gamepadconnected", onGamepadChange);
   window.addEventListener("gamepaddisconnected", onGamepadChange);
+  const onKeyDown = (ev) => {
+    if (ev.ctrlKey || ev.metaKey || ev.altKey) return;
+    if (ev.target instanceof HTMLInputElement) return;
+    if (ev.code === "Backquote") onDevKey();
+  };
+  document.addEventListener("keydown", onKeyDown);
   rerender();
   return {
     cleanup: () => {
       window.removeEventListener("gamepadconnected", onGamepadChange);
       window.removeEventListener("gamepaddisconnected", onGamepadChange);
+      document.removeEventListener("keydown", onKeyDown);
       stopClock();
       if (previewWorker) {
         previewWorker.terminate();
