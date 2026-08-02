@@ -7650,7 +7650,7 @@ var gazeGhostSection = () => {
   if (rotated !== null) strip.appendChild(rotated);
   return section(
     "Gaze ghost",
-    "With the gaze cursor on a formula (underlined), the tree previews what the pending verb would do: the premises that Destruct or Drop would create appear as a dimmed blue ghost above the active sequent, inference line included. When the gazed formula is not in the active position, the ghost also shows the rotations needed to bring it there. Nothing is applied until the verb is pressed. The Claim (cut) ghost and the presolve display are still in flux and intentionally undocumented.",
+    "With the gaze cursor on a formula (underlined), the gazed formula\u2019s outermost connective takes the gaze color \u2014 the symbol a Destruct would remove. The tree also previews what the pending verb would do: the premises that Destruct or Drop would create appear as a dimmed blue ghost above the active sequent, inference line included. When the gazed formula is not in the active position, the ghost also shows the rotations needed to bring it there. Nothing is applied until the verb is pressed. The Claim (cut) ghost and the presolve display are still in flux and intentionally undocumented.",
     strip
   );
 };

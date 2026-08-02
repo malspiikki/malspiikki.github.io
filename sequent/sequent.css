@@ -1150,6 +1150,15 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
 .gazed {
   border-bottom: 0.15em solid var(--gaze-color);
 }
+/* The gazed formula's outermost connective — the symbol a Destruct would
+   remove — reads as emphasized blue-leaning ink, not a foreign color.
+   Deliberately gaze-scoped: the persistent .connective.active paint above
+   stays subtle. Not --gaze-color itself: the gaze cursor always sits on the
+   active branch's peach (#fcaa), where thin #48f strokes vibrate and
+   saturated blues read as stains in the ink. */
+.gazed .connective.active {
+  color: #236;
+}
 .button.cursor {
   outline: 3px solid #f80;
   outline-offset: 2px;
