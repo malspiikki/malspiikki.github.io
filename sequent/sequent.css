@@ -225,6 +225,28 @@ html.loading body {
 .controls-undo-inner {
   display: contents;
 }
+/* A control the current beat just revealed announces itself once: motion
+   only (hue carries standing meaning; motion carries events), a triple
+   pulse on arrival. The same element is the keycap legend under
+   keyboard/gamepad input, so the pulse bridges the owl's "do X" to the
+   key that does it. */
+@keyframes control-unlock {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+}
+.just-unlocked {
+  animation: control-unlock 0.55s ease-in-out 3;
+}
+@media (prefers-reduced-motion: reduce) {
+  .just-unlocked {
+    animation: none;
+  }
+}
 .main {
   grid-area: main;
   justify-content: center;

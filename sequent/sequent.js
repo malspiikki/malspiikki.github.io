@@ -6255,14 +6255,17 @@ var createBench = (workspace, makeCongrats, controlsEl, rerender, onMenu, onAppl
       rerender();
     });
   });
+  lemmaBtn.dataset["verb"] = "lemma";
   const miscGroup = makeGroup("controls-misc");
   if (onSkip !== void 0) {
     const skipBtn = createButton(t("skip"), false, onSkip);
     skipBtn.classList.add("mutating");
+    skipBtn.dataset["verb"] = "skip";
     addLegendBind(skipBtn, "skip");
     miscGroup.appendChild(skipBtn);
   }
   const gazeGroup = makeGroup(ctx.isGazeModeActive() ? "gaze" : "hot");
+  gazeGroup.dataset["verb"] = "gaze";
   gazeGroup.appendChild(gazeLeftBtn);
   gazeGroup.appendChild(gazeWeakeningBtn);
   gazeGroup.appendChild(gazeConnectiveBtn);
@@ -6303,6 +6306,7 @@ var createBench = (workspace, makeCongrats, controlsEl, rerender, onMenu, onAppl
   addLegendBind(prevBranchBtn, "prevBranch");
   addLegendBind(nextBranchBtn, "nextBranch");
   const navGroup = makeGroup("controls-nav");
+  navGroup.dataset["verb"] = "nav";
   navGroup.appendChild(prevBranchBtn);
   if (hideLemma !== true) navGroup.appendChild(lemmaBtn);
   navGroup.appendChild(controlsEl);
@@ -10537,6 +10541,40 @@ var mountTutorial = (container, navigate2, startStop) => {
     owl.appendChild(face);
     return owl;
   };
+  const verbs = ["nav", "gaze", "skip", "lemma"];
+  const revealedOf = (beat) => ({
+    nav: true,
+    gaze: !beat.hideGaze,
+    skip: !beat.hideSkip,
+    lemma: !beat.hideLemma
+  });
+  let lastBeatRevealed = stopAt(stopIdx).kind === "beat" ? revealedOf(beatAt(beatIdx)) : null;
+  let lastRevealedStop = stopAt(stopIdx).kind === "beat" ? stopIdx : -1;
+  let announceVerbs = [];
+  let announceUntil = 0;
+  const announceUnlocks = (screen) => {
+    const stop = stopAt(stopIdx);
+    if (stop.kind !== "beat") return;
+    if (stopIdx !== lastRevealedStop) {
+      const now = revealedOf(beatAt(stop.beatIdx));
+      const prev2 = lastBeatRevealed;
+      lastBeatRevealed = now;
+      lastRevealedStop = stopIdx;
+      announceVerbs = verbs.filter((v2) => now[v2] && (prev2 === null || !prev2[v2]));
+      announceUntil = 0;
+    }
+    if (announceVerbs.length === 0) return;
+    if (presolving) return;
+    if (announceUntil === 0) announceUntil = Date.now() + 2500;
+    if (Date.now() >= announceUntil) {
+      announceVerbs = [];
+      return;
+    }
+    for (const verb of announceVerbs) {
+      const el = screen.querySelector(`[data-verb="${verb}"]`);
+      if (el !== null) el.classList.add("just-unlocked");
+    }
+  };
   const syncOwlAboveControls = () => {
     const screenEl = container.querySelector(".tutorial-screen");
     if (screenEl === null) return;
@@ -10722,6 +10760,7 @@ var mountTutorial = (container, navigate2, startStop) => {
       screen.appendChild(crumb);
     }
     screen.appendChild(buildOwl());
+    announceUnlocks(screen);
     container.appendChild(screen);
     syncOwlAboveControls();
     if (paused) {
