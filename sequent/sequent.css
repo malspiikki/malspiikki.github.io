@@ -1699,12 +1699,14 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
 .tutor-owl {
   position: absolute;
   right: 0.8em;
+  /* Mirror the right inset so the bubble never touches the left screen
+     edge when a narrow viewport makes it span the full width. */
+  left: 0.8em;
   bottom: 0.8em;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: 0.4em;
-  max-width: 18em;
   pointer-events: none;
   /* Above the bench's bottom fade gradient (z-index 3), below popups. */
   z-index: 4;
@@ -1717,9 +1719,14 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   padding: 0.5em 0.8em;
   /* Reading surface: rem so browser/OS text zoom enlarges the owl's
      text (both observed sessions reached for zoom to read it) while the
-     px-pinned game surfaces hold still. 0.96rem = the 0.8em this
-     computed to at the default root size. */
-  font-size: 0.96rem;
+     px-pinned game surfaces hold still. Sized at the interface's base —
+     teaching prose must never be quieter than the chrome around it; the
+     old 0.8em made it the smallest text on screen, and both sessions
+     zoomed to escape it. */
+  font-size: 1.2rem;
+  /* The measure rides the bubble's own text size (~45 characters), so
+     proportions survive both this value changing and text zoom. */
+  max-width: 22.5em;
   /* Shift the bubble left of the portrait so its sharp corner points at
      the owl's mouth — reads more like the owl is talking. */
   margin-right: 5em;
