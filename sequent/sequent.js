@@ -4345,8 +4345,8 @@ function of(text) {
 function active(text) {
   return { text, active: true, connective: false };
 }
-function connective(text, active2) {
-  return { text, active: active2, connective: true };
+function connective(text, active2, consumed = false) {
+  return { text, active: active2, connective: true, consumed };
 }
 function paren(text) {
   return { text, active: false, connective: false, parenthesis: true };
@@ -4372,7 +4372,7 @@ function html(segments) {
       return s.text;
     }
     if (s.connective) {
-      const cls = s.active ? "connective active" : "connective";
+      const cls = "connective" + (s.active ? " active" : "") + (s.consumed === true ? " consumed" : "");
       return `<span class="${cls}">${escape(s.text)}</span>`;
     }
     if (s.parenthesis === true) {
@@ -4451,26 +4451,26 @@ function printNullary(key) {
     return [of(s0)];
   };
 }
-function printUnary(key, activeConn = false, markConnective = false) {
+function printUnary(key, activeConn = false, markConnective = false, consumedConn = false) {
   return (a87) => (theme) => {
     const [s0, s1] = theme[key];
     if (key === "parenthesis") {
       return [paren(s0), ...a87(theme), paren(s1)];
     }
     return [
-      markConnective ? connective(s0, activeConn) : activeConn ? active(s0) : of(s0),
+      markConnective ? connective(s0, activeConn, consumedConn) : activeConn ? active(s0) : of(s0),
       ...a87(theme),
       of(s1)
     ];
   };
 }
-function printBinary(key, activeConn = false, markConnective = false) {
+function printBinary(key, activeConn = false, markConnective = false, consumedConn = false) {
   return (a87, b) => (theme) => {
     const [s0, s1, s2] = theme[key];
     return [
       of(s0),
       ...a87(theme),
-      markConnective ? connective(s1, activeConn) : activeConn ? active(s1) : key === "sequent" ? turnstile(s1) : of(s1),
+      markConnective ? connective(s1, activeConn, consumedConn) : activeConn ? active(s1) : key === "sequent" ? turnstile(s1) : of(s1),
       ...b(theme),
       of(s2)
     ];
@@ -4537,51 +4537,73 @@ var expand = (minPrec, operand) => {
   if (operand.kind === "atom") return fromProp(operand);
   return precedence(operand) >= minPrec ? print("optional")(fromProp(operand)) : print("parenthesis")(fromProp(operand));
 };
-function fromNegation({ negand }, activeConnective = false) {
-  return printUnary("negation", activeConnective, true)(expand(3, negand));
+function fromNegation({ negand }, activeConnective = false, consumedConnective = false) {
+  return printUnary(
+    "negation",
+    activeConnective,
+    true,
+    consumedConnective
+  )(expand(3, negand));
 }
-function fromConjunction({ leftConjunct, rightConjunct }, activeConnective = false) {
+function fromConjunction({ leftConjunct, rightConjunct }, activeConnective = false, consumedConnective = false) {
   return printBinary(
     "conjunction",
     activeConnective,
-    true
+    true,
+    consumedConnective
   )(expand(3, leftConjunct), expand(3, rightConjunct));
 }
-function fromDisjunction({ leftDisjunct, rightDisjunct }, activeConnective = false) {
+function fromDisjunction({ leftDisjunct, rightDisjunct }, activeConnective = false, consumedConnective = false) {
   return printBinary(
     "disjunction",
     activeConnective,
-    true
+    true,
+    consumedConnective
   )(expand(3, leftDisjunct), expand(3, rightDisjunct));
 }
-function fromImplication({ antecedent, consequent }, activeConnective = false) {
+function fromImplication({ antecedent, consequent }, activeConnective = false, consumedConnective = false) {
   return printBinary(
     "implication",
     activeConnective,
-    true
+    true,
+    consumedConnective
   )(expand(2, antecedent), expand(2, consequent));
 }
-function fromProp(proposition, activeConnective = false) {
+function fromProp(proposition, activeConnective = false, consumedConnective = false) {
   return matchRaw(proposition, {
     atom: fromAtom,
     falsum: fromFalsum,
     verum: fromVerum,
-    negation: (p) => fromNegation(p, activeConnective),
-    conjunction: (p) => fromConjunction(p, activeConnective),
-    disjunction: (p) => fromDisjunction(p, activeConnective),
-    implication: (p) => fromImplication(p, activeConnective)
+    negation: (p) => fromNegation(p, activeConnective, consumedConnective),
+    conjunction: (p) => fromConjunction(p, activeConnective, consumedConnective),
+    disjunction: (p) => fromDisjunction(p, activeConnective, consumedConnective),
+    implication: (p) => fromImplication(p, activeConnective, consumedConnective)
   });
 }
 var wrapGazed = (p) => (t2) => [raw('<span class="gazed">'), ...p(t2), raw("</span>")];
-function fromSequent(judgement, gaze = null) {
+var wrapConsumed = (p) => (t2) => [
+  raw('<span class="consumed-formula">'),
+  ...p(t2),
+  raw("</span>")
+];
+function fromSequent(judgement, gaze = null, consumed = null) {
   const { antecedent, succedent } = judgement;
+  const consumedAt = (side, i88, len) => {
+    if (consumed === null || consumed.side !== side) return null;
+    const active2 = side === "left" ? len - 1 : 0;
+    return i88 === active2 ? consumed.scope : null;
+  };
   const antPrinters = antecedent.map((f2, i88) => {
-    const p = fromProp(f2, true);
-    return gaze && gaze.side === "left" && gaze.index === i88 ? wrapGazed(p) : p;
+    const mark = consumedAt("left", i88, antecedent.length);
+    const p = fromProp(f2, true, mark === "connective");
+    const q = mark === "formula" ? wrapConsumed(p) : p;
+    return gaze && gaze.side === "left" && gaze.index === i88 ? wrapGazed(q) : q;
   });
   const sucPrinters = succedent.map((f2, i88) => {
-    const p = fromProp(f2, true);
-    return gaze && gaze.side === "right" && gaze.index === i88 ? wrapGazed(p) : p;
+    const mark = consumedAt("right", i88, succedent.length);
+    const p = fromProp(f2, true, mark === "connective");
+    const q = mark === "formula" ? wrapConsumed(p) : p;
+    return gaze && gaze.side === "right" && gaze.index === i88 ? wrapGazed(q) : q;
   });
   return (t2) => trim(
     print("sequent")(
@@ -4758,11 +4780,30 @@ var lemmaGhostPremises = (goal87, d) => {
 // src/web/tree.ts
 var equalPaths = (a87, b) => a87.length === b.length && a87.every((v2, i88) => v2 === b[i88]);
 var startsWith = (path, prefix) => path.length >= prefix.length && prefix.every((v2, i88) => v2 === path[i88]);
+var consumedMark = {
+  nl: { side: "left", scope: "connective" },
+  cl: { side: "left", scope: "connective" },
+  dl: { side: "left", scope: "connective" },
+  il: { side: "left", scope: "connective" },
+  nr: { side: "right", scope: "connective" },
+  cr: { side: "right", scope: "connective" },
+  dr: { side: "right", scope: "connective" },
+  ir: { side: "right", scope: "connective" },
+  swl: { side: "left", scope: "formula" },
+  swr: { side: "right", scope: "formula" },
+  i: null,
+  f: null,
+  v: null,
+  sRotLB: null,
+  sRotRB: null,
+  cut: null
+};
 var renderSequent = (derivation, isActive, gaze, ghost = false) => {
   const el = document.createElement("div");
   el.setAttribute("class", "tree-sequent" + (ghost ? " ghost" : ""));
+  const consumed = derivation.kind === "transformation" ? consumedMark[derivation.rule] : null;
   el.innerHTML = html(
-    fromSequent(derivation.result, isActive ? gaze : null)(basic)
+    fromSequent(derivation.result, isActive ? gaze : null, consumed)(basic)
   );
   return el;
 };
@@ -7568,7 +7609,7 @@ var treeSection = () => {
   strip.appendChild(treeSpecimen(renderDerivation(proof, [-1]), "solved"));
   return section(
     "Proof tree",
-    "The proof tree is the play surface. The goal sequent sits at the bottom; each backward rule application draws an inference line above its conclusion, labelled with the rule on the right, and stacks the new premises on top. The highlighted sequent is the active goal that the next move applies to; a solved tree has no open goals left. The solve animation states (verify sweep, fading) are not documented here.",
+    "The proof tree is the play surface. The goal sequent sits at the bottom; each backward rule application draws an inference line above its conclusion, labelled with the rule on the right \u2014 the literature-standard position \u2014 and stacks the new premises on top. Rules always act on the formula nearest the turnstile in the conclusion, so reading an inference is local: compare that formula with the sequents above the line \u2014 it split into its parts, it was dropped, or it moved to the far end. A consumed connective stays visible as the faintest ink in the conclusion \u2014 one step fainter than the pale outermost connectives \u2014 and the label names it. The ink ladder is alpha only: inner connectives darkest, outermost paler, consumed palest. A formula a Drop erased stays visible too, faded whole, birds included. The highlighted sequent is the active goal that the next move applies to; a solved tree has no open goals left. The solve animation states (verify sweep, fading) are not documented here.",
     strip
   );
 };
@@ -7609,7 +7650,7 @@ var gazeGhostSection = () => {
   if (rotated !== null) strip.appendChild(rotated);
   return section(
     "Gaze ghost",
-    "With the gaze cursor on a formula (underlined), the gazed formula\u2019s outermost connective takes the gaze color \u2014 the symbol a Destruct would remove. The tree also previews what the pending verb would do: the premises that Destruct or Drop would create appear as a dimmed blue ghost above the active sequent, inference line included. When the gazed formula is not in the active position, the ghost also shows the rotations needed to bring it there. Nothing is applied until the verb is pressed. The Claim (cut) ghost and the presolve display are still in flux and intentionally undocumented.",
+    "With the gaze cursor on a formula (underlined), the tree previews what the pending verb would do: the premises that Destruct or Drop would create appear as a dimmed blue ghost above the active sequent, inference line included. When the gazed formula is not in the active position, the ghost also shows the rotations needed to bring it there. Nothing is applied until the verb is pressed. The Claim (cut) ghost and the presolve display are still in flux and intentionally undocumented.",
     strip
   );
 };

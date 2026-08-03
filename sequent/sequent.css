@@ -1136,28 +1136,48 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
 .connective.active {
   color: #0008;
 }
+/* The connective an inference consumed — the faintest step of the ink
+   ladder (inner #000b, outermost #0008, consumed #0005). Alpha only:
+   hue on glyphs is out; ink fades as symbols pass consumption. */
+.connective.consumed {
+  color: #0005;
+}
+/* A formula a Drop erased fades whole. Opacity, not ink alpha, so the
+   emoji atoms fade along with the connectives and parentheses. */
+.consumed-formula {
+  opacity: 0.45;
+}
+.ghost-node .consumed-formula,
+.level-select .consumed-formula {
+  opacity: 1;
+}
+/* The solve sweep and the frozen presolve foundation fade whole sequents
+   themselves; clear the consumption marks under them so the
+   transparencies don't stack. The consumed connective returns to the
+   outermost step of the ink ladder. */
+.playarea.solved .connective.consumed,
+.tree-frozen > .tree-sequent .connective.consumed {
+  color: #0008;
+}
+.playarea.solved .consumed-formula,
+.tree-frozen > .tree-sequent .consumed-formula {
+  opacity: 1;
+}
 .parenthesis {
   color: #000b;
 }
 .ghost-node .connective,
 .ghost-node .connective.active,
+.ghost-node .connective.consumed,
 .ghost-node .parenthesis,
 .level-select .connective,
 .level-select .connective.active,
+.level-select .connective.consumed,
 .level-select .parenthesis {
   color: inherit;
 }
 .gazed {
   border-bottom: 0.15em solid var(--gaze-color);
-}
-/* The gazed formula's outermost connective — the symbol a Destruct would
-   remove — reads as emphasized blue-leaning ink, not a foreign color.
-   Deliberately gaze-scoped: the persistent .connective.active paint above
-   stays subtle. Not --gaze-color itself: the gaze cursor always sits on the
-   active branch's peach (#fcaa), where thin #48f strokes vibrate and
-   saturated blues read as stains in the ink. */
-.gazed .connective.active {
-  color: #236;
 }
 .button.cursor,
 .config-input.cursor {
