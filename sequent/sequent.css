@@ -4,6 +4,68 @@
   --gaze-color: #48f;
   --branch-color: #fca;
   --misc-color: transparent;
+  /* The ink the game is drawn with: text, borders, the inference line,
+     dark button fills. Hairline is the faint rule/divider alpha; the
+     veil is the near-opaque shroud behind dialogs — paper-veil's dark
+     counterpart. */
+  --ink: #000;
+  --ink-hairline: #0003;
+  --ink-veil: #000e;
+  /* The formula-ink ladder: alpha-only steps of the ink — hue on glyphs
+     is out. Inner connectives and parentheses darkest, outermost
+     connectives paler, the connective an inference consumed palest. */
+  --ink-inner: #000b;
+  --ink-outermost: #0008;
+  --ink-consumed: #0005;
+  /* The parchment the game is drawn on: page ground, button and badge
+     fills, fade gradients, and text knocked out of ink surfaces. The
+     veil is the same paper made translucent for overlays. */
+  --paper: #ffeedd;
+  --paper-veil: #ffeeddf0;
+  /* Interactive chrome: the translucent white ladder of button and
+     panel fills, faint to solid. Solid doubles as text knocked out of
+     ink surfaces. */
+  --chrome-faint: #fff2;
+  --chrome-wash: #fff4;
+  --chrome: #fff8;
+  --chrome-strong: #fffc;
+  --chrome-solid: #fff;
+  /* Meaning-carrying accents (gaze and branch are the two named above).
+     Goal highlight is the branch color at two-thirds alpha — the active
+     sequent's chip. Selection outlines the cursored control; hot marks
+     the parked gaze group; the LED trio lights the toggles; keycap fills
+     the cold key-hint badges. */
+  --goal-highlight: #fcaa;
+  --selection: #f80;
+  --hot: #c33;
+  --led-on: #f22;
+  --led-glow: #f66;
+  --led-off: #400;
+  --keycap: #36c;
+  /* The rule cards and the leather furniture around them: card body,
+     border, schema text, and drop shadow; leather borders on badges and
+     the owl bubble, the dark leather of the active level row, and the
+     pale pin marker on leather. */
+  --card: #d4b896;
+  --card-border: #8a6f4a;
+  --card-text: #3a2a14;
+  --card-shadow: rgba(80, 50, 20, 0.25);
+  --leather: #964;
+  --leather-dark: #420;
+  --leather-pin: #fc8;
+  /* Utility grays and translucent ink: hairline dividers in the versus
+     and thermometer furniture, the ghost inference line, text on branch
+     badges, the lifted hover of the ink button, and ink washes used as
+     shadows, scrims, and underlines. */
+  --divider: #ccc;
+  --divider-faint: #e3e3e3;
+  --badge-text: #444;
+  --ink-hover: #222;
+  --ghost-line: #666;
+  --ink-shadow: rgba(0, 0, 0, 0.6);
+  --ink-wash-strong: rgba(0, 0, 0, 0.3);
+  --ink-wash: rgba(0, 0, 0, 0.15);
+  --ink-wash-faint: rgba(0, 0, 0, 0.1);
 }
 
 html {
@@ -11,7 +73,7 @@ html {
   overflow: hidden;
 }
 body {
-  background-color: #ffeedd;
+  background-color: var(--paper);
   font-family: 'Noto Sans', 'Noto Sans Math', sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -137,14 +199,14 @@ html.loading body {
   display: flex;
   flex-direction: row;
   gap: 0.5em;
-  border-bottom: 0.5em solid rgba(0, 0, 0, 0.1);
+  border-bottom: 0.5em solid var(--ink-wash-faint);
   padding-bottom: 0.5em;
 }
 .controls-group.gaze {
   border-bottom-color: var(--gaze-color);
 }
 .controls-group.hot {
-  border-bottom-color: #c33;
+  border-bottom-color: var(--hot);
 }
 .controls-nav {
   border-bottom-color: var(--branch-color);
@@ -244,8 +306,8 @@ html.loading body {
   min-width: 260px;
 }
 .key-hint {
-  background: #000;
-  color: #fff;
+  background: var(--ink);
+  color: var(--chrome-solid);
   text-transform: uppercase;
   font-family: monospace;
   font-weight: bold;
@@ -289,7 +351,7 @@ html.loading body {
   gap: 5px;
 }
 .key-hint.cold {
-  background: #36c;
+  background: var(--keycap);
 }
 .key-hint.cold.ghost {
   opacity: 0.2;
@@ -304,7 +366,7 @@ html.loading body {
    take the branch accent. */
 .rule > .key-hint {
   background: var(--branch-color);
-  color: #444;
+  color: var(--badge-text);
 }
 .main .rule .key-hint {
   position: absolute;
@@ -338,8 +400,8 @@ html.mode-single:not(.input-pointer) .bench-topbar .bench-zoom {
   user-select: none;
   cursor: pointer;
   position: relative;
-  background-color: #fff8;
-  border: 3px solid #000;
+  background-color: var(--chrome);
+  border: 3px solid var(--ink);
   border-radius: 10px;
   display: inline-block;
   text-align: center;
@@ -350,20 +412,20 @@ html.mode-single:not(.input-pointer) .bench-topbar .bench-zoom {
   margin: 0;
 }
 .button.mutating {
-  background-color: #000;
-  border-color: #000;
-  color: #fed;
+  background-color: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
 }
 .button:not(.disabled):hover {
-  background-color: #fff;
+  background-color: var(--chrome-solid);
 }
 .button.mutating:not(.disabled):hover {
-  background-color: #222;
+  background-color: var(--ink-hover);
 }
 .button.active,
 .button.active:hover {
-  background-color: #ffeedd;
-  border-color: #f80;
+  background-color: var(--paper);
+  border-color: var(--selection);
 }
 .button.disabled {
   cursor: default;
@@ -383,11 +445,11 @@ html.mode-single:not(.input-pointer) .bench-topbar .bench-zoom {
   font-size: 1em;
   line-height: 1.4;
   min-width: 1em;
-  border: 1px solid #964;
+  border: 1px solid var(--leather);
   border-radius: 5px;
   padding: 0 0.3em;
-  background-color: #ffeedd;
-  color: #000;
+  background-color: var(--paper);
+  color: var(--ink);
   white-space: nowrap;
 }
 html.mode-single.input-keyboard .controls .legend-bind.for-keyboard,
@@ -397,8 +459,8 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
 .rule.hint {
   user-select: text;
   cursor: default;
-  background-color: #d4b896;
-  border: 3px solid #8a6f4a;
+  background-color: var(--card);
+  border: 3px solid var(--card-border);
   border-radius: 6px;
   display: inline-block;
   text-align: center;
@@ -406,8 +468,8 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   padding: 0.6em;
   text-wrap: nowrap;
   margin: 0;
-  color: #3a2a14;
-  box-shadow: 1px 1px 0 rgba(80, 50, 20, 0.25);
+  color: var(--card-text);
+  box-shadow: 1px 1px 0 var(--card-shadow);
 }
 .rule.disabled {
   opacity: 0.5;
@@ -426,14 +488,14 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   width: 10px;
   height: 4px;
   border-radius: 1px;
-  background-color: #400;
-  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.6);
+  background-color: var(--led-off);
+  box-shadow: inset 0 0 1px var(--ink-shadow);
 }
 .button.toggle .led.on {
-  background-color: #f22;
+  background-color: var(--led-on);
   box-shadow:
-    0 0 4px #f22,
-    0 0 8px #f66;
+    0 0 4px var(--led-on),
+    0 0 8px var(--led-glow);
 }
 .hurray {
   grid-column: 1 / -1;
@@ -472,15 +534,15 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   top: 0.6em;
   right: 1em;
   z-index: 30;
-  color: #000;
+  color: var(--ink);
   user-select: none;
   font-size: 1.1em;
 }
 .lang-switcher-button {
   cursor: pointer;
   padding: 0.7em 1.2em;
-  background-color: #fffc;
-  border: 2px solid #000;
+  background-color: var(--chrome-strong);
+  border: 2px solid var(--ink);
   border-radius: 10px;
   min-width: 10em;
   box-sizing: border-box;
@@ -491,7 +553,7 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   gap: 0.5em;
 }
 .lang-switcher-button:hover {
-  background-color: #fff;
+  background-color: var(--chrome-solid);
 }
 .lang-switcher-menu {
   position: absolute;
@@ -499,8 +561,8 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   right: 0;
   margin-top: 0.4em;
   padding: 0 0 0.8em 0;
-  background-color: #fff;
-  border: 2px solid #000;
+  background-color: var(--chrome-solid);
+  border: 2px solid var(--ink);
   border-radius: 10px;
   min-width: 100%;
   box-sizing: border-box;
@@ -515,7 +577,7 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   padding: 0.7em 1.4em;
 }
 .lang-switcher-item:hover {
-  background-color: #ffeedd;
+  background-color: var(--paper);
 }
 .lang-switcher-item.active {
   font-weight: bold;
@@ -523,7 +585,7 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
 .lang-switcher-menu hr {
   margin: 0;
   border: none;
-  border-top: 1px solid #0003;
+  border-top: 1px solid var(--ink-hairline);
 }
 .congrabuttons {
   display: flex;
@@ -551,7 +613,7 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   bottom: 0;
   left: 0;
   z-index: 10;
-  background-color: #000e;
+  background-color: var(--ink-veil);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -560,11 +622,11 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   z-index: 20;
 }
 .pause-popup {
-  background-color: #fff2;
-  border: 4px solid #f80;
+  background-color: var(--chrome-faint);
+  border: 4px solid var(--selection);
   border-radius: 20px;
   padding: 3em 4em;
-  color: #fff;
+  color: var(--chrome-solid);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -584,7 +646,7 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
 .pause-buttons .button {
   position: relative;
   padding: 1em 1.2em;
-  color: #000;
+  color: var(--ink);
   opacity: 1;
 }
 .pause-buttons .button.disabled {
@@ -597,12 +659,12 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   position: absolute;
   width: 80%;
   height: 80%;
-  background-color: #fff2;
-  border: 4px solid #f80;
+  background-color: var(--chrome-faint);
+  border: 4px solid var(--selection);
   border-radius: 40px;
   padding: 2em 0;
   overflow: auto;
-  color: #fff;
+  color: var(--chrome-solid);
 }
 .levels {
   display: table;
@@ -613,10 +675,10 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   line-height: 1.8em;
 }
 .level.active {
-  background-color: #420;
+  background-color: var(--leather-dark);
 }
 .level:hover {
-  background-color: #964;
+  background-color: var(--leather);
   cursor: pointer;
 }
 .level .title {
@@ -633,7 +695,7 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   padding-right: 1em;
 }
 .level .pinned {
-  color: #fc8;
+  color: var(--leather-pin);
 }
 
 .random-config {
@@ -712,7 +774,7 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
 .config-section-title {
   font-size: 1.3em;
   font-weight: bold;
-  border-bottom: 2px solid #0003;
+  border-bottom: 2px solid var(--ink-hairline);
   padding-bottom: 0.3em;
   user-select: text;
 }
@@ -751,16 +813,16 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   width: 5em;
   font-size: 1em;
   padding: 0.3em 0.5em;
-  border: 2px solid #0003;
+  border: 2px solid var(--ink-hairline);
   border-radius: 6px;
-  background: #fffc;
+  background: var(--chrome-strong);
   font-family: inherit;
   text-align: right;
   user-select: text;
 }
 .config-input:focus {
   outline: none;
-  border-color: #f80;
+  border-color: var(--selection);
 }
 .config-buttons {
   display: flex;
@@ -802,8 +864,8 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   width: min(28em, 100%);
   box-sizing: border-box;
   padding: 1.5em 2em;
-  background-color: #fff8;
-  border: 4px solid #f80;
+  background-color: var(--chrome);
+  border: 4px solid var(--selection);
   border-radius: 20px;
 }
 .versus-card .config-toggles {
@@ -977,7 +1039,7 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   width: 5em;
   height: 3.5em;
   border-radius: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--ink-wash);
 }
 .gallery-swatch-note {
   font-size: 0.8em;
@@ -1062,7 +1124,7 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   position: relative;
   align-self: stretch;
   margin: 0.3em -1em;
-  border-top: 2px solid #000;
+  border-top: 2px solid var(--ink);
 }
 .tree-rule-label {
   position: absolute;
@@ -1086,7 +1148,7 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   font-size: calc(2em * var(--base-tree-zoom, 1) * var(--tree-zoom, 1));
 }
 .tree-active > .tree-sequent {
-  background-color: #fcaa;
+  background-color: var(--goal-highlight);
 }
 .tree-closed-active {
   position: relative;
@@ -1094,7 +1156,7 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
 .tree-closed-marker {
   width: 2em;
   height: 1.5em;
-  background-color: #fcaa;
+  background-color: var(--goal-highlight);
   border-radius: 10px;
   margin: 0 auto;
 }
@@ -1105,7 +1167,7 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   transition: color 0.25s ease-out;
 }
 .tree-node.tree-checking > .tree-sequent .turnstile {
-  color: #fff;
+  color: var(--chrome-solid);
 }
 .tree-node.tree-verified > .tree-sequent,
 .tree-node.tree-faded > .tree-sequent,
@@ -1131,16 +1193,15 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   text-align: center;
   border-radius: 6px;
   background-color: transparent;
-  color: #000b;
+  color: var(--ink-inner);
 }
 .connective.active {
-  color: #0008;
+  color: var(--ink-outermost);
 }
 /* The connective an inference consumed — the faintest step of the ink
-   ladder (inner #000b, outermost #0008, consumed #0005). Alpha only:
-   hue on glyphs is out; ink fades as symbols pass consumption. */
+   ladder. Ink fades as symbols pass consumption. */
 .connective.consumed {
-  color: #0005;
+  color: var(--ink-consumed);
 }
 /* A formula a Drop erased fades whole. Opacity, not ink alpha, so the
    emoji atoms fade along with the connectives and parentheses. */
@@ -1157,14 +1218,14 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
    outermost step of the ink ladder. */
 .playarea.solved .connective.consumed,
 .tree-frozen > .tree-sequent .connective.consumed {
-  color: #0008;
+  color: var(--ink-outermost);
 }
 .playarea.solved .consumed-formula,
 .tree-frozen > .tree-sequent .consumed-formula {
   opacity: 1;
 }
 .parenthesis {
-  color: #000b;
+  color: var(--ink-inner);
 }
 .ghost-node .connective,
 .ghost-node .connective.active,
@@ -1181,7 +1242,7 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
 }
 .button.cursor,
 .config-input.cursor {
-  outline: 3px solid #f80;
+  outline: 3px solid var(--selection);
   outline-offset: 2px;
 }
 .tree-sequent.ghost,
@@ -1194,7 +1255,7 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   background-color: transparent;
 }
 .tree-inference.ghost {
-  border-top-color: #666;
+  border-top-color: var(--ghost-line);
 }
 .tree-inference.ghost > .tree-rule-label {
   opacity: 0.7;
@@ -1315,7 +1376,7 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   .level {
     display: flex;
     flex-direction: column;
-    border: 1px solid #fff4;
+    border: 1px solid var(--chrome-wash);
     border-radius: 10px;
     padding: 0.5em 0.8em;
     line-height: 1.4em;
@@ -1400,8 +1461,8 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
     bottom: 0;
     max-height: 45dvh;
     z-index: 10;
-    background-color: #ffeeddf0;
-    border-top: 0.5em solid rgba(0, 0, 0, 0.3);
+    background-color: var(--paper-veil);
+    border-top: 0.5em solid var(--ink-wash-strong);
     padding: 1em 0.5em;
     gap: 0.5em;
     overflow-y: auto;
@@ -1416,13 +1477,13 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
     height: 2em;
     flex-shrink: 0;
     pointer-events: none;
-    background: linear-gradient(to bottom, transparent, #ffeeddf0);
+    background: linear-gradient(to bottom, transparent, var(--paper-veil));
   }
   .bench:not(.rules-hidden) .rules-sheet.gaze {
     border-top-color: var(--gaze-color);
   }
   .bench:not(.rules-hidden) .rules-sheet.hot {
-    border-top-color: #c33;
+    border-top-color: var(--hot);
   }
   .bench:not(.rules-hidden) .playarea {
     padding: 5em 1em 50dvh 1em;
@@ -1507,7 +1568,7 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
     z-index: 4;
     gap: 0.5em;
     padding: 0.5em;
-    background-color: #ffeeddf0;
+    background-color: var(--paper-veil);
   }
   .pinned-strip .rule {
     min-width: 0;
@@ -1544,17 +1605,17 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
     right: 0;
     bottom: 0;
     height: 9em;
-    background: linear-gradient(to top, #ffeedd, #ffeedd 4.5em, transparent);
+    background: linear-gradient(to top, var(--paper), var(--paper) 4.5em, transparent);
     pointer-events: none;
     z-index: 3;
   }
   .bench.rules-hidden.has-pinned::after {
     height: 13.5em;
-    background: linear-gradient(to top, #ffeedd, #ffeedd 9em, transparent);
+    background: linear-gradient(to top, var(--paper), var(--paper) 9em, transparent);
   }
   .bench.rules-hidden.has-pinned-many::after {
     height: 19em;
-    background: linear-gradient(to top, #ffeedd, #ffeedd 14.5em, transparent);
+    background: linear-gradient(to top, var(--paper), var(--paper) 14.5em, transparent);
   }
 }
 
@@ -1563,7 +1624,7 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   display: flex;
   flex-direction: column;
   height: 100dvh;
-  background: #ffeedd;
+  background: var(--paper);
 }
 .versus-arena {
   flex: 1;
@@ -1577,7 +1638,7 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   position: relative;
 }
 .versus-half + .versus-half {
-  border-left: 2px solid #ccc;
+  border-left: 2px solid var(--divider);
 }
 .versus-half .bench {
   width: 100%;
@@ -1612,8 +1673,8 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   z-index: 4;
 }
 .tutor-owl-bubble {
-  background-color: #fff;
-  border: 2px solid #964;
+  background-color: var(--chrome-solid);
+  border: 2px solid var(--leather);
   border-radius: 12px;
   border-bottom-right-radius: 2px;
   padding: 0.5em 0.8em;
@@ -1740,8 +1801,8 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  border-left: 1px solid #ccc;
-  border-right: 1px solid #ccc;
+  border-left: 1px solid var(--divider);
+  border-right: 1px solid var(--divider);
   /* Sit above the benches' controls bar (z-index 4), which shares the
      screen-level stacking context, so the menu button isn't painted under it. */
   position: relative;
@@ -1766,7 +1827,7 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   font-size: 1.3em;
   font-variant-numeric: tabular-nums;
   padding: 0.3em 0;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--divider);
 }
 .versus-thermo-rows {
   /* Fill the column so the fade is a fixed band at the bottom of the visible
@@ -1805,7 +1866,7 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
 }
 .versus-thermo-cell.p1,
 .versus-thermo-cell.p2 {
-  color: #000;
+  color: var(--ink);
 }
 .versus-thermo-moves {
   font-size: 1.4em;
@@ -1817,7 +1878,7 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   display: flex;
   flex-direction: row;
   flex-shrink: 0;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--divider);
 }
 .versus-thermo-cell.total {
   opacity: 1;
@@ -1890,7 +1951,7 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
 .tutorial-screen {
   position: relative;
   height: 100dvh;
-  background: #ffeedd;
+  background: var(--paper);
   overflow: hidden;
 }
 /* Current-position breadcrumb: the ambient "where am I" indicator in the
@@ -1940,8 +2001,8 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
+  background: var(--ink-shadow);
+  color: var(--chrome-solid);
   gap: 1em;
   padding: 1.5em;
   box-sizing: border-box;
@@ -1960,8 +2021,8 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   grid-template-columns: repeat(4, auto) auto minmax(8em, auto) repeat(4, auto);
   gap: 0.15em 0.7em;
   align-items: center;
-  background: #fff;
-  color: #000;
+  background: var(--chrome-solid);
+  color: var(--ink);
   padding: 1em 1.4em 1.2em;
   border-radius: 0.4em;
   /* Leave room for the title, the actions row and the overlay padding so the
@@ -2014,7 +2075,7 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
 .vb-subhead {
   font-size: 0.8em;
   opacity: 0.55;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--divider);
   padding-bottom: 0.25em;
   margin-bottom: 0.15em;
 }
@@ -2035,7 +2096,7 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   text-align: left;
 }
 .vb-sec-start {
-  border-left: 1px solid #e3e3e3;
+  border-left: 1px solid var(--divider-faint);
   padding-left: 0.6em;
 }
 .versus-breakdown-actions {
@@ -2056,7 +2117,7 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   }
   .vb-level {
     display: block;
-    border: 1px solid #ccc;
+    border: 1px solid var(--divider);
     border-radius: 0.3em;
     padding: 0.5em 0.7em;
     margin-bottom: 0.5em;

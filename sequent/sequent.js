@@ -7657,87 +7657,193 @@ var gazeGhostSection = () => {
 var swatches = [
   {
     label: "paper",
-    css: "#ffeedd",
-    value: "#ffeedd",
-    note: "page background, overlays; text on mutating buttons (#fed)"
+    token: "--paper",
+    note: "page background, overlays; text knocked out of ink surfaces"
   },
   {
     label: "ink",
-    css: "#000",
-    value: "#000",
+    token: "--ink",
     note: "text, borders, mutating button fill"
   },
   {
     label: "button fill",
-    css: "#fff8",
-    value: "#fff8",
-    note: "inert/meta button body; opaque #fff on hover"
+    token: "--chrome",
+    note: "inert/meta button body; chrome-solid on hover"
   },
   {
     label: "gaze",
-    css: "var(--gaze-color)",
-    value: "--gaze-color \xB7 #48f",
+    token: "--gaze-color",
     note: "gaze cursor underline; gaze controls group"
   },
   {
     label: "branch",
-    css: "var(--branch-color)",
-    value: "--branch-color \xB7 #fca",
+    token: "--branch-color",
     note: "branch controls group; rule-card key badges"
   },
   {
     label: "goal highlight",
-    css: "#fcaa",
-    value: "#fcaa",
+    token: "--goal-highlight",
     note: "active sequent in the tree \u2014 the branch color at \u2154 alpha"
   },
   {
     label: "selection",
-    css: "#f80",
-    value: "#f80",
-    note: "button cursor outline; active toggle border (fill #ffeedd)"
+    token: "--selection",
+    note: "button cursor outline; active toggle border (fill --paper)"
   },
   {
     label: "hot",
-    css: "#c33",
-    value: "#c33",
+    token: "--hot",
     note: "gaze controls group while the cursor is parked"
   },
   {
     label: "LED on",
-    css: "#f22",
-    value: "#f22",
+    token: "--led-on",
     note: "toggle LED lit (plus glow)"
   },
   {
     label: "LED off",
-    css: "#400",
-    value: "#400",
+    token: "--led-off",
     note: "toggle LED dark"
   },
   {
     label: "keycap",
-    css: "#36c",
-    value: "#36c",
+    token: "--keycap",
     note: "cold key-hint badges (input hints get their own chapter later)"
   },
   {
     label: "card",
-    css: "#d4b896",
-    value: "#d4b896",
+    token: "--card",
     note: "rule card body"
   },
   {
     label: "card border",
-    css: "#8a6f4a",
-    value: "#8a6f4a",
+    token: "--card-border",
     note: "rule card border"
   },
   {
     label: "card text",
-    css: "#3a2a14",
-    value: "#3a2a14",
+    token: "--card-text",
     note: "rule card schema text"
+  },
+  {
+    label: "inner ink",
+    token: "--ink-inner",
+    note: "formula-ink ladder: inner connectives and parentheses"
+  },
+  {
+    label: "outermost ink",
+    token: "--ink-outermost",
+    note: "formula-ink ladder: the outermost connective"
+  },
+  {
+    label: "consumed ink",
+    token: "--ink-consumed",
+    note: "formula-ink ladder: the connective an inference consumed"
+  },
+  {
+    label: "paper veil",
+    token: "--paper-veil",
+    note: "translucent paper overlays and fade gradients"
+  },
+  {
+    label: "ink veil",
+    token: "--ink-veil",
+    note: "near-opaque shroud behind dialogs"
+  },
+  {
+    label: "ink hairline",
+    token: "--ink-hairline",
+    note: "faint rules and dividers"
+  },
+  {
+    label: "chrome faint",
+    token: "--chrome-faint",
+    note: "faint panel washes"
+  },
+  {
+    label: "chrome wash",
+    token: "--chrome-wash",
+    note: "faint panel borders"
+  },
+  {
+    label: "chrome strong",
+    token: "--chrome-strong",
+    note: "dialog and card fills"
+  },
+  {
+    label: "chrome solid",
+    token: "--chrome-solid",
+    note: "hover fill; knockout text on ink surfaces"
+  },
+  {
+    label: "LED glow",
+    token: "--led-glow",
+    note: "lit LED outer glow"
+  },
+  {
+    label: "card shadow",
+    token: "--card-shadow",
+    note: "rule card drop shadow"
+  },
+  {
+    label: "leather",
+    token: "--leather",
+    note: "badge and owl-bubble borders; level-row hover"
+  },
+  {
+    label: "leather dark",
+    token: "--leather-dark",
+    note: "active level row"
+  },
+  {
+    label: "leather pin",
+    token: "--leather-pin",
+    note: "pin marker on leather rows"
+  },
+  {
+    label: "divider",
+    token: "--divider",
+    note: "hairline dividers: versus halves, tables, thermometer"
+  },
+  {
+    label: "divider faint",
+    token: "--divider-faint",
+    note: "section starts in the thermometer"
+  },
+  {
+    label: "badge text",
+    token: "--badge-text",
+    note: "text on branch-colored key badges"
+  },
+  {
+    label: "ink hover",
+    token: "--ink-hover",
+    note: "lifted hover of the ink-filled button"
+  },
+  {
+    label: "ghost line",
+    token: "--ghost-line",
+    note: "ghost inference line"
+  },
+  {
+    label: "ink shadow",
+    token: "--ink-shadow",
+    note: "inset shadows and dark scrims"
+  },
+  {
+    label: "ink wash strong",
+    token: "--ink-wash-strong",
+    note: "popup top border"
+  },
+  {
+    label: "ink wash",
+    token: "--ink-wash",
+    note: "faint borders"
+  },
+  {
+    label: "ink wash faint",
+    token: "--ink-wash-faint",
+    note: "controls-group underline default"
   }
 ];
 var fontsSection = () => {
@@ -7774,12 +7880,13 @@ var fontsSection = () => {
 var colorsSection = () => {
   const strip = document.createElement("div");
   strip.setAttribute("class", "gallery-strip gallery-strip-top");
+  const rootStyle = getComputedStyle(document.documentElement);
   for (const s of swatches) {
     const box = document.createElement("div");
     box.setAttribute("class", "gallery-specimen");
     const block = document.createElement("div");
     block.setAttribute("class", "gallery-swatch");
-    block.style.backgroundColor = s.css;
+    block.style.backgroundColor = `var(${s.token})`;
     box.appendChild(block);
     const label = document.createElement("div");
     label.setAttribute("class", "gallery-caption");
@@ -7787,7 +7894,7 @@ var colorsSection = () => {
     box.appendChild(label);
     const value = document.createElement("div");
     value.setAttribute("class", "gallery-caption");
-    value.textContent = s.value;
+    value.textContent = `${s.token} \xB7 ${rootStyle.getPropertyValue(s.token).trim()}`;
     box.appendChild(value);
     const note = document.createElement("div");
     note.setAttribute("class", "gallery-swatch-note");
@@ -7797,7 +7904,7 @@ var colorsSection = () => {
   }
   return section(
     "Colors",
-    "The game is drawn in ink on parchment; interactive chrome adds translucent whites, and a small set of accents carries meaning: blue for the gaze, peach for branches, orange for selection, red for hot and lit states. Ghost and solved trees are not separate pigments \u2014 they are CSS filters over these same colors. Only the gaze and branch accents are named custom properties; the other values are transcribed literals, so treat sequent.css as the source of truth.",
+    "The game is drawn in ink on parchment; interactive chrome adds translucent whites, and a small set of accents carries meaning: blue for the gaze, peach for branches, orange for selection, red for hot and lit states. Ghost and solved trees are not separate pigments \u2014 they are CSS filters over these same colors. Every color flows through a named custom property on :root in sequent.css \u2014 the token block is the palette contract, and the swatches above show its full roster: the headline roles first, then the formula-ink ladder, the veils and chrome alphas, the leather furniture, and the utility inks. Two rules the tokens encode: hue belongs to fields and filters, never glyphs; formula glyphs fade by alpha only.",
     strip
   );
 };
