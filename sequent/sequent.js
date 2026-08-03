@@ -10537,6 +10537,13 @@ var mountTutorial = (container, navigate2, startStop) => {
     owl.appendChild(face);
     return owl;
   };
+  const syncOwlAboveControls = () => {
+    const screenEl = container.querySelector(".tutorial-screen");
+    if (screenEl === null) return;
+    const controls = container.querySelector(".controls");
+    const h = controls === null ? 0 : controls.offsetHeight;
+    screenEl.style.setProperty("--controls-h", `${String(h)}px`);
+  };
   const stopLabel = (idx) => {
     let chapterNo = 0;
     let beatNo = 0;
@@ -10707,9 +10714,16 @@ var mountTutorial = (container, navigate2, startStop) => {
         });
       }
     }
-    screen.appendChild(buildCrumb());
+    const crumb = buildCrumb();
+    const topbarRight = screen.querySelector(".bench-topbar-right");
+    if (topbarRight !== null) {
+      topbarRight.appendChild(crumb);
+    } else {
+      screen.appendChild(crumb);
+    }
     screen.appendChild(buildOwl());
     container.appendChild(screen);
+    syncOwlAboveControls();
     if (paused) {
       if (!pausePopup || pausePopupLocale !== getLocale()) {
         pausePopup = createPausePopup(
@@ -10861,6 +10875,7 @@ var mountTutorial = (container, navigate2, startStop) => {
   document.addEventListener("pointerdown", markPointerInput);
   const cleanupPads = [0, 1, 2, 3].map((idx) => setupGamepad(dispatch, idx));
   const unsubscribeGamepad = subscribeGamepad(rerender);
+  window.addEventListener("resize", syncOwlAboveControls);
   if (onConjecture()) openConjecture();
   if (!onIntro()) startPresolveIfAny();
   rerender();
@@ -10873,6 +10888,7 @@ var mountTutorial = (container, navigate2, startStop) => {
       document.removeEventListener("pointerdown", markPointerInput);
       cleanupPads.forEach((c) => c());
       unsubscribeGamepad();
+      window.removeEventListener("resize", syncOwlAboveControls);
     },
     rerender
   };
