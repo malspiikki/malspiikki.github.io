@@ -1159,7 +1159,8 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
 .gazed .connective.active {
   color: #236;
 }
-.button.cursor {
+.button.cursor,
+.config-input.cursor {
   outline: 3px solid #f80;
   outline-offset: 2px;
 }

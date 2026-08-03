@@ -4148,7 +4148,7 @@ var cursorNavActions = /* @__PURE__ */ new Set([
 var createButtonCursor = (rows, opts = {}) => {
   let row = opts.startRow ?? 0;
   let col = opts.startCol ?? 0;
-  let visible = false;
+  let visible = opts.startRevealed ?? false;
   const refresh = () => {
     for (const r of rows) {
       for (const cell of r) cell.btn.classList.remove("cursor");
@@ -4200,7 +4200,9 @@ var createButtonCursor = (rows, opts = {}) => {
     }
   };
   const isEngaged = () => visible;
-  return { onAction, refresh, isEngaged };
+  const getPosition = () => visible ? { row, col } : null;
+  if (visible) refresh();
+  return { onAction, refresh, isEngaged, getPosition };
 };
 
 // src/interactive/event.ts
@@ -11432,9 +11434,11 @@ var mountVersusConfig = (container, _navigate, onStart) => {
     startClock();
   };
   const canStart = () => isInputAvailable(config.p1Input) && isInputAvailable(config.p2Input);
+  let cursor = null;
   const createRadioGroup = (options, getActive, getLabel, getContent, isDisabled, onChange) => {
     const group = document.createElement("div");
     group.className = "config-toggles";
+    const cells = [];
     for (const option of options) {
       const btn = document.createElement("div");
       const active2 = getActive() === option;
@@ -11443,15 +11447,17 @@ var mountVersusConfig = (container, _navigate, onStart) => {
       btn.textContent = getContent(option);
       btn.title = getLabel(option);
       btn.setAttribute("aria-label", getLabel(option));
+      const activate = () => {
+        onChange(option);
+        rerender();
+      };
       if (!disabled) {
-        btn.onclick = () => {
-          onChange(option);
-          rerender();
-        };
+        btn.onclick = activate;
       }
+      cells.push({ btn, activate, isEnabled: () => !isDisabled(option) });
       group.appendChild(btn);
     }
-    return group;
+    return { el: group, cells };
   };
   const rerender = () => {
     container.innerHTML = "";
@@ -11484,30 +11490,33 @@ var mountVersusConfig = (container, _navigate, onStart) => {
         syncUrl();
       }
     );
-    const matchLengthRow = createRow(
-      t("matchLength"),
-      createNumberInput(
-        config.gameDurationSeconds / 60,
-        (v2) => {
-          config.gameDurationSeconds = v2 * 60;
-          syncUrl();
-        },
-        1,
-        99
-      )
+    const minutesInput = createNumberInput(
+      config.gameDurationSeconds / 60,
+      (v2) => {
+        config.gameDurationSeconds = v2 * 60;
+        syncUrl();
+      },
+      1,
+      99
     );
+    minutesInput.onkeydown = (ev) => {
+      if (ev.code === "Enter" || ev.code === "Escape") minutesInput.blur();
+    };
+    const matchLengthRow = createRow(t("matchLength"), minutesInput);
     const buttons = document.createElement("div");
     buttons.className = "config-buttons";
+    const goBack = () => history.back();
     const backBtn = document.createElement("div");
     backBtn.className = "button";
     backBtn.textContent = t("back");
-    backBtn.onclick = () => history.back();
+    backBtn.onclick = goBack;
     buttons.appendChild(backBtn);
+    const start = () => onStart(config);
     const startBtn = document.createElement("div");
     startBtn.className = "button" + (canStart() ? "" : " disabled");
     startBtn.textContent = t("start");
     if (canStart()) {
-      startBtn.onclick = () => onStart(config);
+      startBtn.onclick = start;
     }
     buttons.appendChild(startBtn);
     if (devVisible) {
@@ -11519,12 +11528,12 @@ var mountVersusConfig = (container, _navigate, onStart) => {
       p1Label.className = "config-subsection-title";
       p1Label.textContent = t("player1");
       inputSection.appendChild(p1Label);
-      inputSection.appendChild(p1Group);
+      inputSection.appendChild(p1Group.el);
       const p2Label = document.createElement("div");
       p2Label.className = "config-subsection-title";
       p2Label.textContent = t("player2");
       inputSection.appendChild(p2Label);
-      inputSection.appendChild(p2Group);
+      inputSection.appendChild(p2Group.el);
       inputSection.appendChild(matchLengthRow);
       settings.appendChild(inputSection);
       settings.appendChild(buttons);
@@ -11551,13 +11560,34 @@ var mountVersusConfig = (container, _navigate, onStart) => {
     } else {
       const card = document.createElement("div");
       card.className = "versus-card";
-      card.appendChild(createRow(t("player1"), p1Group));
-      card.appendChild(createRow(t("player2"), p2Group));
+      card.appendChild(createRow(t("player1"), p1Group.el));
+      card.appendChild(createRow(t("player2"), p2Group.el));
       card.appendChild(matchLengthRow);
       card.appendChild(buttons);
       layout.appendChild(card);
     }
     container.appendChild(layout);
+    const prev2 = cursor?.getPosition() ?? null;
+    cursor = createButtonCursor(
+      [
+        p1Group.cells,
+        p2Group.cells,
+        [
+          {
+            btn: minutesInput,
+            activate: () => {
+              minutesInput.focus();
+              minutesInput.select();
+            }
+          }
+        ],
+        [
+          { btn: backBtn, activate: goBack },
+          { btn: startBtn, activate: start, isEnabled: canStart }
+        ]
+      ],
+      prev2 === null ? {} : { startRow: prev2.row, startCol: prev2.col, startRevealed: true }
+    );
     if (devVisible) {
       restartSearch();
     } else {
@@ -11571,18 +11601,49 @@ var mountVersusConfig = (container, _navigate, onStart) => {
   const onGamepadChange = () => rerender();
   window.addEventListener("gamepadconnected", onGamepadChange);
   window.addEventListener("gamepaddisconnected", onGamepadChange);
+  const dispatch = (action) => {
+    if (action === "menu") {
+      history.back();
+      return;
+    }
+    cursor?.onAction(action);
+  };
+  const dispatchGamepad = (action) => {
+    const el = document.activeElement;
+    if (el instanceof HTMLInputElement && el.type === "number") {
+      if (action === "gazeConnective" || action === "leftConnective") {
+        el.stepUp();
+        el.dispatchEvent(new Event("change"));
+      } else if (action === "gazeWeakening" || action === "leftWeakening") {
+        el.stepDown();
+        el.dispatchEvent(new Event("change"));
+      } else if (action === "axiom" || action === "undo") {
+        el.blur();
+      }
+      return;
+    }
+    dispatch(action);
+  };
   const onKeyDown = (ev) => {
     if (ev.ctrlKey || ev.metaKey || ev.altKey) return;
     if (ev.target instanceof HTMLInputElement) return;
-    if (ev.code === "Backquote") onDevKey();
+    if (ev.code === "Backquote") {
+      onDevKey();
+      return;
+    }
+    markKeyboardInput();
+    const action = qwertyKeyMap[ev.code];
+    if (action !== void 0) dispatch(action);
   };
   document.addEventListener("keydown", onKeyDown);
+  const cleanupGamepad = setupGamepad(dispatchGamepad);
   rerender();
   return {
     cleanup: () => {
       window.removeEventListener("gamepadconnected", onGamepadChange);
       window.removeEventListener("gamepaddisconnected", onGamepadChange);
       document.removeEventListener("keydown", onKeyDown);
+      cleanupGamepad();
       stopClock();
       if (previewWorker) {
         previewWorker.terminate();
