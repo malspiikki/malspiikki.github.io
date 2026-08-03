@@ -1669,6 +1669,27 @@
     };
     setTimeout(tick, 0);
   };
+  var activeSolves = /* @__PURE__ */ new Set();
+  var startSolve = (requestId, goal, rules2) => {
+    activeSolves.add(requestId);
+    const gen = bruteSearch({ goal, rules: rules2 });
+    const tick = () => {
+      if (!activeSolves.has(requestId)) return;
+      const { done, value } = gen.next();
+      if (done === true) {
+        activeSolves.delete(requestId);
+        const [solution] = value;
+        self.postMessage({
+          type: "solved",
+          requestId,
+          solution
+        });
+        return;
+      }
+      setTimeout(tick, 0);
+    };
+    setTimeout(tick, 0);
+  };
   var loopDefault = (generation) => {
     if (!running || generation !== loopGeneration) return;
     const challenge = random2()();
@@ -1704,11 +1725,14 @@
       }
     } else if (e.data.type === "configure") {
       currentConfig = deserializeConfig(e.data.config);
+      activeSolves.clear();
       if (running) {
         startLoop();
       }
     } else if (e.data.type === "timeout") {
       currentTimeout = e.data.ms;
+    } else if (e.data.type === "solve") {
+      startSolve(e.data.requestId, e.data.goal, e.data.rules);
     }
   };
 })();

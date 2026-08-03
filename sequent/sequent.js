@@ -75,11 +75,6 @@ var uniq2 = (arr) => {
 var includes = (arr, val) => arr.some((x) => x === val);
 
 // src/utils/seq.ts
-var empty = () => function* () {
-};
-var of = (a87) => function* () {
-  yield a87;
-};
 var map = (s, f2) => function* () {
   const g = s();
   while (true) {
@@ -140,11 +135,6 @@ var head2 = (s) => {
   }
   return [value];
 };
-var repeatIO = (io) => function* () {
-  while (true) {
-    yield io();
-  }
-};
 
 // src/utils/number.ts
 var splitAt = (x, fraction) => {
@@ -153,10 +143,10 @@ var splitAt = (x, fraction) => {
 };
 
 // src/model/valuation.ts
-var empty2 = {};
+var empty = {};
 var valuations = (atoms2) => function* () {
   if (!isNonEmptyArray(atoms2)) {
-    yield empty2;
+    yield empty;
     return;
   }
   const [x, ...xs] = atoms2;
@@ -343,39 +333,6 @@ var countermodels = (p) => {
 };
 var isTautology = (p) => {
   return isEmpty(countermodels(p));
-};
-var random = (size = 10) => () => {
-  const rand = Math.random();
-  if (size < 1) {
-    if (rand < 0.05) {
-      return falsum;
-    }
-    if (rand < 0.1) {
-      return verum;
-    }
-    if (rand < 0.2) {
-      return atom("s");
-    }
-    if (rand < 0.45) {
-      return atom("r");
-    }
-    if (rand < 0.7) {
-      return atom("q");
-    }
-    return atom("p");
-  }
-  const next2 = size - 1;
-  const [left4, right3] = splitAt(next2, Math.random());
-  if (rand < 0.3) {
-    return conjunction(random(left4)(), random(right3)());
-  }
-  if (rand < 0.6) {
-    return disjunction(random(left4)(), random(right3)());
-  }
-  if (rand < 0.9) {
-    return implication(random(left4)(), random(right3)());
-  }
-  return negation(random(next2)());
 };
 var pickWeighted = (choices) => {
   const total = choices.reduce((sum, c) => sum + c.weight, 0);
@@ -4380,7 +4337,7 @@ var underline = (char) => (str) => [...str.split("\n"), char.repeat(width(str))]
 var matchRuleId = (s, f2) => f2[s]();
 
 // src/render/segment.ts
-function of2(text) {
+function of(text) {
   return { text, active: false, connective: false };
 }
 function active(text) {
@@ -4485,11 +4442,11 @@ var basic = {
   formulas: ["", ",", ""],
   sequent: ["", " \u22A2 ", ""]
 };
-var empty3 = String();
+var empty2 = String();
 function printNullary(key) {
   return () => (theme) => {
     const [s0] = theme[key];
-    return [of2(s0)];
+    return [of(s0)];
   };
 }
 function printUnary(key, activeConn = false, markConnective = false) {
@@ -4499,9 +4456,9 @@ function printUnary(key, activeConn = false, markConnective = false) {
       return [paren(s0), ...a87(theme), paren(s1)];
     }
     return [
-      markConnective ? connective(s0, activeConn) : activeConn ? active(s0) : of2(s0),
+      markConnective ? connective(s0, activeConn) : activeConn ? active(s0) : of(s0),
       ...a87(theme),
-      of2(s1)
+      of(s1)
     ];
   };
 }
@@ -4509,11 +4466,11 @@ function printBinary(key, activeConn = false, markConnective = false) {
   return (a87, b) => (theme) => {
     const [s0, s1, s2] = theme[key];
     return [
-      of2(s0),
+      of(s0),
       ...a87(theme),
-      markConnective ? connective(s1, activeConn) : activeConn ? active(s1) : key === "sequent" ? turnstile(s1) : of2(s1),
+      markConnective ? connective(s1, activeConn) : activeConn ? active(s1) : key === "sequent" ? turnstile(s1) : of(s1),
       ...b(theme),
-      of2(s2)
+      of(s2)
     ];
   };
 }
@@ -4529,8 +4486,8 @@ function print(key) {
   }
   return assertNever(key);
 }
-var printString = (s) => (_theme) => [of2(s)];
-var printNothing = printString(empty3);
+var printString = (s) => (_theme) => [of(s)];
+var printNothing = printString(empty2);
 function printNonEmptyArray(k) {
   return ([head4, ...tail2]) => tail2.reduce(print(k), head4);
 }
@@ -4639,19 +4596,19 @@ function right2(label, n = null) {
 }
 function fromRuleId(s, l = "L", r = "R") {
   return (t2) => [
-    of2(
+    of(
       matchRuleId(s, {
         i: () => "I",
         f: () => "\u22A5",
         v: () => "\u22A4",
-        cl: () => t2.conjunction.join(empty3) + left3(l),
-        dr: () => t2.disjunction.join(empty3) + right2(r),
-        dl: () => t2.disjunction.join(empty3) + left3(l),
-        cr: () => t2.conjunction.join(empty3) + right2(r),
-        il: () => t2.implication.join(empty3) + left3(l),
-        ir: () => t2.implication.join(empty3) + right2(r),
-        nl: () => t2.negation.join(empty3) + left3(l),
-        nr: () => t2.negation.join(empty3) + right2(r),
+        cl: () => t2.conjunction.join(empty2) + left3(l),
+        dr: () => t2.disjunction.join(empty2) + right2(r),
+        dl: () => t2.disjunction.join(empty2) + left3(l),
+        cr: () => t2.conjunction.join(empty2) + right2(r),
+        il: () => t2.implication.join(empty2) + left3(l),
+        ir: () => t2.implication.join(empty2) + right2(r),
+        nl: () => t2.negation.join(empty2) + left3(l),
+        nr: () => t2.negation.join(empty2) + right2(r),
         swl: () => "W" + left3(l),
         swr: () => "W" + right2(r),
         sRotLB: () => "\u21B7" + left3(l),
@@ -7873,10 +7830,25 @@ var walk = (node, out, shuffle) => {
     walk(dep, out, shuffle);
   }
 };
+var planSolves = (proof, events) => {
+  let state = focus(premise(proof.result));
+  for (const ev of events) {
+    state = applyEvent(state, ev, null);
+  }
+  return openBranches(state.derivation).length === 0;
+};
+var SHUFFLE_ATTEMPTS = 5;
 var linearize = (proof, opts = {}) => {
-  const events = [];
   const shuffle = opts.shuffle ?? true;
-  walk(proof, events, shuffle);
+  if (shuffle) {
+    for (let attempt = 0; attempt < SHUFFLE_ATTEMPTS; attempt += 1) {
+      const events2 = [];
+      walk(proof, events2, true);
+      if (planSolves(proof, events2)) return events2;
+    }
+  }
+  const events = [];
+  walk(proof, events, false);
   return events;
 };
 var linearizeStart = (start) => {
@@ -8509,10 +8481,14 @@ var mountVersus = (container, navigate2, pool2, versusConfig) => {
     return el;
   };
   const par = (i88) => {
-    const solution87 = sharedChallenges[i88]?.challenge.solution;
-    if (solution87 === void 0) return "\u{1F480}";
-    const counts = countRuleUsage(solution87);
-    return String(Object.values(counts).reduce((a87, b) => a87 + b, 0));
+    const item = sharedChallenges[i88];
+    const solution87 = item?.challenge.solution;
+    if (solution87 !== void 0) {
+      const counts = countRuleUsage(solution87);
+      return String(Object.values(counts).reduce((a87, b) => a87 + b, 0));
+    }
+    if (item?.parPending === true) return "\u2026";
+    return "\u{1F480}";
   };
   const buildResultScreen = () => {
     const ci1 = currentChallengeIdx1();
@@ -8525,6 +8501,7 @@ var mountVersus = (container, navigate2, pool2, versusConfig) => {
     );
     const moves1 = totalMoves(ws1);
     const moves2 = totalMoves(ws2);
+    const parCells = [];
     const overlay = document.createElement("div");
     overlay.setAttribute("class", "versus-result");
     const title = document.createElement("div");
@@ -8601,6 +8578,8 @@ var mountVersus = (container, navigate2, pool2, versusConfig) => {
       row.appendChild(cell("p1 num", t("bonus"), s1.bonus));
       row.appendChild(cell("p1 num pts", t("points"), s1.points));
       const parCell = cell("vb-sec-start num", t("par"), par(i88));
+      const parVal = parCell.querySelector(".vb-cell-value");
+      if (parVal !== null) parCells.push({ i: i88, el: parVal });
       row.appendChild(parCell);
       const goalCell = document.createElement("div");
       goalCell.setAttribute("class", "vb-cell vb-goal");
@@ -8633,6 +8612,11 @@ var mountVersus = (container, navigate2, pool2, versusConfig) => {
     addButton(t("playAgain"), () => navigate2("versus"));
     overlay.appendChild(actions);
     const cursor = createButtonCursor([cells]);
+    pool2.onRetroSolved = () => {
+      parCells.forEach(({ i: i88, el }) => {
+        el.textContent = par(i88);
+      });
+    };
     return { el: overlay, onAction: cursor.onAction };
   };
   const commitScore1 = () => {
@@ -9136,6 +9120,7 @@ var mountVersus = (container, navigate2, pool2, versusConfig) => {
       document.removeEventListener("keydown", handleControlKey);
       cleanupControlPads.forEach((c) => c());
       unsubGamepad();
+      pool2.onRetroSolved = void 0;
     },
     rerender
   };
@@ -9479,159 +9464,6 @@ var countNonStructural = (d) => {
   const self = STRUCTURAL_RULES.has(d.rule) ? 0 : 1;
   return self + d.deps.reduce((sum, dep) => sum + countNonStructural(dep), 0);
 };
-var random2 = (size = 10, minDifficulty = 8) => () => {
-  const rules3 = RULES;
-  let solution87;
-  while (typeof solution87 === "undefined") {
-    ;
-    [solution87] = head2(
-      flatMap(
-        filter(repeatIO(random(size)), isTautology),
-        (tautology) => {
-          const [proof, difficulty] = brute({
-            goal: conclusion(tautology),
-            rules: SOLVER_RULES
-          });
-          return difficulty < minDifficulty ? empty() : of(proof);
-        }
-      )
-    );
-  }
-  return {
-    rules: rules3,
-    goal: solution87.result,
-    solution: solution87
-  };
-};
-var bellRandom = (min, max, center3) => {
-  const mid = center3 ?? (min + max) / 2;
-  const stddev = Math.max(max - mid, mid - min) / 3;
-  let value;
-  do {
-    const u1 = Math.random();
-    const u2 = Math.random();
-    const z78 = Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
-    value = Math.round(mid + z78 * stddev);
-  } while (value < min || value > max);
-  return value;
-};
-var CONNECTIVE_KEYS = [
-  "negation",
-  "implication",
-  "conjunction",
-  "disjunction"
-];
-var randomSubsetConnectives = (connectives2) => {
-  const keys2 = CONNECTIVE_KEYS.filter((k) => connectives2[k] > 0);
-  if (keys2.length <= 1) return connectives2;
-  const count = bellRandom(1, keys2.length);
-  let selected;
-  do {
-    const shuffled = keys2.sort(() => Math.random() - 0.5);
-    selected = new Set(shuffled.slice(0, count));
-  } while (selected.size === 1 && selected.has("negation"));
-  return {
-    negation: selected.has("negation") ? connectives2.negation : 0,
-    implication: selected.has("implication") ? connectives2.implication : 0,
-    conjunction: selected.has("conjunction") ? connectives2.conjunction : 0,
-    disjunction: selected.has("disjunction") ? connectives2.disjunction : 0
-  };
-};
-var SYMBOL_KEYS = [
-  "p",
-  "q",
-  "r",
-  "s",
-  "u",
-  "v",
-  "falsum",
-  "verum"
-];
-var randomSubsetSymbols = (symbols) => {
-  const keys2 = SYMBOL_KEYS.filter((k) => symbols[k] > 0);
-  if (keys2.length <= 1) return symbols;
-  const count = bellRandom(1, keys2.length, Math.min(4, keys2.length));
-  const shuffled = keys2.sort(() => Math.random() - 0.5);
-  const selected = new Set(shuffled.slice(0, count));
-  const result = {
-    p: 0,
-    q: 0,
-    r: 0,
-    s: 0,
-    u: 0,
-    v: 0,
-    falsum: 0,
-    verum: 0
-  };
-  for (const k of selected) {
-    result[k] = symbols[k];
-  }
-  return result;
-};
-function* randomConfiguredStep(config, getTimeout = () => 5e3) {
-  const rules3 = RULES;
-  const maxDepth = config.targetNonStructural + 10;
-  const bypass = config.bypassPercent / 100;
-  let formulasTried = 0;
-  let tautologiesFound = 0;
-  let solved = 0;
-  const progress = () => ({
-    formulasTried,
-    tautologiesFound,
-    solved
-  });
-  while (true) {
-    const size = bellRandom(1, config.size);
-    const connectives2 = randomSubsetConnectives(config.connectives);
-    const symbols = randomSubsetSymbols(config.symbols);
-    const formula = randomWeighted(size, connectives2, symbols)();
-    formulasTried += 1;
-    yield progress();
-    const isBypassed = Math.random() < bypass;
-    if (isBypassed) {
-      return {
-        challenge: { rules: rules3, goal: conclusion(formula) },
-        nonStructuralCount: 0,
-        bypassed: true,
-        formulasTried,
-        tautologiesFound,
-        solved
-      };
-    }
-    if (!isTautology(formula)) continue;
-    tautologiesFound += 1;
-    const solver = bruteSearch({
-      goal: conclusion(formula),
-      rules: SOLVER_RULES
-    });
-    let proof;
-    let depth = 0;
-    const solveStart = Date.now();
-    while (depth <= maxDepth) {
-      const step = solver.next();
-      if (step.done === true) {
-        proof = step.value[0];
-        break;
-      }
-      depth += 1;
-      if (Date.now() - solveStart > getTimeout()) break;
-      yield progress();
-    }
-    if (proof === void 0) continue;
-    solved += 1;
-    const nonStructuralCount = countNonStructural(proof);
-    if (isFinite(config.targetNonStructural) && nonStructuralCount !== config.targetNonStructural)
-      continue;
-    return {
-      challenge: { rules: rules3, goal: proof.result, solution: proof },
-      nonStructuralCount,
-      bypassed: false,
-      formulasTried,
-      tautologiesFound,
-      solved
-    };
-  }
-}
 
 // src/random/tutorial.ts
 var tutorialRules = rules2.filter(
@@ -11762,9 +11594,9 @@ var mountVersusConfig = (container, _navigate, onStart) => {
 };
 
 // src/web/challenge-pool.ts
-var POOL_TARGET = 5;
-var FALLBACK_SIZE = 5;
-var FALLBACK_MIN_DIFFICULTY = 0;
+var POOL_TARGET = 8;
+var LOOSE_POOL_CAP = 20;
+var SOLVE_TIMEOUT_MS = 2e3;
 var RULES2 = [
   "i",
   "f",
@@ -11796,16 +11628,53 @@ var generateBypass = (config) => {
     formulasTried: 1
   };
 };
+var BYPASS_ATTEMPTS = 200;
+var generateProvableBypass = (config) => {
+  let result = generateBypass(config);
+  for (let i88 = 1; i88 < BYPASS_ATTEMPTS; i88 += 1) {
+    const formula = result.challenge.goal.succedent[0];
+    if (formula !== void 0 && isTautology(formula)) break;
+    result = generateBypass(config);
+  }
+  return result;
+};
 var ChallengePool = class {
   pool = [];
+  // Worker results whose difficulty missed the target. Kept sorted
+  // closest-first as the emergency reserve: when the strict pool runs dry
+  // (e.g. an NPC out-consuming the worker), a near-target challenge served
+  // instantly beats blocking the main thread to generate an exact one.
+  loosePool = [];
   worker;
   currentConfig;
+  configKey;
+  // Challenges served unsolved by the starvation fallback, keyed by the
+  // retro-solve request pending for them in the worker. The solution is
+  // patched into the served object when it lands, so the par a player sees
+  // at the results screen fills in even though the challenge went out bare.
+  pendingSolves = /* @__PURE__ */ new Map();
+  solveCounter = 0;
+  // Fired after a retro-solve lands, so a screen currently displaying the
+  // patched challenge's par can refresh it. Single subscriber is enough:
+  // only one screen shows pars at a time.
+  onRetroSolved;
   constructor() {
     this.worker = new Worker("sequent.w.js");
     this.worker.onmessage = (e) => {
+      if (e.data.type === "solved") {
+        const pending = this.pendingSolves.get(e.data.requestId);
+        if (pending !== void 0) {
+          this.pendingSolves.delete(e.data.requestId);
+          pending.challenge.solution = e.data.solution;
+          pending.parPending = false;
+          this.onRetroSolved?.();
+        }
+        return;
+      }
       if (e.data.type !== "challenge") return;
       const result = e.data.result;
       if (this.currentConfig && result.nonStructuralCount !== this.currentConfig.targetNonStructural) {
+        this.pushLoose(result);
         return;
       }
       this.pool.push(result);
@@ -11816,19 +11685,42 @@ var ChallengePool = class {
     this.worker.onerror = (e) => {
       console.error("Challenge worker error:", e.message);
     };
-    this.send({ type: "resume" });
   }
   send(msg) {
     this.worker.postMessage(msg);
   }
+  pushLoose(result) {
+    if (this.currentConfig === void 0) return;
+    const config = this.currentConfig;
+    const distance = (r) => entryDistance(r.nonStructuralCount, config);
+    const idx = this.loosePool.findIndex((r) => distance(r) > distance(result));
+    if (idx === -1) {
+      this.loosePool.push(result);
+    } else {
+      this.loosePool.splice(idx, 0, result);
+    }
+    this.loosePool.length = Math.min(this.loosePool.length, LOOSE_POOL_CAP);
+  }
   configure(config, seed) {
+    const key = JSON.stringify(serializeConfig(config));
+    const sameConfig = key === this.configKey && seed === void 0;
     this.currentConfig = config;
-    this.pool = seed ?? [];
-    this.send({ type: "pause" });
-    this.send({
-      type: "configure",
-      config: serializeConfig({ ...config, bypassPercent: 0 })
-    });
+    this.configKey = key;
+    if (!sameConfig) {
+      this.pool = seed ?? [];
+      this.loosePool = [];
+      this.pendingSolves.clear();
+      this.send({ type: "pause" });
+      this.send({
+        type: "configure",
+        config: serializeConfig({
+          ...config,
+          bypassPercent: 0,
+          targetNonStructural: Infinity
+        })
+      });
+      this.send({ type: "timeout", ms: SOLVE_TIMEOUT_MS });
+    }
     if (this.pool.length < POOL_TARGET) {
       this.send({ type: "resume" });
     }
@@ -11838,38 +11730,36 @@ var ChallengePool = class {
       return generateBypass(this.currentConfig);
     }
     const result = this.pool.shift();
-    if (result !== void 0) {
-      if (this.pool.length < POOL_TARGET) {
-        this.send({ type: "resume" });
-      }
-      return result;
+    if (this.pool.length < POOL_TARGET) {
+      this.send({ type: "resume" });
     }
-    if (this.currentConfig) {
-      const looseConfig = {
-        ...this.currentConfig,
-        targetNonStructural: Infinity,
-        bypassPercent: 0
-      };
-      const gen = randomConfiguredStep(looseConfig, () => 1e3);
-      while (true) {
-        const { done, value } = gen.next();
-        if (done === true) {
-          return {
-            challenge: value.challenge,
-            nonStructuralCount: value.nonStructuralCount,
-            bypassed: false,
-            formulasTried: value.formulasTried
-          };
-        }
-      }
-    }
-    const challenge2 = random2(FALLBACK_SIZE, FALLBACK_MIN_DIFFICULTY)();
-    return {
-      challenge: challenge2,
-      nonStructuralCount: 0,
-      bypassed: false,
-      formulasTried: 0
-    };
+    if (result !== void 0) return result;
+    const loose = this.loosePool.shift();
+    if (loose !== void 0) return loose;
+    const fallback = generateProvableBypass(
+      this.currentConfig ?? defaultRandomConfig()
+    );
+    this.requestRetroSolve(fallback);
+    return fallback;
+  }
+  // Ask the worker to brute-solve a challenge that already went out unsolved.
+  // Only verified tautologies are sent: the search is unbounded (that is what
+  // makes the par guaranteed to arrive), so an unprovable goal — possible when
+  // generateProvableBypass exhausts its attempts on a degenerate config —
+  // would deepen forever. Those keep their skull, which is honest.
+  requestRetroSolve(result) {
+    const formula = result.challenge.goal.succedent[0];
+    if (formula === void 0 || !isTautology(formula)) return;
+    this.solveCounter += 1;
+    const requestId = this.solveCounter;
+    result.parPending = true;
+    this.pendingSolves.set(requestId, result);
+    this.send({
+      type: "solve",
+      requestId,
+      goal: result.challenge.goal,
+      rules: result.challenge.rules
+    });
   }
   cleanup() {
     this.worker.terminate();
