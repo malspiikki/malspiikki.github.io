@@ -3475,13 +3475,13 @@ var en = {
   tutorialOwlBasics: "Welcome to Sequent Fighter! In its challenges you close derivation trees built out of sequents. This first chapter teaches the essentials you need to play.",
   tutorialOwlLogic: "You now know how to play the game. The second chapter digs into the consequences of destructing in various situations. Knowing the consequences by heart should help you hone your tactics.",
   tutorialOwlClose: "A branch of the tree can be closed when the same sentence sits on both sides of the gate ( \u22A2 ).",
-  tutorialOwlCloseConstants: "Falsum ( \u22A5 ) closes a branch when it sits alone on the left side of the gate, and Verum ( \u22A4 ) when it sits alone on the right.",
+  tutorialOwlCloseConstants: "Falsum ( \u22A5 ) closes a branch when it sits alone on the left side of the gate ( \u22A2 ), and Verum ( \u22A4 ) when it sits alone on the right.",
   tutorialOwlDrop: "Any extra sentences on a branch must be dropped before the branch can be closed.",
   tutorialOwlSplit: "Destructing a sentence removes its outermost connective ( \u2192 \u2227 \u2228 \xAC ) from the tree. Where the remaining parts end up depends on the situation. More about that in the next chapter.",
-  tutorialOwlSideFlip: "Destructing a Negation ( \xAC ) makes the remaining sentence move to the other side of the gate.",
-  tutorialOwlCrossing: "Destructing an Implication ( \u2192 ) on the right side of the gate divides its parts across the two sides of the gate.",
-  tutorialOwlBranching: "Destructing a Conjunction ( \u2227 ) on the right side of the gate, or a Disjunction ( \u2228 ) on the left, makes the tree branch.",
-  tutorialOwlBranchingCrossing: "Destructing an Implication ( \u2192 ) on the left side of the gate shatters the sentence: the most intricate of the rules combines both the parts dividing across the gate and the tree branching.",
+  tutorialOwlSideFlip: "Destructing a Negation ( \xAC ) makes the remaining sentence move to the other side of the gate ( \u22A2 ).",
+  tutorialOwlCrossing: "Destructing an Implication ( \u2192 ) on the right side of the gate ( \u22A2 ) divides its parts across the two sides of the gate.",
+  tutorialOwlBranching: "Destructing a Conjunction ( \u2227 ) on the right side of the gate ( \u22A2 ), or a Disjunction ( \u2228 ) on the left, makes the tree branch.",
+  tutorialOwlBranchingCrossing: "Destructing an Implication ( \u2192 ) on the left side of the gate ( \u22A2 ) shatters the sentence: the most intricate of the rules combines both the parts dividing across the gate and the tree branching.",
   tutorialOwlOptimization: "The third chapter is about optimizing solutions.",
   tutorialOwlClaims: "You can add a claim of your own choosing to the selected branch. Claims never affect whether a challenge can be solved, but they can sometimes shorten the solution.",
   tutorialOwlSolvability: "The fourth chapter is about telling which challenges can be solved. Recognizing solvability matters if you take on chaotic ( \u{1F480} ) challenges.",
@@ -3595,13 +3595,13 @@ var fi = {
   tutorialOwlBasics: "Tervetuloa pelaamaan Sequent Fighteri\xE4! Pelin haasteissa suljetaan sekventeist\xE4 koostuvia p\xE4\xE4ttelypuita. Ensimm\xE4isess\xE4 luvussa opimme pelaamisen kannalta v\xE4ltt\xE4m\xE4tt\xF6mi\xE4 perusasioita.",
   tutorialOwlLogic: "Osaat nyt pelata peli\xE4. Toinen luku syventyy purkamisen seuraamuksiin erilaisissa tilanteissa. Seuraamusten osaaminen ulkoa auttaa hiomaan taktiikkaasi.",
   tutorialOwlClose: "P\xE4\xE4ttelypuun oksa on suljettavissa silloin, kun portin ( \u22A2 ) kummallakin puolella on sama lause.",
-  tutorialOwlCloseConstants: "Falsum ( \u22A5 ) sulkee oksan ollessaan yksin portin vasemmalla puolella, ja Verum ( \u22A4 ) ollessaan yksin portin oikealla puolella.",
+  tutorialOwlCloseConstants: "Falsum ( \u22A5 ) sulkee oksan ollessaan yksin portin ( \u22A2 ) vasemmalla puolella, ja Verum ( \u22A4 ) ollessaan yksin portin oikealla puolella.",
   tutorialOwlDrop: "Oksan sis\xE4lt\xE4m\xE4t ylim\xE4\xE4r\xE4iset lauseet on pudotettava ennen kuin oksan voi sulkea.",
   tutorialOwlSplit: "Lauseen purkaminen irrottaa sen uloimman konnektiivin ( \u2192 \u2227 \u2228 \xAC ) puusta. J\xE4ljelle j\xE4\xE4vien osien sijoittuminen riippuu tilanteesta. Lis\xE4\xE4 siit\xE4 seuraavassa luvussa.",
-  tutorialOwlSideFlip: "Negaation ( \xAC ) purkaminen aiheuttaa j\xE4ljelle j\xE4\xE4v\xE4n lauseen siirtymisen portin toiselle puolelle.",
-  tutorialOwlCrossing: "Implikaation ( \u2192 ) purkaminen portin oikealta puolelta aiheuttaa lauseen osien jakautumisen kahdelle puolelle porttia.",
-  tutorialOwlBranching: "Konjunktion ( \u2227 ) purkaminen portin oikealla puolella tai Disjunktion ( \u2228 ) purkaminen portin vasemmalla puolella aiheuttaa puun haarautumisen.",
-  tutorialOwlBranchingCrossing: "Implikaation ( \u2192 ) purkaminen portin vasemmalta puolelta sirpaloittaa lauseen: s\xE4\xE4nn\xF6ist\xE4 monimutkaisin yhdist\xE4\xE4 sek\xE4 osien jakautumisen portin eri puolille ett\xE4 puun haarautumisen.",
+  tutorialOwlSideFlip: "Negaation ( \xAC ) purkaminen aiheuttaa j\xE4ljelle j\xE4\xE4v\xE4n lauseen siirtymisen portin ( \u22A2 ) toiselle puolelle.",
+  tutorialOwlCrossing: "Implikaation ( \u2192 ) purkaminen portin ( \u22A2 ) oikealta puolelta aiheuttaa lauseen osien jakautumisen kahdelle puolelle porttia.",
+  tutorialOwlBranching: "Konjunktion ( \u2227 ) purkaminen portin ( \u22A2 ) oikealla puolella tai Disjunktion ( \u2228 ) purkaminen portin vasemmalla puolella aiheuttaa puun haarautumisen.",
+  tutorialOwlBranchingCrossing: "Implikaation ( \u2192 ) purkaminen portin ( \u22A2 ) vasemmalta puolelta sirpaloittaa lauseen: s\xE4\xE4nn\xF6ist\xE4 monimutkaisin yhdist\xE4\xE4 sek\xE4 osien jakautumisen portin eri puolille ett\xE4 puun haarautumisen.",
   tutorialOwlOptimization: "Kolmannessa luvussa tutustumme ratkaisujen optimointiin.",
   tutorialOwlClaims: "Voit lis\xE4t\xE4 valittuun oksaan vapaavalintaisen v\xE4itt\xE4m\xE4n. V\xE4itt\xE4m\xE4t eiv\xE4t vaikuta haasteen ratkeavuuteen, mutta ne voivat joskus lyhent\xE4\xE4 ratkaisua.",
   tutorialOwlSolvability: "Nelj\xE4nness\xE4 luvussa pohdimme, millaiset haasteet ovat ratkeavia. Ratkeavuuden tunnistaminen on oleellista, mik\xE4li koitat ratkaista kaoottisia ( \u{1F480} ) haasteita.",
@@ -3715,13 +3715,13 @@ var es = {
   tutorialOwlBasics: "\xA1Bienvenido a Sequent Fighter! En los desaf\xEDos del juego se cierran \xE1rboles de deducci\xF3n compuestos de secuentes. En este primer cap\xEDtulo aprendemos lo b\xE1sico imprescindible para jugar.",
   tutorialOwlLogic: "Ahora ya sabes jugar. El segundo cap\xEDtulo profundiza en las consecuencias de destruir en distintas situaciones. Conocer de memoria las consecuencias te ayudar\xE1 a afinar tu t\xE1ctica.",
   tutorialOwlClose: "Una rama del \xE1rbol se puede cerrar cuando a ambos lados de la puerta ( \u22A2 ) est\xE1 la misma oraci\xF3n.",
-  tutorialOwlCloseConstants: "Falsum ( \u22A5 ) cierra una rama cuando est\xE1 solo a la izquierda de la puerta, y Verum ( \u22A4 ) cuando est\xE1 solo a la derecha.",
+  tutorialOwlCloseConstants: "Falsum ( \u22A5 ) cierra una rama cuando est\xE1 solo a la izquierda de la puerta ( \u22A2 ), y Verum ( \u22A4 ) cuando est\xE1 solo a la derecha.",
   tutorialOwlDrop: "Las oraciones sobrantes de una rama deben soltarse antes de poder cerrarla.",
   tutorialOwlSplit: "Destruir una oraci\xF3n desprende del \xE1rbol su conectivo m\xE1s externo ( \u2192 \u2227 \u2228 \xAC ). D\xF3nde acaban las partes restantes depende de la situaci\xF3n. M\xE1s sobre eso en el siguiente cap\xEDtulo.",
-  tutorialOwlSideFlip: "Destruir una Negaci\xF3n ( \xAC ) hace que la oraci\xF3n restante pase al otro lado de la puerta.",
-  tutorialOwlCrossing: "Destruir una Implicaci\xF3n ( \u2192 ) en el lado derecho de la puerta reparte sus partes entre los dos lados de la puerta.",
-  tutorialOwlBranching: "Destruir una Conjunci\xF3n ( \u2227 ) en el lado derecho de la puerta, o una Disyunci\xF3n ( \u2228 ) en el izquierdo, ramifica el \xE1rbol.",
-  tutorialOwlBranchingCrossing: "Destruir una Implicaci\xF3n ( \u2192 ) en el lado izquierdo de la puerta fragmenta la oraci\xF3n: la regla m\xE1s compleja combina el reparto de las partes entre ambos lados y la ramificaci\xF3n del \xE1rbol.",
+  tutorialOwlSideFlip: "Destruir una Negaci\xF3n ( \xAC ) hace que la oraci\xF3n restante pase al otro lado de la puerta ( \u22A2 ).",
+  tutorialOwlCrossing: "Destruir una Implicaci\xF3n ( \u2192 ) en el lado derecho de la puerta ( \u22A2 ) reparte sus partes entre los dos lados de la puerta.",
+  tutorialOwlBranching: "Destruir una Conjunci\xF3n ( \u2227 ) en el lado derecho de la puerta ( \u22A2 ), o una Disyunci\xF3n ( \u2228 ) en el izquierdo, ramifica el \xE1rbol.",
+  tutorialOwlBranchingCrossing: "Destruir una Implicaci\xF3n ( \u2192 ) en el lado izquierdo de la puerta ( \u22A2 ) fragmenta la oraci\xF3n: la regla m\xE1s compleja combina el reparto de las partes entre ambos lados y la ramificaci\xF3n del \xE1rbol.",
   tutorialOwlOptimization: "El tercer cap\xEDtulo trata de optimizar las soluciones.",
   tutorialOwlClaims: "Puedes a\xF1adir una afirmaci\xF3n de tu elecci\xF3n a la rama elegida. Las afirmaciones nunca afectan a la resolubilidad del desaf\xEDo, pero a veces pueden acortar la soluci\xF3n.",
   tutorialOwlSolvability: "En el cuarto cap\xEDtulo consideramos qu\xE9 desaf\xEDos tienen soluci\xF3n. Reconocer la resolubilidad es esencial si intentas resolver desaf\xEDos ca\xF3ticos ( \u{1F480} ).",
@@ -3835,13 +3835,13 @@ var cs = {
   tutorialOwlBasics: "V\xEDtej ve h\u0159e Sequent Fighter! V jej\xEDch v\xFDzv\xE1ch se zav\xEDraj\xED odvozovac\xED stromy slo\u017Een\xE9 ze sekvent\u016F. V t\xE9to prvn\xED kapitole se nau\u010D\xEDme z\xE1klady, bez kter\xFDch se hr\xE1t ned\xE1.",
   tutorialOwlLogic: "Te\u010F u\u017E um\xED\u0161 hr\xE1t. Druh\xE1 kapitola se no\u0159\xED do d\u016Fsledk\u016F ni\u010Den\xED v r\u016Fzn\xFDch situac\xEDch. Zn\xE1t d\u016Fsledky nazpam\u011B\u0165 ti pom\u016F\u017Ee vypilovat taktiku.",
   tutorialOwlClose: "V\u011Btev stromu lze zav\u0159\xEDt, kdy\u017E na obou stran\xE1ch br\xE1ny ( \u22A2 ) stoj\xED stejn\xE1 v\u011Bta.",
-  tutorialOwlCloseConstants: "Falsum ( \u22A5 ) zav\u0159e v\u011Btev, kdy\u017E stoj\xED samo vlevo od br\xE1ny, a Verum ( \u22A4 ), kdy\u017E stoj\xED samo vpravo.",
+  tutorialOwlCloseConstants: "Falsum ( \u22A5 ) zav\u0159e v\u011Btev, kdy\u017E stoj\xED samo vlevo od br\xE1ny ( \u22A2 ), a Verum ( \u22A4 ), kdy\u017E stoj\xED samo vpravo.",
   tutorialOwlDrop: "P\u0159ebyte\u010Dn\xE9 v\u011Bty na v\u011Btvi je nutn\xE9 pustit, ne\u017E ji lze zav\u0159\xEDt.",
   tutorialOwlSplit: "Zni\u010Den\xED v\u011Bty odlom\xED ze stromu jej\xED vn\u011Bj\u0161\xED spojku ( \u2192 \u2227 \u2228 \xAC ). Kam se zb\xFDvaj\xEDc\xED \u010D\xE1sti um\xEDst\xED, z\xE1vis\xED na situaci. V\xEDce o tom v dal\u0161\xED kapitole.",
-  tutorialOwlSideFlip: "Zni\u010Den\xED Negace ( \xAC ) p\u0159esune zb\xFDvaj\xEDc\xED v\u011Btu na druhou stranu br\xE1ny.",
-  tutorialOwlCrossing: "Zni\u010Den\xED Implikace ( \u2192 ) na prav\xE9 stran\u011B br\xE1ny rozd\u011Bl\xED jej\xED \u010D\xE1sti na ob\u011B strany br\xE1ny.",
-  tutorialOwlBranching: "Zni\u010Den\xED Konjunkce ( \u2227 ) na prav\xE9 stran\u011B br\xE1ny nebo Disjunkce ( \u2228 ) na lev\xE9 rozv\u011Btv\xED strom.",
-  tutorialOwlBranchingCrossing: "Zni\u010Den\xED Implikace ( \u2192 ) na lev\xE9 stran\u011B br\xE1ny v\u011Btu rozt\u0159\xED\u0161t\xED: nejslo\u017Eit\u011Bj\u0161\xED z pravidel spojuje jak rozd\u011Blen\xED \u010D\xE1st\xED na ob\u011B strany br\xE1ny, tak v\u011Btven\xED stromu.",
+  tutorialOwlSideFlip: "Zni\u010Den\xED Negace ( \xAC ) p\u0159esune zb\xFDvaj\xEDc\xED v\u011Btu na druhou stranu br\xE1ny ( \u22A2 ).",
+  tutorialOwlCrossing: "Zni\u010Den\xED Implikace ( \u2192 ) na prav\xE9 stran\u011B br\xE1ny ( \u22A2 ) rozd\u011Bl\xED jej\xED \u010D\xE1sti na ob\u011B strany br\xE1ny.",
+  tutorialOwlBranching: "Zni\u010Den\xED Konjunkce ( \u2227 ) na prav\xE9 stran\u011B br\xE1ny ( \u22A2 ) nebo Disjunkce ( \u2228 ) na lev\xE9 rozv\u011Btv\xED strom.",
+  tutorialOwlBranchingCrossing: "Zni\u010Den\xED Implikace ( \u2192 ) na lev\xE9 stran\u011B br\xE1ny ( \u22A2 ) v\u011Btu rozt\u0159\xED\u0161t\xED: nejslo\u017Eit\u011Bj\u0161\xED z pravidel spojuje jak rozd\u011Blen\xED \u010D\xE1st\xED na ob\u011B strany br\xE1ny, tak v\u011Btven\xED stromu.",
   tutorialOwlOptimization: "T\u0159et\xED kapitola se v\u011Bnuje optimalizaci \u0159e\u0161en\xED.",
   tutorialOwlClaims: "Na vybranou v\u011Btev m\u016F\u017Ee\u0161 p\u0159idat tvrzen\xED podle vlastn\xED volby. Tvrzen\xED nikdy neovlivn\xED \u0159e\u0161itelnost v\xFDzvy, ale n\u011Bkdy mohou \u0159e\u0161en\xED zkr\xE1tit.",
   tutorialOwlSolvability: "Ve \u010Dtvrt\xE9 kapitole se zam\xFD\u0161l\xEDme nad t\xEDm, jak\xE9 v\xFDzvy jsou \u0159e\u0161iteln\xE9. Rozpoznat \u0159e\u0161itelnost je z\xE1sadn\xED, pokud se pust\xED\u0161 do chaotick\xFDch ( \u{1F480} ) v\xFDzev.",
@@ -3955,13 +3955,13 @@ var pl = {
   tutorialOwlBasics: "Witaj w grze Sequent Fighter! W jej wyzwaniach zamyka si\u0119 drzewa wnioskowania zbudowane z sekwent\xF3w. W tym pierwszym rozdziale poznajemy podstawy niezb\u0119dne do gry.",
   tutorialOwlLogic: "Teraz ju\u017C umiesz gra\u0107. Drugi rozdzia\u0142 zag\u0142\u0119bia si\u0119 w skutki niszczenia w r\xF3\u017Cnych sytuacjach. Znajomo\u015B\u0107 skutk\xF3w na pami\u0119\u0107 pomo\u017Ce ci wyostrzy\u0107 taktyk\u0119.",
   tutorialOwlClose: "Ga\u0142\u0105\u017A drzewa mo\u017Cna zamkn\u0105\u0107, gdy po obu stronach bramy ( \u22A2 ) stoi to samo zdanie.",
-  tutorialOwlCloseConstants: "Falsum ( \u22A5 ) zamyka ga\u0142\u0105\u017A, gdy stoi samo po lewej stronie bramy, i Verum ( \u22A4 ), gdy stoi samo po prawej.",
+  tutorialOwlCloseConstants: "Falsum ( \u22A5 ) zamyka ga\u0142\u0105\u017A, gdy stoi samo po lewej stronie bramy ( \u22A2 ), i Verum ( \u22A4 ), gdy stoi samo po prawej.",
   tutorialOwlDrop: "Zb\u0119dne zdania na ga\u0142\u0119zi trzeba upu\u015Bci\u0107, zanim da si\u0119 j\u0105 zamkn\u0105\u0107.",
   tutorialOwlSplit: "Zniszczenie zdania odrywa od drzewa jego zewn\u0119trzny sp\xF3jnik ( \u2192 \u2227 \u2228 \xAC ). Gdzie trafiaj\u0105 pozosta\u0142e cz\u0119\u015Bci, zale\u017Cy od sytuacji. Wi\u0119cej o tym w nast\u0119pnym rozdziale.",
-  tutorialOwlSideFlip: "Zniszczenie Negacji ( \xAC ) przenosi pozosta\u0142e zdanie na drug\u0105 stron\u0119 bramy.",
-  tutorialOwlCrossing: "Zniszczenie Implikacji ( \u2192 ) po prawej stronie bramy rozdziela jej cz\u0119\u015Bci na obie strony bramy.",
-  tutorialOwlBranching: "Zniszczenie Koniunkcji ( \u2227 ) po prawej stronie bramy lub Alternatywy ( \u2228 ) po lewej rozga\u0142\u0119zia drzewo.",
-  tutorialOwlBranchingCrossing: "Zniszczenie Implikacji ( \u2192 ) po lewej stronie bramy rozbija zdanie: najbardziej z\u0142o\u017Cona z regu\u0142 \u0142\u0105czy rozdzielenie cz\u0119\u015Bci na obie strony bramy i rozga\u0142\u0119zienie drzewa.",
+  tutorialOwlSideFlip: "Zniszczenie Negacji ( \xAC ) przenosi pozosta\u0142e zdanie na drug\u0105 stron\u0119 bramy ( \u22A2 ).",
+  tutorialOwlCrossing: "Zniszczenie Implikacji ( \u2192 ) po prawej stronie bramy ( \u22A2 ) rozdziela jej cz\u0119\u015Bci na obie strony bramy.",
+  tutorialOwlBranching: "Zniszczenie Koniunkcji ( \u2227 ) po prawej stronie bramy ( \u22A2 ) lub Alternatywy ( \u2228 ) po lewej rozga\u0142\u0119zia drzewo.",
+  tutorialOwlBranchingCrossing: "Zniszczenie Implikacji ( \u2192 ) po lewej stronie bramy ( \u22A2 ) rozbija zdanie: najbardziej z\u0142o\u017Cona z regu\u0142 \u0142\u0105czy rozdzielenie cz\u0119\u015Bci na obie strony bramy i rozga\u0142\u0119zienie drzewa.",
   tutorialOwlOptimization: "Trzeci rozdzia\u0142 dotyczy optymalizacji rozwi\u0105za\u0144.",
   tutorialOwlClaims: "Do wybranej ga\u0142\u0119zi mo\u017Cesz doda\u0107 twierdzenie w\u0142asnego wyboru. Twierdzenia nigdy nie wp\u0142ywaj\u0105 na rozwi\u0105zywalno\u015B\u0107 wyzwania, ale czasem mog\u0105 skr\xF3ci\u0107 rozwi\u0105zanie.",
   tutorialOwlSolvability: "W czwartym rozdziale zastanawiamy si\u0119, jakie wyzwania da si\u0119 rozwi\u0105za\u0107. Rozpoznawanie rozwi\u0105zywalno\u015Bci jest istotne, je\u015Bli mierzysz si\u0119 z chaotycznymi ( \u{1F480} ) wyzwaniami.",
@@ -6265,7 +6265,6 @@ var createBench = (workspace, makeCongrats, controlsEl, rerender, onMenu, onAppl
     miscGroup.appendChild(skipBtn);
   }
   const gazeGroup = makeGroup(ctx.isGazeModeActive() ? "gaze" : "hot");
-  gazeGroup.dataset["verb"] = "gaze";
   gazeGroup.appendChild(gazeLeftBtn);
   gazeGroup.appendChild(gazeWeakeningBtn);
   gazeGroup.appendChild(gazeConnectiveBtn);
@@ -6297,6 +6296,9 @@ var createBench = (workspace, makeCongrats, controlsEl, rerender, onMenu, onAppl
   gazeWeakeningBtn.classList.add("mutating");
   gazeConnectiveBtn.classList.add("mutating");
   axiomBtn.classList.add("mutating");
+  axiomBtn.dataset["verb"] = "close";
+  gazeWeakeningBtn.dataset["verb"] = "drop";
+  gazeConnectiveBtn.dataset["verb"] = "destruct";
   addLegendBind(gazeLeftBtn, "gazeLeft");
   addLegendBind(gazeRightBtn, "gazeRight");
   addLegendBind(gazeWeakeningBtn, "gazeWeakening");
@@ -6306,7 +6308,6 @@ var createBench = (workspace, makeCongrats, controlsEl, rerender, onMenu, onAppl
   addLegendBind(prevBranchBtn, "prevBranch");
   addLegendBind(nextBranchBtn, "nextBranch");
   const navGroup = makeGroup("controls-nav");
-  navGroup.dataset["verb"] = "nav";
   navGroup.appendChild(prevBranchBtn);
   if (hideLemma !== true) navGroup.appendChild(lemmaBtn);
   navGroup.appendChild(controlsEl);
@@ -10182,6 +10183,22 @@ var DEMO_DONE_MS = 8e3;
 var isClosingEvent = (ev) => ev.kind === "reverse0" && (ev.rev === "i" || ev.rev === "f" || ev.rev === "v");
 var PRESOLVE_DWELL_MS = 1800;
 var PRESOLVE_MOVE_MS = 550;
+var owlPara = (text) => {
+  const para = document.createElement("div");
+  para.setAttribute("class", "tutor-owl-para");
+  text.split(/(\S+ \( [^()]* \))/).forEach((part, i88) => {
+    if (part === "") return;
+    if (i88 % 2 === 0) {
+      para.appendChild(document.createTextNode(part));
+      return;
+    }
+    const unit2 = document.createElement("span");
+    unit2.setAttribute("class", "tutor-owl-term");
+    unit2.textContent = part;
+    para.appendChild(unit2);
+  });
+  return para;
+};
 var mountTutorial = (container, navigate2, startStop) => {
   let stopIdx = Math.max(0, Math.min(startStop, tutorialStops.length - 1));
   const beatForStop = (s) => {
@@ -10376,6 +10393,10 @@ var mountTutorial = (container, navigate2, startStop) => {
   const nextChallenge = () => {
     cancelPresolve();
     skipped = false;
+    ctx.setGazeModeActive(false);
+    referentEngaged = false;
+    keyControlDone = false;
+    skipUsedStop = -1;
     if (onConjecture()) openConjecture();
     else {
       ws = freshWorkspace();
@@ -10418,6 +10439,7 @@ var mountTutorial = (container, navigate2, startStop) => {
     ctx.setGazeModeActive(false);
     skipHadSolution = isTautology2(ws.currentConjecture().derivation.result);
     skipped = true;
+    skipUsedStop = stopIdx;
     rerender();
   };
   const makeUndoControls = () => {
@@ -10529,10 +10551,7 @@ var mountTutorial = (container, navigate2, startStop) => {
     const beatKey = stop.kind === "beat" ? owlBeatKey[stop.beatIdx] : void 0;
     const paragraphs = onWelcome() ? [t(demoPhaseKey[demoPhase])] : presolving ? [t("tutorialOwlPresolve")] : stop.kind === "intro" ? [t(owlChapterKey[stop.chapter])] : beatKey === void 0 ? [] : [t(beatKey)];
     for (const text of paragraphs) {
-      const para = document.createElement("div");
-      para.setAttribute("class", "tutor-owl-para");
-      para.textContent = text;
-      bubble.appendChild(para);
+      bubble.appendChild(owlPara(text));
     }
     const face = document.createElement("div");
     face.setAttribute("class", "tutor-owl-face");
@@ -10541,46 +10560,213 @@ var mountTutorial = (container, navigate2, startStop) => {
     owl.appendChild(face);
     return owl;
   };
-  const verbs = ["nav", "gaze", "skip", "lemma"];
-  const revealedOf = (beat) => ({
-    nav: true,
-    gaze: !beat.hideGaze,
-    skip: !beat.hideSkip,
-    lemma: !beat.hideLemma
-  });
-  let lastBeatRevealed = stopAt(stopIdx).kind === "beat" ? revealedOf(beatAt(beatIdx)) : null;
-  let lastRevealedStop = stopAt(stopIdx).kind === "beat" ? stopIdx : -1;
-  let announceVerbs = [];
-  let announceUntil = 0;
-  const announceUnlocks = (screen) => {
+  const playerApplied = (rules3) => {
+    const start = ws.listConjectures()[0]?.[1]?.start ?? null;
+    const walk2 = (d, path) => {
+      if (d.kind !== "transformation") return false;
+      const frozen = start !== null && subDerivation(start, path)?.kind === "transformation";
+      if (!frozen && rules3.includes(d.rule)) return true;
+      return d.deps.some((dep, i88) => walk2(dep, [...path, i88]));
+    };
+    return walk2(ws.currentConjecture().derivation, []);
+  };
+  let skipUsedStop = -1;
+  const keyControlByBeat = [
+    { verb: "close", used: () => playerApplied(["i", "f", "v"]) },
+    { verb: "close", used: () => playerApplied(["i", "f", "v"]) },
+    { verb: "drop", used: () => playerApplied(["swl", "swr"]) },
+    {
+      verb: "destruct",
+      used: () => playerApplied(["nl", "nr", "cl", "cr", "dl", "dr", "il", "ir"])
+    },
+    null,
+    null,
+    null,
+    null,
+    { verb: "lemma", used: () => playerApplied(["cut"]) },
+    { verb: "skip", used: () => skipUsedStop === stopIdx },
+    null
+  ];
+  let keyStopSeen = -1;
+  let keyControlDone = false;
+  const announceKeyControl = (screen) => {
     const stop = stopAt(stopIdx);
     if (stop.kind !== "beat") return;
-    if (stopIdx !== lastRevealedStop) {
-      const now = revealedOf(beatAt(stop.beatIdx));
-      const prev2 = lastBeatRevealed;
-      lastBeatRevealed = now;
-      lastRevealedStop = stopIdx;
-      announceVerbs = verbs.filter((v2) => now[v2] && (prev2 === null || !prev2[v2]));
-      announceUntil = 0;
-    }
-    if (announceVerbs.length === 0) return;
+    const key = keyControlByBeat[stop.beatIdx] ?? null;
+    if (key === null) return;
     if (presolving) return;
-    if (announceUntil === 0) announceUntil = Date.now() + 2500;
-    if (Date.now() >= announceUntil) {
-      announceVerbs = [];
+    if (keyStopSeen !== stopIdx) {
+      keyStopSeen = stopIdx;
+      keyControlDone = false;
+      skipUsedStop = -1;
+    }
+    if (!keyControlDone && key.used()) keyControlDone = true;
+    if (keyControlDone) return;
+    const el = screen.querySelector(`[data-verb="${key.verb}"]`);
+    if (el !== null) el.classList.add("just-unlocked");
+  };
+  const owlReferentByBeat = [
+    { kind: "sequent" },
+    { kind: "sequent" },
+    { kind: "extras" },
+    {
+      kind: "connectives",
+      marks: [
+        { glyph: "\u2192", side: null },
+        { glyph: "\u2227", side: null },
+        { glyph: "\u2228", side: null },
+        { glyph: "\xAC", side: null }
+      ]
+    },
+    { kind: "connectives", marks: [{ glyph: "\xAC", side: null }] },
+    { kind: "connectives", marks: [{ glyph: "\u2192", side: "right" }] },
+    {
+      kind: "connectives",
+      marks: [
+        { glyph: "\u2227", side: "right" },
+        { glyph: "\u2228", side: "left" }
+      ]
+    },
+    { kind: "connectives", marks: [{ glyph: "\u2192", side: "left" }] },
+    null,
+    null,
+    null
+  ];
+  const pulseExtras = (sequentEl) => {
+    const texts = [];
+    sequentEl.childNodes.forEach((n) => {
+      if (n instanceof Text && n.data.includes(",")) texts.push(n);
+    });
+    for (const t2 of texts) {
+      let node = t2;
+      for (; ; ) {
+        const idx = node.data.indexOf(",");
+        if (idx === -1) break;
+        if (idx > 0) node = node.splitText(idx);
+        node = node.splitText(1);
+      }
+    }
+    const groups = [];
+    let side = "left";
+    let current2 = [];
+    const flush = () => {
+      if (current2.length > 0) groups.push({ side, nodes: current2 });
+      current2 = [];
+    };
+    sequentEl.childNodes.forEach((n) => {
+      if (n instanceof Element && n.classList.contains("turnstile")) {
+        flush();
+        side = "right";
+        return;
+      }
+      if (n instanceof Text && n.data === ",") {
+        flush();
+        return;
+      }
+      current2.push(n);
+    });
+    flush();
+    const textOf = (g) => g.nodes.map((n) => n.textContent ?? "").join("").trim();
+    const lefts = groups.filter((g) => g.side === "left" && textOf(g) !== "");
+    const rights = groups.filter((g) => g.side === "right" && textOf(g) !== "");
+    let keepLeft = -1;
+    let keepRight = -1;
+    for (let i88 = 0; i88 < lefts.length && keepLeft === -1; i88 += 1) {
+      const left4 = lefts[i88];
+      if (left4 === void 0) continue;
+      for (let j = rights.length - 1; j >= 0; j -= 1) {
+        const right3 = rights[j];
+        if (right3 !== void 0 && textOf(left4) === textOf(right3)) {
+          keepLeft = i88;
+          keepRight = j;
+          break;
+        }
+      }
+    }
+    if (keepLeft === -1) return false;
+    const extras = [
+      ...lefts.filter((_, i88) => i88 !== keepLeft),
+      ...rights.filter((_, j) => j !== keepRight)
+    ];
+    if (extras.length === 0) return false;
+    for (const g of extras) {
+      const first = g.nodes[0];
+      const parent = first?.parentNode;
+      if (first === void 0 || parent === null || parent === void 0)
+        continue;
+      const span = document.createElement("span");
+      span.setAttribute("class", "owl-formula owl-pulse");
+      parent.insertBefore(span, first);
+      for (const n of g.nodes) span.appendChild(n);
+    }
+    return true;
+  };
+  let referentStopSeen = -1;
+  let referentEngaged = false;
+  const announceReferent = (screen) => {
+    const stop = stopAt(stopIdx);
+    if (stop.kind !== "beat") return;
+    const referent = owlReferentByBeat[stop.beatIdx] ?? null;
+    if (referent === null) return;
+    if (presolving) return;
+    if (referentStopSeen !== stopIdx) {
+      referentStopSeen = stopIdx;
+      referentEngaged = false;
+    }
+    if (ws.canUndo() || ws.isSolved()) referentEngaged = true;
+    if (referentEngaged) return;
+    if (ctx.isGazeModeActive()) return;
+    const sequentEl = screen.querySelector(".tree-active > .tree-sequent");
+    if (sequentEl === null) return;
+    if (referent.kind === "sequent") {
+      sequentEl.classList.add("owl-pulse");
       return;
     }
-    for (const verb of announceVerbs) {
-      const el = screen.querySelector(`[data-verb="${verb}"]`);
-      if (el !== null) el.classList.add("just-unlocked");
+    if (referent.kind === "extras") {
+      if (!pulseExtras(sequentEl)) sequentEl.classList.add("owl-pulse");
+      return;
     }
+    let side = "left";
+    let matched = false;
+    const outermost = [];
+    sequentEl.querySelectorAll(".connective.active, .turnstile").forEach((el) => {
+      if (el.classList.contains("turnstile")) {
+        side = "right";
+        return;
+      }
+      outermost.push(el);
+      const glyph = el.textContent ?? "";
+      const named = referent.marks.some(
+        (m) => m.glyph === glyph && (m.side === null || m.side === side)
+      );
+      if (named) {
+        matched = true;
+        el.classList.add("owl-pulse");
+      }
+    });
+    if (!matched) for (const el of outermost) el.classList.add("owl-pulse");
   };
   const syncOwlAboveControls = () => {
     const screenEl = container.querySelector(".tutorial-screen");
     if (screenEl === null) return;
     const controls = container.querySelector(".controls");
-    const h = controls === null ? 0 : controls.offsetHeight;
+    let h = controls === null ? 0 : controls.offsetHeight;
+    if (h === 0) {
+      const start = container.querySelector(
+        ".tutorial-welcome > .button"
+      );
+      if (start !== null) {
+        const screenBottom = screenEl.getBoundingClientRect().bottom;
+        h = Math.max(
+          0,
+          Math.round(screenBottom - start.getBoundingClientRect().top)
+        );
+      }
+    }
     screenEl.style.setProperty("--controls-h", `${String(h)}px`);
+    const owl = container.querySelector(".tutor-owl");
+    const owlH = owl === null ? 0 : owl.offsetHeight;
+    screenEl.style.setProperty("--owl-h", `${String(owlH)}px`);
   };
   const stopLabel = (idx) => {
     let chapterNo = 0;
@@ -10760,7 +10946,8 @@ var mountTutorial = (container, navigate2, startStop) => {
       screen.appendChild(crumb);
     }
     screen.appendChild(buildOwl());
-    announceUnlocks(screen);
+    announceKeyControl(screen);
+    announceReferent(screen);
     container.appendChild(screen);
     syncOwlAboveControls();
     if (paused) {

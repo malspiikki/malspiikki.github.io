@@ -232,18 +232,75 @@ html.loading body {
    key that does it. */
 @keyframes control-unlock {
   0%,
+  14%,
   100% {
     transform: scale(1);
   }
-  50% {
+  7% {
     transform: scale(1.12);
   }
 }
+/* The teaching beat's key control bounces on the same slow heartbeat as
+   the board referent until the verb has been used — offset half a cycle
+   so the pair reads as a gesture: the thing, then the verb. */
 .just-unlocked {
-  animation: control-unlock 0.55s ease-in-out 3;
+  animation: control-unlock 4s ease-in-out 3.2s infinite;
+}
+/* The owl's referent pulse: while a beat's board sits untouched under the
+   lesson text, the board element the lesson talks about — the closing
+   pair flanking the gate, the outermost connective — bounces on a slow
+   heartbeat: one bounce, then a long rest. The reader's eyes are on the
+   bubble, so a single burst would play unseen; the repeat means a bounce
+   arrives shortly after they look up. The first move ends it (the class
+   stops being applied). Motion only: hue on glyphs reads as a foreign
+   object in the ink. */
+@keyframes owl-pulse-glyph {
+  0%,
+  14%,
+  100% {
+    transform: scale(1);
+  }
+  7% {
+    transform: scale(1.3);
+  }
+}
+@keyframes owl-pulse-sequent {
+  0%,
+  14%,
+  100% {
+    transform: scale(1);
+  }
+  7% {
+    transform: scale(1.06);
+  }
+}
+@keyframes owl-pulse-formula {
+  0%,
+  14%,
+  100% {
+    transform: scale(1);
+  }
+  7% {
+    transform: scale(1.15);
+  }
+}
+.connective.owl-pulse {
+  /* Transforms don't apply to inline boxes; the box is a single glyph, so
+     no layout shifts. */
+  display: inline-block;
+  animation: owl-pulse-glyph 4s ease-in-out 1.2s infinite;
+}
+/* An extra sentence on the Drop beat, wrapped at announce time. */
+.owl-formula.owl-pulse {
+  display: inline-block;
+  animation: owl-pulse-formula 4s ease-in-out 1.2s infinite;
+}
+.tree-sequent.owl-pulse {
+  animation: owl-pulse-sequent 4s ease-in-out 1.2s infinite;
 }
 @media (prefers-reduced-motion: reduce) {
-  .just-unlocked {
+  .just-unlocked,
+  .owl-pulse {
     animation: none;
   }
 }
@@ -1715,29 +1772,40 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   visibility: hidden;
 }
 /* The tutorial's owl tutor: a portrait (bigger than the proposition birds)
-   pinned to the board's lower-right corner, speech bubble above it with the
-   current stop's message. Sits outside .bench; pointer-events off so it
-   never eats the board's clicks. */
+   perched above the control rows in the board's lower-right region, speech
+   bubble above it with the current stop's message. Sits outside .bench;
+   pointer-events off so it never eats the board's clicks. */
 .tutor-owl {
   position: absolute;
   right: 0.8em;
   /* Mirror the right inset so the bubble never touches the left screen
      edge when a narrow viewport makes it span the full width. */
   left: 0.8em;
-  bottom: 0.8em;
+  /* Float above the control rows (height measured into --controls-h per
+     render, since the rows wrap unpredictably) instead of covering the
+     buttons — late chapters' wider rows reach under the corner the owl
+     used to occupy. Benchless pages measure 0 and keep the corner. */
+  bottom: calc(var(--controls-h, 0px) + 0.8em);
   display: flex;
-  flex-direction: column;
+  /* Face beside the bubble, both perched on the control rows: stacking the
+     face under the bubble would lift the bubble into the vertically
+     centered board (wide screens) or over the goal sequent (narrow ones).
+     The row keeps the stack at the bubble's own height, and the sharp
+     corner points at the owl to its right. */
+  flex-direction: row;
   align-items: flex-end;
+  justify-content: flex-end;
   gap: 0.4em;
   pointer-events: none;
   /* Above the bench's bottom fade gradient (z-index 3), below popups. */
   z-index: 4;
 }
 .tutor-owl-bubble {
+  /* Anchor for the ::after speech tail. */
+  position: relative;
   background-color: var(--chrome-solid);
   border: 2px solid var(--leather);
   border-radius: 12px;
-  border-bottom-right-radius: 2px;
   padding: 0.5em 0.8em;
   /* Reading surface: rem so browser/OS text zoom enlarges the owl's
      text (both observed sessions reached for zoom to read it) while the
@@ -1749,25 +1817,88 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   /* The measure rides the bubble's own text size (~45 characters), so
      proportions survive both this value changing and text zoom. */
   max-width: 22.5em;
-  /* Shift the bubble left of the portrait so its sharp corner points at
-     the owl's mouth — reads more like the owl is talking. */
-  margin-right: 5em;
   /* The owl overlay is pointer-transparent (.tutor-owl) so clicks fall
      through to the board; re-enable events on just the bubble rectangle so
      its text can be selected without the face or margins capturing input. */
   pointer-events: auto;
   user-select: text;
 }
+/* The speech tail: a bordered diamond half-buried in the bubble's edge,
+   its free half pointing at the owl's beak — this is what makes the box
+   read as the owl talking. Aimed rightward at the face beside it; the
+   welcome page's stacked variant below re-aims it downward. */
+.tutor-owl-bubble::after {
+  content: '';
+  position: absolute;
+  right: -8px;
+  bottom: 1em;
+  width: 10px;
+  height: 10px;
+  background-color: var(--chrome-solid);
+  border-top: 2px solid var(--leather);
+  border-right: 2px solid var(--leather);
+  transform: rotate(45deg);
+}
+/* On wide screens the bubble hovers one text line above the ground the
+   owl stands on, the beak-height tail carrying the connection across the
+   gap. Narrow screens keep the bubble seated: the goal sequent sits right
+   above it, and the lift would push the bubble over it. */
+@media (min-width: 641px) {
+  .tutor-owl-bubble {
+    margin-bottom: 1.4em;
+    margin-bottom: 1lh;
+  }
+  .tutor-owl-bubble::after {
+    bottom: 0.4em;
+  }
+}
 .tutor-owl-para + .tutor-owl-para {
   margin-top: 0.5em;
 }
-/* On narrow screens the control rows own the bottom edge; the owl floats
-   above them (height measured into --controls-h per render, since the
-   rows wrap unpredictably) instead of covering the buttons. */
+/* A term with its symbol parenthetical — "gate ( ⊢ )" — is one unit;
+   never break a line inside it. The spans are cut by owlPara around the
+   parenthetical pattern, so the glue needs no markup in translations. */
+.tutor-owl-term {
+  white-space: nowrap;
+}
+/* On narrow screens a long lesson makes the bubble tall enough to bury
+   the goal, which the playarea anchors near its bottom edge. Reserve the
+   owl's measured height (--owl-h, synced per render like --controls-h)
+   as extra bottom padding so the proof rests above the bubble; taller
+   proofs keep scrolling as before. The 2em on top of --owl-h covers the
+   owl's 0.8em ground clearance plus breathing room, and the max() keeps
+   the mask-fade-sized default when the owl is absent. */
 @media (max-width: 640px) {
-  .tutor-owl {
-    bottom: calc(var(--controls-h, 0px) + 0.5em);
+  .tutorial-screen .playarea {
+    padding-bottom: max(6em, calc(var(--owl-h, 0px) + 2.5em));
+    scroll-padding-bottom: max(6em, calc(var(--owl-h, 0px) + 2.5em));
   }
+  /* A notch quieter on phones, where every wrapped line costs board
+     space — but never below the 1rem chrome: the observed sessions'
+     lesson (players zooming to escape 0.8em prose) still stands, and
+     rem keeps text zoom as the escape hatch. */
+  .tutor-owl-bubble {
+    font-size: 1.1rem;
+  }
+}
+/* The welcome page is the one screen with a bottom-center button (Start)
+   and no control rows to perch on; the row layout would lay the bubble
+   across it on narrow screens. Stack bubble over face there instead, the
+   tail pointing down at the head below. */
+.tutorial-screen:has(.tutorial-welcome) .tutor-owl {
+  flex-direction: column;
+}
+.tutorial-screen:has(.tutorial-welcome) .tutor-owl-bubble {
+  /* Stacked on the face directly; the hover gap is for the side-by-side
+     arrangement. */
+  margin-bottom: 0;
+}
+.tutorial-screen:has(.tutorial-welcome) .tutor-owl-bubble::after {
+  right: 1.6em;
+  bottom: -8px;
+  border: none;
+  border-right: 2px solid var(--leather);
+  border-bottom: 2px solid var(--leather);
 }
 /* Chapter intro page: no board, just the topic navigation centered on the
    screen. */
