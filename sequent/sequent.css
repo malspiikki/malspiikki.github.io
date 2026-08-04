@@ -1861,6 +1861,18 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
 .tutor-owl-term {
   white-space: nowrap;
 }
+/* Reserved words — terms that name notation ("gate ( ⊢ )") — are marked
+   in small caps: the term-of-art channel, scannable without borrowing an
+   interactive affordance (color reads as a link, pills as buttons). The
+   marker covers the word only; parens, symbols and punctuation keep the
+   surrounding roman per the headword (gloss) convention. Sentence-initial
+   capitals stay full-size (small-caps transforms lowercase only), so the
+   translations use natural prose capitalization. Noto Sans has no true
+   small caps; the synthesized form is the accepted rendering. */
+.tutor-owl-reserved {
+  font-variant: small-caps;
+  letter-spacing: 0.04em;
+}
 /* On narrow screens a long lesson makes the bubble tall enough to bury
    the goal, which the playarea anchors near its bottom edge. Reserve the
    owl's measured height (--owl-h, synced per render like --controls-h)

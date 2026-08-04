@@ -3475,18 +3475,43 @@ var en = {
   tutorialOwlBasics: "Welcome to Sequent Fighter! In its challenges you close derivation trees built out of sequents. This first chapter teaches the essentials you need to play.",
   tutorialOwlLogic: "You now know how to play the game. The second chapter digs into the consequences of destructing in various situations. Knowing the consequences by heart should help you hone your tactics.",
   tutorialOwlClose: "A branch of the tree can be closed when the same sentence sits on both sides of the gate ( \u22A2 ).",
-  tutorialOwlCloseConstants: "Falsum ( \u22A5 ) closes a branch when it sits alone on the left side of the gate ( \u22A2 ), and Verum ( \u22A4 ) when it sits alone on the right.",
+  tutorialOwlCloseConstants: "Falsum ( \u22A5 ) closes a branch when it sits alone on the left side of the gate ( \u22A2 ), and verum ( \u22A4 ) when it sits alone on the right.",
   tutorialOwlDrop: "Any extra sentences on a branch must be dropped before the branch can be closed.",
   tutorialOwlSplit: "Destructing a sentence removes its outermost connective ( \u2192 \u2227 \u2228 \xAC ) from the tree. Where the remaining parts end up depends on the situation. More about that in the next chapter.",
-  tutorialOwlSideFlip: "Destructing a Negation ( \xAC ) makes the remaining sentence move to the other side of the gate ( \u22A2 ).",
-  tutorialOwlCrossing: "Destructing an Implication ( \u2192 ) on the right side of the gate ( \u22A2 ) divides its parts across the two sides of the gate.",
-  tutorialOwlBranching: "Destructing a Conjunction ( \u2227 ) on the right side of the gate ( \u22A2 ), or a Disjunction ( \u2228 ) on the left, makes the tree branch.",
-  tutorialOwlBranchingCrossing: "Destructing an Implication ( \u2192 ) on the left side of the gate ( \u22A2 ) shatters the sentence: the most intricate of the rules combines both the parts dividing across the gate and the tree branching.",
+  tutorialOwlSideFlip: "Destructing a negation ( \xAC ) makes the remaining sentence move to the other side of the gate ( \u22A2 ).",
+  tutorialOwlCrossing: "Destructing an implication ( \u2192 ) on the right side of the gate ( \u22A2 ) divides its parts across the two sides of the gate.",
+  tutorialOwlBranching: "Destructing a conjunction ( \u2227 ) on the right side of the gate ( \u22A2 ), or a disjunction ( \u2228 ) on the left, makes the tree branch.",
+  tutorialOwlBranchingCrossing: "Destructing an implication ( \u2192 ) on the left side of the gate ( \u22A2 ) shatters the sentence: the most intricate of the rules combines both the parts dividing across the gate and the tree branching.",
   tutorialOwlOptimization: "The third chapter is about optimizing solutions.",
   tutorialOwlClaims: "You can add a claim of your own choosing to the selected branch. Claims never affect whether a challenge can be solved, but they can sometimes shorten the solution.",
   tutorialOwlSolvability: "The fourth chapter is about telling which challenges can be solved. Recognizing solvability matters if you take on chaotic ( \u{1F480} ) challenges.",
-  tutorialOwlUnsolvable: "The challenges here are deliberately unsolvable, so that you learn to recognize one. A challenge you deem unsolvable can be skipped.",
+  tutorialOwlUnsolvable: "We have created some peculiar challenges here, so that you can ponder their solvability.",
   tutorialOwlConjecture: "In this sandbox you can try to solve challenges of your own choosing.",
+  tutorialTaskClose: "Try to close every branch of this tree.",
+  tutorialTaskCloseConstants: "Try to close every branch of this tree too.",
+  tutorialTaskDrop: "Try to drop the extras, then close every branch.",
+  tutorialTaskSplit: "Try to destruct the sentences, then close the branches.",
+  tutorialTaskSideFlip: "Try it for yourself: solve this challenge.",
+  tutorialTaskCrossing: "Try to solve this one.",
+  tutorialTaskBranching: "Try to close both of the new branches.",
+  tutorialTaskBranchingCrossing: "Try to solve this challenge \u2014 one branch at a time.",
+  tutorialTaskClaims: "Try adding a claim of your own to a branch.",
+  tutorialTaskUnsolvable: "Try to find out whether the challenge can be solved. Skip it if you believe it cannot.",
+  tutorialTaskConjecture: "Try composing a sentence of your own and proving it.",
+  tutorialOwlProgress: "Good job! That was challenge number {count} on the topic \u201C{topic}\u201D.",
+  tutorialOwlRecommend: "I recommend completing at least {target} before moving on.",
+  tutorialOwlClaimFree: "Solved without a single claim! Every solvable challenge can be solved that way.",
+  tutorialOwlClaimFreeAdvice: "Still, try adding one to the next challenge.",
+  tutorialOwlStuck: "I'm not sure this branch can be closed anymore.",
+  tutorialOwlStuckAdvice: "Maybe undo a few moves and try another approach.",
+  tutorialOwlMultiDrop: "This drop takes several moves.",
+  tutorialOwlMultiDropAdvice: "Press Drop again.",
+  tutorialOwlMultiDestruct: "This destruct takes several moves.",
+  tutorialOwlMultiDestructAdvice: "Press Destruct again.",
+  tutorialOwlBasicsPlan: "It has four short lessons. Step in when you are ready!",
+  tutorialOwlLogicPlan: "Four lessons ahead \u2014 one for each kind of consequence.",
+  tutorialOwlOptimizationPlan: "The chapter's only lesson deals with arbitrary claims.",
+  tutorialOwlSolvabilityPlan: "Only two lessons until graduation.",
   tutorialSkipped: "Challenge skipped! It had no solution.",
   tutorialSkippedSolvable: "Challenge skipped! It did have a solution, though.",
   tutorialComplete: "Graduation",
@@ -3595,18 +3620,43 @@ var fi = {
   tutorialOwlBasics: "Tervetuloa pelaamaan Sequent Fighteri\xE4! Pelin haasteissa suljetaan sekventeist\xE4 koostuvia p\xE4\xE4ttelypuita. Ensimm\xE4isess\xE4 luvussa opimme pelaamisen kannalta v\xE4ltt\xE4m\xE4tt\xF6mi\xE4 perusasioita.",
   tutorialOwlLogic: "Osaat nyt pelata peli\xE4. Toinen luku syventyy purkamisen seuraamuksiin erilaisissa tilanteissa. Seuraamusten osaaminen ulkoa auttaa hiomaan taktiikkaasi.",
   tutorialOwlClose: "P\xE4\xE4ttelypuun oksa on suljettavissa silloin, kun portin ( \u22A2 ) kummallakin puolella on sama lause.",
-  tutorialOwlCloseConstants: "Falsum ( \u22A5 ) sulkee oksan ollessaan yksin portin ( \u22A2 ) vasemmalla puolella, ja Verum ( \u22A4 ) ollessaan yksin portin oikealla puolella.",
+  tutorialOwlCloseConstants: "Falsum ( \u22A5 ) sulkee oksan ollessaan yksin portin ( \u22A2 ) vasemmalla puolella, ja verum ( \u22A4 ) ollessaan yksin portin oikealla puolella.",
   tutorialOwlDrop: "Oksan sis\xE4lt\xE4m\xE4t ylim\xE4\xE4r\xE4iset lauseet on pudotettava ennen kuin oksan voi sulkea.",
   tutorialOwlSplit: "Lauseen purkaminen irrottaa sen uloimman konnektiivin ( \u2192 \u2227 \u2228 \xAC ) puusta. J\xE4ljelle j\xE4\xE4vien osien sijoittuminen riippuu tilanteesta. Lis\xE4\xE4 siit\xE4 seuraavassa luvussa.",
   tutorialOwlSideFlip: "Negaation ( \xAC ) purkaminen aiheuttaa j\xE4ljelle j\xE4\xE4v\xE4n lauseen siirtymisen portin ( \u22A2 ) toiselle puolelle.",
   tutorialOwlCrossing: "Implikaation ( \u2192 ) purkaminen portin ( \u22A2 ) oikealta puolelta aiheuttaa lauseen osien jakautumisen kahdelle puolelle porttia.",
-  tutorialOwlBranching: "Konjunktion ( \u2227 ) purkaminen portin ( \u22A2 ) oikealla puolella tai Disjunktion ( \u2228 ) purkaminen portin vasemmalla puolella aiheuttaa puun haarautumisen.",
+  tutorialOwlBranching: "Konjunktion ( \u2227 ) purkaminen portin ( \u22A2 ) oikealla puolella tai disjunktion ( \u2228 ) purkaminen portin vasemmalla puolella aiheuttaa puun haarautumisen.",
   tutorialOwlBranchingCrossing: "Implikaation ( \u2192 ) purkaminen portin ( \u22A2 ) vasemmalta puolelta sirpaloittaa lauseen: s\xE4\xE4nn\xF6ist\xE4 monimutkaisin yhdist\xE4\xE4 sek\xE4 osien jakautumisen portin eri puolille ett\xE4 puun haarautumisen.",
   tutorialOwlOptimization: "Kolmannessa luvussa tutustumme ratkaisujen optimointiin.",
   tutorialOwlClaims: "Voit lis\xE4t\xE4 valittuun oksaan vapaavalintaisen v\xE4itt\xE4m\xE4n. V\xE4itt\xE4m\xE4t eiv\xE4t vaikuta haasteen ratkeavuuteen, mutta ne voivat joskus lyhent\xE4\xE4 ratkaisua.",
   tutorialOwlSolvability: "Nelj\xE4nness\xE4 luvussa pohdimme, millaiset haasteet ovat ratkeavia. Ratkeavuuden tunnistaminen on oleellista, mik\xE4li koitat ratkaista kaoottisia ( \u{1F480} ) haasteita.",
-  tutorialOwlUnsolvable: "Loimme t\xE4h\xE4n tarkoituksella ratkeamattomia haasteita, jotta opit tunnistamaan sellaisen. Ratkeamattomaksi toteamasi haasteen voi ohittaa.",
+  tutorialOwlUnsolvable: "Loimme t\xE4h\xE4n eriskummallisia haasteita, jotta voit pohtia niiden ratkeavuutta.",
   tutorialOwlConjecture: "Hiekkalaatikossa voit kokeilla ratkaista vapaavalintaisia haasteita.",
+  tutorialTaskClose: "Yrit\xE4 sulkea puun jokainen oksa.",
+  tutorialTaskCloseConstants: "Yrit\xE4 sulkea t\xE4m\xE4nkin puun jokainen oksa.",
+  tutorialTaskDrop: "Yrit\xE4 pudottaa ylim\xE4\xE4r\xE4iset lauseet ja sulkea sitten jokainen oksa.",
+  tutorialTaskSplit: "Yrit\xE4 purkaa lauseet ja sulkea sitten oksat.",
+  tutorialTaskSideFlip: "Kokeile itse: ratkaise t\xE4m\xE4 haaste.",
+  tutorialTaskCrossing: "Yrit\xE4 ratkaista t\xE4m\xE4 haaste.",
+  tutorialTaskBranching: "Yrit\xE4 sulkea molemmat uudet oksat.",
+  tutorialTaskBranchingCrossing: "Yrit\xE4 ratkaista t\xE4m\xE4 haaste \u2014 oksa kerrallaan.",
+  tutorialTaskClaims: "Kokeile lis\xE4t\xE4 v\xE4itt\xE4m\xE4 johonkin oksaan.",
+  tutorialTaskUnsolvable: "Kokeile, onko haaste ratkaistavissa. Ohita haaste, mik\xE4li uskot sen olevan ratkeamaton.",
+  tutorialTaskConjecture: "Kokeile keksi\xE4 oma lause ja todistaa se.",
+  tutorialOwlProgress: "Hienosti tehty! Olet l\xE4p\xE4issyt yhteens\xE4 {count} haastetta aihepiirist\xE4 \u201D{topic}\u201D.",
+  tutorialOwlRecommend: "Suosittelen l\xE4p\xE4isem\xE4\xE4n v\xE4hint\xE4\xE4n {target} ennen eteenp\xE4in siirtymist\xE4.",
+  tutorialOwlClaimFree: "Ratkaisit haasteen ilman v\xE4itt\xE4mi\xE4! Ratkeava haaste ratkeaa aina my\xF6s ilman niit\xE4.",
+  tutorialOwlClaimFreeAdvice: "Kokeile silti lis\xE4t\xE4 v\xE4itt\xE4m\xE4 seuraavaan haasteeseen.",
+  tutorialOwlStuck: "En ole varma, voiko t\xE4t\xE4 oksaa en\xE4\xE4 saada suljettua.",
+  tutorialOwlStuckAdvice: "Voisit ehk\xE4 kumota muutamia siirtoja ja kokeilla toista l\xE4hestymistapaa.",
+  tutorialOwlMultiDrop: "T\xE4m\xE4 pudotus vaatii useampia siirtoja.",
+  tutorialOwlMultiDropAdvice: "Paina pudotusn\xE4pp\xE4int\xE4 uudestaan.",
+  tutorialOwlMultiDestruct: "T\xE4m\xE4 purku vaatii useampia siirtoja.",
+  tutorialOwlMultiDestructAdvice: "Paina purkun\xE4pp\xE4int\xE4 uudestaan.",
+  tutorialOwlBasicsPlan: "Luvussa on nelj\xE4 lyhytt\xE4 oppituntia. Astu sis\xE4\xE4n, kun olet valmis!",
+  tutorialOwlLogicPlan: "Edess\xE4 on nelj\xE4 oppituntia \u2014 yksi kutakin seuraamusta kohti.",
+  tutorialOwlOptimizationPlan: "Luvun ainoa oppitunti k\xE4sittelee mielivaltaisia v\xE4itt\xE4mi\xE4.",
+  tutorialOwlSolvabilityPlan: "En\xE4\xE4 kaksi oppituntia valmistujaisiin.",
   tutorialSkipped: "Haaste ohitettu! Sill\xE4 ei ollut ratkaisua.",
   tutorialSkippedSolvable: "Haaste ohitettu! Sill\xE4 olisi sittenkin ollut ratkaisu.",
   tutorialComplete: "Valmistujaiset",
@@ -3715,18 +3765,43 @@ var es = {
   tutorialOwlBasics: "\xA1Bienvenido a Sequent Fighter! En los desaf\xEDos del juego se cierran \xE1rboles de deducci\xF3n compuestos de secuentes. En este primer cap\xEDtulo aprendemos lo b\xE1sico imprescindible para jugar.",
   tutorialOwlLogic: "Ahora ya sabes jugar. El segundo cap\xEDtulo profundiza en las consecuencias de destruir en distintas situaciones. Conocer de memoria las consecuencias te ayudar\xE1 a afinar tu t\xE1ctica.",
   tutorialOwlClose: "Una rama del \xE1rbol se puede cerrar cuando a ambos lados de la puerta ( \u22A2 ) est\xE1 la misma oraci\xF3n.",
-  tutorialOwlCloseConstants: "Falsum ( \u22A5 ) cierra una rama cuando est\xE1 solo a la izquierda de la puerta ( \u22A2 ), y Verum ( \u22A4 ) cuando est\xE1 solo a la derecha.",
+  tutorialOwlCloseConstants: "Falsum ( \u22A5 ) cierra una rama cuando est\xE1 solo a la izquierda de la puerta ( \u22A2 ), y verum ( \u22A4 ) cuando est\xE1 solo a la derecha.",
   tutorialOwlDrop: "Las oraciones sobrantes de una rama deben soltarse antes de poder cerrarla.",
   tutorialOwlSplit: "Destruir una oraci\xF3n desprende del \xE1rbol su conectivo m\xE1s externo ( \u2192 \u2227 \u2228 \xAC ). D\xF3nde acaban las partes restantes depende de la situaci\xF3n. M\xE1s sobre eso en el siguiente cap\xEDtulo.",
-  tutorialOwlSideFlip: "Destruir una Negaci\xF3n ( \xAC ) hace que la oraci\xF3n restante pase al otro lado de la puerta ( \u22A2 ).",
-  tutorialOwlCrossing: "Destruir una Implicaci\xF3n ( \u2192 ) en el lado derecho de la puerta ( \u22A2 ) reparte sus partes entre los dos lados de la puerta.",
-  tutorialOwlBranching: "Destruir una Conjunci\xF3n ( \u2227 ) en el lado derecho de la puerta ( \u22A2 ), o una Disyunci\xF3n ( \u2228 ) en el izquierdo, ramifica el \xE1rbol.",
-  tutorialOwlBranchingCrossing: "Destruir una Implicaci\xF3n ( \u2192 ) en el lado izquierdo de la puerta ( \u22A2 ) fragmenta la oraci\xF3n: la regla m\xE1s compleja combina el reparto de las partes entre ambos lados y la ramificaci\xF3n del \xE1rbol.",
+  tutorialOwlSideFlip: "Destruir una negaci\xF3n ( \xAC ) hace que la oraci\xF3n restante pase al otro lado de la puerta ( \u22A2 ).",
+  tutorialOwlCrossing: "Destruir una implicaci\xF3n ( \u2192 ) en el lado derecho de la puerta ( \u22A2 ) reparte sus partes entre los dos lados de la puerta.",
+  tutorialOwlBranching: "Destruir una conjunci\xF3n ( \u2227 ) en el lado derecho de la puerta ( \u22A2 ), o una disyunci\xF3n ( \u2228 ) en el izquierdo, ramifica el \xE1rbol.",
+  tutorialOwlBranchingCrossing: "Destruir una implicaci\xF3n ( \u2192 ) en el lado izquierdo de la puerta ( \u22A2 ) fragmenta la oraci\xF3n: la regla m\xE1s compleja combina el reparto de las partes entre ambos lados y la ramificaci\xF3n del \xE1rbol.",
   tutorialOwlOptimization: "El tercer cap\xEDtulo trata de optimizar las soluciones.",
   tutorialOwlClaims: "Puedes a\xF1adir una afirmaci\xF3n de tu elecci\xF3n a la rama elegida. Las afirmaciones nunca afectan a la resolubilidad del desaf\xEDo, pero a veces pueden acortar la soluci\xF3n.",
   tutorialOwlSolvability: "En el cuarto cap\xEDtulo consideramos qu\xE9 desaf\xEDos tienen soluci\xF3n. Reconocer la resolubilidad es esencial si intentas resolver desaf\xEDos ca\xF3ticos ( \u{1F480} ).",
-  tutorialOwlUnsolvable: "Aqu\xED hemos creado a prop\xF3sito desaf\xEDos irresolubles, para que aprendas a reconocerlos. Un desaf\xEDo que consideres irresoluble se puede saltar.",
+  tutorialOwlUnsolvable: "Hemos creado aqu\xED desaf\xEDos peculiares para que reflexiones sobre su resolubilidad.",
   tutorialOwlConjecture: "En este arenero puedes intentar resolver desaf\xEDos de tu propia elecci\xF3n.",
+  tutorialTaskClose: "Intenta cerrar todas las ramas de este \xE1rbol.",
+  tutorialTaskCloseConstants: "Intenta cerrar tambi\xE9n todas las ramas de este \xE1rbol.",
+  tutorialTaskDrop: "Intenta soltar las sobrantes y luego cerrar todas las ramas.",
+  tutorialTaskSplit: "Intenta destruir las oraciones y luego cerrar las ramas.",
+  tutorialTaskSideFlip: "Pru\xE9balo: resuelve este desaf\xEDo.",
+  tutorialTaskCrossing: "Intenta resolver este.",
+  tutorialTaskBranching: "Intenta cerrar las dos ramas nuevas.",
+  tutorialTaskBranchingCrossing: "Intenta resolver este desaf\xEDo \u2014 rama por rama.",
+  tutorialTaskClaims: "Prueba a a\xF1adir una afirmaci\xF3n a alguna rama.",
+  tutorialTaskUnsolvable: "Prueba si el desaf\xEDo se puede resolver. S\xE1ltalo si crees que no tiene soluci\xF3n.",
+  tutorialTaskConjecture: "Prueba a componer una oraci\xF3n propia y demostrarla.",
+  tutorialOwlProgress: "\xA1Buen trabajo! Ese fue el desaf\xEDo n\xFAmero {count} del tema \xAB{topic}\xBB.",
+  tutorialOwlRecommend: "Recomiendo completar al menos {target} antes de seguir adelante.",
+  tutorialOwlClaimFree: "\xA1Resuelto sin ninguna afirmaci\xF3n! Todo desaf\xEDo resoluble se puede resolver as\xED.",
+  tutorialOwlClaimFreeAdvice: "Aun as\xED, prueba a a\xF1adir una en el siguiente desaf\xEDo.",
+  tutorialOwlStuck: "No s\xE9 si esta rama todav\xEDa se puede cerrar.",
+  tutorialOwlStuckAdvice: "Quiz\xE1 podr\xEDas deshacer unos movimientos y probar otro enfoque.",
+  tutorialOwlMultiDrop: "Soltar esto requiere varios movimientos.",
+  tutorialOwlMultiDropAdvice: "Pulsa Soltar otra vez.",
+  tutorialOwlMultiDestruct: "Destruir esto requiere varios movimientos.",
+  tutorialOwlMultiDestructAdvice: "Pulsa Destruir otra vez.",
+  tutorialOwlBasicsPlan: "Tiene cuatro lecciones cortas. \xA1Entra cuando quieras!",
+  tutorialOwlLogicPlan: "Te esperan cuatro lecciones: una por cada tipo de consecuencia.",
+  tutorialOwlOptimizationPlan: "La \xFAnica lecci\xF3n del cap\xEDtulo trata de afirmaciones arbitrarias.",
+  tutorialOwlSolvabilityPlan: "Solo quedan dos lecciones para la graduaci\xF3n.",
   tutorialSkipped: "\xA1Desaf\xEDo saltado! No ten\xEDa soluci\xF3n.",
   tutorialSkippedSolvable: "\xA1Desaf\xEDo saltado! Sin embargo, s\xED ten\xEDa soluci\xF3n.",
   tutorialComplete: "Graduaci\xF3n",
@@ -3835,18 +3910,43 @@ var cs = {
   tutorialOwlBasics: "V\xEDtej ve h\u0159e Sequent Fighter! V jej\xEDch v\xFDzv\xE1ch se zav\xEDraj\xED odvozovac\xED stromy slo\u017Een\xE9 ze sekvent\u016F. V t\xE9to prvn\xED kapitole se nau\u010D\xEDme z\xE1klady, bez kter\xFDch se hr\xE1t ned\xE1.",
   tutorialOwlLogic: "Te\u010F u\u017E um\xED\u0161 hr\xE1t. Druh\xE1 kapitola se no\u0159\xED do d\u016Fsledk\u016F ni\u010Den\xED v r\u016Fzn\xFDch situac\xEDch. Zn\xE1t d\u016Fsledky nazpam\u011B\u0165 ti pom\u016F\u017Ee vypilovat taktiku.",
   tutorialOwlClose: "V\u011Btev stromu lze zav\u0159\xEDt, kdy\u017E na obou stran\xE1ch br\xE1ny ( \u22A2 ) stoj\xED stejn\xE1 v\u011Bta.",
-  tutorialOwlCloseConstants: "Falsum ( \u22A5 ) zav\u0159e v\u011Btev, kdy\u017E stoj\xED samo vlevo od br\xE1ny ( \u22A2 ), a Verum ( \u22A4 ), kdy\u017E stoj\xED samo vpravo.",
+  tutorialOwlCloseConstants: "Falsum ( \u22A5 ) zav\u0159e v\u011Btev, kdy\u017E stoj\xED samo vlevo od br\xE1ny ( \u22A2 ), a verum ( \u22A4 ), kdy\u017E stoj\xED samo vpravo.",
   tutorialOwlDrop: "P\u0159ebyte\u010Dn\xE9 v\u011Bty na v\u011Btvi je nutn\xE9 pustit, ne\u017E ji lze zav\u0159\xEDt.",
   tutorialOwlSplit: "Zni\u010Den\xED v\u011Bty odlom\xED ze stromu jej\xED vn\u011Bj\u0161\xED spojku ( \u2192 \u2227 \u2228 \xAC ). Kam se zb\xFDvaj\xEDc\xED \u010D\xE1sti um\xEDst\xED, z\xE1vis\xED na situaci. V\xEDce o tom v dal\u0161\xED kapitole.",
-  tutorialOwlSideFlip: "Zni\u010Den\xED Negace ( \xAC ) p\u0159esune zb\xFDvaj\xEDc\xED v\u011Btu na druhou stranu br\xE1ny ( \u22A2 ).",
-  tutorialOwlCrossing: "Zni\u010Den\xED Implikace ( \u2192 ) na prav\xE9 stran\u011B br\xE1ny ( \u22A2 ) rozd\u011Bl\xED jej\xED \u010D\xE1sti na ob\u011B strany br\xE1ny.",
-  tutorialOwlBranching: "Zni\u010Den\xED Konjunkce ( \u2227 ) na prav\xE9 stran\u011B br\xE1ny ( \u22A2 ) nebo Disjunkce ( \u2228 ) na lev\xE9 rozv\u011Btv\xED strom.",
-  tutorialOwlBranchingCrossing: "Zni\u010Den\xED Implikace ( \u2192 ) na lev\xE9 stran\u011B br\xE1ny ( \u22A2 ) v\u011Btu rozt\u0159\xED\u0161t\xED: nejslo\u017Eit\u011Bj\u0161\xED z pravidel spojuje jak rozd\u011Blen\xED \u010D\xE1st\xED na ob\u011B strany br\xE1ny, tak v\u011Btven\xED stromu.",
+  tutorialOwlSideFlip: "Zni\u010Den\xED negace ( \xAC ) p\u0159esune zb\xFDvaj\xEDc\xED v\u011Btu na druhou stranu br\xE1ny ( \u22A2 ).",
+  tutorialOwlCrossing: "Zni\u010Den\xED implikace ( \u2192 ) na prav\xE9 stran\u011B br\xE1ny ( \u22A2 ) rozd\u011Bl\xED jej\xED \u010D\xE1sti na ob\u011B strany br\xE1ny.",
+  tutorialOwlBranching: "Zni\u010Den\xED konjunkce ( \u2227 ) na prav\xE9 stran\u011B br\xE1ny ( \u22A2 ) nebo disjunkce ( \u2228 ) na lev\xE9 rozv\u011Btv\xED strom.",
+  tutorialOwlBranchingCrossing: "Zni\u010Den\xED implikace ( \u2192 ) na lev\xE9 stran\u011B br\xE1ny ( \u22A2 ) v\u011Btu rozt\u0159\xED\u0161t\xED: nejslo\u017Eit\u011Bj\u0161\xED z pravidel spojuje jak rozd\u011Blen\xED \u010D\xE1st\xED na ob\u011B strany br\xE1ny, tak v\u011Btven\xED stromu.",
   tutorialOwlOptimization: "T\u0159et\xED kapitola se v\u011Bnuje optimalizaci \u0159e\u0161en\xED.",
   tutorialOwlClaims: "Na vybranou v\u011Btev m\u016F\u017Ee\u0161 p\u0159idat tvrzen\xED podle vlastn\xED volby. Tvrzen\xED nikdy neovlivn\xED \u0159e\u0161itelnost v\xFDzvy, ale n\u011Bkdy mohou \u0159e\u0161en\xED zkr\xE1tit.",
   tutorialOwlSolvability: "Ve \u010Dtvrt\xE9 kapitole se zam\xFD\u0161l\xEDme nad t\xEDm, jak\xE9 v\xFDzvy jsou \u0159e\u0161iteln\xE9. Rozpoznat \u0159e\u0161itelnost je z\xE1sadn\xED, pokud se pust\xED\u0161 do chaotick\xFDch ( \u{1F480} ) v\xFDzev.",
-  tutorialOwlUnsolvable: "Zde jsme z\xE1m\u011Brn\u011B vytvo\u0159ili ne\u0159e\u0161iteln\xE9 v\xFDzvy, a\u0165 se nau\u010D\xED\u0161 takovou rozpoznat. V\xFDzvu, kterou uzn\xE1\u0161 za ne\u0159e\u0161itelnou, lze p\u0159esko\u010Dit.",
+  tutorialOwlUnsolvable: "Vytvo\u0159ili jsme tu prapodivn\xE9 v\xFDzvy, a\u0165 m\u016F\u017Ee\u0161 p\u0159em\xEDtat o jejich \u0159e\u0161itelnosti.",
   tutorialOwlConjecture: "Na tomto p\xEDskovi\u0161ti si m\u016F\u017Ee\u0161 zkusit vy\u0159e\u0161it v\xFDzvy podle vlastn\xED volby.",
+  tutorialTaskClose: "Zkus zav\u0159\xEDt ka\u017Edou v\u011Btev tohoto stromu.",
+  tutorialTaskCloseConstants: "Zkus zav\u0159\xEDt ka\u017Edou v\u011Btev i tohoto stromu.",
+  tutorialTaskDrop: "Zkus pustit p\u0159ebyte\u010Dn\xE9 v\u011Bty a pak zav\u0159\xEDt v\u0161echny v\u011Btve.",
+  tutorialTaskSplit: "Zkus v\u011Bty zni\u010Dit a pak v\u011Btve zav\u0159\xEDt.",
+  tutorialTaskSideFlip: "Vyzkou\u0161ej si to: vy\u0159e\u0161 tuto v\xFDzvu.",
+  tutorialTaskCrossing: "Zkus vy\u0159e\u0161it tuhle.",
+  tutorialTaskBranching: "Zkus zav\u0159\xEDt ob\u011B nov\xE9 v\u011Btve.",
+  tutorialTaskBranchingCrossing: "Zkus vy\u0159e\u0161it tuto v\xFDzvu \u2014 v\u011Btev po v\u011Btvi.",
+  tutorialTaskClaims: "Zkus na n\u011Bkterou v\u011Btev p\u0159idat tvrzen\xED.",
+  tutorialTaskUnsolvable: "Vyzkou\u0161ej, jestli v\xFDzva jde vy\u0159e\u0161it. Pokud v\u011B\u0159\xED\u0161, \u017Ee \u0159e\u0161en\xED nem\xE1, p\u0159esko\u010D ji.",
+  tutorialTaskConjecture: "Zkus slo\u017Eit vlastn\xED v\u011Btu a dok\xE1zat ji.",
+  tutorialOwlProgress: "Dobr\xE1 pr\xE1ce! To byla v\xFDzva \u010D\xEDslo {count} t\xE9matu \u201E{topic}\u201C.",
+  tutorialOwlRecommend: "Doporu\u010Duji jich zvl\xE1dnout alespo\u0148 {target}, ne\u017E bude\u0161 pokra\u010Dovat.",
+  tutorialOwlClaimFree: "Vy\u0159e\u0161eno bez jedin\xE9ho tvrzen\xED! Ka\u017Edou \u0159e\u0161itelnou v\xFDzvu jde vy\u0159e\u0161it i bez nich.",
+  tutorialOwlClaimFreeAdvice: "P\u0159esto zkus u dal\u0161\xED v\xFDzvy jedno p\u0159idat.",
+  tutorialOwlStuck: "Nev\xEDm jist\u011B, jestli tuhle v\u011Btev je\u0161t\u011B jde zav\u0159\xEDt.",
+  tutorialOwlStuckAdvice: "Mo\u017En\xE1 zkus p\xE1r tah\u016F vr\xE1tit a vyzkou\u0161et jin\xFD p\u0159\xEDstup.",
+  tutorialOwlMultiDrop: "Tohle pu\u0161t\u011Bn\xED vy\u017Eaduje n\u011Bkolik tah\u016F.",
+  tutorialOwlMultiDropAdvice: "Stiskni Pustit znovu.",
+  tutorialOwlMultiDestruct: "Tohle zni\u010Den\xED vy\u017Eaduje n\u011Bkolik tah\u016F.",
+  tutorialOwlMultiDestructAdvice: "Stiskni Zni\u010Dit znovu.",
+  tutorialOwlBasicsPlan: "M\xE1 \u010Dty\u0159i kr\xE1tk\xE9 lekce. Vstup, a\u017E bude\u0161 cht\xEDt!",
+  tutorialOwlLogicPlan: "\u010Cekaj\xED t\u011B \u010Dty\u0159i lekce \u2014 jedna pro ka\u017Ed\xFD druh d\u016Fsledku.",
+  tutorialOwlOptimizationPlan: "Jedin\xE1 lekce kapitoly se v\u011Bnuje libovoln\xFDm tvrzen\xEDm.",
+  tutorialOwlSolvabilityPlan: "Do promoce zb\xFDvaj\xED u\u017E jen dv\u011B lekce.",
   tutorialSkipped: "V\xFDzva p\u0159esko\u010Dena! Nem\u011Bla \u0159e\u0161en\xED.",
   tutorialSkippedSolvable: "V\xFDzva p\u0159esko\u010Dena! \u0158e\u0161en\xED ale m\u011Bla.",
   tutorialComplete: "Promoce",
@@ -3955,18 +4055,43 @@ var pl = {
   tutorialOwlBasics: "Witaj w grze Sequent Fighter! W jej wyzwaniach zamyka si\u0119 drzewa wnioskowania zbudowane z sekwent\xF3w. W tym pierwszym rozdziale poznajemy podstawy niezb\u0119dne do gry.",
   tutorialOwlLogic: "Teraz ju\u017C umiesz gra\u0107. Drugi rozdzia\u0142 zag\u0142\u0119bia si\u0119 w skutki niszczenia w r\xF3\u017Cnych sytuacjach. Znajomo\u015B\u0107 skutk\xF3w na pami\u0119\u0107 pomo\u017Ce ci wyostrzy\u0107 taktyk\u0119.",
   tutorialOwlClose: "Ga\u0142\u0105\u017A drzewa mo\u017Cna zamkn\u0105\u0107, gdy po obu stronach bramy ( \u22A2 ) stoi to samo zdanie.",
-  tutorialOwlCloseConstants: "Falsum ( \u22A5 ) zamyka ga\u0142\u0105\u017A, gdy stoi samo po lewej stronie bramy ( \u22A2 ), i Verum ( \u22A4 ), gdy stoi samo po prawej.",
+  tutorialOwlCloseConstants: "Falsum ( \u22A5 ) zamyka ga\u0142\u0105\u017A, gdy stoi samo po lewej stronie bramy ( \u22A2 ), i verum ( \u22A4 ), gdy stoi samo po prawej.",
   tutorialOwlDrop: "Zb\u0119dne zdania na ga\u0142\u0119zi trzeba upu\u015Bci\u0107, zanim da si\u0119 j\u0105 zamkn\u0105\u0107.",
   tutorialOwlSplit: "Zniszczenie zdania odrywa od drzewa jego zewn\u0119trzny sp\xF3jnik ( \u2192 \u2227 \u2228 \xAC ). Gdzie trafiaj\u0105 pozosta\u0142e cz\u0119\u015Bci, zale\u017Cy od sytuacji. Wi\u0119cej o tym w nast\u0119pnym rozdziale.",
-  tutorialOwlSideFlip: "Zniszczenie Negacji ( \xAC ) przenosi pozosta\u0142e zdanie na drug\u0105 stron\u0119 bramy ( \u22A2 ).",
-  tutorialOwlCrossing: "Zniszczenie Implikacji ( \u2192 ) po prawej stronie bramy ( \u22A2 ) rozdziela jej cz\u0119\u015Bci na obie strony bramy.",
-  tutorialOwlBranching: "Zniszczenie Koniunkcji ( \u2227 ) po prawej stronie bramy ( \u22A2 ) lub Alternatywy ( \u2228 ) po lewej rozga\u0142\u0119zia drzewo.",
-  tutorialOwlBranchingCrossing: "Zniszczenie Implikacji ( \u2192 ) po lewej stronie bramy ( \u22A2 ) rozbija zdanie: najbardziej z\u0142o\u017Cona z regu\u0142 \u0142\u0105czy rozdzielenie cz\u0119\u015Bci na obie strony bramy i rozga\u0142\u0119zienie drzewa.",
+  tutorialOwlSideFlip: "Zniszczenie negacji ( \xAC ) przenosi pozosta\u0142e zdanie na drug\u0105 stron\u0119 bramy ( \u22A2 ).",
+  tutorialOwlCrossing: "Zniszczenie implikacji ( \u2192 ) po prawej stronie bramy ( \u22A2 ) rozdziela jej cz\u0119\u015Bci na obie strony bramy.",
+  tutorialOwlBranching: "Zniszczenie koniunkcji ( \u2227 ) po prawej stronie bramy ( \u22A2 ) lub alternatywy ( \u2228 ) po lewej rozga\u0142\u0119zia drzewo.",
+  tutorialOwlBranchingCrossing: "Zniszczenie implikacji ( \u2192 ) po lewej stronie bramy ( \u22A2 ) rozbija zdanie: najbardziej z\u0142o\u017Cona z regu\u0142 \u0142\u0105czy rozdzielenie cz\u0119\u015Bci na obie strony bramy i rozga\u0142\u0119zienie drzewa.",
   tutorialOwlOptimization: "Trzeci rozdzia\u0142 dotyczy optymalizacji rozwi\u0105za\u0144.",
   tutorialOwlClaims: "Do wybranej ga\u0142\u0119zi mo\u017Cesz doda\u0107 twierdzenie w\u0142asnego wyboru. Twierdzenia nigdy nie wp\u0142ywaj\u0105 na rozwi\u0105zywalno\u015B\u0107 wyzwania, ale czasem mog\u0105 skr\xF3ci\u0107 rozwi\u0105zanie.",
   tutorialOwlSolvability: "W czwartym rozdziale zastanawiamy si\u0119, jakie wyzwania da si\u0119 rozwi\u0105za\u0107. Rozpoznawanie rozwi\u0105zywalno\u015Bci jest istotne, je\u015Bli mierzysz si\u0119 z chaotycznymi ( \u{1F480} ) wyzwaniami.",
-  tutorialOwlUnsolvable: "Umie\u015Bcili\u015Bmy tu celowo nierozwi\u0105zywalne wyzwania, dzi\u0119ki czemu nauczysz si\u0119 je rozpoznawa\u0107. Wyzwanie, kt\xF3re uznasz za nierozwi\u0105zywalne, mo\u017Cna pomin\u0105\u0107.",
+  tutorialOwlUnsolvable: "Stworzyli\u015Bmy tu osobliwe wyzwania, przy kt\xF3rych mo\u017Cesz rozwa\u017Ca\u0107 ich rozwi\u0105zywalno\u015B\u0107.",
   tutorialOwlConjecture: "W tej piaskownicy mo\u017Cesz spr\xF3bowa\u0107 rozwi\u0105za\u0107 wyzwania w\u0142asnego wyboru.",
+  tutorialTaskClose: "Spr\xF3buj zamkn\u0105\u0107 ka\u017Cd\u0105 ga\u0142\u0105\u017A tego drzewa.",
+  tutorialTaskCloseConstants: "Spr\xF3buj zamkn\u0105\u0107 ka\u017Cd\u0105 ga\u0142\u0105\u017A tak\u017Ce tego drzewa.",
+  tutorialTaskDrop: "Spr\xF3buj upu\u015Bci\u0107 zb\u0119dne zdania, a potem zamkn\u0105\u0107 wszystkie ga\u0142\u0119zie.",
+  tutorialTaskSplit: "Spr\xF3buj zniszczy\u0107 zdania, a potem zamkn\u0105\u0107 ga\u0142\u0119zie.",
+  tutorialTaskSideFlip: "Wypr\xF3buj to: rozwi\u0105\u017C to wyzwanie.",
+  tutorialTaskCrossing: "Spr\xF3buj rozwi\u0105za\u0107 to wyzwanie.",
+  tutorialTaskBranching: "Spr\xF3buj zamkn\u0105\u0107 obie nowe ga\u0142\u0119zie.",
+  tutorialTaskBranchingCrossing: "Spr\xF3buj rozwi\u0105za\u0107 to wyzwanie \u2014 ga\u0142\u0105\u017A po ga\u0142\u0119zi.",
+  tutorialTaskClaims: "Spr\xF3buj doda\u0107 twierdzenie do kt\xF3rej\u015B ga\u0142\u0119zi.",
+  tutorialTaskUnsolvable: "Sprawd\u017A, czy wyzwanie da si\u0119 rozwi\u0105za\u0107. Pomi\u0144 je, je\u015Bli uwa\u017Casz, \u017Ce jest nierozwi\u0105zywalne.",
+  tutorialTaskConjecture: "Spr\xF3buj u\u0142o\u017Cy\u0107 w\u0142asne zdanie i je udowodni\u0107.",
+  tutorialOwlProgress: "Dobra robota! To by\u0142o wyzwanie numer {count} w temacie \u201E{topic}\u201D.",
+  tutorialOwlRecommend: "Polecam zaliczy\u0107 co najmniej {target}, zanim ruszysz dalej.",
+  tutorialOwlClaimFree: "Rozwi\u0105zane bez ani jednego twierdzenia! Ka\u017Cde rozwi\u0105zywalne wyzwanie da si\u0119 rozwi\u0105za\u0107 i bez nich.",
+  tutorialOwlClaimFreeAdvice: "Mimo to spr\xF3buj doda\u0107 twierdzenie w nast\u0119pnym wyzwaniu.",
+  tutorialOwlStuck: "Nie wiem na pewno, czy t\u0119 ga\u0142\u0105\u017A da si\u0119 jeszcze zamkn\u0105\u0107.",
+  tutorialOwlStuckAdvice: "Mo\u017Ce cofnij kilka ruch\xF3w i spr\xF3buj innego podej\u015Bcia.",
+  tutorialOwlMultiDrop: "To upuszczenie wymaga kilku ruch\xF3w.",
+  tutorialOwlMultiDropAdvice: "Naci\u015Bnij Upu\u015B\u0107 jeszcze raz.",
+  tutorialOwlMultiDestruct: "To zniszczenie wymaga kilku ruch\xF3w.",
+  tutorialOwlMultiDestructAdvice: "Naci\u015Bnij Zniszcz jeszcze raz.",
+  tutorialOwlBasicsPlan: "Ma cztery kr\xF3tkie lekcje. Wejd\u017A, kiedy zechcesz!",
+  tutorialOwlLogicPlan: "Przed tob\u0105 cztery lekcje \u2014 po jednej na ka\u017Cdy rodzaj skutku.",
+  tutorialOwlOptimizationPlan: "Jedyna lekcja rozdzia\u0142u dotyczy dowolnych twierdze\u0144.",
+  tutorialOwlSolvabilityPlan: "Do zako\u0144czenia zosta\u0142y ju\u017C tylko dwie lekcje.",
   tutorialSkipped: "Wyzwanie pomini\u0119te! Nie mia\u0142o rozwi\u0105zania.",
   tutorialSkippedSolvable: "Wyzwanie pomini\u0119te! Mia\u0142o jednak rozwi\u0105zanie.",
   tutorialComplete: "Zako\u0144czenie",
@@ -3985,6 +4110,64 @@ var messages = {
   es,
   fi,
   pl
+};
+var notationStems = {
+  cs: [
+    "br\xE1n",
+    "spojk",
+    "negac",
+    "implikac",
+    "konjunkc",
+    "disjunkc",
+    "falsum",
+    "verum",
+    "chaotick"
+  ],
+  en: [
+    "gate",
+    "connective",
+    "negation",
+    "implication",
+    "conjunction",
+    "disjunction",
+    "falsum",
+    "verum",
+    "chaotic"
+  ],
+  es: [
+    "puerta",
+    "conectivo",
+    "negaci",
+    "implicaci",
+    "conjunci",
+    "disyunci",
+    "falsum",
+    "verum",
+    "ca\xF3tic"
+  ],
+  fi: [
+    "portti",
+    "porti",
+    "konnektiiv",
+    "negaatio",
+    "implikaatio",
+    "konjunktio",
+    "disjunktio",
+    "falsum",
+    "verum",
+    "kaootti"
+  ],
+  pl: [
+    "bram",
+    "sp\xF3jnik",
+    "negacj",
+    "implikacj",
+    "koniunkcj",
+    "alternatyw",
+    "falsum",
+    "verum",
+    "chaotyczn"
+  ]
 };
 var detectLocale = () => {
   const lang = navigator.language.split("-")[0] ?? "en";
@@ -7469,6 +7652,2026 @@ var mountSecret = (container, navigate2) => {
   }, rerender: render };
 };
 
+// src/model/closure.ts
+var sidedRules = (p) => fold(p, {
+  atom: () => ({ left: [], right: [] }),
+  falsum: () => ({ left: ["f"], right: [] }),
+  verum: () => ({ left: [], right: ["v"] }),
+  negation: (body) => ({
+    left: ["nl", ...body.right],
+    right: ["nr", ...body.left]
+  }),
+  implication: (antecedent, consequent) => ({
+    left: ["il", ...antecedent.right, ...consequent.left],
+    right: ["ir", ...antecedent.left, ...consequent.right]
+  }),
+  conjunction: (leftConjunct, rightConjunct) => ({
+    left: ["cl", ...leftConjunct.left, ...rightConjunct.left],
+    right: ["cr", ...leftConjunct.right, ...rightConjunct.right]
+  }),
+  disjunction: (leftDisjunct, rightDisjunct) => ({
+    left: ["dl", ...leftDisjunct.left, ...rightDisjunct.left],
+    right: ["dr", ...leftDisjunct.right, ...rightDisjunct.right]
+  })
+});
+var reachableRules = (s) => uniq2([
+  ...s.antecedent.flatMap((p) => sidedRules(p).left),
+  ...s.succedent.flatMap((p) => sidedRules(p).right)
+]);
+
+// src/model/presolve.ts
+var CLOSINGS = /* @__PURE__ */ new Set(["i", "f", "v"]);
+var NON_STRUCTURAL = /* @__PURE__ */ new Set([
+  "nl",
+  "nr",
+  "cl",
+  "cr",
+  "dl",
+  "dr",
+  "il",
+  "ir",
+  "cut"
+]);
+var pruneClosings = (d) => {
+  if (d.kind === "premise") return d;
+  if (CLOSINGS.has(d.rule)) return premise(d.result);
+  return { ...d, deps: d.deps.map(pruneClosings) };
+};
+var containsNonStructural = (d) => d.kind === "transformation" && (NON_STRUCTURAL.has(d.rule) || d.deps.some(containsNonStructural));
+var pruneStructural = (d) => {
+  if (d.kind === "premise") return d;
+  if (!containsNonStructural(d)) return premise(d.result);
+  return { ...d, deps: d.deps.map(pruneStructural) };
+};
+
+// src/solver/bruteStructure0.ts
+var seqKey = (s) => JSON.stringify([s.antecedent, s.succedent]);
+var buildStructurePath = (d, rules3, p) => {
+  if (equals3(d.result, p.result)) {
+    return proofUsing(d.result, p.deps, p.rule);
+  }
+  const target = seqKey(p.result);
+  const parent = /* @__PURE__ */ new Map();
+  const startKey = seqKey(d.result);
+  const queue = [d];
+  const visited = /* @__PURE__ */ new Set([startKey]);
+  const nodes = /* @__PURE__ */ new Map([[startKey, d]]);
+  let found = false;
+  outer: while (queue.length > 0) {
+    const current2 = queue.shift();
+    if (!current2) break;
+    const currentKey = seqKey(current2.result);
+    for (const [rId, rule] of entries(reverseStructure0)) {
+      const ruleId = rId;
+      if (!includes(rules3, ruleId)) continue;
+      const reversed = rule.tryReverse(current2);
+      if (!reversed || reversed.kind !== "transformation") continue;
+      const [dep] = reversed.deps;
+      if (!dep || dep.kind !== "premise") continue;
+      const depKey = seqKey(dep.result);
+      if (visited.has(depKey)) continue;
+      visited.add(depKey);
+      nodes.set(depKey, dep);
+      parent.set(depKey, { parentKey: currentKey, ruleId });
+      if (depKey === target) {
+        found = true;
+        break outer;
+      }
+      queue.push(dep);
+    }
+  }
+  if (!found) return null;
+  let proof = proofUsing(p.result, p.deps, p.rule);
+  let key = target;
+  while (key !== startKey) {
+    const edge = parent.get(key);
+    if (!edge) break;
+    const parentNode = nodes.get(edge.parentKey);
+    if (!parentNode) break;
+    proof = proofUsing(parentNode.result, [proof], edge.ruleId);
+    key = edge.parentKey;
+  }
+  return proof;
+};
+var bruteStructure0 = (d, rules3, p) => function* () {
+  const result = buildStructurePath(d, rules3, p);
+  if (result !== null) {
+    yield result;
+  }
+};
+
+// src/solver/brute.ts
+var hypoWeaken = (d) => function* () {
+  const farLeft = d.result.antecedent.at(0);
+  const farRight = d.result.succedent.at(-1);
+  if (farLeft && farRight) {
+    yield premise(sequent([farLeft], [farRight]));
+  }
+  if (farLeft) {
+    yield premise(sequent([farLeft], []));
+  }
+  if (farRight) {
+    yield premise(sequent([], [farRight]));
+  }
+};
+var bruteWeaken0 = (d, rules3, p) => function* () {
+  if (equals3(d.result, p.result)) {
+    yield proofUsing(d.result, p.deps, p.rule);
+    return;
+  }
+  const swl2 = "swl";
+  if (includes(rules3, swl2) && d.result.antecedent.length > p.result.antecedent.length && reverseStructure0[swl2].isResultDerivation(d)) {
+    const step = reverseStructure0.swl.reverse(d);
+    const [dep] = step.deps;
+    if (dep.kind === "premise") {
+      yield* map(
+        bruteWeaken0(dep, rules3, p),
+        (depProof) => proofUsing(step.result, [depProof], swl2)
+      )();
+    }
+    return;
+  }
+  const swr2 = "swr";
+  if (includes(rules3, swr2) && d.result.succedent.length > p.result.succedent.length && reverseStructure0[swr2].isResultDerivation(d)) {
+    const step = reverseStructure0.swr.reverse(d);
+    const [dep] = step.deps;
+    if (dep.kind === "premise") {
+      yield* map(
+        bruteWeaken0(dep, rules3, p),
+        (depProof) => proofUsing(step.result, [depProof], swr2)
+      )();
+    }
+    return;
+  }
+};
+var bruteAxiom0 = (d, rules3, limit) => function* () {
+  for (const rule of Object.values(reverseAxiom0)) {
+    if (!includes(rules3, rule.id)) {
+      continue;
+    }
+    const result = rule.tryReverse(d);
+    if (!result) {
+      continue;
+    }
+    yield* brute0(result, rules3, limit)();
+  }
+};
+var candidateConnectives = (rules3, sequent2) => {
+  const kinds = /* @__PURE__ */ new Set();
+  for (const [rId, rule] of entries(reverse0)) {
+    if (!includes(rules3, rId)) continue;
+    for (const kind of rule.connectives) kinds.add(kind);
+  }
+  for (const p of [...sequent2.antecedent, ...sequent2.succedent])
+    for (const kind of connectives(p)) kinds.add(kind);
+  return kinds;
+};
+var formulasOfOpCount = (opCount, atoms2, connectives2) => function* () {
+  if (opCount === 0) {
+    for (const a87 of atoms2) yield atom(a87);
+    if (connectives2.has("falsum")) yield falsum;
+    if (connectives2.has("verum")) yield verum;
+    return;
+  }
+  if (connectives2.has("negation")) {
+    for (const p of formulasOfOpCount(opCount - 1, atoms2, connectives2)()) {
+      yield negation(p);
+    }
+  }
+  for (let leftOps = 0; leftOps < opCount; leftOps += 1) {
+    const rightOps = opCount - 1 - leftOps;
+    for (const l of formulasOfOpCount(leftOps, atoms2, connectives2)()) {
+      for (const r of formulasOfOpCount(rightOps, atoms2, connectives2)()) {
+        if (connectives2.has("implication")) yield implication(l, r);
+        if (connectives2.has("conjunction")) yield conjunction(l, r);
+        if (connectives2.has("disjunction")) yield disjunction(l, r);
+      }
+    }
+  }
+};
+var bruteLogic1 = (d, rules3, limit) => function* () {
+  const applicableRules3 = entries(reverse1).filter(
+    ([rId]) => includes(rules3, rId)
+  );
+  if (applicableRules3.length === 0) return;
+  const atoms2 = uniq2([
+    ...d.result.antecedent.flatMap(atoms),
+    ...d.result.succedent.flatMap(atoms)
+  ]);
+  const connectives2 = candidateConnectives(rules3, d.result);
+  for (let opCount = 0; opCount <= limit * 2; opCount += 1) {
+    for (const formula of formulasOfOpCount(opCount, atoms2, connectives2)()) {
+      for (const [, rule] of applicableRules3) {
+        const result = rule.tryReverse(formula)(d);
+        if (!result) continue;
+        yield* brute0(result, rules3, limit)();
+      }
+    }
+  }
+};
+var bruteLogic0 = (d, rules3, limit) => function* () {
+  yield* flatMap(
+    hypoWeaken(d),
+    (hypo) => flatMap(
+      bruteAxiom0(hypo, rules3, limit),
+      (h) => bruteWeaken0(d, rules3, h)
+    )
+  )();
+  for (const rule of Object.values(reverseLogic0)) {
+    if (!includes(rules3, rule.id)) {
+      continue;
+    }
+    const result = rule.tryReverse(d);
+    if (!result) {
+      continue;
+    }
+    yield* brute0(result, rules3, limit)();
+  }
+  yield* bruteLogic1(d, rules3, limit)();
+};
+var hypoStructure = (d, rules3) => function* () {
+  const visited = /* @__PURE__ */ new Set();
+  const queue = [d];
+  while (queue.length > 0) {
+    const current2 = queue.shift();
+    if (!current2) break;
+    const key = seqKey(current2.result);
+    if (visited.has(key)) continue;
+    visited.add(key);
+    yield current2;
+    for (const [rId, rule] of entries(reverseStructure0)) {
+      const ruleId = rId;
+      if (!includes(rules3, ruleId)) continue;
+      const reversed = rule.tryReverse(current2);
+      if (!reversed || reversed.kind !== "transformation") continue;
+      const [dep] = reversed.deps;
+      if (!dep || dep.kind !== "premise") continue;
+      queue.push(dep);
+    }
+  }
+};
+var brute0Premise = (d, rules3, limit) => function* () {
+  if (limit < 1) {
+    return;
+  }
+  if (!isTautology2(d.result)) {
+    return;
+  }
+  yield* flatMap(
+    hypoStructure(d, rules3),
+    (hypo) => flatMap(
+      bruteLogic0(hypo, rules3, limit),
+      (h) => bruteStructure0(d, rules3, h)
+    )
+  )();
+};
+var brute0Transformation = (d, rules3, limit) => function* () {
+  const depProofs = sequence(
+    d.deps.map((dep) => brute0(dep, rules3, limit - 1))
+  );
+  yield* map(
+    depProofs,
+    (proofs) => proofUsing(d.result, proofs, d.rule)
+  )();
+};
+var brute0 = (d, rules3, limit) => function* () {
+  switch (d.kind) {
+    case "premise":
+      yield* brute0Premise(d, rules3, limit)();
+      break;
+    case "transformation": {
+      const rule = d.rule;
+      if (includes(rules3, rule)) {
+        yield* brute0Transformation({ ...d, rule }, rules3, limit)();
+      }
+      break;
+    }
+  }
+};
+var tryAtDepth = (c, limit) => {
+  const proofs = head2(brute0(premise(c.goal), c.rules, limit));
+  return isNonEmptyArray(proofs) ? proofs[0] : void 0;
+};
+var bruteLimit = (c, maxLimit) => {
+  for (let limit = 0; limit <= maxLimit; limit += 1) {
+    const proof = tryAtDepth(c, limit);
+    if (proof) return [proof];
+  }
+  return [];
+};
+function* bruteSearch(c) {
+  for (let limit = 0; ; limit += 1) {
+    const proof = tryAtDepth(c, limit);
+    if (proof) return [proof, limit];
+    yield;
+  }
+}
+var brute = (c) => {
+  const gen = bruteSearch(c);
+  while (true) {
+    const { done, value } = gen.next();
+    if (done === true) return value;
+  }
+};
+
+// src/random/challenge.ts
+var RULES = rules2;
+var SOLVER_RULES = RULES.filter(
+  (r) => !isReverseId1(r)
+);
+var STRUCTURAL_RULES = /* @__PURE__ */ new Set([
+  "swl",
+  "swr",
+  "sRotLB",
+  "sRotRB"
+]);
+var countNonStructural = (d) => {
+  if (d.kind === "premise") return 0;
+  const self = STRUCTURAL_RULES.has(d.rule) ? 0 : 1;
+  return self + d.deps.reduce((sum, dep) => sum + countNonStructural(dep), 0);
+};
+
+// src/random/tutorial.ts
+var tutorialRules = rules2.filter(
+  (r) => r !== "cut"
+);
+var ATOMS = {
+  p: 3,
+  q: 2,
+  r: 1,
+  s: 0,
+  u: 0,
+  v: 0,
+  falsum: 0,
+  verum: 0
+};
+var NONE = {
+  negation: 0,
+  implication: 0,
+  conjunction: 0,
+  disjunction: 0
+};
+var P = atom("p");
+var Q = atom("q");
+var logicNotches = [
+  {
+    // Same-side split: conjunction-left and disjunction-right — two pieces
+    // that stay put. With no gate-flipping connective in the weights, the
+    // per-side weights alone keep every candidate inside the clamp.
+    glyphs: "\u2227 \u2228",
+    featured: ["cl", "dr"],
+    taught: ["cl", "dr"],
+    anteConnectives: { ...NONE, conjunction: 1 },
+    succConnectives: { ...NONE, disjunction: 1 },
+    symbols: ATOMS,
+    maxFormulaSize: 2,
+    minAnte: 0,
+    fallback: sequent([conjunction(P, Q)], [P])
+  },
+  {
+    // Whole-formula gate-flip: negation on either side. From here on the
+    // flip means any taught connective can legally sit on either side when
+    // negations carry it to its legal polarity (e.g. ¬(A∧B) on the RIGHT
+    // flips the conjunction to the left, where cl is taught) — so both
+    // sides weight every taught connective and the closure filter rejects
+    // the wrong-polarity placements.
+    glyphs: "\xAC",
+    featured: ["nl", "nr"],
+    taught: ["cl", "dr", "nl", "nr"],
+    anteConnectives: { ...NONE, conjunction: 1, disjunction: 1, negation: 2 },
+    succConnectives: { ...NONE, conjunction: 1, disjunction: 1, negation: 2 },
+    symbols: ATOMS,
+    maxFormulaSize: 2,
+    minAnte: 0,
+    fallback: sequent([P], [negation(negation(P))])
+  },
+  {
+    // Cross-gate split: implication-right — split and one piece hops the
+    // gate. The bridge to real `⊢ A→B` goals (implication weight covers the
+    // antecedent too: ¬(A→B) on the left is legal via the flip).
+    glyphs: "\u2192",
+    featured: ["ir"],
+    taught: ["cl", "dr", "nl", "nr", "ir"],
+    anteConnectives: {
+      conjunction: 1,
+      disjunction: 1,
+      negation: 1,
+      implication: 1
+    },
+    succConnectives: {
+      conjunction: 1,
+      disjunction: 1,
+      negation: 1,
+      implication: 2
+    },
+    symbols: ATOMS,
+    maxFormulaSize: 2,
+    minAnte: 0,
+    fallback: sequent([], [implication(P, P)])
+  },
+  {
+    // Branching split: conjunction-right and disjunction-left — the proof
+    // forks. Same mirror as subchapter 1, now on the branching sides.
+    glyphs: "\u2227 \u2228",
+    featured: ["cr", "dl"],
+    taught: ["cl", "dr", "nl", "nr", "ir", "cr", "dl"],
+    anteConnectives: {
+      conjunction: 1,
+      disjunction: 1,
+      negation: 1,
+      implication: 1
+    },
+    succConnectives: {
+      conjunction: 1,
+      disjunction: 1,
+      negation: 1,
+      implication: 1
+    },
+    symbols: ATOMS,
+    maxFormulaSize: 2,
+    minAnte: 0,
+    fallback: sequent([disjunction(P, Q)], [disjunction(Q, P)])
+  },
+  {
+    // The capstone: implication-left — gate-crossing and branching combined.
+    // Its simplest isolating goals are the modus-ponens shape `p→q, p ⊢ q`.
+    glyphs: "\u2192",
+    featured: ["il"],
+    taught: ["cl", "dr", "nl", "nr", "ir", "cr", "dl", "il"],
+    anteConnectives: {
+      conjunction: 1,
+      disjunction: 1,
+      negation: 1,
+      implication: 3
+    },
+    succConnectives: {
+      conjunction: 1,
+      disjunction: 1,
+      negation: 1,
+      implication: 1
+    },
+    symbols: ATOMS,
+    maxFormulaSize: 2,
+    minAnte: 1,
+    fallback: sequent([implication(P, Q), P], [Q])
+  }
+];
+var constantsNotch = {
+  glyphs: "\u22A5 \u22A4",
+  featured: ["f", "v"],
+  taught: ["cl", "dr", "nl", "nr", "ir", "cr", "dl", "f", "v"],
+  anteConnectives: {
+    conjunction: 1,
+    disjunction: 1,
+    negation: 1,
+    implication: 1
+  },
+  succConnectives: {
+    conjunction: 1,
+    disjunction: 1,
+    negation: 1,
+    implication: 1
+  },
+  symbols: { ...ATOMS, falsum: 2, verum: 2 },
+  maxFormulaSize: 2,
+  minAnte: 0,
+  fallback: sequent([disjunction(falsum, P)], [P])
+};
+var MAX_LIMIT = 3;
+var MAX_TRIES = 1e3;
+var MAX_FORMULAS = 3;
+var randomCount = () => Math.floor(Math.random() * 3);
+var makeFormula = (weights, notch) => {
+  const size = Math.floor(Math.random() * (notch.maxFormulaSize + 1));
+  return randomWeighted(size, weights, notch.symbols)();
+};
+var subformulas = (f2) => {
+  switch (f2.kind) {
+    case "atom":
+    case "falsum":
+    case "verum":
+      return [f2];
+    case "negation":
+      return [f2, ...subformulas(f2.negand)];
+    case "implication":
+      return [f2, ...subformulas(f2.antecedent), ...subformulas(f2.consequent)];
+    case "conjunction":
+      return [
+        f2,
+        ...subformulas(f2.leftConjunct),
+        ...subformulas(f2.rightConjunct)
+      ];
+    case "disjunction":
+      return [
+        f2,
+        ...subformulas(f2.leftDisjunct),
+        ...subformulas(f2.rightDisjunct)
+      ];
+  }
+};
+var pick = (xs) => xs[Math.floor(Math.random() * xs.length)];
+var asResult = (solution87, formulasTried) => ({
+  challenge: { rules: tutorialRules, goal: solution87.result, solution: solution87 },
+  nonStructuralCount: countNonStructural(solution87),
+  bypassed: false,
+  formulasTried
+});
+var fallbackChallenge = (notch) => {
+  const [solution87] = brute({ goal: notch.fallback, rules: tutorialRules });
+  return asResult(solution87, 0);
+};
+var generateSequentChallenge = (notch) => {
+  for (let tries = 0; tries < MAX_TRIES; tries += 1) {
+    const nAnte = Math.max(notch.minAnte, randomCount());
+    const nSucc = randomCount();
+    if (nAnte + nSucc === 0 || nAnte + nSucc > MAX_FORMULAS) continue;
+    const antecedent = Array.from(
+      { length: nAnte },
+      () => makeFormula(notch.anteConnectives, notch)
+    );
+    const borrowPool = antecedent.flatMap(subformulas);
+    const succedent = Array.from({ length: nSucc }, () => {
+      const borrowed = borrowPool.length > 0 && Math.random() < 0.5 ? pick(borrowPool) : void 0;
+      return borrowed ?? makeFormula(notch.succConnectives, notch);
+    });
+    const goal87 = sequent(antecedent, succedent);
+    const closure = reachableRules(goal87);
+    if (!closure.every((r) => notch.taught.includes(r))) continue;
+    if (!notch.featured.some((r) => closure.includes(r))) continue;
+    if (!isTautology2(goal87)) continue;
+    const [solution87] = bruteLimit({ goal: goal87, rules: tutorialRules }, MAX_LIMIT);
+    if (solution87 === void 0) continue;
+    const dodgeRules = tutorialRules.filter((r) => !notch.featured.includes(r));
+    const [dodge] = bruteLimit({ goal: goal87, rules: dodgeRules }, MAX_LIMIT);
+    if (dodge !== void 0) continue;
+    return asResult(solution87, tries + 1);
+  }
+  return fallbackChallenge(notch);
+};
+var DEMO_GOAL = sequent(
+  [conjunction(P, Q)],
+  [conjunction(Q, P)]
+);
+var generateDemoChallenge = () => {
+  const [solution87] = brute({ goal: DEMO_GOAL, rules: tutorialRules });
+  return asResult(solution87, 0);
+};
+var frontierLeaves = (start) => openBranches(start).flatMap((path) => {
+  const node = subDerivation(start, path);
+  return node === null ? [] : [node.result];
+});
+var isAtomic = (seq) => [...seq.antecedent, ...seq.succedent].every((f2) => f2.kind === "atom");
+var needsDrop = (seq) => seq.antecedent.length + seq.succedent.length > 2;
+var needsRotation = (seq) => {
+  const keepLeft = seq.antecedent[0];
+  const keepRight = seq.succedent[seq.succedent.length - 1];
+  if (keepLeft === void 0 || keepRight === void 0) return false;
+  return !equals(keepLeft, keepRight);
+};
+var BASICS_TRIES = 50;
+var isConstantClose = (seq) => seq.antecedent.length === 1 && seq.succedent.length === 0 && seq.antecedent[0]?.kind === "falsum" || seq.antecedent.length === 0 && seq.succedent.length === 1 && seq.succedent[0]?.kind === "verum";
+var isCompositeClose = (seq) => seq.antecedent.some((f2) => f2.kind !== "atom");
+var TEMPLATE_WEIGHTS = {
+  negation: 1,
+  implication: 0,
+  conjunction: 1,
+  disjunction: 1
+};
+var templateFormula = (notch, compound) => {
+  for (; ; ) {
+    const size = compound ? Math.floor(Math.random() * notch.maxFormulaSize) + 1 : Math.random() < 0.8 ? 0 : Math.floor(Math.random() * notch.maxFormulaSize) + 1;
+    const f2 = randomWeighted(size, TEMPLATE_WEIGHTS, notch.symbols)();
+    if (!compound || f2.kind !== "atom") return f2;
+  }
+};
+var identityTemplate = (notch) => {
+  const compound = templateFormula(notch, true);
+  const other = templateFormula(notch, false);
+  const [a87, b] = Math.random() < 0.5 ? [compound, other] : [other, compound];
+  const goal87 = Math.random() < 0.5 ? sequent([a87, b], [conjunction(a87, b)]) : sequent([disjunction(a87, b)], [a87, b]);
+  const closure = reachableRules(goal87);
+  if (!closure.every((r) => logicNotches[3].taught.includes(r))) return null;
+  const [solution87] = bruteLimit({ goal: goal87, rules: tutorialRules }, MAX_LIMIT);
+  return solution87 === void 0 ? null : asResult(solution87, 1);
+};
+var generateBasicsChallenge = (kind) => {
+  const source = kind === "constants" ? constantsNotch : logicNotches[3];
+  const prune = kind === "drop" ? pruneStructural : pruneClosings;
+  for (let tries = 0; tries < BASICS_TRIES; tries += 1) {
+    const res2 = kind === "identity" && Math.random() < 0.5 ? identityTemplate(source) : generateSequentChallenge(source);
+    if (res2 === null) continue;
+    const solution88 = res2.challenge.solution;
+    if (solution88 === void 0) continue;
+    const start = prune(solution88);
+    if (start.kind === "premise") continue;
+    const leaves = frontierLeaves(start);
+    if (leaves.length < 2) continue;
+    if (kind === "identity" && !leaves.some(isCompositeClose)) continue;
+    if (kind === "constants" && !leaves.some(isConstantClose)) continue;
+    if (kind === "drop") {
+      if (!leaves.every(isAtomic)) continue;
+      if (!leaves.some(needsDrop)) continue;
+      if (!leaves.some(needsRotation)) continue;
+    }
+    return { ...res2, challenge: { ...res2.challenge, start } };
+  }
+  const res = fallbackChallenge(source);
+  const solution87 = res.challenge.solution;
+  if (solution87 === void 0) return res;
+  return { ...res, challenge: { ...res.challenge, start: prune(solution87) } };
+};
+var claimNotch = {
+  glyphs: "",
+  featured: ["nl", "nr", "cl", "cr", "dl", "dr", "il", "ir"],
+  taught: ["nl", "nr", "cl", "cr", "dl", "dr", "il", "ir", "f", "v"],
+  anteConnectives: {
+    conjunction: 1,
+    disjunction: 1,
+    negation: 1,
+    implication: 1
+  },
+  succConnectives: {
+    conjunction: 1,
+    disjunction: 1,
+    negation: 1,
+    implication: 1
+  },
+  symbols: ATOMS,
+  maxFormulaSize: 2,
+  minAnte: 0,
+  // Hypothetical syllogism — the classic goal a mid-proof claim helps.
+  fallback: sequent(
+    [implication(P, Q), implication(Q, atom("r"))],
+    [implication(P, atom("r"))]
+  )
+};
+var generateClaimChallenge = () => {
+  const res = generateSequentChallenge(claimNotch);
+  return { ...res, challenge: { ...res.challenge, rules: rules2 } };
+};
+var solvabilityTaught = [
+  ...logicNotches[4].taught,
+  "f",
+  "v"
+];
+var connectiveRules = [
+  "nl",
+  "nr",
+  "cl",
+  "cr",
+  "dl",
+  "dr",
+  "il",
+  "ir"
+];
+var UNSOLVABLE_WEIGHTS = {
+  negation: 1,
+  implication: 1,
+  conjunction: 1,
+  disjunction: 1
+};
+var UNSOLVABLE_FALLBACK = sequent(
+  [disjunction(P, Q)],
+  [conjunction(P, Q)]
+);
+var asUnsolvableResult = (goal87, formulasTried) => ({
+  challenge: { rules: rules2, goal: goal87 },
+  nonStructuralCount: 0,
+  bypassed: true,
+  formulasTried
+});
+var generateUnsolvableChallenge = () => {
+  for (let tries = 0; tries < MAX_TRIES; tries += 1) {
+    const nAnte = randomCount();
+    const nSucc = randomCount();
+    if (nAnte + nSucc === 0 || nAnte + nSucc > MAX_FORMULAS) continue;
+    const draw = () => {
+      const size = Math.floor(Math.random() * 3);
+      return randomWeighted(size, UNSOLVABLE_WEIGHTS, ATOMS)();
+    };
+    const antecedent = Array.from({ length: nAnte }, draw);
+    const succedent = Array.from({ length: nSucc }, draw);
+    const goal87 = sequent(antecedent, succedent);
+    if (isTautology2(goal87)) continue;
+    const closure = reachableRules(goal87);
+    if (!closure.every((r) => solvabilityTaught.includes(r))) continue;
+    if (!closure.some((r) => connectiveRules.includes(r))) continue;
+    return asUnsolvableResult(goal87, tries + 1);
+  }
+  return asUnsolvableResult(UNSOLVABLE_FALLBACK, MAX_TRIES);
+};
+var LOGIC_NAME_IDS = [
+  "sideFlip",
+  "crossing",
+  "branching",
+  "branchingCrossing"
+];
+var tutorialCurriculum = [
+  {
+    chapter: "basics",
+    nameId: "identity",
+    glyphs: "",
+    hideGaze: true,
+    hideSkip: true,
+    hideLemma: true,
+    conjecture: false,
+    generate: () => generateBasicsChallenge("identity")
+  },
+  {
+    // Same verb as the first beat, new winning conditions — still pure
+    // closing, so gaze stays hidden.
+    chapter: "basics",
+    nameId: "constants",
+    glyphs: "",
+    hideGaze: true,
+    hideSkip: true,
+    hideLemma: true,
+    conjecture: false,
+    generate: () => generateBasicsChallenge("constants")
+  },
+  {
+    chapter: "basics",
+    nameId: "drop",
+    glyphs: "",
+    hideGaze: false,
+    hideSkip: true,
+    hideLemma: true,
+    conjecture: false,
+    generate: () => generateBasicsChallenge("drop")
+  },
+  {
+    // The Destruct beat closes Basics: it introduces the third verb on the
+    // gentlest rules (∧ left / ∨ right — the pieces stay put), so the verb
+    // and its binding are learned before any of its consequences. The
+    // Consequences chapter then covers what destructing does everywhere
+    // else. Not presolved like the other Basics beats — a full challenge is
+    // the point (Close and Drop are already fluent).
+    chapter: "basics",
+    nameId: "split",
+    glyphs: "",
+    hideGaze: false,
+    hideSkip: true,
+    hideLemma: true,
+    conjecture: false,
+    generate: () => generateSequentChallenge(logicNotches[0])
+  },
+  // No glyphs on the Consequences rows: the behavior names are unique
+  // there, and ladder rows should carry symbols only where the name alone
+  // is ambiguous (the two Close beats).
+  ...logicNotches.slice(1).map((notch, i88) => ({
+    chapter: "logic",
+    nameId: LOGIC_NAME_IDS[i88] ?? "sideFlip",
+    glyphs: "",
+    hideGaze: false,
+    hideSkip: true,
+    hideLemma: true,
+    conjecture: false,
+    generate: () => generateSequentChallenge(notch)
+  })),
+  {
+    // The Optimization chapter's Claims beat: ordinary challenges with the
+    // Claim button making its first appearance. Claims are optional by
+    // nature (cut is admissible), so this is the one beat whose featured
+    // verb the goals cannot force.
+    chapter: "optimization",
+    nameId: "claims",
+    glyphs: "",
+    hideGaze: false,
+    hideSkip: true,
+    hideLemma: false,
+    conjecture: false,
+    generate: generateClaimChallenge
+  },
+  {
+    // The Solvability chapter's Skip beat: every goal is verifiably
+    // unsolvable, but the owl no longer says so — it frames them as
+    // "peculiar challenges" whose solvability the player judges per
+    // instance (reframed 2026-08-04, superseding the announce-upfront
+    // copy: a pre-revealed answer made skipping mere compliance and
+    // deflated the diagnosis). The skip screen's verdict line is the
+    // honest reveal that confirms or corrects the player's call; Skip
+    // makes its first appearance as the correct exit.
+    chapter: "solvability",
+    nameId: "unsolvable",
+    glyphs: "",
+    hideGaze: false,
+    hideSkip: false,
+    hideLemma: false,
+    conjecture: false,
+    generate: generateUnsolvableChallenge
+  },
+  {
+    // The Solvability chapter's Conjecture beat: the player composes an
+    // arbitrary formula and plays the goal they authored — the first
+    // challenge whose solvability nobody has checked. Skip (taught in the
+    // previous beat) is the exit when the conjecture turns out false.
+    chapter: "solvability",
+    nameId: "conjecture",
+    glyphs: "",
+    hideGaze: false,
+    hideSkip: false,
+    hideLemma: false,
+    conjecture: true,
+    // Never shown: the web layer swaps this beat's boards for the entry
+    // flow; a fixed cheap result keeps the challenge buffer machinery fed.
+    generate: () => asUnsolvableResult(UNSOLVABLE_FALLBACK, 0)
+  }
+];
+var beatAt = (i88) => {
+  const clamped = Math.max(0, Math.min(i88, tutorialCurriculum.length - 1));
+  return tutorialCurriculum[clamped] ?? tutorialCurriculum[0] ?? beatFail();
+};
+var beatFail = () => {
+  throw new Error("empty tutorial curriculum");
+};
+var tutorialStops = (() => {
+  const stops = [];
+  let lastChapter = null;
+  tutorialCurriculum.forEach((beat, i88) => {
+    if (beat.chapter !== lastChapter) {
+      lastChapter = beat.chapter;
+      stops.push({ kind: "intro", chapter: beat.chapter });
+    }
+    stops.push({ kind: "beat", beatIdx: i88 });
+  });
+  stops.push({ kind: "intro", chapter: "done" });
+  return stops;
+})();
+var stopAt = (i88) => {
+  const clamped = Math.max(0, Math.min(i88, tutorialStops.length - 1));
+  return tutorialStops[clamped] ?? tutorialStops[0] ?? stopFail();
+};
+var stopFail = () => {
+  throw new Error("empty tutorial stop list");
+};
+
+// src/npc/proof-walker.ts
+var extractAuxFormula = (rule, deps) => {
+  const dep0 = deps[0];
+  const dep1 = deps[1];
+  if (dep0 === void 0 || dep1 === void 0) return null;
+  if (rule === "cut") {
+    const succ2 = dep0.result.succedent;
+    return isNonEmptyArray(succ2) ? last(succ2) : null;
+  }
+  const succ = dep1.result.succedent;
+  return isNonEmptyArray(succ) ? succ[0] : null;
+};
+var walk = (node, out, shuffle) => {
+  const rule = node.rule;
+  if (isReverseId1(rule)) {
+    const aux = extractAuxFormula(rule, node.deps);
+    if (aux !== null) out.push(reverse12(rule, aux));
+  } else if (isReverseId0(rule)) {
+    out.push(reverse02(rule));
+  }
+  if (shuffle && node.deps.length === 2 && Math.random() < 0.5) {
+    const dep0 = node.deps[0];
+    const dep1 = node.deps[1];
+    if (dep0 !== void 0 && dep1 !== void 0) {
+      out.push(nextBranch());
+      walk(dep1, out, shuffle);
+      walk(dep0, out, shuffle);
+      return;
+    }
+  }
+  for (const dep of node.deps) {
+    walk(dep, out, shuffle);
+  }
+};
+var planSolves = (proof, events) => {
+  let state = focus(premise(proof.result));
+  for (const ev of events) {
+    state = applyEvent(state, ev, null);
+  }
+  return openBranches(state.derivation).length === 0;
+};
+var SHUFFLE_ATTEMPTS = 5;
+var linearize = (proof, opts = {}) => {
+  const shuffle = opts.shuffle ?? true;
+  if (shuffle) {
+    for (let attempt = 0; attempt < SHUFFLE_ATTEMPTS; attempt += 1) {
+      const events2 = [];
+      walk(proof, events2, true);
+      if (planSolves(proof, events2)) return events2;
+    }
+  }
+  const events = [];
+  walk(proof, events, false);
+  return events;
+};
+var linearizeStart = (start) => {
+  const events = [];
+  const walkStart = (node) => {
+    if (node.kind === "premise") {
+      events.push(nextBranch());
+      return;
+    }
+    if (isReverseId0(node.rule)) events.push(reverse02(node.rule));
+    node.deps.forEach(walkStart);
+  };
+  walkStart(start);
+  while (events[events.length - 1]?.kind === "nextBranch") events.pop();
+  return events;
+};
+
+// src/web/tutorial.ts
+var beatNameKey = {
+  identity: "tutorialIdentity",
+  constants: "tutorialConstants",
+  drop: "tutorialExtras",
+  split: "tutorialShape1",
+  sideFlip: "tutorialShape2",
+  crossing: "tutorialShape3",
+  branching: "tutorialShape4",
+  branchingCrossing: "tutorialShape5",
+  claims: "tutorialClaims",
+  unsolvable: "tutorialSkipping",
+  conjecture: "tutorialConjecture"
+};
+var chapterKey = {
+  basics: "tutorialBasics",
+  logic: "tutorialLogic",
+  optimization: "tutorialOptimization",
+  solvability: "tutorialSolvability"
+};
+var owlChapterKey = {
+  basics: "tutorialOwlBasics",
+  logic: "tutorialOwlLogic",
+  optimization: "tutorialOwlOptimization",
+  solvability: "tutorialOwlSolvability",
+  done: "tutorialOwlDone"
+};
+var owlChapterPlanKey = {
+  basics: "tutorialOwlBasicsPlan",
+  logic: "tutorialOwlLogicPlan",
+  optimization: "tutorialOwlOptimizationPlan",
+  solvability: "tutorialOwlSolvabilityPlan",
+  done: null
+};
+var owlBeatKey = [
+  "tutorialOwlClose",
+  "tutorialOwlCloseConstants",
+  "tutorialOwlDrop",
+  "tutorialOwlSplit",
+  "tutorialOwlSideFlip",
+  "tutorialOwlCrossing",
+  "tutorialOwlBranching",
+  "tutorialOwlBranchingCrossing",
+  "tutorialOwlClaims",
+  "tutorialOwlUnsolvable",
+  "tutorialOwlConjecture"
+];
+var taskBeatKey = [
+  "tutorialTaskClose",
+  "tutorialTaskCloseConstants",
+  "tutorialTaskDrop",
+  "tutorialTaskSplit",
+  "tutorialTaskSideFlip",
+  "tutorialTaskCrossing",
+  "tutorialTaskBranching",
+  "tutorialTaskBranchingCrossing",
+  "tutorialTaskClaims",
+  "tutorialTaskUnsolvable",
+  "tutorialTaskConjecture"
+];
+var targetByBeat = [3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 1];
+var demoPhaseKey = {
+  sequent: "tutorialDemoSequent",
+  grow: "tutorialDemoGrow",
+  closed: "tutorialDemoClosed",
+  other: "tutorialDemoOther",
+  done: "tutorialDemoDone"
+};
+var DEMO_MOVE_MS = 1300;
+var DEMO_PHASE_MS = 3600;
+var DEMO_DONE_MS = 8e3;
+var isClosingEvent = (ev) => ev.kind === "reverse0" && (ev.rev === "i" || ev.rev === "f" || ev.rev === "v");
+var PRESOLVE_DWELL_MS = 1800;
+var PRESOLVE_MOVE_MS = 550;
+var appendWithReserved = (parent, text) => {
+  const stems = notationStems[getLocale()] ?? [];
+  text.split(/(\p{L}+)/u).forEach((part, i88) => {
+    if (part === "") return;
+    const isReserved = i88 % 2 === 1 && stems.some((stem) => part.toLowerCase().startsWith(stem));
+    if (!isReserved) {
+      parent.appendChild(document.createTextNode(part));
+      return;
+    }
+    const word = document.createElement("span");
+    word.setAttribute("class", "tutor-owl-reserved");
+    word.textContent = part;
+    parent.appendChild(word);
+  });
+};
+var owlPara = (text) => {
+  const para = document.createElement("div");
+  para.setAttribute("class", "tutor-owl-para");
+  text.split(/(\S+ \( [^()]* \))/).forEach((part, i88) => {
+    if (part === "") return;
+    if (i88 % 2 === 0) {
+      appendWithReserved(para, part);
+      return;
+    }
+    const unit2 = document.createElement("span");
+    unit2.setAttribute("class", "tutor-owl-term");
+    appendWithReserved(unit2, part);
+    para.appendChild(unit2);
+  });
+  return para;
+};
+var mountTutorial = (container, navigate2, startStop) => {
+  let stopIdx = Math.max(0, Math.min(startStop, tutorialStops.length - 1));
+  const beatForStop = (s) => {
+    for (let i88 = s; i88 < tutorialStops.length; i88 += 1) {
+      const stop = tutorialStops[i88];
+      if (stop !== void 0 && stop.kind === "beat") return stop.beatIdx;
+    }
+    return tutorialCurriculum.length - 1;
+  };
+  let beatIdx = beatForStop(stopIdx);
+  const onIntro = () => stopAt(stopIdx).kind === "intro";
+  const onConjecture = () => beatAt(beatIdx).conjecture;
+  const completions = tutorialCurriculum.map(() => 0);
+  const creditedBoards = /* @__PURE__ */ new WeakSet();
+  const beatCompletions = () => completions[beatIdx] ?? 0;
+  const beatTarget = () => targetByBeat[beatIdx] ?? 0;
+  const quotaMet = () => beatCompletions() >= beatTarget();
+  const progressParagraphs = () => {
+    const praise = t("tutorialOwlProgress").replace("{count}", String(beatCompletions())).replace("{topic}", stopLabel(stopIdx));
+    if (quotaMet()) return [praise];
+    return [
+      praise,
+      t("tutorialOwlRecommend").replace("{target}", String(beatTarget()))
+    ];
+  };
+  const freshWorkspace = () => new Workspace({ challenge: beatAt(beatIdx).generate().challenge });
+  let ws = freshWorkspace();
+  const ctx = {
+    ...createBenchCtx(false, true, false, false),
+    getActionHint,
+    toggleRulesVisible: () => {
+    }
+  };
+  const onWelcome = () => stopIdx === 0;
+  let demoWs = null;
+  let demoQueue = [];
+  let demoPhase = "sequent";
+  let demoTimer = null;
+  let demoReturn = false;
+  const demoCtx = {
+    ...createBenchCtx(false, true, false, false),
+    getActionHint,
+    toggleRulesVisible: () => {
+    }
+  };
+  const scheduleDemo = (ms) => {
+    if (demoTimer !== null) window.clearTimeout(demoTimer);
+    demoTimer = window.setTimeout(() => demoStep(), ms);
+  };
+  const startDemo = () => {
+    const challenge2 = generateDemoChallenge().challenge;
+    const solution87 = challenge2.solution;
+    demoWs = new Workspace({ challenge: challenge2 });
+    demoQueue = solution87 === void 0 ? [] : linearize(solution87, { shuffle: false });
+    demoPhase = "sequent";
+    demoReturn = false;
+  };
+  const stopDemo = () => {
+    if (demoTimer !== null) window.clearTimeout(demoTimer);
+    demoTimer = null;
+    demoWs = null;
+  };
+  const demoStep = () => {
+    demoTimer = null;
+    if (!onWelcome() || demoWs === null) return;
+    if (paused) {
+      scheduleDemo(DEMO_MOVE_MS);
+      return;
+    }
+    if (demoReturn) {
+      demoReturn = false;
+      demoWs.applyEvent(nextBranch());
+      demoPhase = "other";
+      rerender();
+      scheduleDemo(DEMO_PHASE_MS);
+      return;
+    }
+    const ev = demoQueue[0];
+    if (demoWs.isSolved() || ev === void 0) {
+      startDemo();
+      rerender();
+      scheduleDemo(DEMO_PHASE_MS);
+      return;
+    }
+    demoQueue = demoQueue.slice(1);
+    demoWs.applyEvent(ev);
+    let dwell = DEMO_MOVE_MS;
+    if (demoPhase === "sequent") {
+      demoPhase = "grow";
+      dwell = DEMO_PHASE_MS;
+    }
+    if (isClosingEvent(ev)) {
+      if (demoWs.isSolved()) {
+        demoPhase = "done";
+        dwell = DEMO_DONE_MS;
+      } else {
+        demoWs.applyEvent(prevBranch());
+        demoReturn = true;
+        demoPhase = "closed";
+        dwell = DEMO_PHASE_MS;
+      }
+    }
+    rerender();
+    scheduleDemo(dwell);
+  };
+  let presolving = false;
+  let presolvePending;
+  let presolveQueue = [];
+  let presolveTimer = null;
+  const presolveDone = /* @__PURE__ */ new WeakSet();
+  const schedulePresolve = (ms) => {
+    if (presolveTimer !== null) window.clearTimeout(presolveTimer);
+    presolveTimer = window.setTimeout(() => presolveStep(), ms);
+  };
+  const cancelPresolve = () => {
+    if (presolveTimer !== null) window.clearTimeout(presolveTimer);
+    presolveTimer = null;
+    if (presolving && presolvePending !== void 0) {
+      ws = new Workspace({ challenge: presolvePending });
+    }
+    presolving = false;
+    presolvePending = void 0;
+    presolveQueue = [];
+  };
+  const startPresolveIfAny = () => {
+    if (onIntro()) return;
+    const conf = ws.listConjectures()[0]?.[1];
+    const start = conf?.start;
+    if (conf === void 0 || start === void 0) return;
+    if (presolveDone.has(start)) return;
+    presolveDone.add(start);
+    presolvePending = conf;
+    presolveQueue = linearizeStart(start);
+    ws = new Workspace({ challenge: { rules: conf.rules, goal: conf.goal } });
+    presolving = true;
+    schedulePresolve(PRESOLVE_DWELL_MS);
+  };
+  const presolveStep = () => {
+    presolveTimer = null;
+    if (!presolving) return;
+    if (paused) {
+      schedulePresolve(PRESOLVE_MOVE_MS);
+      return;
+    }
+    const ev = presolveQueue[0];
+    if (ev === void 0) {
+      const pending = presolvePending;
+      presolving = false;
+      presolvePending = void 0;
+      if (pending !== void 0) ws = new Workspace({ challenge: pending });
+      rerender();
+      return;
+    }
+    presolveQueue = presolveQueue.slice(1);
+    ws.applyEvent(ev);
+    rerender();
+    schedulePresolve(PRESOLVE_MOVE_MS);
+  };
+  let paused = false;
+  let pausePopup = null;
+  let pausePopupLocale = getLocale();
+  let ladderOpen = false;
+  let ladderPopup = null;
+  let lemmaSession = null;
+  let conjectureEntry = false;
+  let skipped = false;
+  let skipHadSolution = false;
+  let congrats = null;
+  let introCursor = null;
+  let introDefault = null;
+  let skipCursor = null;
+  let skipDefault = null;
+  const setPaused = (v2) => {
+    paused = v2;
+    rerender();
+  };
+  const closeLadder = () => {
+    ladderOpen = false;
+    rerender();
+  };
+  const syncUrl = () => {
+    const params = new URLSearchParams(window.location.search);
+    params.set("tutorial_stop", String(stopIdx));
+    history.replaceState(history.state, "", `?${params.toString()}`);
+  };
+  const openConjecture = () => {
+    conjectureEntry = true;
+    lemmaSession = createLemmaEditorSession(
+      (formula) => {
+        conjectureEntry = false;
+        lemmaSession = null;
+        ws = new Workspace({
+          challenge: { rules: rules2, goal: sequent([], [formula]) }
+        });
+        rerender();
+      },
+      () => {
+        openConjecture();
+        rerender();
+      },
+      // No board behind the entry to back out to — hide the Back cell.
+      true
+    );
+  };
+  const nextChallenge = () => {
+    cancelPresolve();
+    skipped = false;
+    ctx.setGazeModeActive(false);
+    referentEngaged = false;
+    keyControlDone = false;
+    skipUsedStop = -1;
+    if (onConjecture()) openConjecture();
+    else {
+      ws = freshWorkspace();
+      startPresolveIfAny();
+    }
+    rerender();
+  };
+  const rerootAtBeat = (target) => {
+    const clamped = Math.max(0, Math.min(target, tutorialCurriculum.length - 1));
+    if (clamped === beatIdx) return;
+    beatIdx = clamped;
+    ctx.setGazeModeActive(false);
+    skipped = false;
+    lemmaSession = null;
+    conjectureEntry = false;
+    ws = freshWorkspace();
+    if (beatAt(beatIdx).conjecture) openConjecture();
+  };
+  const jumpToStop = (target) => {
+    const clamped = Math.max(0, Math.min(target, tutorialStops.length - 1));
+    if (clamped === stopIdx) return;
+    cancelPresolve();
+    stopIdx = clamped;
+    if (!onWelcome()) stopDemo();
+    const stop = stopAt(stopIdx);
+    rerootAtBeat(stop.kind === "beat" ? stop.beatIdx : beatForStop(stopIdx));
+    syncUrl();
+    if (stop.kind === "beat") startPresolveIfAny();
+    rerender();
+  };
+  const stopIndexOfBeat = (beat) => tutorialStops.findIndex((s) => s.kind === "beat" && s.beatIdx === beat);
+  const stopIndexOfIntro = (chapter) => tutorialStops.findIndex((s) => s.kind === "intro" && s.chapter === chapter);
+  const skipChallenge = () => {
+    if (onIntro() || beatAt(beatIdx).hideSkip || ws.isSolved()) return;
+    if (lemmaSession !== null) return;
+    if (skipped) {
+      nextChallenge();
+      return;
+    }
+    ctx.setGazeModeActive(false);
+    skipHadSolution = isTautology2(ws.currentConjecture().derivation.result);
+    if (!skipHadSolution) completions[beatIdx] = beatCompletions() + 1;
+    skipped = true;
+    skipUsedStop = stopIdx;
+    rerender();
+  };
+  const rootValidCache = /* @__PURE__ */ new WeakMap();
+  const rootValid = () => {
+    const cached = rootValidCache.get(ws);
+    if (cached !== void 0) return cached;
+    const valid = isTautology2(ws.currentConjecture().derivation.result);
+    rootValidCache.set(ws, valid);
+    return valid;
+  };
+  const isStuck = () => {
+    if (onIntro() || skipped || presolving || conjectureEntry) return false;
+    if (ws.isSolved() || !rootValid()) return false;
+    return !isTautology2(activeSequent(ws.currentConjecture()));
+  };
+  const announceStuck = (screen) => {
+    if (!isStuck()) return;
+    const sequentEl = screen.querySelector(".tree-active > .tree-sequent");
+    if (sequentEl !== null) sequentEl.classList.add("owl-pulse");
+  };
+  const rotationJustMade = () => {
+    const focus2 = ws.currentConjecture();
+    const path = activePath(focus2);
+    if (path.length === 0) return false;
+    const parentPath = path.slice(0, -1);
+    const parent = subDerivation(focus2.derivation, parentPath);
+    if (parent === null || parent.kind !== "transformation") return false;
+    if (parent.rule !== "sRotLB" && parent.rule !== "sRotRB") return false;
+    const start = ws.listConjectures()[0]?.[1]?.start;
+    return start === void 0 || subDerivation(start, parentPath)?.kind !== "transformation";
+  };
+  const multiPressKind = () => {
+    if (onIntro() || skipped || presolving || conjectureEntry) return null;
+    if (!ctx.isGazeModeActive() || ws.isSolved()) return null;
+    if (!rotationJustMade()) return null;
+    const seq = activeSequent(ws.currentConjecture());
+    const gaze = ws.gaze();
+    const rules3 = ws.availableRules();
+    const kinds = ws.gazeKind() === "weakening" ? ["weakening", "connective"] : ["connective", "weakening"];
+    for (const kind of kinds) {
+      if (computeGhostChain(seq, gaze, kind, rules3) !== null) return kind;
+    }
+    return null;
+  };
+  const makeUndoControls = () => {
+    const el = document.createElement("div");
+    el.setAttribute("class", "controls");
+    const canUndo2 = ws.canUndo();
+    const enabled = !presolving && (canUndo2 || ctx.isGazeModeActive());
+    const undoBtn = createButton(t("undo"), !enabled, () => {
+      if (canUndo2) {
+        ws.applyEvent(undo2());
+      } else {
+        ctx.setGazeModeActive(false);
+      }
+      rerender();
+    });
+    undoBtn.classList.add("mutating");
+    addLegendBind(undoBtn, "undo");
+    if (isStuck()) undoBtn.classList.add("just-unlocked");
+    el.appendChild(undoBtn);
+    return el;
+  };
+  const buildIntroPage = () => {
+    const page = document.createElement("div");
+    page.setAttribute("class", "tutorial-intro");
+    if (onWelcome()) {
+      page.classList.add("tutorial-welcome");
+      if (demoWs === null) {
+        startDemo();
+        scheduleDemo(DEMO_PHASE_MS);
+      }
+      if (demoWs !== null) {
+        const demo = document.createElement("div");
+        demo.setAttribute("class", "tutorial-demo");
+        demo.appendChild(createPlayArea(demoWs, demoCtx));
+        page.appendChild(demo);
+      }
+    }
+    const cells = [];
+    const add = (label, activate) => {
+      const el = createButton(label, false, activate);
+      page.appendChild(el);
+      cells.push({ btn: el, activate });
+    };
+    const stop = stopAt(stopIdx);
+    if (stopIdx <= 0) {
+      add(t("tutorialStart"), () => jumpToStop(stopIdx + 1));
+    } else if (stop.kind === "intro" && stop.chapter === "done") {
+      add(t("exitToMainMenu"), () => navigate2("menu"));
+    } else {
+      add(t("tutorialPrevious"), () => jumpToStop(stopIdx - 1));
+      add(t("tutorialAdvance"), () => jumpToStop(stopIdx + 1));
+    }
+    const cursor = createButtonCursor([cells], {
+      startCol: cells.length - 1,
+      moveOnReveal: true
+    });
+    introCursor = { onAction: cursor.onAction, isEngaged: cursor.isEngaged };
+    introDefault = cells[cells.length - 1]?.activate ?? null;
+    return page;
+  };
+  const buildSkippedPage = () => {
+    const page = document.createElement("div");
+    page.setAttribute("class", "tutorial-intro tutorial-skipped");
+    const note = document.createElement("div");
+    note.setAttribute("class", "tutorial-skipped-note");
+    note.textContent = t(
+      skipHadSolution ? "tutorialSkippedSolvable" : "tutorialSkipped"
+    );
+    page.appendChild(note);
+    const cells = [];
+    const add = (label, disabled, activate) => {
+      const el = createButton(label, disabled, activate);
+      page.appendChild(el);
+      cells.push({ btn: el, activate, isEnabled: () => !disabled });
+    };
+    add(t("tutorialPrevious"), stopIdx <= 0, () => jumpToStop(stopIdx - 1));
+    add(t("tutorialOneMore"), false, nextChallenge);
+    add(
+      t("tutorialAdvance"),
+      stopIdx >= tutorialStops.length - 1,
+      () => jumpToStop(stopIdx + 1)
+    );
+    const defaultCol = quotaMet() ? 2 : 1;
+    const cursor = createButtonCursor([cells], {
+      startCol: defaultCol,
+      moveOnReveal: true
+    });
+    skipCursor = { onAction: cursor.onAction, isEngaged: cursor.isEngaged };
+    skipDefault = () => cells[defaultCol]?.activate();
+    return page;
+  };
+  const buildConjecturePage = (session2) => {
+    const page = document.createElement("div");
+    page.setAttribute("class", "conjecture-entry");
+    const previewArea = document.createElement("div");
+    previewArea.setAttribute("class", "conjecture-preview-area");
+    const preview = document.createElement("div");
+    preview.setAttribute("class", "tree-sequent ghost conjecture-preview");
+    preview.innerHTML = html(conjectureGhost(session2.draft())(basic));
+    previewArea.appendChild(preview);
+    page.appendChild(previewArea);
+    page.appendChild(createLemmaEditorBar(session2, rerender));
+    return page;
+  };
+  const buildOwl = () => {
+    const owl = document.createElement("div");
+    owl.setAttribute("class", "tutor-owl");
+    const bubble = document.createElement("div");
+    bubble.setAttribute("class", "tutor-owl-bubble");
+    const stop = stopAt(stopIdx);
+    const beatKey = stop.kind === "beat" ? owlBeatKey[stop.beatIdx] : void 0;
+    const taskKey = stop.kind === "beat" ? taskBeatKey[stop.beatIdx] : void 0;
+    const planKey = stop.kind === "intro" ? owlChapterPlanKey[stop.chapter] : null;
+    const multiKind = multiPressKind();
+    const paragraphs = onWelcome() ? [t(demoPhaseKey[demoPhase])] : presolving ? [t("tutorialOwlPresolve")] : stop.kind === "intro" ? planKey === null ? [t(owlChapterKey[stop.chapter])] : [t(owlChapterKey[stop.chapter]), t(planKey)] : beatKey === void 0 ? [] : ws.isSolved() || skipped && !skipHadSolution ? solvedClaimFree() ? [t("tutorialOwlClaimFree"), t("tutorialOwlClaimFreeAdvice")] : progressParagraphs() : isStuck() ? [t("tutorialOwlStuck"), t("tutorialOwlStuckAdvice")] : multiKind === "weakening" ? [t("tutorialOwlMultiDrop"), t("tutorialOwlMultiDropAdvice")] : multiKind === "connective" ? [
+      t("tutorialOwlMultiDestruct"),
+      t("tutorialOwlMultiDestructAdvice")
+    ] : taskKey === void 0 ? [t(beatKey)] : [t(beatKey), t(taskKey)];
+    for (const text of paragraphs) {
+      bubble.appendChild(owlPara(text));
+    }
+    const face = document.createElement("div");
+    face.setAttribute("class", "tutor-owl-face");
+    face.textContent = "\u{1F989}";
+    owl.appendChild(bubble);
+    owl.appendChild(face);
+    return owl;
+  };
+  const playerApplied = (rules3) => {
+    const start = ws.listConjectures()[0]?.[1]?.start ?? null;
+    const walk2 = (d, path) => {
+      if (d.kind !== "transformation") return false;
+      const frozen = start !== null && subDerivation(start, path)?.kind === "transformation";
+      if (!frozen && rules3.includes(d.rule)) return true;
+      return d.deps.some((dep, i88) => walk2(dep, [...path, i88]));
+    };
+    return walk2(ws.currentConjecture().derivation, []);
+  };
+  let skipUsedStop = -1;
+  const keyControlByBeat = [
+    { verb: "close", used: () => playerApplied(["i", "f", "v"]) },
+    { verb: "close", used: () => playerApplied(["i", "f", "v"]) },
+    { verb: "drop", used: () => playerApplied(["swl", "swr"]) },
+    {
+      verb: "destruct",
+      used: () => playerApplied(["nl", "nr", "cl", "cr", "dl", "dr", "il", "ir"])
+    },
+    null,
+    null,
+    null,
+    null,
+    { verb: "lemma", used: () => playerApplied(["cut"]) },
+    { verb: "skip", used: () => skipUsedStop === stopIdx },
+    null
+  ];
+  const solvedClaimFree = () => ws.isSolved() && beatAt(beatIdx).nameId === "claims" && !playerApplied(["cut"]);
+  let keyStopSeen = -1;
+  let keyControlDone = false;
+  const announceKeyControl = (screen) => {
+    const stop = stopAt(stopIdx);
+    if (stop.kind !== "beat") return;
+    const key = keyControlByBeat[stop.beatIdx] ?? null;
+    if (key === null) return;
+    if (presolving) return;
+    if (keyStopSeen !== stopIdx) {
+      keyStopSeen = stopIdx;
+      keyControlDone = false;
+      skipUsedStop = -1;
+    }
+    if (!keyControlDone && key.used()) keyControlDone = true;
+    if (keyControlDone) return;
+    const el = screen.querySelector(`[data-verb="${key.verb}"]`);
+    if (el !== null) el.classList.add("just-unlocked");
+  };
+  const owlReferentByBeat = [
+    { kind: "sequent" },
+    { kind: "sequent" },
+    { kind: "extras" },
+    {
+      kind: "connectives",
+      marks: [
+        { glyph: "\u2192", side: null },
+        { glyph: "\u2227", side: null },
+        { glyph: "\u2228", side: null },
+        { glyph: "\xAC", side: null }
+      ]
+    },
+    { kind: "connectives", marks: [{ glyph: "\xAC", side: null }] },
+    { kind: "connectives", marks: [{ glyph: "\u2192", side: "right" }] },
+    {
+      kind: "connectives",
+      marks: [
+        { glyph: "\u2227", side: "right" },
+        { glyph: "\u2228", side: "left" }
+      ]
+    },
+    { kind: "connectives", marks: [{ glyph: "\u2192", side: "left" }] },
+    null,
+    null,
+    null
+  ];
+  const pulseExtras = (sequentEl) => {
+    const texts = [];
+    sequentEl.childNodes.forEach((n) => {
+      if (n instanceof Text && n.data.includes(",")) texts.push(n);
+    });
+    for (const t2 of texts) {
+      let node = t2;
+      for (; ; ) {
+        const idx = node.data.indexOf(",");
+        if (idx === -1) break;
+        if (idx > 0) node = node.splitText(idx);
+        node = node.splitText(1);
+      }
+    }
+    const groups = [];
+    let side = "left";
+    let current2 = [];
+    const flush = () => {
+      if (current2.length > 0) groups.push({ side, nodes: current2 });
+      current2 = [];
+    };
+    sequentEl.childNodes.forEach((n) => {
+      if (n instanceof Element && n.classList.contains("turnstile")) {
+        flush();
+        side = "right";
+        return;
+      }
+      if (n instanceof Text && n.data === ",") {
+        flush();
+        return;
+      }
+      current2.push(n);
+    });
+    flush();
+    const textOf = (g) => g.nodes.map((n) => n.textContent ?? "").join("").trim();
+    const lefts = groups.filter((g) => g.side === "left" && textOf(g) !== "");
+    const rights = groups.filter((g) => g.side === "right" && textOf(g) !== "");
+    let keepLeft = -1;
+    let keepRight = -1;
+    for (let i88 = 0; i88 < lefts.length && keepLeft === -1; i88 += 1) {
+      const left4 = lefts[i88];
+      if (left4 === void 0) continue;
+      for (let j = rights.length - 1; j >= 0; j -= 1) {
+        const right3 = rights[j];
+        if (right3 !== void 0 && textOf(left4) === textOf(right3)) {
+          keepLeft = i88;
+          keepRight = j;
+          break;
+        }
+      }
+    }
+    if (keepLeft === -1) return false;
+    const extras = [
+      ...lefts.filter((_, i88) => i88 !== keepLeft),
+      ...rights.filter((_, j) => j !== keepRight)
+    ];
+    if (extras.length === 0) return false;
+    for (const g of extras) {
+      const first = g.nodes[0];
+      const parent = first?.parentNode;
+      if (first === void 0 || parent === null || parent === void 0)
+        continue;
+      const span = document.createElement("span");
+      span.setAttribute("class", "owl-formula owl-pulse");
+      parent.insertBefore(span, first);
+      for (const n of g.nodes) span.appendChild(n);
+    }
+    return true;
+  };
+  let referentStopSeen = -1;
+  let referentEngaged = false;
+  const announceReferent = (screen) => {
+    const stop = stopAt(stopIdx);
+    if (stop.kind !== "beat") return;
+    const referent = owlReferentByBeat[stop.beatIdx] ?? null;
+    if (referent === null) return;
+    if (presolving) return;
+    if (referentStopSeen !== stopIdx) {
+      referentStopSeen = stopIdx;
+      referentEngaged = false;
+    }
+    if (ws.canUndo() || ws.isSolved()) referentEngaged = true;
+    if (referentEngaged) return;
+    if (ctx.isGazeModeActive()) return;
+    const sequentEl = screen.querySelector(".tree-active > .tree-sequent");
+    if (sequentEl === null) return;
+    if (referent.kind === "sequent") {
+      sequentEl.classList.add("owl-pulse");
+      return;
+    }
+    if (referent.kind === "extras") {
+      if (!pulseExtras(sequentEl)) sequentEl.classList.add("owl-pulse");
+      return;
+    }
+    let side = "left";
+    let matched = false;
+    const outermost = [];
+    sequentEl.querySelectorAll(".connective.active, .turnstile").forEach((el) => {
+      if (el.classList.contains("turnstile")) {
+        side = "right";
+        return;
+      }
+      outermost.push(el);
+      const glyph = el.textContent ?? "";
+      const named = referent.marks.some(
+        (m) => m.glyph === glyph && (m.side === null || m.side === side)
+      );
+      if (named) {
+        matched = true;
+        el.classList.add("owl-pulse");
+      }
+    });
+    if (!matched) for (const el of outermost) el.classList.add("owl-pulse");
+  };
+  const syncOwlAboveControls = () => {
+    const screenEl = container.querySelector(".tutorial-screen");
+    if (screenEl === null) return;
+    const controls = container.querySelector(".controls");
+    let h = controls === null ? 0 : controls.offsetHeight;
+    if (h === 0) {
+      const start = container.querySelector(
+        ".tutorial-welcome > .button"
+      );
+      if (start !== null) {
+        const screenBottom = screenEl.getBoundingClientRect().bottom;
+        h = Math.max(
+          0,
+          Math.round(screenBottom - start.getBoundingClientRect().top)
+        );
+      }
+    }
+    screenEl.style.setProperty("--controls-h", `${String(h)}px`);
+    const owl = container.querySelector(".tutor-owl");
+    const owlH = owl === null ? 0 : owl.offsetHeight;
+    screenEl.style.setProperty("--owl-h", `${String(owlH)}px`);
+  };
+  const stopLabel = (idx) => {
+    let chapterNo = 0;
+    let beatNo = 0;
+    for (let i88 = 0; i88 <= idx; i88 += 1) {
+      const stop2 = tutorialStops[i88];
+      if (stop2 === void 0) continue;
+      if (stop2.kind === "intro") {
+        chapterNo += 1;
+        beatNo = 0;
+      } else {
+        beatNo += 1;
+      }
+    }
+    const stop = stopAt(idx);
+    if (stop.kind === "intro") {
+      const name2 = stop.chapter === "done" ? t("tutorialComplete") : t(chapterKey[stop.chapter]);
+      return `${String(chapterNo)} \xB7 ${name2}`;
+    }
+    const beat = beatAt(stop.beatIdx);
+    return `${String(chapterNo)}.${String(beatNo)} \xB7 ${t(beatNameKey[beat.nameId])}`;
+  };
+  const buildCrumb = () => {
+    const crumb = createButton(stopLabel(stopIdx), false, () => {
+      ladderOpen = true;
+      rerender();
+    });
+    crumb.classList.add("tutorial-crumb");
+    return crumb;
+  };
+  const buildLadder = () => {
+    const ladder = document.createElement("div");
+    ladder.setAttribute("class", "tutorial-ladder");
+    let lastChapter = null;
+    let chapterNo = 0;
+    let beatNo = 0;
+    const jump = (target) => {
+      ladderOpen = false;
+      ladderPopup = null;
+      jumpToStop(target);
+      rerender();
+    };
+    tutorialCurriculum.forEach((beat, i88) => {
+      if (beat.chapter !== lastChapter) {
+        lastChapter = beat.chapter;
+        chapterNo += 1;
+        beatNo = 0;
+        const chapter = beat.chapter;
+        const introIdx = stopIndexOfIntro(chapter);
+        const header = document.createElement("div");
+        header.setAttribute(
+          "class",
+          "tutorial-ladder-chapter" + (introIdx === stopIdx ? " current" : "")
+        );
+        header.textContent = `${String(chapterNo)} \xB7 ${t(chapterKey[chapter])}`;
+        header.onclick = () => jump(introIdx);
+        ladder.appendChild(header);
+      }
+      beatNo += 1;
+      const currentStop = stopAt(stopIdx);
+      const isCurrent = currentStop.kind === "beat" && currentStop.beatIdx === i88;
+      const row = document.createElement("div");
+      row.setAttribute(
+        "class",
+        "tutorial-ladder-row" + (isCurrent ? " current" : "")
+      );
+      const number = document.createElement("span");
+      number.setAttribute("class", "tutorial-ladder-number");
+      number.textContent = `${String(chapterNo)}.${String(beatNo)}`;
+      row.appendChild(number);
+      row.appendChild(document.createTextNode(t(beatNameKey[beat.nameId])));
+      if (beat.glyphs !== "") {
+        const glyphs = document.createElement("span");
+        glyphs.setAttribute("class", "tutorial-ladder-glyphs");
+        glyphs.textContent = beat.glyphs;
+        row.appendChild(glyphs);
+      }
+      row.onclick = () => jump(stopIndexOfBeat(i88));
+      ladder.appendChild(row);
+    });
+    const doneIdx = stopIndexOfIntro("done");
+    const doneHeader = document.createElement("div");
+    doneHeader.setAttribute(
+      "class",
+      "tutorial-ladder-chapter" + (doneIdx === stopIdx ? " current" : "")
+    );
+    doneHeader.textContent = `${String(chapterNo + 1)} \xB7 ${t("tutorialComplete")}`;
+    doneHeader.onclick = () => jump(doneIdx);
+    ladder.appendChild(doneHeader);
+    return ladder;
+  };
+  const buildLadderPopup = () => {
+    const shroud = document.createElement("div");
+    shroud.setAttribute("class", "shroud pause-shroud");
+    shroud.onclick = (ev) => {
+      if (ev.target === shroud) {
+        ev.preventDefault();
+        closeLadder();
+      }
+    };
+    const panel = document.createElement("div");
+    panel.setAttribute("class", "pause-popup tutorial-ladder-popup");
+    panel.onclick = (ev) => {
+      ev.stopPropagation();
+    };
+    panel.appendChild(buildLadder());
+    shroud.appendChild(panel);
+    return shroud;
+  };
+  const makeCongrats = () => {
+    const hurray = document.createElement("div");
+    hurray.setAttribute("class", "hurray");
+    hurray.innerHTML = t("congratulations");
+    const buttons = document.createElement("div");
+    const cells = [];
+    const add = (label, disabled, activate) => {
+      const el = createButton(label, disabled, activate);
+      buttons.appendChild(el);
+      cells.push({ btn: el, activate, isEnabled: () => !disabled });
+    };
+    add(t("tutorialPrevious"), stopIdx <= 0, () => jumpToStop(stopIdx - 1));
+    add(t("tutorialOneMore"), false, nextChallenge);
+    add(
+      t("tutorialAdvance"),
+      stopIdx >= tutorialStops.length - 1,
+      () => jumpToStop(stopIdx + 1)
+    );
+    const cursor = createButtonCursor([cells], {
+      startCol: quotaMet() ? 2 : 1,
+      moveOnReveal: true
+    });
+    congrats = { onAction: cursor.onAction, isEngaged: cursor.isEngaged };
+    return { hurray, buttons };
+  };
+  const rerender = () => {
+    if (!onIntro() && ws.isSolved() && !creditedBoards.has(ws)) {
+      creditedBoards.add(ws);
+      if (!solvedClaimFree()) completions[beatIdx] = beatCompletions() + 1;
+    }
+    container.innerHTML = "";
+    const screen = document.createElement("div");
+    screen.setAttribute("class", "tutorial-screen");
+    if (presolving) screen.classList.add("tutorial-presolving");
+    if (onIntro()) {
+      screen.appendChild(buildIntroPage());
+    } else if (skipped) {
+      screen.appendChild(buildSkippedPage());
+    } else if (conjectureEntry && lemmaSession !== null) {
+      screen.appendChild(buildConjecturePage(lemmaSession));
+    } else {
+      screen.appendChild(
+        createBench(
+          ws,
+          makeCongrats,
+          makeUndoControls(),
+          rerender,
+          () => setPaused(true),
+          onApplyReverse1,
+          // Claim and Skip are per-beat: each stays hidden (not
+          // shown-disabled, which would only draw the learner's eye) until
+          // its teaching beat.
+          beatAt(beatIdx).hideLemma,
+          ctx,
+          beatAt(beatIdx).hideSkip ? void 0 : skipChallenge,
+          beatAt(beatIdx).hideGaze,
+          true,
+          lemmaSession
+        )
+      );
+      if (presolving) {
+        screen.querySelectorAll(".controls .button").forEach((el) => {
+          el.classList.add("disabled");
+        });
+      }
+    }
+    const crumb = buildCrumb();
+    const topbarRight = screen.querySelector(".bench-topbar-right");
+    if (topbarRight !== null) {
+      topbarRight.appendChild(crumb);
+    } else {
+      screen.appendChild(crumb);
+    }
+    screen.appendChild(buildOwl());
+    announceKeyControl(screen);
+    announceReferent(screen);
+    announceStuck(screen);
+    container.appendChild(screen);
+    syncOwlAboveControls();
+    if (paused) {
+      if (!pausePopup || pausePopupLocale !== getLocale()) {
+        pausePopup = createPausePopup(
+          () => setPaused(false),
+          () => navigate2("menu")
+        );
+        pausePopupLocale = getLocale();
+      }
+      container.appendChild(pausePopup.el);
+    } else {
+      pausePopup = null;
+    }
+    if (ladderOpen) {
+      if (ladderPopup === null) ladderPopup = buildLadderPopup();
+      container.appendChild(ladderPopup);
+    } else {
+      ladderPopup = null;
+    }
+  };
+  const onSolved = (action) => {
+    if (action === "axiom") {
+      if (quotaMet()) jumpToStop(stopIdx + 1);
+      else nextChallenge();
+      return;
+    }
+    rerender();
+  };
+  const onApplyReverse1 = (_key, onFormula) => {
+    if (lemmaSession !== null) return;
+    ctx.setGazeModeActive(false);
+    lemmaSession = createLemmaEditorSession(
+      (formula) => {
+        lemmaSession = null;
+        onFormula(formula);
+      },
+      () => {
+        lemmaSession = null;
+        rerender();
+      }
+    );
+    rerender();
+  };
+  const gazeBlocked = () => beatAt(beatIdx).hideGaze;
+  const baseDispatch = createDispatch(
+    () => ws,
+    rerender,
+    navigate2,
+    onSolved,
+    void 0,
+    () => setPaused(true),
+    onApplyReverse1,
+    ctx,
+    void 0,
+    gazeBlocked
+  );
+  const dispatch = (action) => {
+    if (ladderOpen) {
+      if (action === "menu" || action === "undo" || action === "exit") {
+        closeLadder();
+      }
+      return;
+    }
+    if (paused) {
+      if (action === "menu" || action === "undo") setPaused(false);
+      else if (action === "exit") navigate2("menu");
+      else pausePopup?.onAction(action);
+      return;
+    }
+    if (lemmaSession !== null) {
+      const session2 = lemmaSession;
+      if (action === "menu" || action === "exit") {
+        if (conjectureEntry) setPaused(true);
+        else session2.cancel();
+        return;
+      }
+      if (action === "undo") {
+        if (session2.undo()) rerender();
+        else session2.cancel();
+        return;
+      }
+      if (session2.handleAction(action)) rerender();
+      return;
+    }
+    if (action === "menu") {
+      setPaused(true);
+      return;
+    }
+    if (presolving) return;
+    if (onIntro()) {
+      const cursor = introCursor;
+      if (cursor !== null) {
+        if (cursorNavActions.has(action)) {
+          cursor.onAction(action);
+          return;
+        }
+        if (action === "axiom") {
+          if (cursor.isEngaged()) cursor.onAction("axiom");
+          else introDefault?.();
+          return;
+        }
+      }
+      return;
+    }
+    if (skipped) {
+      const cursor = skipCursor;
+      if (cursor !== null) {
+        if (cursorNavActions.has(action)) {
+          cursor.onAction(action);
+          return;
+        }
+        if (action === "axiom") {
+          if (cursor.isEngaged()) cursor.onAction("axiom");
+          else skipDefault?.();
+          return;
+        }
+      }
+      return;
+    }
+    if (ws.isSolved() && congrats !== null) {
+      if (cursorNavActions.has(action)) {
+        congrats.onAction(action);
+        return;
+      }
+      if (action === "axiom" && congrats.isEngaged()) {
+        congrats.onAction("axiom");
+        return;
+      }
+    }
+    if (action === "skip") {
+      skipChallenge();
+      return;
+    }
+    baseDispatch(action);
+  };
+  const handleKey = (ev) => {
+    if (ev.ctrlKey || ev.metaKey || ev.altKey) return;
+    markKeyboardInput();
+    if (lemmaSession !== null && !paused && !ladderOpen) {
+      const piece = editorKeyPieces[ev.code];
+      if (piece !== void 0) {
+        if (lemmaSession.fill(piece())) rerender();
+        return;
+      }
+    }
+    const action = qwertyKeyMap[ev.code];
+    if (action !== void 0) dispatch(action);
+  };
+  document.documentElement.classList.add("mode-single");
+  document.addEventListener("keydown", handleKey);
+  document.addEventListener("pointerdown", markPointerInput);
+  const cleanupPads = [0, 1, 2, 3].map((idx) => setupGamepad(dispatch, idx));
+  const unsubscribeGamepad = subscribeGamepad(rerender);
+  window.addEventListener("resize", syncOwlAboveControls);
+  if (onConjecture()) openConjecture();
+  if (!onIntro()) startPresolveIfAny();
+  rerender();
+  return {
+    cleanup: () => {
+      stopDemo();
+      cancelPresolve();
+      document.documentElement.classList.remove("mode-single");
+      document.removeEventListener("keydown", handleKey);
+      document.removeEventListener("pointerdown", markPointerInput);
+      cleanupPads.forEach((c) => c());
+      unsubscribeGamepad();
+      window.removeEventListener("resize", syncOwlAboveControls);
+    },
+    rerender
+  };
+};
+
 // src/web/gallery.ts
 var specimen = (el, caption) => {
   const box = document.createElement("div");
@@ -7876,9 +10079,13 @@ var fontsSection = () => {
     true
   );
   strip.appendChild(specimen(mono, "system monospace \xB7 schema grid"));
+  const reserved = document.createElement("div");
+  reserved.setAttribute("class", "tutor-owl-bubble");
+  reserved.appendChild(owlPara(t("tutorialOwlCloseConstants")));
+  strip.appendChild(specimen(reserved, "small caps \xB7 reserved words"));
   return section(
     "Fonts",
-    "Two typefaces load from Google Fonts. Noto Sans, a variable font (weights 100\u2013900, with italics), sets all UI text. Noto Sans Math sits behind it in the font stack: wherever Noto Sans lacks a glyph \u2014 the turnstile and the connectives \u2014 the character falls through to the math font, so logic notation in the proof tree is a fallback effect, not a separate style. Button labels, rule cards and the system docs are pre elements and render in the platform default monospace; the schema pretty-printer aligns its layouts on the character grid, so monospace is a functional requirement there, not a taste. The bird emoji standing in for atoms come from the platform color-emoji font \u2014 placeholders until the game gets real graphics, deliberately unspecified.",
+    "Two typefaces load from Google Fonts. Noto Sans, a variable font (weights 100\u2013900, with italics), sets all UI text. Noto Sans Math sits behind it in the font stack: wherever Noto Sans lacks a glyph \u2014 the turnstile and the connectives \u2014 the character falls through to the math font, so logic notation in the proof tree is a fallback effect, not a separate style. Button labels, rule cards and the system docs are pre elements and render in the platform default monospace; the schema pretty-printer aligns its layouts on the character grid, so monospace is a functional requirement there, not a taste. The bird emoji standing in for atoms come from the platform color-emoji font \u2014 placeholders until the game gets real graphics, deliberately unspecified. In owl prose, reserved words render in small caps \u2014 a term is reserved iff it names notation, a symbol or set of symbols the player can see (the gate, the connectives, the constants); action and structure words stay plain. Small caps is the term-of-art channel: scannable, yet claiming no interactive affordance the way color (a link) or a pill (a button) would. The marker covers the word alone; symbols, parens and punctuation keep the surrounding roman, per the headword (gloss) convention, and sentence-initial capitals stay full-size, so translations use natural prose capitalization with no markup.",
     strip
   );
 };
@@ -7949,76 +10156,6 @@ var mountGallery = (container, navigate2) => {
   render();
   return { cleanup: () => {
   }, rerender: render };
-};
-
-// src/npc/proof-walker.ts
-var extractAuxFormula = (rule, deps) => {
-  const dep0 = deps[0];
-  const dep1 = deps[1];
-  if (dep0 === void 0 || dep1 === void 0) return null;
-  if (rule === "cut") {
-    const succ2 = dep0.result.succedent;
-    return isNonEmptyArray(succ2) ? last(succ2) : null;
-  }
-  const succ = dep1.result.succedent;
-  return isNonEmptyArray(succ) ? succ[0] : null;
-};
-var walk = (node, out, shuffle) => {
-  const rule = node.rule;
-  if (isReverseId1(rule)) {
-    const aux = extractAuxFormula(rule, node.deps);
-    if (aux !== null) out.push(reverse12(rule, aux));
-  } else if (isReverseId0(rule)) {
-    out.push(reverse02(rule));
-  }
-  if (shuffle && node.deps.length === 2 && Math.random() < 0.5) {
-    const dep0 = node.deps[0];
-    const dep1 = node.deps[1];
-    if (dep0 !== void 0 && dep1 !== void 0) {
-      out.push(nextBranch());
-      walk(dep1, out, shuffle);
-      walk(dep0, out, shuffle);
-      return;
-    }
-  }
-  for (const dep of node.deps) {
-    walk(dep, out, shuffle);
-  }
-};
-var planSolves = (proof, events) => {
-  let state = focus(premise(proof.result));
-  for (const ev of events) {
-    state = applyEvent(state, ev, null);
-  }
-  return openBranches(state.derivation).length === 0;
-};
-var SHUFFLE_ATTEMPTS = 5;
-var linearize = (proof, opts = {}) => {
-  const shuffle = opts.shuffle ?? true;
-  if (shuffle) {
-    for (let attempt = 0; attempt < SHUFFLE_ATTEMPTS; attempt += 1) {
-      const events2 = [];
-      walk(proof, events2, true);
-      if (planSolves(proof, events2)) return events2;
-    }
-  }
-  const events = [];
-  walk(proof, events, false);
-  return events;
-};
-var linearizeStart = (start) => {
-  const events = [];
-  const walkStart = (node) => {
-    if (node.kind === "premise") {
-      events.push(nextBranch());
-      return;
-    }
-    if (isReverseId0(node.rule)) events.push(reverse02(node.rule));
-    node.deps.forEach(walkStart);
-  };
-  walkStart(start);
-  while (events[events.length - 1]?.kind === "nextBranch") events.pop();
-  return events;
 };
 
 // src/npc/solver-runner.ts
@@ -9276,1845 +11413,6 @@ var mountVersus = (container, navigate2, pool2, versusConfig) => {
       cleanupControlPads.forEach((c) => c());
       unsubGamepad();
       pool2.onRetroSolved = void 0;
-    },
-    rerender
-  };
-};
-
-// src/model/closure.ts
-var sidedRules = (p) => fold(p, {
-  atom: () => ({ left: [], right: [] }),
-  falsum: () => ({ left: ["f"], right: [] }),
-  verum: () => ({ left: [], right: ["v"] }),
-  negation: (body) => ({
-    left: ["nl", ...body.right],
-    right: ["nr", ...body.left]
-  }),
-  implication: (antecedent, consequent) => ({
-    left: ["il", ...antecedent.right, ...consequent.left],
-    right: ["ir", ...antecedent.left, ...consequent.right]
-  }),
-  conjunction: (leftConjunct, rightConjunct) => ({
-    left: ["cl", ...leftConjunct.left, ...rightConjunct.left],
-    right: ["cr", ...leftConjunct.right, ...rightConjunct.right]
-  }),
-  disjunction: (leftDisjunct, rightDisjunct) => ({
-    left: ["dl", ...leftDisjunct.left, ...rightDisjunct.left],
-    right: ["dr", ...leftDisjunct.right, ...rightDisjunct.right]
-  })
-});
-var reachableRules = (s) => uniq2([
-  ...s.antecedent.flatMap((p) => sidedRules(p).left),
-  ...s.succedent.flatMap((p) => sidedRules(p).right)
-]);
-
-// src/model/presolve.ts
-var CLOSINGS = /* @__PURE__ */ new Set(["i", "f", "v"]);
-var NON_STRUCTURAL = /* @__PURE__ */ new Set([
-  "nl",
-  "nr",
-  "cl",
-  "cr",
-  "dl",
-  "dr",
-  "il",
-  "ir",
-  "cut"
-]);
-var pruneClosings = (d) => {
-  if (d.kind === "premise") return d;
-  if (CLOSINGS.has(d.rule)) return premise(d.result);
-  return { ...d, deps: d.deps.map(pruneClosings) };
-};
-var containsNonStructural = (d) => d.kind === "transformation" && (NON_STRUCTURAL.has(d.rule) || d.deps.some(containsNonStructural));
-var pruneStructural = (d) => {
-  if (d.kind === "premise") return d;
-  if (!containsNonStructural(d)) return premise(d.result);
-  return { ...d, deps: d.deps.map(pruneStructural) };
-};
-
-// src/solver/bruteStructure0.ts
-var seqKey = (s) => JSON.stringify([s.antecedent, s.succedent]);
-var buildStructurePath = (d, rules3, p) => {
-  if (equals3(d.result, p.result)) {
-    return proofUsing(d.result, p.deps, p.rule);
-  }
-  const target = seqKey(p.result);
-  const parent = /* @__PURE__ */ new Map();
-  const startKey = seqKey(d.result);
-  const queue = [d];
-  const visited = /* @__PURE__ */ new Set([startKey]);
-  const nodes = /* @__PURE__ */ new Map([[startKey, d]]);
-  let found = false;
-  outer: while (queue.length > 0) {
-    const current2 = queue.shift();
-    if (!current2) break;
-    const currentKey = seqKey(current2.result);
-    for (const [rId, rule] of entries(reverseStructure0)) {
-      const ruleId = rId;
-      if (!includes(rules3, ruleId)) continue;
-      const reversed = rule.tryReverse(current2);
-      if (!reversed || reversed.kind !== "transformation") continue;
-      const [dep] = reversed.deps;
-      if (!dep || dep.kind !== "premise") continue;
-      const depKey = seqKey(dep.result);
-      if (visited.has(depKey)) continue;
-      visited.add(depKey);
-      nodes.set(depKey, dep);
-      parent.set(depKey, { parentKey: currentKey, ruleId });
-      if (depKey === target) {
-        found = true;
-        break outer;
-      }
-      queue.push(dep);
-    }
-  }
-  if (!found) return null;
-  let proof = proofUsing(p.result, p.deps, p.rule);
-  let key = target;
-  while (key !== startKey) {
-    const edge = parent.get(key);
-    if (!edge) break;
-    const parentNode = nodes.get(edge.parentKey);
-    if (!parentNode) break;
-    proof = proofUsing(parentNode.result, [proof], edge.ruleId);
-    key = edge.parentKey;
-  }
-  return proof;
-};
-var bruteStructure0 = (d, rules3, p) => function* () {
-  const result = buildStructurePath(d, rules3, p);
-  if (result !== null) {
-    yield result;
-  }
-};
-
-// src/solver/brute.ts
-var hypoWeaken = (d) => function* () {
-  const farLeft = d.result.antecedent.at(0);
-  const farRight = d.result.succedent.at(-1);
-  if (farLeft && farRight) {
-    yield premise(sequent([farLeft], [farRight]));
-  }
-  if (farLeft) {
-    yield premise(sequent([farLeft], []));
-  }
-  if (farRight) {
-    yield premise(sequent([], [farRight]));
-  }
-};
-var bruteWeaken0 = (d, rules3, p) => function* () {
-  if (equals3(d.result, p.result)) {
-    yield proofUsing(d.result, p.deps, p.rule);
-    return;
-  }
-  const swl2 = "swl";
-  if (includes(rules3, swl2) && d.result.antecedent.length > p.result.antecedent.length && reverseStructure0[swl2].isResultDerivation(d)) {
-    const step = reverseStructure0.swl.reverse(d);
-    const [dep] = step.deps;
-    if (dep.kind === "premise") {
-      yield* map(
-        bruteWeaken0(dep, rules3, p),
-        (depProof) => proofUsing(step.result, [depProof], swl2)
-      )();
-    }
-    return;
-  }
-  const swr2 = "swr";
-  if (includes(rules3, swr2) && d.result.succedent.length > p.result.succedent.length && reverseStructure0[swr2].isResultDerivation(d)) {
-    const step = reverseStructure0.swr.reverse(d);
-    const [dep] = step.deps;
-    if (dep.kind === "premise") {
-      yield* map(
-        bruteWeaken0(dep, rules3, p),
-        (depProof) => proofUsing(step.result, [depProof], swr2)
-      )();
-    }
-    return;
-  }
-};
-var bruteAxiom0 = (d, rules3, limit) => function* () {
-  for (const rule of Object.values(reverseAxiom0)) {
-    if (!includes(rules3, rule.id)) {
-      continue;
-    }
-    const result = rule.tryReverse(d);
-    if (!result) {
-      continue;
-    }
-    yield* brute0(result, rules3, limit)();
-  }
-};
-var candidateConnectives = (rules3, sequent2) => {
-  const kinds = /* @__PURE__ */ new Set();
-  for (const [rId, rule] of entries(reverse0)) {
-    if (!includes(rules3, rId)) continue;
-    for (const kind of rule.connectives) kinds.add(kind);
-  }
-  for (const p of [...sequent2.antecedent, ...sequent2.succedent])
-    for (const kind of connectives(p)) kinds.add(kind);
-  return kinds;
-};
-var formulasOfOpCount = (opCount, atoms2, connectives2) => function* () {
-  if (opCount === 0) {
-    for (const a87 of atoms2) yield atom(a87);
-    if (connectives2.has("falsum")) yield falsum;
-    if (connectives2.has("verum")) yield verum;
-    return;
-  }
-  if (connectives2.has("negation")) {
-    for (const p of formulasOfOpCount(opCount - 1, atoms2, connectives2)()) {
-      yield negation(p);
-    }
-  }
-  for (let leftOps = 0; leftOps < opCount; leftOps += 1) {
-    const rightOps = opCount - 1 - leftOps;
-    for (const l of formulasOfOpCount(leftOps, atoms2, connectives2)()) {
-      for (const r of formulasOfOpCount(rightOps, atoms2, connectives2)()) {
-        if (connectives2.has("implication")) yield implication(l, r);
-        if (connectives2.has("conjunction")) yield conjunction(l, r);
-        if (connectives2.has("disjunction")) yield disjunction(l, r);
-      }
-    }
-  }
-};
-var bruteLogic1 = (d, rules3, limit) => function* () {
-  const applicableRules3 = entries(reverse1).filter(
-    ([rId]) => includes(rules3, rId)
-  );
-  if (applicableRules3.length === 0) return;
-  const atoms2 = uniq2([
-    ...d.result.antecedent.flatMap(atoms),
-    ...d.result.succedent.flatMap(atoms)
-  ]);
-  const connectives2 = candidateConnectives(rules3, d.result);
-  for (let opCount = 0; opCount <= limit * 2; opCount += 1) {
-    for (const formula of formulasOfOpCount(opCount, atoms2, connectives2)()) {
-      for (const [, rule] of applicableRules3) {
-        const result = rule.tryReverse(formula)(d);
-        if (!result) continue;
-        yield* brute0(result, rules3, limit)();
-      }
-    }
-  }
-};
-var bruteLogic0 = (d, rules3, limit) => function* () {
-  yield* flatMap(
-    hypoWeaken(d),
-    (hypo) => flatMap(
-      bruteAxiom0(hypo, rules3, limit),
-      (h) => bruteWeaken0(d, rules3, h)
-    )
-  )();
-  for (const rule of Object.values(reverseLogic0)) {
-    if (!includes(rules3, rule.id)) {
-      continue;
-    }
-    const result = rule.tryReverse(d);
-    if (!result) {
-      continue;
-    }
-    yield* brute0(result, rules3, limit)();
-  }
-  yield* bruteLogic1(d, rules3, limit)();
-};
-var hypoStructure = (d, rules3) => function* () {
-  const visited = /* @__PURE__ */ new Set();
-  const queue = [d];
-  while (queue.length > 0) {
-    const current2 = queue.shift();
-    if (!current2) break;
-    const key = seqKey(current2.result);
-    if (visited.has(key)) continue;
-    visited.add(key);
-    yield current2;
-    for (const [rId, rule] of entries(reverseStructure0)) {
-      const ruleId = rId;
-      if (!includes(rules3, ruleId)) continue;
-      const reversed = rule.tryReverse(current2);
-      if (!reversed || reversed.kind !== "transformation") continue;
-      const [dep] = reversed.deps;
-      if (!dep || dep.kind !== "premise") continue;
-      queue.push(dep);
-    }
-  }
-};
-var brute0Premise = (d, rules3, limit) => function* () {
-  if (limit < 1) {
-    return;
-  }
-  if (!isTautology2(d.result)) {
-    return;
-  }
-  yield* flatMap(
-    hypoStructure(d, rules3),
-    (hypo) => flatMap(
-      bruteLogic0(hypo, rules3, limit),
-      (h) => bruteStructure0(d, rules3, h)
-    )
-  )();
-};
-var brute0Transformation = (d, rules3, limit) => function* () {
-  const depProofs = sequence(
-    d.deps.map((dep) => brute0(dep, rules3, limit - 1))
-  );
-  yield* map(
-    depProofs,
-    (proofs) => proofUsing(d.result, proofs, d.rule)
-  )();
-};
-var brute0 = (d, rules3, limit) => function* () {
-  switch (d.kind) {
-    case "premise":
-      yield* brute0Premise(d, rules3, limit)();
-      break;
-    case "transformation": {
-      const rule = d.rule;
-      if (includes(rules3, rule)) {
-        yield* brute0Transformation({ ...d, rule }, rules3, limit)();
-      }
-      break;
-    }
-  }
-};
-var tryAtDepth = (c, limit) => {
-  const proofs = head2(brute0(premise(c.goal), c.rules, limit));
-  return isNonEmptyArray(proofs) ? proofs[0] : void 0;
-};
-var bruteLimit = (c, maxLimit) => {
-  for (let limit = 0; limit <= maxLimit; limit += 1) {
-    const proof = tryAtDepth(c, limit);
-    if (proof) return [proof];
-  }
-  return [];
-};
-function* bruteSearch(c) {
-  for (let limit = 0; ; limit += 1) {
-    const proof = tryAtDepth(c, limit);
-    if (proof) return [proof, limit];
-    yield;
-  }
-}
-var brute = (c) => {
-  const gen = bruteSearch(c);
-  while (true) {
-    const { done, value } = gen.next();
-    if (done === true) return value;
-  }
-};
-
-// src/random/challenge.ts
-var RULES = rules2;
-var SOLVER_RULES = RULES.filter(
-  (r) => !isReverseId1(r)
-);
-var STRUCTURAL_RULES = /* @__PURE__ */ new Set([
-  "swl",
-  "swr",
-  "sRotLB",
-  "sRotRB"
-]);
-var countNonStructural = (d) => {
-  if (d.kind === "premise") return 0;
-  const self = STRUCTURAL_RULES.has(d.rule) ? 0 : 1;
-  return self + d.deps.reduce((sum, dep) => sum + countNonStructural(dep), 0);
-};
-
-// src/random/tutorial.ts
-var tutorialRules = rules2.filter(
-  (r) => r !== "cut"
-);
-var ATOMS = {
-  p: 3,
-  q: 2,
-  r: 1,
-  s: 0,
-  u: 0,
-  v: 0,
-  falsum: 0,
-  verum: 0
-};
-var NONE = {
-  negation: 0,
-  implication: 0,
-  conjunction: 0,
-  disjunction: 0
-};
-var P = atom("p");
-var Q = atom("q");
-var logicNotches = [
-  {
-    // Same-side split: conjunction-left and disjunction-right — two pieces
-    // that stay put. With no gate-flipping connective in the weights, the
-    // per-side weights alone keep every candidate inside the clamp.
-    glyphs: "\u2227 \u2228",
-    featured: ["cl", "dr"],
-    taught: ["cl", "dr"],
-    anteConnectives: { ...NONE, conjunction: 1 },
-    succConnectives: { ...NONE, disjunction: 1 },
-    symbols: ATOMS,
-    maxFormulaSize: 2,
-    minAnte: 0,
-    fallback: sequent([conjunction(P, Q)], [P])
-  },
-  {
-    // Whole-formula gate-flip: negation on either side. From here on the
-    // flip means any taught connective can legally sit on either side when
-    // negations carry it to its legal polarity (e.g. ¬(A∧B) on the RIGHT
-    // flips the conjunction to the left, where cl is taught) — so both
-    // sides weight every taught connective and the closure filter rejects
-    // the wrong-polarity placements.
-    glyphs: "\xAC",
-    featured: ["nl", "nr"],
-    taught: ["cl", "dr", "nl", "nr"],
-    anteConnectives: { ...NONE, conjunction: 1, disjunction: 1, negation: 2 },
-    succConnectives: { ...NONE, conjunction: 1, disjunction: 1, negation: 2 },
-    symbols: ATOMS,
-    maxFormulaSize: 2,
-    minAnte: 0,
-    fallback: sequent([P], [negation(negation(P))])
-  },
-  {
-    // Cross-gate split: implication-right — split and one piece hops the
-    // gate. The bridge to real `⊢ A→B` goals (implication weight covers the
-    // antecedent too: ¬(A→B) on the left is legal via the flip).
-    glyphs: "\u2192",
-    featured: ["ir"],
-    taught: ["cl", "dr", "nl", "nr", "ir"],
-    anteConnectives: {
-      conjunction: 1,
-      disjunction: 1,
-      negation: 1,
-      implication: 1
-    },
-    succConnectives: {
-      conjunction: 1,
-      disjunction: 1,
-      negation: 1,
-      implication: 2
-    },
-    symbols: ATOMS,
-    maxFormulaSize: 2,
-    minAnte: 0,
-    fallback: sequent([], [implication(P, P)])
-  },
-  {
-    // Branching split: conjunction-right and disjunction-left — the proof
-    // forks. Same mirror as subchapter 1, now on the branching sides.
-    glyphs: "\u2227 \u2228",
-    featured: ["cr", "dl"],
-    taught: ["cl", "dr", "nl", "nr", "ir", "cr", "dl"],
-    anteConnectives: {
-      conjunction: 1,
-      disjunction: 1,
-      negation: 1,
-      implication: 1
-    },
-    succConnectives: {
-      conjunction: 1,
-      disjunction: 1,
-      negation: 1,
-      implication: 1
-    },
-    symbols: ATOMS,
-    maxFormulaSize: 2,
-    minAnte: 0,
-    fallback: sequent([disjunction(P, Q)], [disjunction(Q, P)])
-  },
-  {
-    // The capstone: implication-left — gate-crossing and branching combined.
-    // Its simplest isolating goals are the modus-ponens shape `p→q, p ⊢ q`.
-    glyphs: "\u2192",
-    featured: ["il"],
-    taught: ["cl", "dr", "nl", "nr", "ir", "cr", "dl", "il"],
-    anteConnectives: {
-      conjunction: 1,
-      disjunction: 1,
-      negation: 1,
-      implication: 3
-    },
-    succConnectives: {
-      conjunction: 1,
-      disjunction: 1,
-      negation: 1,
-      implication: 1
-    },
-    symbols: ATOMS,
-    maxFormulaSize: 2,
-    minAnte: 1,
-    fallback: sequent([implication(P, Q), P], [Q])
-  }
-];
-var constantsNotch = {
-  glyphs: "\u22A5 \u22A4",
-  featured: ["f", "v"],
-  taught: ["cl", "dr", "nl", "nr", "ir", "cr", "dl", "f", "v"],
-  anteConnectives: {
-    conjunction: 1,
-    disjunction: 1,
-    negation: 1,
-    implication: 1
-  },
-  succConnectives: {
-    conjunction: 1,
-    disjunction: 1,
-    negation: 1,
-    implication: 1
-  },
-  symbols: { ...ATOMS, falsum: 2, verum: 2 },
-  maxFormulaSize: 2,
-  minAnte: 0,
-  fallback: sequent([disjunction(falsum, P)], [P])
-};
-var MAX_LIMIT = 3;
-var MAX_TRIES = 1e3;
-var MAX_FORMULAS = 3;
-var randomCount = () => Math.floor(Math.random() * 3);
-var makeFormula = (weights, notch) => {
-  const size = Math.floor(Math.random() * (notch.maxFormulaSize + 1));
-  return randomWeighted(size, weights, notch.symbols)();
-};
-var subformulas = (f2) => {
-  switch (f2.kind) {
-    case "atom":
-    case "falsum":
-    case "verum":
-      return [f2];
-    case "negation":
-      return [f2, ...subformulas(f2.negand)];
-    case "implication":
-      return [f2, ...subformulas(f2.antecedent), ...subformulas(f2.consequent)];
-    case "conjunction":
-      return [
-        f2,
-        ...subformulas(f2.leftConjunct),
-        ...subformulas(f2.rightConjunct)
-      ];
-    case "disjunction":
-      return [
-        f2,
-        ...subformulas(f2.leftDisjunct),
-        ...subformulas(f2.rightDisjunct)
-      ];
-  }
-};
-var pick = (xs) => xs[Math.floor(Math.random() * xs.length)];
-var asResult = (solution87, formulasTried) => ({
-  challenge: { rules: tutorialRules, goal: solution87.result, solution: solution87 },
-  nonStructuralCount: countNonStructural(solution87),
-  bypassed: false,
-  formulasTried
-});
-var fallbackChallenge = (notch) => {
-  const [solution87] = brute({ goal: notch.fallback, rules: tutorialRules });
-  return asResult(solution87, 0);
-};
-var generateSequentChallenge = (notch) => {
-  for (let tries = 0; tries < MAX_TRIES; tries += 1) {
-    const nAnte = Math.max(notch.minAnte, randomCount());
-    const nSucc = randomCount();
-    if (nAnte + nSucc === 0 || nAnte + nSucc > MAX_FORMULAS) continue;
-    const antecedent = Array.from(
-      { length: nAnte },
-      () => makeFormula(notch.anteConnectives, notch)
-    );
-    const borrowPool = antecedent.flatMap(subformulas);
-    const succedent = Array.from({ length: nSucc }, () => {
-      const borrowed = borrowPool.length > 0 && Math.random() < 0.5 ? pick(borrowPool) : void 0;
-      return borrowed ?? makeFormula(notch.succConnectives, notch);
-    });
-    const goal87 = sequent(antecedent, succedent);
-    const closure = reachableRules(goal87);
-    if (!closure.every((r) => notch.taught.includes(r))) continue;
-    if (!notch.featured.some((r) => closure.includes(r))) continue;
-    if (!isTautology2(goal87)) continue;
-    const [solution87] = bruteLimit({ goal: goal87, rules: tutorialRules }, MAX_LIMIT);
-    if (solution87 === void 0) continue;
-    const dodgeRules = tutorialRules.filter((r) => !notch.featured.includes(r));
-    const [dodge] = bruteLimit({ goal: goal87, rules: dodgeRules }, MAX_LIMIT);
-    if (dodge !== void 0) continue;
-    return asResult(solution87, tries + 1);
-  }
-  return fallbackChallenge(notch);
-};
-var DEMO_GOAL = sequent(
-  [conjunction(P, Q)],
-  [conjunction(Q, P)]
-);
-var generateDemoChallenge = () => {
-  const [solution87] = brute({ goal: DEMO_GOAL, rules: tutorialRules });
-  return asResult(solution87, 0);
-};
-var frontierLeaves = (start) => openBranches(start).flatMap((path) => {
-  const node = subDerivation(start, path);
-  return node === null ? [] : [node.result];
-});
-var isAtomic = (seq) => [...seq.antecedent, ...seq.succedent].every((f2) => f2.kind === "atom");
-var needsDrop = (seq) => seq.antecedent.length + seq.succedent.length > 2;
-var needsRotation = (seq) => {
-  const keepLeft = seq.antecedent[0];
-  const keepRight = seq.succedent[seq.succedent.length - 1];
-  if (keepLeft === void 0 || keepRight === void 0) return false;
-  return !equals(keepLeft, keepRight);
-};
-var BASICS_TRIES = 50;
-var isConstantClose = (seq) => seq.antecedent.length === 1 && seq.succedent.length === 0 && seq.antecedent[0]?.kind === "falsum" || seq.antecedent.length === 0 && seq.succedent.length === 1 && seq.succedent[0]?.kind === "verum";
-var isCompositeClose = (seq) => seq.antecedent.some((f2) => f2.kind !== "atom");
-var TEMPLATE_WEIGHTS = {
-  negation: 1,
-  implication: 0,
-  conjunction: 1,
-  disjunction: 1
-};
-var templateFormula = (notch, compound) => {
-  for (; ; ) {
-    const size = compound ? Math.floor(Math.random() * notch.maxFormulaSize) + 1 : Math.random() < 0.8 ? 0 : Math.floor(Math.random() * notch.maxFormulaSize) + 1;
-    const f2 = randomWeighted(size, TEMPLATE_WEIGHTS, notch.symbols)();
-    if (!compound || f2.kind !== "atom") return f2;
-  }
-};
-var identityTemplate = (notch) => {
-  const compound = templateFormula(notch, true);
-  const other = templateFormula(notch, false);
-  const [a87, b] = Math.random() < 0.5 ? [compound, other] : [other, compound];
-  const goal87 = Math.random() < 0.5 ? sequent([a87, b], [conjunction(a87, b)]) : sequent([disjunction(a87, b)], [a87, b]);
-  const closure = reachableRules(goal87);
-  if (!closure.every((r) => logicNotches[3].taught.includes(r))) return null;
-  const [solution87] = bruteLimit({ goal: goal87, rules: tutorialRules }, MAX_LIMIT);
-  return solution87 === void 0 ? null : asResult(solution87, 1);
-};
-var generateBasicsChallenge = (kind) => {
-  const source = kind === "constants" ? constantsNotch : logicNotches[3];
-  const prune = kind === "drop" ? pruneStructural : pruneClosings;
-  for (let tries = 0; tries < BASICS_TRIES; tries += 1) {
-    const res2 = kind === "identity" && Math.random() < 0.5 ? identityTemplate(source) : generateSequentChallenge(source);
-    if (res2 === null) continue;
-    const solution88 = res2.challenge.solution;
-    if (solution88 === void 0) continue;
-    const start = prune(solution88);
-    if (start.kind === "premise") continue;
-    const leaves = frontierLeaves(start);
-    if (leaves.length < 2) continue;
-    if (kind === "identity" && !leaves.some(isCompositeClose)) continue;
-    if (kind === "constants" && !leaves.some(isConstantClose)) continue;
-    if (kind === "drop") {
-      if (!leaves.every(isAtomic)) continue;
-      if (!leaves.some(needsDrop)) continue;
-      if (!leaves.some(needsRotation)) continue;
-    }
-    return { ...res2, challenge: { ...res2.challenge, start } };
-  }
-  const res = fallbackChallenge(source);
-  const solution87 = res.challenge.solution;
-  if (solution87 === void 0) return res;
-  return { ...res, challenge: { ...res.challenge, start: prune(solution87) } };
-};
-var claimNotch = {
-  glyphs: "",
-  featured: ["nl", "nr", "cl", "cr", "dl", "dr", "il", "ir"],
-  taught: ["nl", "nr", "cl", "cr", "dl", "dr", "il", "ir", "f", "v"],
-  anteConnectives: {
-    conjunction: 1,
-    disjunction: 1,
-    negation: 1,
-    implication: 1
-  },
-  succConnectives: {
-    conjunction: 1,
-    disjunction: 1,
-    negation: 1,
-    implication: 1
-  },
-  symbols: ATOMS,
-  maxFormulaSize: 2,
-  minAnte: 0,
-  // Hypothetical syllogism — the classic goal a mid-proof claim helps.
-  fallback: sequent(
-    [implication(P, Q), implication(Q, atom("r"))],
-    [implication(P, atom("r"))]
-  )
-};
-var generateClaimChallenge = () => {
-  const res = generateSequentChallenge(claimNotch);
-  return { ...res, challenge: { ...res.challenge, rules: rules2 } };
-};
-var solvabilityTaught = [
-  ...logicNotches[4].taught,
-  "f",
-  "v"
-];
-var connectiveRules = [
-  "nl",
-  "nr",
-  "cl",
-  "cr",
-  "dl",
-  "dr",
-  "il",
-  "ir"
-];
-var UNSOLVABLE_WEIGHTS = {
-  negation: 1,
-  implication: 1,
-  conjunction: 1,
-  disjunction: 1
-};
-var UNSOLVABLE_FALLBACK = sequent(
-  [disjunction(P, Q)],
-  [conjunction(P, Q)]
-);
-var asUnsolvableResult = (goal87, formulasTried) => ({
-  challenge: { rules: rules2, goal: goal87 },
-  nonStructuralCount: 0,
-  bypassed: true,
-  formulasTried
-});
-var generateUnsolvableChallenge = () => {
-  for (let tries = 0; tries < MAX_TRIES; tries += 1) {
-    const nAnte = randomCount();
-    const nSucc = randomCount();
-    if (nAnte + nSucc === 0 || nAnte + nSucc > MAX_FORMULAS) continue;
-    const draw = () => {
-      const size = Math.floor(Math.random() * 3);
-      return randomWeighted(size, UNSOLVABLE_WEIGHTS, ATOMS)();
-    };
-    const antecedent = Array.from({ length: nAnte }, draw);
-    const succedent = Array.from({ length: nSucc }, draw);
-    const goal87 = sequent(antecedent, succedent);
-    if (isTautology2(goal87)) continue;
-    const closure = reachableRules(goal87);
-    if (!closure.every((r) => solvabilityTaught.includes(r))) continue;
-    if (!closure.some((r) => connectiveRules.includes(r))) continue;
-    return asUnsolvableResult(goal87, tries + 1);
-  }
-  return asUnsolvableResult(UNSOLVABLE_FALLBACK, MAX_TRIES);
-};
-var LOGIC_NAME_IDS = [
-  "sideFlip",
-  "crossing",
-  "branching",
-  "branchingCrossing"
-];
-var tutorialCurriculum = [
-  {
-    chapter: "basics",
-    nameId: "identity",
-    glyphs: "",
-    hideGaze: true,
-    hideSkip: true,
-    hideLemma: true,
-    conjecture: false,
-    generate: () => generateBasicsChallenge("identity")
-  },
-  {
-    // Same verb as the first beat, new winning conditions — still pure
-    // closing, so gaze stays hidden.
-    chapter: "basics",
-    nameId: "constants",
-    glyphs: "",
-    hideGaze: true,
-    hideSkip: true,
-    hideLemma: true,
-    conjecture: false,
-    generate: () => generateBasicsChallenge("constants")
-  },
-  {
-    chapter: "basics",
-    nameId: "drop",
-    glyphs: "",
-    hideGaze: false,
-    hideSkip: true,
-    hideLemma: true,
-    conjecture: false,
-    generate: () => generateBasicsChallenge("drop")
-  },
-  {
-    // The Destruct beat closes Basics: it introduces the third verb on the
-    // gentlest rules (∧ left / ∨ right — the pieces stay put), so the verb
-    // and its binding are learned before any of its consequences. The
-    // Consequences chapter then covers what destructing does everywhere
-    // else. Not presolved like the other Basics beats — a full challenge is
-    // the point (Close and Drop are already fluent).
-    chapter: "basics",
-    nameId: "split",
-    glyphs: "",
-    hideGaze: false,
-    hideSkip: true,
-    hideLemma: true,
-    conjecture: false,
-    generate: () => generateSequentChallenge(logicNotches[0])
-  },
-  // No glyphs on the Consequences rows: the behavior names are unique
-  // there, and ladder rows should carry symbols only where the name alone
-  // is ambiguous (the two Close beats).
-  ...logicNotches.slice(1).map((notch, i88) => ({
-    chapter: "logic",
-    nameId: LOGIC_NAME_IDS[i88] ?? "sideFlip",
-    glyphs: "",
-    hideGaze: false,
-    hideSkip: true,
-    hideLemma: true,
-    conjecture: false,
-    generate: () => generateSequentChallenge(notch)
-  })),
-  {
-    // The Optimization chapter's Claims beat: ordinary challenges with the
-    // Claim button making its first appearance. Claims are optional by
-    // nature (cut is admissible), so this is the one beat whose featured
-    // verb the goals cannot force.
-    chapter: "optimization",
-    nameId: "claims",
-    glyphs: "",
-    hideGaze: false,
-    hideSkip: true,
-    hideLemma: false,
-    conjecture: false,
-    generate: generateClaimChallenge
-  },
-  {
-    // The Solvability chapter's Skip beat: deliberately unsolvable goals,
-    // announced as such upfront (the honest framing) — the player takes one
-    // apart, finds the dead end, and Skip makes its first appearance as the
-    // correct exit.
-    chapter: "solvability",
-    nameId: "unsolvable",
-    glyphs: "",
-    hideGaze: false,
-    hideSkip: false,
-    hideLemma: false,
-    conjecture: false,
-    generate: generateUnsolvableChallenge
-  },
-  {
-    // The Solvability chapter's Conjecture beat: the player composes an
-    // arbitrary formula and plays the goal they authored — the first
-    // challenge whose solvability nobody has checked. Skip (taught in the
-    // previous beat) is the exit when the conjecture turns out false.
-    chapter: "solvability",
-    nameId: "conjecture",
-    glyphs: "",
-    hideGaze: false,
-    hideSkip: false,
-    hideLemma: false,
-    conjecture: true,
-    // Never shown: the web layer swaps this beat's boards for the entry
-    // flow; a fixed cheap result keeps the challenge buffer machinery fed.
-    generate: () => asUnsolvableResult(UNSOLVABLE_FALLBACK, 0)
-  }
-];
-var beatAt = (i88) => {
-  const clamped = Math.max(0, Math.min(i88, tutorialCurriculum.length - 1));
-  return tutorialCurriculum[clamped] ?? tutorialCurriculum[0] ?? beatFail();
-};
-var beatFail = () => {
-  throw new Error("empty tutorial curriculum");
-};
-var tutorialStops = (() => {
-  const stops = [];
-  let lastChapter = null;
-  tutorialCurriculum.forEach((beat, i88) => {
-    if (beat.chapter !== lastChapter) {
-      lastChapter = beat.chapter;
-      stops.push({ kind: "intro", chapter: beat.chapter });
-    }
-    stops.push({ kind: "beat", beatIdx: i88 });
-  });
-  stops.push({ kind: "intro", chapter: "done" });
-  return stops;
-})();
-var stopAt = (i88) => {
-  const clamped = Math.max(0, Math.min(i88, tutorialStops.length - 1));
-  return tutorialStops[clamped] ?? tutorialStops[0] ?? stopFail();
-};
-var stopFail = () => {
-  throw new Error("empty tutorial stop list");
-};
-
-// src/web/tutorial.ts
-var beatNameKey = {
-  identity: "tutorialIdentity",
-  constants: "tutorialConstants",
-  drop: "tutorialExtras",
-  split: "tutorialShape1",
-  sideFlip: "tutorialShape2",
-  crossing: "tutorialShape3",
-  branching: "tutorialShape4",
-  branchingCrossing: "tutorialShape5",
-  claims: "tutorialClaims",
-  unsolvable: "tutorialSkipping",
-  conjecture: "tutorialConjecture"
-};
-var chapterKey = {
-  basics: "tutorialBasics",
-  logic: "tutorialLogic",
-  optimization: "tutorialOptimization",
-  solvability: "tutorialSolvability"
-};
-var owlChapterKey = {
-  basics: "tutorialOwlBasics",
-  logic: "tutorialOwlLogic",
-  optimization: "tutorialOwlOptimization",
-  solvability: "tutorialOwlSolvability",
-  done: "tutorialOwlDone"
-};
-var owlBeatKey = [
-  "tutorialOwlClose",
-  "tutorialOwlCloseConstants",
-  "tutorialOwlDrop",
-  "tutorialOwlSplit",
-  "tutorialOwlSideFlip",
-  "tutorialOwlCrossing",
-  "tutorialOwlBranching",
-  "tutorialOwlBranchingCrossing",
-  "tutorialOwlClaims",
-  "tutorialOwlUnsolvable",
-  "tutorialOwlConjecture"
-];
-var demoPhaseKey = {
-  sequent: "tutorialDemoSequent",
-  grow: "tutorialDemoGrow",
-  closed: "tutorialDemoClosed",
-  other: "tutorialDemoOther",
-  done: "tutorialDemoDone"
-};
-var DEMO_MOVE_MS = 1300;
-var DEMO_PHASE_MS = 3600;
-var DEMO_DONE_MS = 8e3;
-var isClosingEvent = (ev) => ev.kind === "reverse0" && (ev.rev === "i" || ev.rev === "f" || ev.rev === "v");
-var PRESOLVE_DWELL_MS = 1800;
-var PRESOLVE_MOVE_MS = 550;
-var owlPara = (text) => {
-  const para = document.createElement("div");
-  para.setAttribute("class", "tutor-owl-para");
-  text.split(/(\S+ \( [^()]* \))/).forEach((part, i88) => {
-    if (part === "") return;
-    if (i88 % 2 === 0) {
-      para.appendChild(document.createTextNode(part));
-      return;
-    }
-    const unit2 = document.createElement("span");
-    unit2.setAttribute("class", "tutor-owl-term");
-    unit2.textContent = part;
-    para.appendChild(unit2);
-  });
-  return para;
-};
-var mountTutorial = (container, navigate2, startStop) => {
-  let stopIdx = Math.max(0, Math.min(startStop, tutorialStops.length - 1));
-  const beatForStop = (s) => {
-    for (let i88 = s; i88 < tutorialStops.length; i88 += 1) {
-      const stop = tutorialStops[i88];
-      if (stop !== void 0 && stop.kind === "beat") return stop.beatIdx;
-    }
-    return tutorialCurriculum.length - 1;
-  };
-  let beatIdx = beatForStop(stopIdx);
-  const onIntro = () => stopAt(stopIdx).kind === "intro";
-  const onConjecture = () => beatAt(beatIdx).conjecture;
-  const freshWorkspace = () => new Workspace({ challenge: beatAt(beatIdx).generate().challenge });
-  let ws = freshWorkspace();
-  const ctx = {
-    ...createBenchCtx(false, true, false, false),
-    getActionHint,
-    toggleRulesVisible: () => {
-    }
-  };
-  const onWelcome = () => stopIdx === 0;
-  let demoWs = null;
-  let demoQueue = [];
-  let demoPhase = "sequent";
-  let demoTimer = null;
-  let demoReturn = false;
-  const demoCtx = {
-    ...createBenchCtx(false, true, false, false),
-    getActionHint,
-    toggleRulesVisible: () => {
-    }
-  };
-  const scheduleDemo = (ms) => {
-    if (demoTimer !== null) window.clearTimeout(demoTimer);
-    demoTimer = window.setTimeout(() => demoStep(), ms);
-  };
-  const startDemo = () => {
-    const challenge2 = generateDemoChallenge().challenge;
-    const solution87 = challenge2.solution;
-    demoWs = new Workspace({ challenge: challenge2 });
-    demoQueue = solution87 === void 0 ? [] : linearize(solution87, { shuffle: false });
-    demoPhase = "sequent";
-    demoReturn = false;
-  };
-  const stopDemo = () => {
-    if (demoTimer !== null) window.clearTimeout(demoTimer);
-    demoTimer = null;
-    demoWs = null;
-  };
-  const demoStep = () => {
-    demoTimer = null;
-    if (!onWelcome() || demoWs === null) return;
-    if (paused) {
-      scheduleDemo(DEMO_MOVE_MS);
-      return;
-    }
-    if (demoReturn) {
-      demoReturn = false;
-      demoWs.applyEvent(nextBranch());
-      demoPhase = "other";
-      rerender();
-      scheduleDemo(DEMO_PHASE_MS);
-      return;
-    }
-    const ev = demoQueue[0];
-    if (demoWs.isSolved() || ev === void 0) {
-      startDemo();
-      rerender();
-      scheduleDemo(DEMO_PHASE_MS);
-      return;
-    }
-    demoQueue = demoQueue.slice(1);
-    demoWs.applyEvent(ev);
-    let dwell = DEMO_MOVE_MS;
-    if (demoPhase === "sequent") {
-      demoPhase = "grow";
-      dwell = DEMO_PHASE_MS;
-    }
-    if (isClosingEvent(ev)) {
-      if (demoWs.isSolved()) {
-        demoPhase = "done";
-        dwell = DEMO_DONE_MS;
-      } else {
-        demoWs.applyEvent(prevBranch());
-        demoReturn = true;
-        demoPhase = "closed";
-        dwell = DEMO_PHASE_MS;
-      }
-    }
-    rerender();
-    scheduleDemo(dwell);
-  };
-  let presolving = false;
-  let presolvePending;
-  let presolveQueue = [];
-  let presolveTimer = null;
-  const presolveDone = /* @__PURE__ */ new WeakSet();
-  const schedulePresolve = (ms) => {
-    if (presolveTimer !== null) window.clearTimeout(presolveTimer);
-    presolveTimer = window.setTimeout(() => presolveStep(), ms);
-  };
-  const cancelPresolve = () => {
-    if (presolveTimer !== null) window.clearTimeout(presolveTimer);
-    presolveTimer = null;
-    if (presolving && presolvePending !== void 0) {
-      ws = new Workspace({ challenge: presolvePending });
-    }
-    presolving = false;
-    presolvePending = void 0;
-    presolveQueue = [];
-  };
-  const startPresolveIfAny = () => {
-    if (onIntro()) return;
-    const conf = ws.listConjectures()[0]?.[1];
-    const start = conf?.start;
-    if (conf === void 0 || start === void 0) return;
-    if (presolveDone.has(start)) return;
-    presolveDone.add(start);
-    presolvePending = conf;
-    presolveQueue = linearizeStart(start);
-    ws = new Workspace({ challenge: { rules: conf.rules, goal: conf.goal } });
-    presolving = true;
-    schedulePresolve(PRESOLVE_DWELL_MS);
-  };
-  const presolveStep = () => {
-    presolveTimer = null;
-    if (!presolving) return;
-    if (paused) {
-      schedulePresolve(PRESOLVE_MOVE_MS);
-      return;
-    }
-    const ev = presolveQueue[0];
-    if (ev === void 0) {
-      const pending = presolvePending;
-      presolving = false;
-      presolvePending = void 0;
-      if (pending !== void 0) ws = new Workspace({ challenge: pending });
-      rerender();
-      return;
-    }
-    presolveQueue = presolveQueue.slice(1);
-    ws.applyEvent(ev);
-    rerender();
-    schedulePresolve(PRESOLVE_MOVE_MS);
-  };
-  let paused = false;
-  let pausePopup = null;
-  let pausePopupLocale = getLocale();
-  let ladderOpen = false;
-  let ladderPopup = null;
-  let lemmaSession = null;
-  let conjectureEntry = false;
-  let skipped = false;
-  let skipHadSolution = false;
-  let congrats = null;
-  let introCursor = null;
-  let introDefault = null;
-  let skipCursor = null;
-  let skipDefault = null;
-  const setPaused = (v2) => {
-    paused = v2;
-    rerender();
-  };
-  const closeLadder = () => {
-    ladderOpen = false;
-    rerender();
-  };
-  const syncUrl = () => {
-    const params = new URLSearchParams(window.location.search);
-    params.set("tutorial_stop", String(stopIdx));
-    history.replaceState(history.state, "", `?${params.toString()}`);
-  };
-  const openConjecture = () => {
-    conjectureEntry = true;
-    lemmaSession = createLemmaEditorSession(
-      (formula) => {
-        conjectureEntry = false;
-        lemmaSession = null;
-        ws = new Workspace({
-          challenge: { rules: rules2, goal: sequent([], [formula]) }
-        });
-        rerender();
-      },
-      () => {
-        openConjecture();
-        rerender();
-      },
-      // No board behind the entry to back out to — hide the Back cell.
-      true
-    );
-  };
-  const nextChallenge = () => {
-    cancelPresolve();
-    skipped = false;
-    ctx.setGazeModeActive(false);
-    referentEngaged = false;
-    keyControlDone = false;
-    skipUsedStop = -1;
-    if (onConjecture()) openConjecture();
-    else {
-      ws = freshWorkspace();
-      startPresolveIfAny();
-    }
-    rerender();
-  };
-  const rerootAtBeat = (target) => {
-    const clamped = Math.max(0, Math.min(target, tutorialCurriculum.length - 1));
-    if (clamped === beatIdx) return;
-    beatIdx = clamped;
-    ctx.setGazeModeActive(false);
-    skipped = false;
-    lemmaSession = null;
-    conjectureEntry = false;
-    ws = freshWorkspace();
-    if (beatAt(beatIdx).conjecture) openConjecture();
-  };
-  const jumpToStop = (target) => {
-    const clamped = Math.max(0, Math.min(target, tutorialStops.length - 1));
-    if (clamped === stopIdx) return;
-    cancelPresolve();
-    stopIdx = clamped;
-    if (!onWelcome()) stopDemo();
-    const stop = stopAt(stopIdx);
-    rerootAtBeat(stop.kind === "beat" ? stop.beatIdx : beatForStop(stopIdx));
-    syncUrl();
-    if (stop.kind === "beat") startPresolveIfAny();
-    rerender();
-  };
-  const stopIndexOfBeat = (beat) => tutorialStops.findIndex((s) => s.kind === "beat" && s.beatIdx === beat);
-  const stopIndexOfIntro = (chapter) => tutorialStops.findIndex((s) => s.kind === "intro" && s.chapter === chapter);
-  const skipChallenge = () => {
-    if (onIntro() || beatAt(beatIdx).hideSkip || ws.isSolved()) return;
-    if (lemmaSession !== null) return;
-    if (skipped) {
-      nextChallenge();
-      return;
-    }
-    ctx.setGazeModeActive(false);
-    skipHadSolution = isTautology2(ws.currentConjecture().derivation.result);
-    skipped = true;
-    skipUsedStop = stopIdx;
-    rerender();
-  };
-  const makeUndoControls = () => {
-    const el = document.createElement("div");
-    el.setAttribute("class", "controls");
-    const canUndo2 = ws.canUndo();
-    const enabled = !presolving && (canUndo2 || ctx.isGazeModeActive());
-    const undoBtn = createButton(t("undo"), !enabled, () => {
-      if (canUndo2) {
-        ws.applyEvent(undo2());
-      } else {
-        ctx.setGazeModeActive(false);
-      }
-      rerender();
-    });
-    undoBtn.classList.add("mutating");
-    addLegendBind(undoBtn, "undo");
-    el.appendChild(undoBtn);
-    return el;
-  };
-  const buildIntroPage = () => {
-    const page = document.createElement("div");
-    page.setAttribute("class", "tutorial-intro");
-    if (onWelcome()) {
-      page.classList.add("tutorial-welcome");
-      if (demoWs === null) {
-        startDemo();
-        scheduleDemo(DEMO_PHASE_MS);
-      }
-      if (demoWs !== null) {
-        const demo = document.createElement("div");
-        demo.setAttribute("class", "tutorial-demo");
-        demo.appendChild(createPlayArea(demoWs, demoCtx));
-        page.appendChild(demo);
-      }
-    }
-    const cells = [];
-    const add = (label, activate) => {
-      const el = createButton(label, false, activate);
-      page.appendChild(el);
-      cells.push({ btn: el, activate });
-    };
-    const stop = stopAt(stopIdx);
-    if (stopIdx <= 0) {
-      add(t("tutorialStart"), () => jumpToStop(stopIdx + 1));
-    } else if (stop.kind === "intro" && stop.chapter === "done") {
-      add(t("exitToMainMenu"), () => navigate2("menu"));
-    } else {
-      add(t("tutorialPrevious"), () => jumpToStop(stopIdx - 1));
-      add(t("tutorialAdvance"), () => jumpToStop(stopIdx + 1));
-    }
-    const cursor = createButtonCursor([cells], {
-      startCol: cells.length - 1,
-      moveOnReveal: true
-    });
-    introCursor = { onAction: cursor.onAction, isEngaged: cursor.isEngaged };
-    introDefault = cells[cells.length - 1]?.activate ?? null;
-    return page;
-  };
-  const buildSkippedPage = () => {
-    const page = document.createElement("div");
-    page.setAttribute("class", "tutorial-intro tutorial-skipped");
-    const note = document.createElement("div");
-    note.setAttribute("class", "tutorial-skipped-note");
-    note.textContent = t(
-      skipHadSolution ? "tutorialSkippedSolvable" : "tutorialSkipped"
-    );
-    page.appendChild(note);
-    const cells = [];
-    const add = (label, disabled, activate) => {
-      const el = createButton(label, disabled, activate);
-      page.appendChild(el);
-      cells.push({ btn: el, activate, isEnabled: () => !disabled });
-    };
-    add(t("tutorialPrevious"), stopIdx <= 0, () => jumpToStop(stopIdx - 1));
-    add(t("tutorialOneMore"), false, nextChallenge);
-    add(
-      t("tutorialAdvance"),
-      stopIdx >= tutorialStops.length - 1,
-      () => jumpToStop(stopIdx + 1)
-    );
-    const cursor = createButtonCursor([cells], {
-      startCol: 1,
-      moveOnReveal: true
-    });
-    skipCursor = { onAction: cursor.onAction, isEngaged: cursor.isEngaged };
-    skipDefault = () => cells[1]?.activate();
-    return page;
-  };
-  const buildConjecturePage = (session2) => {
-    const page = document.createElement("div");
-    page.setAttribute("class", "conjecture-entry");
-    const previewArea = document.createElement("div");
-    previewArea.setAttribute("class", "conjecture-preview-area");
-    const preview = document.createElement("div");
-    preview.setAttribute("class", "tree-sequent ghost conjecture-preview");
-    preview.innerHTML = html(conjectureGhost(session2.draft())(basic));
-    previewArea.appendChild(preview);
-    page.appendChild(previewArea);
-    page.appendChild(createLemmaEditorBar(session2, rerender));
-    return page;
-  };
-  const buildOwl = () => {
-    const owl = document.createElement("div");
-    owl.setAttribute("class", "tutor-owl");
-    const bubble = document.createElement("div");
-    bubble.setAttribute("class", "tutor-owl-bubble");
-    const stop = stopAt(stopIdx);
-    const beatKey = stop.kind === "beat" ? owlBeatKey[stop.beatIdx] : void 0;
-    const paragraphs = onWelcome() ? [t(demoPhaseKey[demoPhase])] : presolving ? [t("tutorialOwlPresolve")] : stop.kind === "intro" ? [t(owlChapterKey[stop.chapter])] : beatKey === void 0 ? [] : [t(beatKey)];
-    for (const text of paragraphs) {
-      bubble.appendChild(owlPara(text));
-    }
-    const face = document.createElement("div");
-    face.setAttribute("class", "tutor-owl-face");
-    face.textContent = "\u{1F989}";
-    owl.appendChild(bubble);
-    owl.appendChild(face);
-    return owl;
-  };
-  const playerApplied = (rules3) => {
-    const start = ws.listConjectures()[0]?.[1]?.start ?? null;
-    const walk2 = (d, path) => {
-      if (d.kind !== "transformation") return false;
-      const frozen = start !== null && subDerivation(start, path)?.kind === "transformation";
-      if (!frozen && rules3.includes(d.rule)) return true;
-      return d.deps.some((dep, i88) => walk2(dep, [...path, i88]));
-    };
-    return walk2(ws.currentConjecture().derivation, []);
-  };
-  let skipUsedStop = -1;
-  const keyControlByBeat = [
-    { verb: "close", used: () => playerApplied(["i", "f", "v"]) },
-    { verb: "close", used: () => playerApplied(["i", "f", "v"]) },
-    { verb: "drop", used: () => playerApplied(["swl", "swr"]) },
-    {
-      verb: "destruct",
-      used: () => playerApplied(["nl", "nr", "cl", "cr", "dl", "dr", "il", "ir"])
-    },
-    null,
-    null,
-    null,
-    null,
-    { verb: "lemma", used: () => playerApplied(["cut"]) },
-    { verb: "skip", used: () => skipUsedStop === stopIdx },
-    null
-  ];
-  let keyStopSeen = -1;
-  let keyControlDone = false;
-  const announceKeyControl = (screen) => {
-    const stop = stopAt(stopIdx);
-    if (stop.kind !== "beat") return;
-    const key = keyControlByBeat[stop.beatIdx] ?? null;
-    if (key === null) return;
-    if (presolving) return;
-    if (keyStopSeen !== stopIdx) {
-      keyStopSeen = stopIdx;
-      keyControlDone = false;
-      skipUsedStop = -1;
-    }
-    if (!keyControlDone && key.used()) keyControlDone = true;
-    if (keyControlDone) return;
-    const el = screen.querySelector(`[data-verb="${key.verb}"]`);
-    if (el !== null) el.classList.add("just-unlocked");
-  };
-  const owlReferentByBeat = [
-    { kind: "sequent" },
-    { kind: "sequent" },
-    { kind: "extras" },
-    {
-      kind: "connectives",
-      marks: [
-        { glyph: "\u2192", side: null },
-        { glyph: "\u2227", side: null },
-        { glyph: "\u2228", side: null },
-        { glyph: "\xAC", side: null }
-      ]
-    },
-    { kind: "connectives", marks: [{ glyph: "\xAC", side: null }] },
-    { kind: "connectives", marks: [{ glyph: "\u2192", side: "right" }] },
-    {
-      kind: "connectives",
-      marks: [
-        { glyph: "\u2227", side: "right" },
-        { glyph: "\u2228", side: "left" }
-      ]
-    },
-    { kind: "connectives", marks: [{ glyph: "\u2192", side: "left" }] },
-    null,
-    null,
-    null
-  ];
-  const pulseExtras = (sequentEl) => {
-    const texts = [];
-    sequentEl.childNodes.forEach((n) => {
-      if (n instanceof Text && n.data.includes(",")) texts.push(n);
-    });
-    for (const t2 of texts) {
-      let node = t2;
-      for (; ; ) {
-        const idx = node.data.indexOf(",");
-        if (idx === -1) break;
-        if (idx > 0) node = node.splitText(idx);
-        node = node.splitText(1);
-      }
-    }
-    const groups = [];
-    let side = "left";
-    let current2 = [];
-    const flush = () => {
-      if (current2.length > 0) groups.push({ side, nodes: current2 });
-      current2 = [];
-    };
-    sequentEl.childNodes.forEach((n) => {
-      if (n instanceof Element && n.classList.contains("turnstile")) {
-        flush();
-        side = "right";
-        return;
-      }
-      if (n instanceof Text && n.data === ",") {
-        flush();
-        return;
-      }
-      current2.push(n);
-    });
-    flush();
-    const textOf = (g) => g.nodes.map((n) => n.textContent ?? "").join("").trim();
-    const lefts = groups.filter((g) => g.side === "left" && textOf(g) !== "");
-    const rights = groups.filter((g) => g.side === "right" && textOf(g) !== "");
-    let keepLeft = -1;
-    let keepRight = -1;
-    for (let i88 = 0; i88 < lefts.length && keepLeft === -1; i88 += 1) {
-      const left4 = lefts[i88];
-      if (left4 === void 0) continue;
-      for (let j = rights.length - 1; j >= 0; j -= 1) {
-        const right3 = rights[j];
-        if (right3 !== void 0 && textOf(left4) === textOf(right3)) {
-          keepLeft = i88;
-          keepRight = j;
-          break;
-        }
-      }
-    }
-    if (keepLeft === -1) return false;
-    const extras = [
-      ...lefts.filter((_, i88) => i88 !== keepLeft),
-      ...rights.filter((_, j) => j !== keepRight)
-    ];
-    if (extras.length === 0) return false;
-    for (const g of extras) {
-      const first = g.nodes[0];
-      const parent = first?.parentNode;
-      if (first === void 0 || parent === null || parent === void 0)
-        continue;
-      const span = document.createElement("span");
-      span.setAttribute("class", "owl-formula owl-pulse");
-      parent.insertBefore(span, first);
-      for (const n of g.nodes) span.appendChild(n);
-    }
-    return true;
-  };
-  let referentStopSeen = -1;
-  let referentEngaged = false;
-  const announceReferent = (screen) => {
-    const stop = stopAt(stopIdx);
-    if (stop.kind !== "beat") return;
-    const referent = owlReferentByBeat[stop.beatIdx] ?? null;
-    if (referent === null) return;
-    if (presolving) return;
-    if (referentStopSeen !== stopIdx) {
-      referentStopSeen = stopIdx;
-      referentEngaged = false;
-    }
-    if (ws.canUndo() || ws.isSolved()) referentEngaged = true;
-    if (referentEngaged) return;
-    if (ctx.isGazeModeActive()) return;
-    const sequentEl = screen.querySelector(".tree-active > .tree-sequent");
-    if (sequentEl === null) return;
-    if (referent.kind === "sequent") {
-      sequentEl.classList.add("owl-pulse");
-      return;
-    }
-    if (referent.kind === "extras") {
-      if (!pulseExtras(sequentEl)) sequentEl.classList.add("owl-pulse");
-      return;
-    }
-    let side = "left";
-    let matched = false;
-    const outermost = [];
-    sequentEl.querySelectorAll(".connective.active, .turnstile").forEach((el) => {
-      if (el.classList.contains("turnstile")) {
-        side = "right";
-        return;
-      }
-      outermost.push(el);
-      const glyph = el.textContent ?? "";
-      const named = referent.marks.some(
-        (m) => m.glyph === glyph && (m.side === null || m.side === side)
-      );
-      if (named) {
-        matched = true;
-        el.classList.add("owl-pulse");
-      }
-    });
-    if (!matched) for (const el of outermost) el.classList.add("owl-pulse");
-  };
-  const syncOwlAboveControls = () => {
-    const screenEl = container.querySelector(".tutorial-screen");
-    if (screenEl === null) return;
-    const controls = container.querySelector(".controls");
-    let h = controls === null ? 0 : controls.offsetHeight;
-    if (h === 0) {
-      const start = container.querySelector(
-        ".tutorial-welcome > .button"
-      );
-      if (start !== null) {
-        const screenBottom = screenEl.getBoundingClientRect().bottom;
-        h = Math.max(
-          0,
-          Math.round(screenBottom - start.getBoundingClientRect().top)
-        );
-      }
-    }
-    screenEl.style.setProperty("--controls-h", `${String(h)}px`);
-    const owl = container.querySelector(".tutor-owl");
-    const owlH = owl === null ? 0 : owl.offsetHeight;
-    screenEl.style.setProperty("--owl-h", `${String(owlH)}px`);
-  };
-  const stopLabel = (idx) => {
-    let chapterNo = 0;
-    let beatNo = 0;
-    for (let i88 = 0; i88 <= idx; i88 += 1) {
-      const stop2 = tutorialStops[i88];
-      if (stop2 === void 0) continue;
-      if (stop2.kind === "intro") {
-        chapterNo += 1;
-        beatNo = 0;
-      } else {
-        beatNo += 1;
-      }
-    }
-    const stop = stopAt(idx);
-    if (stop.kind === "intro") {
-      const name2 = stop.chapter === "done" ? t("tutorialComplete") : t(chapterKey[stop.chapter]);
-      return `${String(chapterNo)} \xB7 ${name2}`;
-    }
-    const beat = beatAt(stop.beatIdx);
-    return `${String(chapterNo)}.${String(beatNo)} \xB7 ${t(beatNameKey[beat.nameId])}`;
-  };
-  const buildCrumb = () => {
-    const crumb = createButton(stopLabel(stopIdx), false, () => {
-      ladderOpen = true;
-      rerender();
-    });
-    crumb.classList.add("tutorial-crumb");
-    return crumb;
-  };
-  const buildLadder = () => {
-    const ladder = document.createElement("div");
-    ladder.setAttribute("class", "tutorial-ladder");
-    let lastChapter = null;
-    let chapterNo = 0;
-    let beatNo = 0;
-    const jump = (target) => {
-      ladderOpen = false;
-      ladderPopup = null;
-      jumpToStop(target);
-      rerender();
-    };
-    tutorialCurriculum.forEach((beat, i88) => {
-      if (beat.chapter !== lastChapter) {
-        lastChapter = beat.chapter;
-        chapterNo += 1;
-        beatNo = 0;
-        const chapter = beat.chapter;
-        const introIdx = stopIndexOfIntro(chapter);
-        const header = document.createElement("div");
-        header.setAttribute(
-          "class",
-          "tutorial-ladder-chapter" + (introIdx === stopIdx ? " current" : "")
-        );
-        header.textContent = `${String(chapterNo)} \xB7 ${t(chapterKey[chapter])}`;
-        header.onclick = () => jump(introIdx);
-        ladder.appendChild(header);
-      }
-      beatNo += 1;
-      const currentStop = stopAt(stopIdx);
-      const isCurrent = currentStop.kind === "beat" && currentStop.beatIdx === i88;
-      const row = document.createElement("div");
-      row.setAttribute(
-        "class",
-        "tutorial-ladder-row" + (isCurrent ? " current" : "")
-      );
-      const number = document.createElement("span");
-      number.setAttribute("class", "tutorial-ladder-number");
-      number.textContent = `${String(chapterNo)}.${String(beatNo)}`;
-      row.appendChild(number);
-      row.appendChild(document.createTextNode(t(beatNameKey[beat.nameId])));
-      if (beat.glyphs !== "") {
-        const glyphs = document.createElement("span");
-        glyphs.setAttribute("class", "tutorial-ladder-glyphs");
-        glyphs.textContent = beat.glyphs;
-        row.appendChild(glyphs);
-      }
-      row.onclick = () => jump(stopIndexOfBeat(i88));
-      ladder.appendChild(row);
-    });
-    const doneIdx = stopIndexOfIntro("done");
-    const doneHeader = document.createElement("div");
-    doneHeader.setAttribute(
-      "class",
-      "tutorial-ladder-chapter" + (doneIdx === stopIdx ? " current" : "")
-    );
-    doneHeader.textContent = `${String(chapterNo + 1)} \xB7 ${t("tutorialComplete")}`;
-    doneHeader.onclick = () => jump(doneIdx);
-    ladder.appendChild(doneHeader);
-    return ladder;
-  };
-  const buildLadderPopup = () => {
-    const shroud = document.createElement("div");
-    shroud.setAttribute("class", "shroud pause-shroud");
-    shroud.onclick = (ev) => {
-      if (ev.target === shroud) {
-        ev.preventDefault();
-        closeLadder();
-      }
-    };
-    const panel = document.createElement("div");
-    panel.setAttribute("class", "pause-popup tutorial-ladder-popup");
-    panel.onclick = (ev) => {
-      ev.stopPropagation();
-    };
-    panel.appendChild(buildLadder());
-    shroud.appendChild(panel);
-    return shroud;
-  };
-  const makeCongrats = () => {
-    const hurray = document.createElement("div");
-    hurray.setAttribute("class", "hurray");
-    hurray.innerHTML = t("congratulations");
-    const buttons = document.createElement("div");
-    const cells = [];
-    const add = (label, disabled, activate) => {
-      const el = createButton(label, disabled, activate);
-      buttons.appendChild(el);
-      cells.push({ btn: el, activate, isEnabled: () => !disabled });
-    };
-    add(t("tutorialPrevious"), stopIdx <= 0, () => jumpToStop(stopIdx - 1));
-    add(t("tutorialOneMore"), false, nextChallenge);
-    add(
-      t("tutorialAdvance"),
-      stopIdx >= tutorialStops.length - 1,
-      () => jumpToStop(stopIdx + 1)
-    );
-    const cursor = createButtonCursor([cells], {
-      startCol: 1,
-      moveOnReveal: true
-    });
-    congrats = { onAction: cursor.onAction, isEngaged: cursor.isEngaged };
-    return { hurray, buttons };
-  };
-  const rerender = () => {
-    container.innerHTML = "";
-    const screen = document.createElement("div");
-    screen.setAttribute("class", "tutorial-screen");
-    if (presolving) screen.classList.add("tutorial-presolving");
-    if (onIntro()) {
-      screen.appendChild(buildIntroPage());
-    } else if (skipped) {
-      screen.appendChild(buildSkippedPage());
-    } else if (conjectureEntry && lemmaSession !== null) {
-      screen.appendChild(buildConjecturePage(lemmaSession));
-    } else {
-      screen.appendChild(
-        createBench(
-          ws,
-          makeCongrats,
-          makeUndoControls(),
-          rerender,
-          () => setPaused(true),
-          onApplyReverse1,
-          // Claim and Skip are per-beat: each stays hidden (not
-          // shown-disabled, which would only draw the learner's eye) until
-          // its teaching beat.
-          beatAt(beatIdx).hideLemma,
-          ctx,
-          beatAt(beatIdx).hideSkip ? void 0 : skipChallenge,
-          beatAt(beatIdx).hideGaze,
-          true,
-          lemmaSession
-        )
-      );
-      if (presolving) {
-        screen.querySelectorAll(".controls .button").forEach((el) => {
-          el.classList.add("disabled");
-        });
-      }
-    }
-    const crumb = buildCrumb();
-    const topbarRight = screen.querySelector(".bench-topbar-right");
-    if (topbarRight !== null) {
-      topbarRight.appendChild(crumb);
-    } else {
-      screen.appendChild(crumb);
-    }
-    screen.appendChild(buildOwl());
-    announceKeyControl(screen);
-    announceReferent(screen);
-    container.appendChild(screen);
-    syncOwlAboveControls();
-    if (paused) {
-      if (!pausePopup || pausePopupLocale !== getLocale()) {
-        pausePopup = createPausePopup(
-          () => setPaused(false),
-          () => navigate2("menu")
-        );
-        pausePopupLocale = getLocale();
-      }
-      container.appendChild(pausePopup.el);
-    } else {
-      pausePopup = null;
-    }
-    if (ladderOpen) {
-      if (ladderPopup === null) ladderPopup = buildLadderPopup();
-      container.appendChild(ladderPopup);
-    } else {
-      ladderPopup = null;
-    }
-  };
-  const onSolved = (action) => {
-    if (action === "axiom") {
-      nextChallenge();
-      return;
-    }
-    rerender();
-  };
-  const onApplyReverse1 = (_key, onFormula) => {
-    if (lemmaSession !== null) return;
-    ctx.setGazeModeActive(false);
-    lemmaSession = createLemmaEditorSession(
-      (formula) => {
-        lemmaSession = null;
-        onFormula(formula);
-      },
-      () => {
-        lemmaSession = null;
-        rerender();
-      }
-    );
-    rerender();
-  };
-  const gazeBlocked = () => beatAt(beatIdx).hideGaze;
-  const baseDispatch = createDispatch(
-    () => ws,
-    rerender,
-    navigate2,
-    onSolved,
-    void 0,
-    () => setPaused(true),
-    onApplyReverse1,
-    ctx,
-    void 0,
-    gazeBlocked
-  );
-  const dispatch = (action) => {
-    if (ladderOpen) {
-      if (action === "menu" || action === "undo" || action === "exit") {
-        closeLadder();
-      }
-      return;
-    }
-    if (paused) {
-      if (action === "menu" || action === "undo") setPaused(false);
-      else if (action === "exit") navigate2("menu");
-      else pausePopup?.onAction(action);
-      return;
-    }
-    if (lemmaSession !== null) {
-      const session2 = lemmaSession;
-      if (action === "menu" || action === "exit") {
-        if (conjectureEntry) setPaused(true);
-        else session2.cancel();
-        return;
-      }
-      if (action === "undo") {
-        if (session2.undo()) rerender();
-        else session2.cancel();
-        return;
-      }
-      if (session2.handleAction(action)) rerender();
-      return;
-    }
-    if (action === "menu") {
-      setPaused(true);
-      return;
-    }
-    if (presolving) return;
-    if (onIntro()) {
-      const cursor = introCursor;
-      if (cursor !== null) {
-        if (cursorNavActions.has(action)) {
-          cursor.onAction(action);
-          return;
-        }
-        if (action === "axiom") {
-          if (cursor.isEngaged()) cursor.onAction("axiom");
-          else introDefault?.();
-          return;
-        }
-      }
-      return;
-    }
-    if (skipped) {
-      const cursor = skipCursor;
-      if (cursor !== null) {
-        if (cursorNavActions.has(action)) {
-          cursor.onAction(action);
-          return;
-        }
-        if (action === "axiom") {
-          if (cursor.isEngaged()) cursor.onAction("axiom");
-          else skipDefault?.();
-          return;
-        }
-      }
-      return;
-    }
-    if (ws.isSolved() && congrats !== null) {
-      if (cursorNavActions.has(action)) {
-        congrats.onAction(action);
-        return;
-      }
-      if (action === "axiom" && congrats.isEngaged()) {
-        congrats.onAction("axiom");
-        return;
-      }
-    }
-    if (action === "skip") {
-      skipChallenge();
-      return;
-    }
-    baseDispatch(action);
-  };
-  const handleKey = (ev) => {
-    if (ev.ctrlKey || ev.metaKey || ev.altKey) return;
-    markKeyboardInput();
-    if (lemmaSession !== null && !paused && !ladderOpen) {
-      const piece = editorKeyPieces[ev.code];
-      if (piece !== void 0) {
-        if (lemmaSession.fill(piece())) rerender();
-        return;
-      }
-    }
-    const action = qwertyKeyMap[ev.code];
-    if (action !== void 0) dispatch(action);
-  };
-  document.documentElement.classList.add("mode-single");
-  document.addEventListener("keydown", handleKey);
-  document.addEventListener("pointerdown", markPointerInput);
-  const cleanupPads = [0, 1, 2, 3].map((idx) => setupGamepad(dispatch, idx));
-  const unsubscribeGamepad = subscribeGamepad(rerender);
-  window.addEventListener("resize", syncOwlAboveControls);
-  if (onConjecture()) openConjecture();
-  if (!onIntro()) startPresolveIfAny();
-  rerender();
-  return {
-    cleanup: () => {
-      stopDemo();
-      cancelPresolve();
-      document.documentElement.classList.remove("mode-single");
-      document.removeEventListener("keydown", handleKey);
-      document.removeEventListener("pointerdown", markPointerInput);
-      cleanupPads.forEach((c) => c());
-      unsubscribeGamepad();
-      window.removeEventListener("resize", syncOwlAboveControls);
     },
     rerender
   };
