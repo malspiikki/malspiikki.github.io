@@ -3459,6 +3459,7 @@ var en = {
   tutorialAdvance: "Next Topic",
   tutorialPrevious: "Previous Topic",
   tutorialOneMore: "One More Challenge",
+  tutorialTryAgain: "Try Again",
   tutorialIdentity: "Identity",
   tutorialConstants: "Constants",
   tutorialExtras: "Drop",
@@ -3497,7 +3498,11 @@ var en = {
   tutorialTaskBranchingCrossing: "Try to solve this challenge \u2014 one branch at a time.",
   tutorialTaskClaims: "Try adding a claim of your own to a branch.",
   tutorialTaskUnsolvable: "Try to find out whether the challenge can be solved. Skip it if you believe it cannot.",
-  tutorialTaskConjecture: "Try composing a sentence of your own and proving it.",
+  tutorialTaskConjecture: "Enter a new challenge and try to solve it.",
+  tutorialOwlConjectureCreated: "Challenge created successfully!",
+  tutorialOwlConjectureCreatedAdvice: "Now try to solve it.",
+  tutorialOwlRetried: "No shame in trying!",
+  tutorialOwlRetriedAdvice: "We'll solve this one yet.",
   tutorialOwlProgress: "Good job! That was challenge number {count} on the topic \u201C{topic}\u201D.",
   tutorialOwlRecommend: "I recommend completing at least {target} before moving on.",
   tutorialOwlClaimFree: "Solved without a single claim! Every solvable challenge can be solved that way.",
@@ -3514,6 +3519,11 @@ var en = {
   tutorialOwlSolvabilityPlan: "Only two lessons until graduation.",
   tutorialSkipped: "Challenge skipped! It had no solution.",
   tutorialSkippedSolvable: "Challenge skipped! It did have a solution, though.",
+  tutorialOwlSkippedSolvable: "Even solvable challenges can sometimes feel convoluted.",
+  // Extend with an ask-for-help clause once a help mechanism exists.
+  tutorialOwlSkippedSolvableAdvice: "Try again.",
+  tutorialOwlSkippedSolvableAgain: "Another good try! This one is stubborn.",
+  tutorialOwlSkippedSolvableAgainAdvice: "Take it one branch at a time, and undo a few moves whenever a branch no longer looks closable.",
   tutorialComplete: "Graduation",
   tutorialDemoSequent: "This is a sequent.",
   tutorialDemoGrow: "Each move grows the tree.",
@@ -3604,6 +3614,7 @@ var fi = {
   tutorialAdvance: "Seuraava aihe",
   tutorialPrevious: "Edellinen aihe",
   tutorialOneMore: "Viel\xE4 yksi haaste",
+  tutorialTryAgain: "Yrit\xE4 uudelleen",
   tutorialIdentity: "Identiteetti",
   tutorialConstants: "Vakiot",
   tutorialExtras: "Pudottaminen",
@@ -3642,7 +3653,11 @@ var fi = {
   tutorialTaskBranchingCrossing: "Yrit\xE4 ratkaista t\xE4m\xE4 haaste \u2014 oksa kerrallaan.",
   tutorialTaskClaims: "Kokeile lis\xE4t\xE4 v\xE4itt\xE4m\xE4 johonkin oksaan.",
   tutorialTaskUnsolvable: "Kokeile, onko haaste ratkaistavissa. Ohita haaste, mik\xE4li uskot sen olevan ratkeamaton.",
-  tutorialTaskConjecture: "Kokeile keksi\xE4 oma lause ja todistaa se.",
+  tutorialTaskConjecture: "Sy\xF6t\xE4 uusi haaste ja kokeile ratkaista se.",
+  tutorialOwlConjectureCreated: "Haaste luotu onnistuneesti!",
+  tutorialOwlConjectureCreatedAdvice: "Kokeile nyt ratkaista se.",
+  tutorialOwlRetried: "Yritt\xE4nytt\xE4 ei laiteta!",
+  tutorialOwlRetriedAdvice: "Kyll\xE4 me t\xE4m\xE4n viel\xE4 ratkaisemme.",
   tutorialOwlProgress: "Hienosti tehty! Olet l\xE4p\xE4issyt yhteens\xE4 {count} haastetta aihepiirist\xE4 \u201D{topic}\u201D.",
   tutorialOwlRecommend: "Suosittelen l\xE4p\xE4isem\xE4\xE4n v\xE4hint\xE4\xE4n {target} ennen eteenp\xE4in siirtymist\xE4.",
   tutorialOwlClaimFree: "Ratkaisit haasteen ilman v\xE4itt\xE4mi\xE4! Ratkeava haaste ratkeaa aina my\xF6s ilman niit\xE4.",
@@ -3659,6 +3674,10 @@ var fi = {
   tutorialOwlSolvabilityPlan: "En\xE4\xE4 kaksi oppituntia valmistujaisiin.",
   tutorialSkipped: "Haaste ohitettu! Sill\xE4 ei ollut ratkaisua.",
   tutorialSkippedSolvable: "Haaste ohitettu! Sill\xE4 olisi sittenkin ollut ratkaisu.",
+  tutorialOwlSkippedSolvable: "Ratkeavatkin haasteet voivat joskus tuntua monimutkaisilta.",
+  tutorialOwlSkippedSolvableAdvice: "Yrit\xE4 uudelleen.",
+  tutorialOwlSkippedSolvableAgain: "Hyv\xE4 yritys taas! T\xE4m\xE4 on sitke\xE4 tapaus.",
+  tutorialOwlSkippedSolvableAgainAdvice: "Etene oksa kerrallaan ja kumoa siirtoja, jos oksa ei n\xE4yt\xE4 en\xE4\xE4 sulkeutuvan.",
   tutorialComplete: "Valmistujaiset",
   tutorialDemoSequent: "T\xE4m\xE4 on sekventti.",
   tutorialDemoGrow: "Jokainen siirto kasvattaa puuta.",
@@ -3749,6 +3768,7 @@ var es = {
   tutorialAdvance: "Siguiente tema",
   tutorialPrevious: "Tema anterior",
   tutorialOneMore: "Un desaf\xEDo m\xE1s",
+  tutorialTryAgain: "Int\xE9ntalo de nuevo",
   tutorialIdentity: "Identidad",
   tutorialConstants: "Constantes",
   tutorialExtras: "Soltar",
@@ -3787,7 +3807,11 @@ var es = {
   tutorialTaskBranchingCrossing: "Intenta resolver este desaf\xEDo \u2014 rama por rama.",
   tutorialTaskClaims: "Prueba a a\xF1adir una afirmaci\xF3n a alguna rama.",
   tutorialTaskUnsolvable: "Prueba si el desaf\xEDo se puede resolver. S\xE1ltalo si crees que no tiene soluci\xF3n.",
-  tutorialTaskConjecture: "Prueba a componer una oraci\xF3n propia y demostrarla.",
+  tutorialTaskConjecture: "Introduce un nuevo desaf\xEDo e intenta resolverlo.",
+  tutorialOwlConjectureCreated: "\xA1Desaf\xEDo creado con \xE9xito!",
+  tutorialOwlConjectureCreatedAdvice: "Ahora intenta resolverlo.",
+  tutorialOwlRetried: "\xA1No hay verg\xFCenza en intentarlo!",
+  tutorialOwlRetriedAdvice: "\xA1A\xFAn lo resolveremos!",
   tutorialOwlProgress: "\xA1Buen trabajo! Ese fue el desaf\xEDo n\xFAmero {count} del tema \xAB{topic}\xBB.",
   tutorialOwlRecommend: "Recomiendo completar al menos {target} antes de seguir adelante.",
   tutorialOwlClaimFree: "\xA1Resuelto sin ninguna afirmaci\xF3n! Todo desaf\xEDo resoluble se puede resolver as\xED.",
@@ -3804,6 +3828,10 @@ var es = {
   tutorialOwlSolvabilityPlan: "Solo quedan dos lecciones para la graduaci\xF3n.",
   tutorialSkipped: "\xA1Desaf\xEDo saltado! No ten\xEDa soluci\xF3n.",
   tutorialSkippedSolvable: "\xA1Desaf\xEDo saltado! Sin embargo, s\xED ten\xEDa soluci\xF3n.",
+  tutorialOwlSkippedSolvable: "Hasta los desaf\xEDos resolubles pueden parecer a veces complicados.",
+  tutorialOwlSkippedSolvableAdvice: "Int\xE9ntalo de nuevo.",
+  tutorialOwlSkippedSolvableAgain: "\xA1Otro buen intento! Este es de los tercos.",
+  tutorialOwlSkippedSolvableAgainAdvice: "Avanza rama por rama y deshaz algunos movimientos cuando una rama ya no parezca poder cerrarse.",
   tutorialComplete: "Graduaci\xF3n",
   tutorialDemoSequent: "Esto es un secuente.",
   tutorialDemoGrow: "Cada movimiento hace crecer el \xE1rbol.",
@@ -3894,6 +3922,7 @@ var cs = {
   tutorialAdvance: "Dal\u0161\xED t\xE9ma",
   tutorialPrevious: "P\u0159edchoz\xED t\xE9ma",
   tutorialOneMore: "Je\u0161t\u011B jedna v\xFDzva",
+  tutorialTryAgain: "Zkus to znovu",
   tutorialIdentity: "Identita",
   tutorialConstants: "Konstanty",
   tutorialExtras: "Pou\u0161t\u011Bn\xED",
@@ -3932,7 +3961,11 @@ var cs = {
   tutorialTaskBranchingCrossing: "Zkus vy\u0159e\u0161it tuto v\xFDzvu \u2014 v\u011Btev po v\u011Btvi.",
   tutorialTaskClaims: "Zkus na n\u011Bkterou v\u011Btev p\u0159idat tvrzen\xED.",
   tutorialTaskUnsolvable: "Vyzkou\u0161ej, jestli v\xFDzva jde vy\u0159e\u0161it. Pokud v\u011B\u0159\xED\u0161, \u017Ee \u0159e\u0161en\xED nem\xE1, p\u0159esko\u010D ji.",
-  tutorialTaskConjecture: "Zkus slo\u017Eit vlastn\xED v\u011Btu a dok\xE1zat ji.",
+  tutorialTaskConjecture: "Zadej novou v\xFDzvu a zkus ji vy\u0159e\u0161it.",
+  tutorialOwlConjectureCreated: "V\xFDzva \xFAsp\u011B\u0161n\u011B vytvo\u0159ena!",
+  tutorialOwlConjectureCreatedAdvice: "Te\u010F ji zkus vy\u0159e\u0161it.",
+  tutorialOwlRetried: "Za pokus nic ned\xE1\u0161!",
+  tutorialOwlRetriedAdvice: "V\u0161ak my to je\u0161t\u011B vy\u0159e\u0161\xEDme.",
   tutorialOwlProgress: "Dobr\xE1 pr\xE1ce! To byla v\xFDzva \u010D\xEDslo {count} t\xE9matu \u201E{topic}\u201C.",
   tutorialOwlRecommend: "Doporu\u010Duji jich zvl\xE1dnout alespo\u0148 {target}, ne\u017E bude\u0161 pokra\u010Dovat.",
   tutorialOwlClaimFree: "Vy\u0159e\u0161eno bez jedin\xE9ho tvrzen\xED! Ka\u017Edou \u0159e\u0161itelnou v\xFDzvu jde vy\u0159e\u0161it i bez nich.",
@@ -3949,6 +3982,10 @@ var cs = {
   tutorialOwlSolvabilityPlan: "Do promoce zb\xFDvaj\xED u\u017E jen dv\u011B lekce.",
   tutorialSkipped: "V\xFDzva p\u0159esko\u010Dena! Nem\u011Bla \u0159e\u0161en\xED.",
   tutorialSkippedSolvable: "V\xFDzva p\u0159esko\u010Dena! \u0158e\u0161en\xED ale m\u011Bla.",
+  tutorialOwlSkippedSolvable: "I \u0159e\u0161iteln\xE9 v\xFDzvy mohou n\u011Bkdy p\u016Fsobit spletit\u011B.",
+  tutorialOwlSkippedSolvableAdvice: "Zkus to znovu.",
+  tutorialOwlSkippedSolvableAgain: "Dal\u0161\xED dobr\xFD pokus! Tahle je tvrdohlav\xE1.",
+  tutorialOwlSkippedSolvableAgainAdvice: "Postupuj v\u011Btev po v\u011Btvi, a kdy\u017E u\u017E v\u011Btev nevypad\xE1, \u017Ee p\u016Fjde zav\u0159\xEDt, p\xE1r tah\u016F vra\u0165.",
   tutorialComplete: "Promoce",
   tutorialDemoSequent: "Tohle je sekvent.",
   tutorialDemoGrow: "Ka\u017Ed\xFDm tahem strom roste.",
@@ -4039,6 +4076,7 @@ var pl = {
   tutorialAdvance: "Nast\u0119pny temat",
   tutorialPrevious: "Poprzedni temat",
   tutorialOneMore: "Jeszcze jedno wyzwanie",
+  tutorialTryAgain: "Spr\xF3buj ponownie",
   tutorialIdentity: "To\u017Csamo\u015B\u0107",
   tutorialConstants: "Sta\u0142e",
   tutorialExtras: "Upuszczanie",
@@ -4077,7 +4115,11 @@ var pl = {
   tutorialTaskBranchingCrossing: "Spr\xF3buj rozwi\u0105za\u0107 to wyzwanie \u2014 ga\u0142\u0105\u017A po ga\u0142\u0119zi.",
   tutorialTaskClaims: "Spr\xF3buj doda\u0107 twierdzenie do kt\xF3rej\u015B ga\u0142\u0119zi.",
   tutorialTaskUnsolvable: "Sprawd\u017A, czy wyzwanie da si\u0119 rozwi\u0105za\u0107. Pomi\u0144 je, je\u015Bli uwa\u017Casz, \u017Ce jest nierozwi\u0105zywalne.",
-  tutorialTaskConjecture: "Spr\xF3buj u\u0142o\u017Cy\u0107 w\u0142asne zdanie i je udowodni\u0107.",
+  tutorialTaskConjecture: "Wpisz nowe wyzwanie i spr\xF3buj je rozwi\u0105za\u0107.",
+  tutorialOwlConjectureCreated: "Wyzwanie utworzone pomy\u015Blnie!",
+  tutorialOwlConjectureCreatedAdvice: "Teraz spr\xF3buj je rozwi\u0105za\u0107.",
+  tutorialOwlRetried: "Nie ma wstydu w pr\xF3bowaniu!",
+  tutorialOwlRetriedAdvice: "Jeszcze to rozwi\u0105\u017Cemy.",
   tutorialOwlProgress: "Dobra robota! To by\u0142o wyzwanie numer {count} w temacie \u201E{topic}\u201D.",
   tutorialOwlRecommend: "Polecam zaliczy\u0107 co najmniej {target}, zanim ruszysz dalej.",
   tutorialOwlClaimFree: "Rozwi\u0105zane bez ani jednego twierdzenia! Ka\u017Cde rozwi\u0105zywalne wyzwanie da si\u0119 rozwi\u0105za\u0107 i bez nich.",
@@ -4094,6 +4136,10 @@ var pl = {
   tutorialOwlSolvabilityPlan: "Do zako\u0144czenia zosta\u0142y ju\u017C tylko dwie lekcje.",
   tutorialSkipped: "Wyzwanie pomini\u0119te! Nie mia\u0142o rozwi\u0105zania.",
   tutorialSkippedSolvable: "Wyzwanie pomini\u0119te! Mia\u0142o jednak rozwi\u0105zanie.",
+  tutorialOwlSkippedSolvable: "Nawet rozwi\u0105zywalne wyzwania mog\u0105 czasem wydawa\u0107 si\u0119 zawi\u0142e.",
+  tutorialOwlSkippedSolvableAdvice: "Spr\xF3buj ponownie.",
+  tutorialOwlSkippedSolvableAgain: "Kolejna dobra pr\xF3ba! To wyzwanie jest uparte.",
+  tutorialOwlSkippedSolvableAgainAdvice: "Id\u017A ga\u0142\u0105\u017A po ga\u0142\u0119zi i cofnij kilka ruch\xF3w, gdy ga\u0142\u0105\u017A nie wygl\u0105da ju\u017C na mo\u017Cliw\u0105 do zamkni\u0119cia.",
   tutorialComplete: "Zako\u0144czenie",
   tutorialDemoSequent: "To jest sekwent.",
   tutorialDemoGrow: "Z ka\u017Cdym ruchem drzewo ro\u015Bnie.",
@@ -8697,9 +8743,11 @@ var mountTutorial = (container, navigate2, startStop) => {
   const beatCompletions = () => completions[beatIdx] ?? 0;
   const beatTarget = () => targetByBeat[beatIdx] ?? 0;
   const quotaMet = () => beatCompletions() >= beatTarget();
+  const perpetualBeat = () => beatIdx === tutorialCurriculum.length - 1;
+  const advanceLabel = () => perpetualBeat() ? t("tutorialComplete") : t("tutorialAdvance");
   const progressParagraphs = () => {
     const praise = t("tutorialOwlProgress").replace("{count}", String(beatCompletions())).replace("{topic}", stopLabel(stopIdx));
-    if (quotaMet()) return [praise];
+    if (quotaMet() || perpetualBeat()) return [praise];
     return [
       praise,
       t("tutorialOwlRecommend").replace("{target}", String(beatTarget()))
@@ -8847,6 +8895,7 @@ var mountTutorial = (container, navigate2, startStop) => {
   let conjectureEntry = false;
   let skipped = false;
   let skipHadSolution = false;
+  let solvableSkipReveals = 0;
   let congrats = null;
   let introCursor = null;
   let introDefault = null;
@@ -8865,27 +8914,39 @@ var mountTutorial = (container, navigate2, startStop) => {
     params.set("tutorial_stop", String(stopIdx));
     history.replaceState(history.state, "", `?${params.toString()}`);
   };
+  let entryReturn = null;
   const openConjecture = () => {
     conjectureEntry = true;
     lemmaSession = createLemmaEditorSession(
       (formula) => {
         conjectureEntry = false;
         lemmaSession = null;
+        retriedBoard = false;
         ws = new Workspace({
           challenge: { rules: rules2, goal: sequent([], [formula]) }
         });
         rerender();
       },
       () => {
-        openConjecture();
+        const ret = entryReturn;
+        if (ret === null) {
+          openConjecture();
+        } else {
+          conjectureEntry = false;
+          lemmaSession = null;
+          skipped = ret.skipped;
+          skipHadSolution = ret.hadSolution;
+        }
         rerender();
       },
-      // No board behind the entry to back out to — hide the Back cell.
-      true
+      entryReturn === null
     );
   };
   const nextChallenge = () => {
     cancelPresolve();
+    entryReturn = !onConjecture() ? null : ws.isSolved() ? { skipped: false, hadSolution: false } : skipped ? { skipped: true, hadSolution: skipHadSolution } : null;
+    solvableSkipReveals = 0;
+    retriedBoard = false;
     skipped = false;
     ctx.setGazeModeActive(false);
     referentEngaged = false;
@@ -8898,6 +8959,17 @@ var mountTutorial = (container, navigate2, startStop) => {
     }
     rerender();
   };
+  let retriedBoard = false;
+  const retryChallenge = () => {
+    retriedBoard = true;
+    skipped = false;
+    ctx.setGazeModeActive(false);
+    referentEngaged = false;
+    keyControlDone = false;
+    skipUsedStop = -1;
+    ws.applyEvent(reset2());
+    rerender();
+  };
   const rerootAtBeat = (target) => {
     const clamped = Math.max(0, Math.min(target, tutorialCurriculum.length - 1));
     if (clamped === beatIdx) return;
@@ -8906,6 +8978,9 @@ var mountTutorial = (container, navigate2, startStop) => {
     skipped = false;
     lemmaSession = null;
     conjectureEntry = false;
+    entryReturn = null;
+    solvableSkipReveals = 0;
+    retriedBoard = false;
     ws = freshWorkspace();
     if (beatAt(beatIdx).conjecture) openConjecture();
   };
@@ -8932,6 +9007,7 @@ var mountTutorial = (container, navigate2, startStop) => {
     }
     ctx.setGazeModeActive(false);
     skipHadSolution = isTautology2(ws.currentConjecture().derivation.result);
+    if (skipHadSolution) solvableSkipReveals += 1;
     if (!skipHadSolution) completions[beatIdx] = beatCompletions() + 1;
     skipped = true;
     skipUsedStop = stopIdx;
@@ -9053,13 +9129,14 @@ var mountTutorial = (container, navigate2, startStop) => {
       cells.push({ btn: el, activate, isEnabled: () => !disabled });
     };
     add(t("tutorialPrevious"), stopIdx <= 0, () => jumpToStop(stopIdx - 1));
+    if (skipHadSolution) add(t("tutorialTryAgain"), false, retryChallenge);
     add(t("tutorialOneMore"), false, nextChallenge);
     add(
-      t("tutorialAdvance"),
+      advanceLabel(),
       stopIdx >= tutorialStops.length - 1,
       () => jumpToStop(stopIdx + 1)
     );
-    const defaultCol = quotaMet() ? 2 : 1;
+    const defaultCol = skipHadSolution ? 1 : quotaMet() && !perpetualBeat() ? 2 : 1;
     const cursor = createButtonCursor([cells], {
       startCol: defaultCol,
       moveOnReveal: true
@@ -9091,10 +9168,47 @@ var mountTutorial = (container, navigate2, startStop) => {
     const taskKey = stop.kind === "beat" ? taskBeatKey[stop.beatIdx] : void 0;
     const planKey = stop.kind === "intro" ? owlChapterPlanKey[stop.chapter] : null;
     const multiKind = multiPressKind();
-    const paragraphs = onWelcome() ? [t(demoPhaseKey[demoPhase])] : presolving ? [t("tutorialOwlPresolve")] : stop.kind === "intro" ? planKey === null ? [t(owlChapterKey[stop.chapter])] : [t(owlChapterKey[stop.chapter]), t(planKey)] : beatKey === void 0 ? [] : ws.isSolved() || skipped && !skipHadSolution ? solvedClaimFree() ? [t("tutorialOwlClaimFree"), t("tutorialOwlClaimFreeAdvice")] : progressParagraphs() : isStuck() ? [t("tutorialOwlStuck"), t("tutorialOwlStuckAdvice")] : multiKind === "weakening" ? [t("tutorialOwlMultiDrop"), t("tutorialOwlMultiDropAdvice")] : multiKind === "connective" ? [
+    const paragraphs = onWelcome() ? [t(demoPhaseKey[demoPhase])] : presolving ? [t("tutorialOwlPresolve")] : stop.kind === "intro" ? planKey === null ? [t(owlChapterKey[stop.chapter])] : [t(owlChapterKey[stop.chapter]), t(planKey)] : beatKey === void 0 ? [] : conjectureEntry ? (
+      // The entry page always instructs. The workspace behind it may
+      // still be the previous solved board (nextChallenge leaves it
+      // in place until Confirm replaces it), so the solved/stuck
+      // readings below would be stale here.
+      taskKey === void 0 ? [t(beatKey)] : [t(beatKey), t(taskKey)]
+    ) : ws.isSolved() || skipped && !skipHadSolution ? solvedClaimFree() ? [t("tutorialOwlClaimFree"), t("tutorialOwlClaimFreeAdvice")] : progressParagraphs() : skipped && skipHadSolution ? (
+      // The wrong-diagnosis reveal: soften it and point at the
+      // Try Again default (checked before isStuck, which would
+      // otherwise read the abandoned board behind the screen).
+      // From the second reveal of the same goal on, a bare
+      // "try again" would grate — warm up and hand over the
+      // taught recovery tactics instead.
+      solvableSkipReveals >= 2 ? [
+        t("tutorialOwlSkippedSolvableAgain"),
+        t("tutorialOwlSkippedSolvableAgainAdvice")
+      ] : [
+        t("tutorialOwlSkippedSolvable"),
+        t("tutorialOwlSkippedSolvableAdvice")
+      ]
+    ) : isStuck() ? [t("tutorialOwlStuck"), t("tutorialOwlStuckAdvice")] : multiKind === "weakening" ? [
+      t("tutorialOwlMultiDrop"),
+      t("tutorialOwlMultiDropAdvice")
+    ] : multiKind === "connective" ? [
       t("tutorialOwlMultiDestruct"),
       t("tutorialOwlMultiDestructAdvice")
-    ] : taskKey === void 0 ? [t(beatKey)] : [t(beatKey), t(taskKey)];
+    ] : onConjecture() && !skipped ? (
+      // Playing an authored board: the "enter a
+      // challenge" directive is done. A fresh confirm
+      // gets the creation acknowledged; a Try Again
+      // board gets encouragement — the owl signs on
+      // to the joint rescue instead of announcing a
+      // creation that didn't happen.
+      retriedBoard ? [
+        t("tutorialOwlRetried"),
+        t("tutorialOwlRetriedAdvice")
+      ] : [
+        t("tutorialOwlConjectureCreated"),
+        t("tutorialOwlConjectureCreatedAdvice")
+      ]
+    ) : taskKey === void 0 ? [t(beatKey)] : [t(beatKey), t(taskKey)];
     for (const text of paragraphs) {
       bubble.appendChild(owlPara(text));
     }
@@ -9436,12 +9550,12 @@ var mountTutorial = (container, navigate2, startStop) => {
     add(t("tutorialPrevious"), stopIdx <= 0, () => jumpToStop(stopIdx - 1));
     add(t("tutorialOneMore"), false, nextChallenge);
     add(
-      t("tutorialAdvance"),
+      advanceLabel(),
       stopIdx >= tutorialStops.length - 1,
       () => jumpToStop(stopIdx + 1)
     );
     const cursor = createButtonCursor([cells], {
-      startCol: quotaMet() ? 2 : 1,
+      startCol: quotaMet() && !perpetualBeat() ? 2 : 1,
       moveOnReveal: true
     });
     congrats = { onAction: cursor.onAction, isEngaged: cursor.isEngaged };
@@ -9522,7 +9636,7 @@ var mountTutorial = (container, navigate2, startStop) => {
   };
   const onSolved = (action) => {
     if (action === "axiom") {
-      if (quotaMet()) jumpToStop(stopIdx + 1);
+      if (quotaMet() && !perpetualBeat()) jumpToStop(stopIdx + 1);
       else nextChallenge();
       return;
     }
@@ -9569,7 +9683,7 @@ var mountTutorial = (container, navigate2, startStop) => {
       else pausePopup?.onAction(action);
       return;
     }
-    if (lemmaSession !== null) {
+    if (lemmaSession !== null && !onIntro()) {
       const session2 = lemmaSession;
       if (action === "menu" || action === "exit") {
         if (conjectureEntry) setPaused(true);
@@ -9638,7 +9752,7 @@ var mountTutorial = (container, navigate2, startStop) => {
   const handleKey = (ev) => {
     if (ev.ctrlKey || ev.metaKey || ev.altKey) return;
     markKeyboardInput();
-    if (lemmaSession !== null && !paused && !ladderOpen) {
+    if (lemmaSession !== null && !paused && !ladderOpen && !onIntro()) {
       const piece = editorKeyPieces[ev.code];
       if (piece !== void 0) {
         if (lemmaSession.fill(piece())) rerender();
