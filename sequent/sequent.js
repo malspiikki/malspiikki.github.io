@@ -3481,7 +3481,7 @@ var en = {
   tutorialOwlClose: "A branch of the tree can be closed when the same sentence sits on both sides of the gate ( \u22A2 ).",
   tutorialOwlCloseConstants: "Falsum ( \u22A5 ) closes a branch when it sits alone on the left side of the gate ( \u22A2 ), and verum ( \u22A4 ) when it sits alone on the right.",
   tutorialOwlDrop: "Any extra sentences on a branch must be dropped before the branch can be closed.",
-  tutorialOwlSplit: "Destructing a sentence removes its outermost connective ( \u2192 \u2227 \u2228 \xAC ) from the tree. Where the remaining parts end up depends on the situation. More about that in the next chapter.",
+  tutorialOwlSplit: "Destructing a sentence removes its outermost connective ( \u2192 \u2227 \u2228 \xAC ) from the tree. Where the remaining parts end up depends on the situation. More about that in the chapter \u201C{nextChapter}\u201D.",
   tutorialOwlSideFlip: "Destructing a negation ( \xAC ) makes the remaining sentence move to the other side of the gate ( \u22A2 ).",
   tutorialOwlCrossing: "Destructing an implication ( \u2192 ) on the right side of the gate ( \u22A2 ) divides its parts across the two sides of the gate.",
   tutorialOwlBranching: "Destructing a conjunction ( \u2227 ) on the right side of the gate ( \u22A2 ), or a disjunction ( \u2228 ) on the left, makes the tree branch.",
@@ -3642,7 +3642,7 @@ var fi = {
   tutorialOwlClose: "P\xE4\xE4ttelypuun oksa on suljettavissa silloin, kun portin ( \u22A2 ) kummallakin puolella on sama lause.",
   tutorialOwlCloseConstants: "Falsum ( \u22A5 ) sulkee oksan ollessaan yksin portin ( \u22A2 ) vasemmalla puolella, ja verum ( \u22A4 ) ollessaan yksin portin oikealla puolella.",
   tutorialOwlDrop: "Oksan sis\xE4lt\xE4m\xE4t ylim\xE4\xE4r\xE4iset lauseet on pudotettava ennen kuin oksan voi sulkea.",
-  tutorialOwlSplit: "Lauseen purkaminen irrottaa sen uloimman konnektiivin ( \u2192 \u2227 \u2228 \xAC ) puusta. J\xE4ljelle j\xE4\xE4vien osien sijoittuminen riippuu tilanteesta. Lis\xE4\xE4 siit\xE4 seuraavassa luvussa.",
+  tutorialOwlSplit: "Lauseen purkaminen irrottaa sen uloimman konnektiivin ( \u2192 \u2227 \u2228 \xAC ) puusta. J\xE4ljelle j\xE4\xE4vien osien sijoittuminen riippuu tilanteesta. Lis\xE4\xE4 siit\xE4 luvussa \u201D{nextChapter}\u201D.",
   tutorialOwlSideFlip: "Negaation ( \xAC ) purkaminen aiheuttaa j\xE4ljelle j\xE4\xE4v\xE4n lauseen siirtymisen portin ( \u22A2 ) toiselle puolelle.",
   tutorialOwlCrossing: "Implikaation ( \u2192 ) purkaminen portin ( \u22A2 ) oikealta puolelta aiheuttaa lauseen osien jakautumisen kahdelle puolelle porttia.",
   tutorialOwlBranching: "Konjunktion ( \u2227 ) purkaminen portin ( \u22A2 ) oikealla puolella tai disjunktion ( \u2228 ) purkaminen portin vasemmalla puolella aiheuttaa puun haarautumisen.",
@@ -3802,7 +3802,7 @@ var es = {
   tutorialOwlClose: "Una rama del \xE1rbol se puede cerrar cuando a ambos lados de la puerta ( \u22A2 ) est\xE1 la misma oraci\xF3n.",
   tutorialOwlCloseConstants: "Falsum ( \u22A5 ) cierra una rama cuando est\xE1 solo a la izquierda de la puerta ( \u22A2 ), y verum ( \u22A4 ) cuando est\xE1 solo a la derecha.",
   tutorialOwlDrop: "Las oraciones sobrantes de una rama deben soltarse antes de poder cerrarla.",
-  tutorialOwlSplit: "Destruir una oraci\xF3n desprende del \xE1rbol su conectivo m\xE1s externo ( \u2192 \u2227 \u2228 \xAC ). D\xF3nde acaban las partes restantes depende de la situaci\xF3n. M\xE1s sobre eso en el siguiente cap\xEDtulo.",
+  tutorialOwlSplit: "Destruir una oraci\xF3n desprende del \xE1rbol su conectivo m\xE1s externo ( \u2192 \u2227 \u2228 \xAC ). D\xF3nde acaban las partes restantes depende de la situaci\xF3n. M\xE1s sobre eso en el cap\xEDtulo \xAB{nextChapter}\xBB.",
   tutorialOwlSideFlip: "Destruir una negaci\xF3n ( \xAC ) hace que la oraci\xF3n restante pase al otro lado de la puerta ( \u22A2 ).",
   tutorialOwlCrossing: "Destruir una implicaci\xF3n ( \u2192 ) en el lado derecho de la puerta ( \u22A2 ) reparte sus partes entre los dos lados de la puerta.",
   tutorialOwlBranching: "Destruir una conjunci\xF3n ( \u2227 ) en el lado derecho de la puerta ( \u22A2 ), o una disyunci\xF3n ( \u2228 ) en el izquierdo, ramifica el \xE1rbol.",
@@ -3962,7 +3962,7 @@ var cs = {
   tutorialOwlClose: "V\u011Btev stromu lze zav\u0159\xEDt, kdy\u017E na obou stran\xE1ch br\xE1ny ( \u22A2 ) stoj\xED stejn\xE1 v\u011Bta.",
   tutorialOwlCloseConstants: "Falsum ( \u22A5 ) zav\u0159e v\u011Btev, kdy\u017E stoj\xED samo vlevo od br\xE1ny ( \u22A2 ), a verum ( \u22A4 ), kdy\u017E stoj\xED samo vpravo.",
   tutorialOwlDrop: "P\u0159ebyte\u010Dn\xE9 v\u011Bty na v\u011Btvi je nutn\xE9 pustit, ne\u017E ji lze zav\u0159\xEDt.",
-  tutorialOwlSplit: "Zni\u010Den\xED v\u011Bty odlom\xED ze stromu jej\xED vn\u011Bj\u0161\xED spojku ( \u2192 \u2227 \u2228 \xAC ). Kam se zb\xFDvaj\xEDc\xED \u010D\xE1sti um\xEDst\xED, z\xE1vis\xED na situaci. V\xEDce o tom v dal\u0161\xED kapitole.",
+  tutorialOwlSplit: "Zni\u010Den\xED v\u011Bty odlom\xED ze stromu jej\xED vn\u011Bj\u0161\xED spojku ( \u2192 \u2227 \u2228 \xAC ). Kam se zb\xFDvaj\xEDc\xED \u010D\xE1sti um\xEDst\xED, z\xE1vis\xED na situaci. V\xEDce o tom v kapitole \u201E{nextChapter}\u201C.",
   tutorialOwlSideFlip: "Zni\u010Den\xED negace ( \xAC ) p\u0159esune zb\xFDvaj\xEDc\xED v\u011Btu na druhou stranu br\xE1ny ( \u22A2 ).",
   tutorialOwlCrossing: "Zni\u010Den\xED implikace ( \u2192 ) na prav\xE9 stran\u011B br\xE1ny ( \u22A2 ) rozd\u011Bl\xED jej\xED \u010D\xE1sti na ob\u011B strany br\xE1ny.",
   tutorialOwlBranching: "Zni\u010Den\xED konjunkce ( \u2227 ) na prav\xE9 stran\u011B br\xE1ny ( \u22A2 ) nebo disjunkce ( \u2228 ) na lev\xE9 rozv\u011Btv\xED strom.",
@@ -4122,7 +4122,7 @@ var pl = {
   tutorialOwlClose: "Ga\u0142\u0105\u017A drzewa mo\u017Cna zamkn\u0105\u0107, gdy po obu stronach bramy ( \u22A2 ) stoi to samo zdanie.",
   tutorialOwlCloseConstants: "Falsum ( \u22A5 ) zamyka ga\u0142\u0105\u017A, gdy stoi samo po lewej stronie bramy ( \u22A2 ), i verum ( \u22A4 ), gdy stoi samo po prawej.",
   tutorialOwlDrop: "Zb\u0119dne zdania na ga\u0142\u0119zi trzeba upu\u015Bci\u0107, zanim da si\u0119 j\u0105 zamkn\u0105\u0107.",
-  tutorialOwlSplit: "Zniszczenie zdania odrywa od drzewa jego zewn\u0119trzny sp\xF3jnik ( \u2192 \u2227 \u2228 \xAC ). Gdzie trafiaj\u0105 pozosta\u0142e cz\u0119\u015Bci, zale\u017Cy od sytuacji. Wi\u0119cej o tym w nast\u0119pnym rozdziale.",
+  tutorialOwlSplit: "Zniszczenie zdania odrywa od drzewa jego zewn\u0119trzny sp\xF3jnik ( \u2192 \u2227 \u2228 \xAC ). Gdzie trafiaj\u0105 pozosta\u0142e cz\u0119\u015Bci, zale\u017Cy od sytuacji. Wi\u0119cej o tym w rozdziale \u201E{nextChapter}\u201D.",
   tutorialOwlSideFlip: "Zniszczenie negacji ( \xAC ) przenosi pozosta\u0142e zdanie na drug\u0105 stron\u0119 bramy ( \u22A2 ).",
   tutorialOwlCrossing: "Zniszczenie implikacji ( \u2192 ) po prawej stronie bramy ( \u22A2 ) rozdziela jej cz\u0119\u015Bci na obie strony bramy.",
   tutorialOwlBranching: "Zniszczenie koniunkcji ( \u2227 ) po prawej stronie bramy ( \u22A2 ) lub alternatywy ( \u2228 ) po lewej rozga\u0142\u0119zia drzewo.",
@@ -8762,19 +8762,32 @@ var appendWithReserved = (parent, text) => {
     parent.appendChild(word);
   });
 };
-var owlPara = (text) => {
-  const para = document.createElement("div");
-  para.setAttribute("class", "tutor-owl-para");
+var appendProse = (parent, text) => {
   text.split(/(\S+ \( [^()]* \))/).forEach((part, i88) => {
     if (part === "") return;
     if (i88 % 2 === 0) {
-      appendWithReserved(para, part);
+      appendWithReserved(parent, part);
       return;
     }
     const unit2 = document.createElement("span");
     unit2.setAttribute("class", "tutor-owl-term");
     appendWithReserved(unit2, part);
-    para.appendChild(unit2);
+    parent.appendChild(unit2);
+  });
+};
+var owlPara = (text) => {
+  const para = document.createElement("div");
+  para.setAttribute("class", "tutor-owl-para");
+  text.split(/([“„”«][^“„”«»]+[“”»])/u).forEach((part, i88) => {
+    if (part === "") return;
+    if (i88 % 2 === 1) {
+      const label = document.createElement("span");
+      label.setAttribute("class", "tutor-owl-topic");
+      label.textContent = part;
+      para.appendChild(label);
+      return;
+    }
+    appendProse(para, part);
   });
   return para;
 };
@@ -9321,7 +9334,9 @@ var mountTutorial = (container, navigate2, startStop) => {
       ]
     ) : taskKey === void 0 ? [t(beatKey)] : [t(beatKey), t(taskKey)];
     for (const text of paragraphs) {
-      bubble.appendChild(owlPara(text));
+      bubble.appendChild(
+        owlPara(text.replace("{nextChapter}", nextChapterLabel()))
+      );
     }
     const face = document.createElement("div");
     face.setAttribute("class", "tutor-owl-face");
@@ -9559,6 +9574,12 @@ var mountTutorial = (container, navigate2, startStop) => {
     }
     const beat = beatAt(stop.beatIdx);
     return `${String(chapterNo)}.${String(beatNo)} \xB7 ${t(beatNameKey[beat.nameId])}`;
+  };
+  const nextChapterLabel = () => {
+    for (let i88 = stopIdx + 1; i88 < tutorialStops.length; i88 += 1) {
+      if (stopAt(i88).kind === "intro") return stopLabel(i88);
+    }
+    return stopLabel(tutorialStops.length - 1);
   };
   const buildCrumb = () => {
     const crumb = createButton(stopLabel(stopIdx), false, () => {
@@ -10313,9 +10334,17 @@ var fontsSection = () => {
   reserved.setAttribute("class", "tutor-owl-bubble");
   reserved.appendChild(owlPara(t("tutorialOwlCloseConstants")));
   strip.appendChild(specimen(reserved, "small caps \xB7 reserved words"));
+  const topic = document.createElement("div");
+  topic.setAttribute("class", "tutor-owl-bubble");
+  topic.appendChild(
+    owlPara(
+      t("tutorialOwlProgress").replace("{count}", "3").replace("{topic}", `2.1 \xB7 ${t("tutorialShape2")}`)
+    )
+  );
+  strip.appendChild(specimen(topic, "monospace citation \xB7 quoted UI label"));
   return section(
     "Fonts",
-    "Two typefaces load from Google Fonts. Noto Sans, a variable font (weights 100\u2013900, with italics), sets all UI text. Noto Sans Math sits behind it in the font stack: wherever Noto Sans lacks a glyph \u2014 the turnstile and the connectives \u2014 the character falls through to the math font, so logic notation in the proof tree is a fallback effect, not a separate style. Button labels, rule cards and the system docs are pre elements and render in the platform default monospace; the schema pretty-printer aligns its layouts on the character grid, so monospace is a functional requirement there, not a taste. The bird emoji standing in for atoms come from the platform color-emoji font \u2014 placeholders until the game gets real graphics, deliberately unspecified. In owl prose, reserved words render in small caps \u2014 a term is reserved iff it names notation, a symbol or set of symbols the player can see (the gate, the connectives, the constants); action and structure words stay plain. Small caps is the term-of-art channel: scannable, yet claiming no interactive affordance the way color (a link) or a pill (a button) would. The marker covers the word alone; symbols, parens and punctuation keep the surrounding roman, per the headword (gloss) convention, and sentence-initial capitals stay full-size, so translations use natural prose capitalization with no markup.",
+    "Two typefaces load from Google Fonts. Noto Sans, a variable font (weights 100\u2013900, with italics), sets all UI text. Noto Sans Math sits behind it in the font stack: wherever Noto Sans lacks a glyph \u2014 the turnstile and the connectives \u2014 the character falls through to the math font, so logic notation in the proof tree is a fallback effect, not a separate style. Button labels, rule cards and the system docs are pre elements and render in the platform default monospace; the schema pretty-printer aligns its layouts on the character grid, so monospace is a functional requirement there, not a taste. The bird emoji standing in for atoms come from the platform color-emoji font \u2014 placeholders until the game gets real graphics, deliberately unspecified. In owl prose, reserved words render in small caps \u2014 a term is reserved iff it names notation, a symbol or set of symbols the player can see (the gate, the connectives, the constants); action and structure words stay plain. Small caps is the term-of-art channel: scannable, yet claiming no interactive affordance the way color (a link) or a pill (a button) would. The marker covers the word alone; symbols, parens and punctuation keep the surrounding roman, per the headword (gloss) convention, and sentence-initial capitals stay full-size, so translations use natural prose capitalization with no markup. A run in curly quotes is the citation channel: the owl quoting a UI label verbatim \u2014 the completion praise names its topic with the breadcrumb\u2019s exact string \u2014 renders in the crumb\u2019s slightly-small monospace as one unbreakable unit, quotes included. It reads as the same object as the chip in the corner without wearing the chip itself: a pill in the bubble would claim a button\u2019s affordance and invite navigation at exactly the moment the praise should direct forward.",
     strip
   );
 };

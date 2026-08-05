@@ -1885,6 +1885,21 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   font-variant: small-caps;
   letter-spacing: 0.04em;
 }
+/* A quoted citation of a UI label — the completion praise naming its
+   topic with the breadcrumb's exact string (”2.1 · Puolenvaihto”) —
+   wears the crumb's slightly-small monospace voice so it reads as the
+   same object as the chip top-right, without the chip itself: a pill in
+   the bubble would read as a button, and inviting navigation is exactly
+   what that moment must not do. The unit never breaks internally,
+   quotes included; owlPara cuts it around the locale quote marks, so
+   translations stay plain text. The 13/16 factor is the app's mono
+   scale (see .key-hint, pre.button). */
+.tutor-owl-topic {
+  white-space: nowrap;
+  font-family: monospace;
+  font-size: calc(1em * 13 / 16);
+  font-variant-numeric: tabular-nums;
+}
 /* On narrow screens a long lesson makes the bubble tall enough to bury
    the goal, which the playarea anchors near its bottom edge. Reserve the
    owl's measured height (--owl-h, synced per render like --controls-h)
