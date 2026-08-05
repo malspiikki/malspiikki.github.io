@@ -1945,13 +1945,38 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   padding: 2em 4em;
   scroll-padding: 2em 4em;
 }
+/* The welcome page is a column (demo above buttons), so its buttons get
+   their own row. Narrow screens wrap the row rather than clip it. */
+.tutorial-welcome-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1em;
+  max-width: 100%;
+}
+/* The pre-restlessness Skip button holds its layout slot invisibly, so
+   its reveal doesn't reflow the demo above it. */
+.tutorial-welcome-buttons .tutorial-skip-latent {
+  visibility: hidden;
+}
 /* On small screens the demo tree must stay whole in view — the player
-   cannot pan a watch-only board, and the narration points at branches. */
+   cannot pan a watch-only board, and the narration points at branches.
+   The wrapped button row also needs to clear the bubble stacked on the
+   owl's face: reserve the owl's measured height below it, like the
+   playarea does above. */
 @media (max-width: 600px) {
   .tutorial-demo .playarea {
     --base-tree-zoom: 0.4;
     padding: 1em 0.5em 8em 0.5em;
     scroll-padding: 1em 0.5em 8em 0.5em;
+  }
+  /* Only once a button is visible (restless reveal / rest state) — while
+     the first loop plays untouched, the latent Skip doesn't count and
+     the tree keeps the full space. */
+  .tutorial-welcome:has(
+    .tutorial-welcome-buttons .button:not(.tutorial-skip-latent)
+  ) {
+    padding-bottom: calc(var(--owl-h, 0px) + 1em);
   }
 }
 /* While the owl plays a presolved foundation, the board ignores the

@@ -3473,7 +3473,7 @@ var en = {
   tutorialSolvability: "Solvability",
   tutorialSkipping: "Skip",
   tutorialConjecture: "Sandbox",
-  tutorialOwlBasics: "Welcome to Sequent Fighter! In its challenges you close derivation trees built out of sequents. This first chapter teaches the essentials you need to play.",
+  tutorialOwlWelcome: "Welcome to Sequent Fighter! You just watched an example challenge. I will guide you through your first steps.",
   tutorialOwlLogic: "You now know how to play the game. The second chapter digs into the consequences of destructing in various situations. Knowing the consequences by heart should help you hone your tactics.",
   tutorialOwlClose: "A branch of the tree can be closed when the same sentence sits on both sides of the gate ( \u22A2 ).",
   tutorialOwlCloseConstants: "Falsum ( \u22A5 ) closes a branch when it sits alone on the left side of the gate ( \u22A2 ), and verum ( \u22A4 ) when it sits alone on the right.",
@@ -3513,7 +3513,7 @@ var en = {
   tutorialOwlMultiDropAdvice: "Press Drop again.",
   tutorialOwlMultiDestruct: "This destruct takes several moves.",
   tutorialOwlMultiDestructAdvice: "Press Destruct again.",
-  tutorialOwlBasicsPlan: "It has four short lessons. Step in when you are ready!",
+  tutorialOwlWelcomePlan: "In the first chapter we cover the essentials you need to play.",
   tutorialOwlLogicPlan: "Four lessons ahead \u2014 one for each kind of consequence.",
   tutorialOwlOptimizationPlan: "The chapter's only lesson deals with arbitrary claims.",
   tutorialOwlSolvabilityPlan: "Only two lessons until graduation.",
@@ -3526,12 +3526,15 @@ var en = {
   tutorialOwlSkippedSolvableAgainAdvice: "Take it one branch at a time, and undo a few moves whenever a branch no longer looks closable.",
   tutorialComplete: "Graduation",
   tutorialDemoSequent: "This is a sequent.",
-  tutorialDemoGrow: "Each move grows the tree.",
-  tutorialDemoClosed: "This branch is closed \u2014 it cannot grow.",
-  tutorialDemoOther: "Let's close the other branch.",
-  tutorialDemoDone: "The tree is done. Let's solve the next one together!",
+  tutorialDemoGrow: "Moves grow the sequent into a derivation tree.",
+  tutorialDemoClosed: "This branch is closed \u2014 its growth has ended.",
+  tutorialDemoOther: "Let's close the tree's other branch too.",
+  tutorialDemoDone: "The derivation is complete once the whole tree is closed.",
   tutorialOwlPresolve: "Let me help you get started\u2026",
-  tutorialStart: "Start",
+  tutorialSkipDemo: "Skip Demo",
+  tutorialReplay: "Replay",
+  tutorialStartChapter: "Start Chapter",
+  tutorialEndChapter: "Finish Chapter",
   tutorialOwlDone: "The tutorial is complete! You now know everything you need to play. Have fun!"
 };
 var fi = {
@@ -3628,7 +3631,7 @@ var fi = {
   tutorialSolvability: "Ratkeavuus",
   tutorialSkipping: "Ohittaminen",
   tutorialConjecture: "Hiekkalaatikko",
-  tutorialOwlBasics: "Tervetuloa pelaamaan Sequent Fighteri\xE4! Pelin haasteissa suljetaan sekventeist\xE4 koostuvia p\xE4\xE4ttelypuita. Ensimm\xE4isess\xE4 luvussa opimme pelaamisen kannalta v\xE4ltt\xE4m\xE4tt\xF6mi\xE4 perusasioita.",
+  tutorialOwlWelcome: "Tervetuloa pelaamaan Sequent Fighteri\xE4! N\xE4it juuri esimerkkihaasteen. Opastan sinut alkuun pelaamisessa.",
   tutorialOwlLogic: "Osaat nyt pelata peli\xE4. Toinen luku syventyy purkamisen seuraamuksiin erilaisissa tilanteissa. Seuraamusten osaaminen ulkoa auttaa hiomaan taktiikkaasi.",
   tutorialOwlClose: "P\xE4\xE4ttelypuun oksa on suljettavissa silloin, kun portin ( \u22A2 ) kummallakin puolella on sama lause.",
   tutorialOwlCloseConstants: "Falsum ( \u22A5 ) sulkee oksan ollessaan yksin portin ( \u22A2 ) vasemmalla puolella, ja verum ( \u22A4 ) ollessaan yksin portin oikealla puolella.",
@@ -3668,7 +3671,7 @@ var fi = {
   tutorialOwlMultiDropAdvice: "Paina pudotusn\xE4pp\xE4int\xE4 uudestaan.",
   tutorialOwlMultiDestruct: "T\xE4m\xE4 purku vaatii useampia siirtoja.",
   tutorialOwlMultiDestructAdvice: "Paina purkun\xE4pp\xE4int\xE4 uudestaan.",
-  tutorialOwlBasicsPlan: "Luvussa on nelj\xE4 lyhytt\xE4 oppituntia. Astu sis\xE4\xE4n, kun olet valmis!",
+  tutorialOwlWelcomePlan: "Ensimm\xE4isess\xE4 luvussa k\xE4sittelemme pelaamisen kannalta v\xE4ltt\xE4m\xE4tt\xF6mi\xE4 perusasioita.",
   tutorialOwlLogicPlan: "Edess\xE4 on nelj\xE4 oppituntia \u2014 yksi kutakin seuraamusta kohti.",
   tutorialOwlOptimizationPlan: "Luvun ainoa oppitunti k\xE4sittelee mielivaltaisia v\xE4itt\xE4mi\xE4.",
   tutorialOwlSolvabilityPlan: "En\xE4\xE4 kaksi oppituntia valmistujaisiin.",
@@ -3680,12 +3683,15 @@ var fi = {
   tutorialOwlSkippedSolvableAgainAdvice: "Etene oksa kerrallaan ja kumoa siirtoja, jos oksa ei n\xE4yt\xE4 en\xE4\xE4 sulkeutuvan.",
   tutorialComplete: "Valmistujaiset",
   tutorialDemoSequent: "T\xE4m\xE4 on sekventti.",
-  tutorialDemoGrow: "Jokainen siirto kasvattaa puuta.",
-  tutorialDemoClosed: "T\xE4m\xE4 oksa on suljettu \u2014 se ei voi en\xE4\xE4 kasvaa.",
-  tutorialDemoOther: "Suljetaan toinenkin oksa.",
-  tutorialDemoDone: "Puu on valmis. Ratkaistaan seuraava yhdess\xE4!",
+  tutorialDemoGrow: "Siirrot saavat sekventin kasvamaan p\xE4\xE4ttelypuuksi.",
+  tutorialDemoClosed: "T\xE4m\xE4 oksa on suljettu \u2014 sen kasvu on p\xE4\xE4ttynyt.",
+  tutorialDemoOther: "Suljetaan puun toinenkin oksa.",
+  tutorialDemoDone: "P\xE4\xE4ttely on valmis, kun puu on kokonaan suljettu.",
   tutorialOwlPresolve: "Autan sinut alkuun\u2026",
-  tutorialStart: "Aloita",
+  tutorialSkipDemo: "Ohita esittely",
+  tutorialReplay: "Toista esittely",
+  tutorialStartChapter: "Aloita luku",
+  tutorialEndChapter: "P\xE4\xE4t\xE4 luku",
   tutorialOwlDone: "Opastus on suoritettu! Tied\xE4t nyt kaiken, mit\xE4 pelaamiseen tarvitaan. Pid\xE4 hauskaa!"
 };
 var es = {
@@ -3782,7 +3788,7 @@ var es = {
   tutorialSolvability: "Resolubilidad",
   tutorialSkipping: "Saltar",
   tutorialConjecture: "Arenero",
-  tutorialOwlBasics: "\xA1Bienvenido a Sequent Fighter! En los desaf\xEDos del juego se cierran \xE1rboles de deducci\xF3n compuestos de secuentes. En este primer cap\xEDtulo aprendemos lo b\xE1sico imprescindible para jugar.",
+  tutorialOwlWelcome: "\xA1Bienvenido a Sequent Fighter! Acabas de ver un desaf\xEDo de ejemplo. Te guiar\xE9 en tus primeros pasos.",
   tutorialOwlLogic: "Ahora ya sabes jugar. El segundo cap\xEDtulo profundiza en las consecuencias de destruir en distintas situaciones. Conocer de memoria las consecuencias te ayudar\xE1 a afinar tu t\xE1ctica.",
   tutorialOwlClose: "Una rama del \xE1rbol se puede cerrar cuando a ambos lados de la puerta ( \u22A2 ) est\xE1 la misma oraci\xF3n.",
   tutorialOwlCloseConstants: "Falsum ( \u22A5 ) cierra una rama cuando est\xE1 solo a la izquierda de la puerta ( \u22A2 ), y verum ( \u22A4 ) cuando est\xE1 solo a la derecha.",
@@ -3822,7 +3828,7 @@ var es = {
   tutorialOwlMultiDropAdvice: "Pulsa Soltar otra vez.",
   tutorialOwlMultiDestruct: "Destruir esto requiere varios movimientos.",
   tutorialOwlMultiDestructAdvice: "Pulsa Destruir otra vez.",
-  tutorialOwlBasicsPlan: "Tiene cuatro lecciones cortas. \xA1Entra cuando quieras!",
+  tutorialOwlWelcomePlan: "En el primer cap\xEDtulo tratamos lo b\xE1sico imprescindible para jugar.",
   tutorialOwlLogicPlan: "Te esperan cuatro lecciones: una por cada tipo de consecuencia.",
   tutorialOwlOptimizationPlan: "La \xFAnica lecci\xF3n del cap\xEDtulo trata de afirmaciones arbitrarias.",
   tutorialOwlSolvabilityPlan: "Solo quedan dos lecciones para la graduaci\xF3n.",
@@ -3834,12 +3840,15 @@ var es = {
   tutorialOwlSkippedSolvableAgainAdvice: "Avanza rama por rama y deshaz algunos movimientos cuando una rama ya no parezca poder cerrarse.",
   tutorialComplete: "Graduaci\xF3n",
   tutorialDemoSequent: "Esto es un secuente.",
-  tutorialDemoGrow: "Cada movimiento hace crecer el \xE1rbol.",
-  tutorialDemoClosed: "Esta rama est\xE1 cerrada: ya no puede crecer.",
-  tutorialDemoOther: "Cerremos la otra rama.",
-  tutorialDemoDone: "El \xE1rbol est\xE1 listo. \xA1Resolvamos el siguiente juntos!",
+  tutorialDemoGrow: "Los movimientos hacen crecer el secuente hasta formar un \xE1rbol de deducci\xF3n.",
+  tutorialDemoClosed: "Esta rama est\xE1 cerrada: su crecimiento ha terminado.",
+  tutorialDemoOther: "Cerremos tambi\xE9n la otra rama del \xE1rbol.",
+  tutorialDemoDone: "La deducci\xF3n est\xE1 completa cuando el \xE1rbol est\xE1 totalmente cerrado.",
   tutorialOwlPresolve: "Deja que te ayude a empezar\u2026",
-  tutorialStart: "Empezar",
+  tutorialSkipDemo: "Saltar demo",
+  tutorialReplay: "Repetir",
+  tutorialStartChapter: "Empezar cap\xEDtulo",
+  tutorialEndChapter: "Terminar cap\xEDtulo",
   tutorialOwlDone: "\xA1Tutorial completado! Ya sabes todo lo que necesitas para jugar. \xA1Divi\xE9rtete!"
 };
 var cs = {
@@ -3936,7 +3945,7 @@ var cs = {
   tutorialSolvability: "\u0158e\u0161itelnost",
   tutorialSkipping: "P\u0159eskakov\xE1n\xED",
   tutorialConjecture: "P\xEDskovi\u0161t\u011B",
-  tutorialOwlBasics: "V\xEDtej ve h\u0159e Sequent Fighter! V jej\xEDch v\xFDzv\xE1ch se zav\xEDraj\xED odvozovac\xED stromy slo\u017Een\xE9 ze sekvent\u016F. V t\xE9to prvn\xED kapitole se nau\u010D\xEDme z\xE1klady, bez kter\xFDch se hr\xE1t ned\xE1.",
+  tutorialOwlWelcome: "V\xEDtej ve h\u0159e Sequent Fighter! Pr\xE1v\u011B jsi vid\u011Bl uk\xE1zkovou v\xFDzvu. Provedu t\u011B prvn\xEDmi kroky.",
   tutorialOwlLogic: "Te\u010F u\u017E um\xED\u0161 hr\xE1t. Druh\xE1 kapitola se no\u0159\xED do d\u016Fsledk\u016F ni\u010Den\xED v r\u016Fzn\xFDch situac\xEDch. Zn\xE1t d\u016Fsledky nazpam\u011B\u0165 ti pom\u016F\u017Ee vypilovat taktiku.",
   tutorialOwlClose: "V\u011Btev stromu lze zav\u0159\xEDt, kdy\u017E na obou stran\xE1ch br\xE1ny ( \u22A2 ) stoj\xED stejn\xE1 v\u011Bta.",
   tutorialOwlCloseConstants: "Falsum ( \u22A5 ) zav\u0159e v\u011Btev, kdy\u017E stoj\xED samo vlevo od br\xE1ny ( \u22A2 ), a verum ( \u22A4 ), kdy\u017E stoj\xED samo vpravo.",
@@ -3976,7 +3985,7 @@ var cs = {
   tutorialOwlMultiDropAdvice: "Stiskni Pustit znovu.",
   tutorialOwlMultiDestruct: "Tohle zni\u010Den\xED vy\u017Eaduje n\u011Bkolik tah\u016F.",
   tutorialOwlMultiDestructAdvice: "Stiskni Zni\u010Dit znovu.",
-  tutorialOwlBasicsPlan: "M\xE1 \u010Dty\u0159i kr\xE1tk\xE9 lekce. Vstup, a\u017E bude\u0161 cht\xEDt!",
+  tutorialOwlWelcomePlan: "V prvn\xED kapitole probereme z\xE1klady, bez kter\xFDch se hr\xE1t ned\xE1.",
   tutorialOwlLogicPlan: "\u010Cekaj\xED t\u011B \u010Dty\u0159i lekce \u2014 jedna pro ka\u017Ed\xFD druh d\u016Fsledku.",
   tutorialOwlOptimizationPlan: "Jedin\xE1 lekce kapitoly se v\u011Bnuje libovoln\xFDm tvrzen\xEDm.",
   tutorialOwlSolvabilityPlan: "Do promoce zb\xFDvaj\xED u\u017E jen dv\u011B lekce.",
@@ -3988,12 +3997,15 @@ var cs = {
   tutorialOwlSkippedSolvableAgainAdvice: "Postupuj v\u011Btev po v\u011Btvi, a kdy\u017E u\u017E v\u011Btev nevypad\xE1, \u017Ee p\u016Fjde zav\u0159\xEDt, p\xE1r tah\u016F vra\u0165.",
   tutorialComplete: "Promoce",
   tutorialDemoSequent: "Tohle je sekvent.",
-  tutorialDemoGrow: "Ka\u017Ed\xFDm tahem strom roste.",
-  tutorialDemoClosed: "Tato v\u011Btev je uzav\u0159en\xE1 \u2014 u\u017E nem\u016F\u017Ee r\u016Fst.",
-  tutorialDemoOther: "Zav\u0159eme i druhou v\u011Btev.",
-  tutorialDemoDone: "Strom je hotov\xFD. Dal\u0161\xED vy\u0159e\u0161\xEDme spolu!",
+  tutorialDemoGrow: "Tahy nech\xE1vaj\xED sekvent vyr\u016Fst v odvozovac\xED strom.",
+  tutorialDemoClosed: "Tato v\u011Btev je uzav\u0159en\xE1 \u2014 jej\xED r\u016Fst skon\u010Dil.",
+  tutorialDemoOther: "Zav\u0159eme i druhou v\u011Btev stromu.",
+  tutorialDemoDone: "Odvozen\xED je hotov\xE9, kdy\u017E je strom cel\xFD uzav\u0159en\xFD.",
   tutorialOwlPresolve: "Pom\u016F\u017Eu ti za\u010D\xEDt\u2026",
-  tutorialStart: "Za\u010D\xEDt",
+  tutorialSkipDemo: "P\u0159esko\u010Dit uk\xE1zku",
+  tutorialReplay: "P\u0159ehr\xE1t znovu",
+  tutorialStartChapter: "Za\u010D\xEDt kapitolu",
+  tutorialEndChapter: "Dokon\u010Dit kapitolu",
   tutorialOwlDone: "N\xE1vod je u konce! Te\u010F v\xED\u0161 v\u0161e, co ke hran\xED pot\u0159ebuje\u0161. Bav se!"
 };
 var pl = {
@@ -4090,7 +4102,7 @@ var pl = {
   tutorialSolvability: "Rozwi\u0105zywalno\u015B\u0107",
   tutorialSkipping: "Pomijanie",
   tutorialConjecture: "Piaskownica",
-  tutorialOwlBasics: "Witaj w grze Sequent Fighter! W jej wyzwaniach zamyka si\u0119 drzewa wnioskowania zbudowane z sekwent\xF3w. W tym pierwszym rozdziale poznajemy podstawy niezb\u0119dne do gry.",
+  tutorialOwlWelcome: "Witaj w grze Sequent Fighter! W\u0142a\u015Bnie zobaczy\u0142e\u015B przyk\u0142adowe wyzwanie. Poprowadz\u0119 ci\u0119 przez pierwsze kroki.",
   tutorialOwlLogic: "Teraz ju\u017C umiesz gra\u0107. Drugi rozdzia\u0142 zag\u0142\u0119bia si\u0119 w skutki niszczenia w r\xF3\u017Cnych sytuacjach. Znajomo\u015B\u0107 skutk\xF3w na pami\u0119\u0107 pomo\u017Ce ci wyostrzy\u0107 taktyk\u0119.",
   tutorialOwlClose: "Ga\u0142\u0105\u017A drzewa mo\u017Cna zamkn\u0105\u0107, gdy po obu stronach bramy ( \u22A2 ) stoi to samo zdanie.",
   tutorialOwlCloseConstants: "Falsum ( \u22A5 ) zamyka ga\u0142\u0105\u017A, gdy stoi samo po lewej stronie bramy ( \u22A2 ), i verum ( \u22A4 ), gdy stoi samo po prawej.",
@@ -4130,7 +4142,7 @@ var pl = {
   tutorialOwlMultiDropAdvice: "Naci\u015Bnij Upu\u015B\u0107 jeszcze raz.",
   tutorialOwlMultiDestruct: "To zniszczenie wymaga kilku ruch\xF3w.",
   tutorialOwlMultiDestructAdvice: "Naci\u015Bnij Zniszcz jeszcze raz.",
-  tutorialOwlBasicsPlan: "Ma cztery kr\xF3tkie lekcje. Wejd\u017A, kiedy zechcesz!",
+  tutorialOwlWelcomePlan: "W pierwszym rozdziale omawiamy podstawy niezb\u0119dne do gry.",
   tutorialOwlLogicPlan: "Przed tob\u0105 cztery lekcje \u2014 po jednej na ka\u017Cdy rodzaj skutku.",
   tutorialOwlOptimizationPlan: "Jedyna lekcja rozdzia\u0142u dotyczy dowolnych twierdze\u0144.",
   tutorialOwlSolvabilityPlan: "Do zako\u0144czenia zosta\u0142y ju\u017C tylko dwie lekcje.",
@@ -4142,12 +4154,15 @@ var pl = {
   tutorialOwlSkippedSolvableAgainAdvice: "Id\u017A ga\u0142\u0105\u017A po ga\u0142\u0119zi i cofnij kilka ruch\xF3w, gdy ga\u0142\u0105\u017A nie wygl\u0105da ju\u017C na mo\u017Cliw\u0105 do zamkni\u0119cia.",
   tutorialComplete: "Zako\u0144czenie",
   tutorialDemoSequent: "To jest sekwent.",
-  tutorialDemoGrow: "Z ka\u017Cdym ruchem drzewo ro\u015Bnie.",
-  tutorialDemoClosed: "Ta ga\u0142\u0105\u017A jest zamkni\u0119ta \u2014 ju\u017C nie uro\u015Bnie.",
-  tutorialDemoOther: "Zamknijmy drug\u0105 ga\u0142\u0105\u017A.",
-  tutorialDemoDone: "Drzewo jest gotowe. Rozwi\u0105\u017Cmy nast\u0119pne razem!",
+  tutorialDemoGrow: "Ruchy sprawiaj\u0105, \u017Ce sekwent wyrasta w drzewo wnioskowania.",
+  tutorialDemoClosed: "Ta ga\u0142\u0105\u017A jest zamkni\u0119ta \u2014 jej wzrost dobieg\u0142 ko\u0144ca.",
+  tutorialDemoOther: "Zamknijmy te\u017C drug\u0105 ga\u0142\u0105\u017A drzewa.",
+  tutorialDemoDone: "Wnioskowanie jest gotowe, gdy ca\u0142e drzewo jest zamkni\u0119te.",
   tutorialOwlPresolve: "Pomog\u0119 ci zacz\u0105\u0107\u2026",
-  tutorialStart: "Rozpocznij",
+  tutorialSkipDemo: "Pomi\u0144 pokaz",
+  tutorialReplay: "Powt\xF3rz",
+  tutorialStartChapter: "Rozpocznij rozdzia\u0142",
+  tutorialEndChapter: "Zako\u0144cz rozdzia\u0142",
   tutorialOwlDone: "Samouczek uko\u0144czony! Wiesz ju\u017C wszystko, czego potrzeba do gry. Mi\u0142ej zabawy!"
 };
 var messages = {
@@ -8642,14 +8657,14 @@ var chapterKey = {
   solvability: "tutorialSolvability"
 };
 var owlChapterKey = {
-  basics: "tutorialOwlBasics",
+  basics: "tutorialOwlWelcome",
   logic: "tutorialOwlLogic",
   optimization: "tutorialOwlOptimization",
   solvability: "tutorialOwlSolvability",
   done: "tutorialOwlDone"
 };
 var owlChapterPlanKey = {
-  basics: "tutorialOwlBasicsPlan",
+  basics: "tutorialOwlWelcomePlan",
   logic: "tutorialOwlLogicPlan",
   optimization: "tutorialOwlOptimizationPlan",
   solvability: "tutorialOwlSolvabilityPlan",
@@ -8744,7 +8759,7 @@ var mountTutorial = (container, navigate2, startStop) => {
   const beatTarget = () => targetByBeat[beatIdx] ?? 0;
   const quotaMet = () => beatCompletions() >= beatTarget();
   const perpetualBeat = () => beatIdx === tutorialCurriculum.length - 1;
-  const advanceLabel = () => perpetualBeat() ? t("tutorialComplete") : t("tutorialAdvance");
+  const advanceLabel = () => perpetualBeat() ? t("tutorialComplete") : stopAt(stopIdx + 1).kind === "intro" ? t("tutorialEndChapter") : t("tutorialAdvance");
   const progressParagraphs = () => {
     const praise = t("tutorialOwlProgress").replace("{count}", String(beatCompletions())).replace("{topic}", stopLabel(stopIdx));
     if (quotaMet() || perpetualBeat()) return [praise];
@@ -8767,6 +8782,9 @@ var mountTutorial = (container, navigate2, startStop) => {
   let demoPhase = "sequent";
   let demoTimer = null;
   let demoReturn = false;
+  let demoLoopDone = false;
+  let demoResting = false;
+  let skipRevealed = false;
   const demoCtx = {
     ...createBenchCtx(false, true, false, false),
     getActionHint,
@@ -8784,11 +8802,29 @@ var mountTutorial = (container, navigate2, startStop) => {
     demoQueue = solution87 === void 0 ? [] : linearize(solution87, { shuffle: false });
     demoPhase = "sequent";
     demoReturn = false;
+    demoResting = false;
   };
   const stopDemo = () => {
     if (demoTimer !== null) window.clearTimeout(demoTimer);
     demoTimer = null;
     demoWs = null;
+  };
+  const skipDemoToRest = () => {
+    if (demoTimer !== null) window.clearTimeout(demoTimer);
+    demoTimer = null;
+    if (demoWs !== null) {
+      if (demoReturn) {
+        demoWs.applyEvent(nextBranch());
+        demoReturn = false;
+      }
+      for (const ev of demoQueue) demoWs.applyEvent(ev);
+      demoQueue = [];
+    }
+    demoPhase = "done";
+    demoLoopDone = true;
+    demoResting = true;
+    introCursorPos = null;
+    rerender();
   };
   const demoStep = () => {
     demoTimer = null;
@@ -8807,9 +8843,10 @@ var mountTutorial = (container, navigate2, startStop) => {
     }
     const ev = demoQueue[0];
     if (demoWs.isSolved() || ev === void 0) {
-      startDemo();
+      demoLoopDone = true;
+      demoResting = true;
+      introCursorPos = null;
       rerender();
-      scheduleDemo(DEMO_PHASE_MS);
       return;
     }
     demoQueue = demoQueue.slice(1);
@@ -8899,6 +8936,7 @@ var mountTutorial = (container, navigate2, startStop) => {
   let congrats = null;
   let introCursor = null;
   let introDefault = null;
+  let introCursorPos = null;
   let skipCursor = null;
   let skipDefault = null;
   const setPaused = (v2) => {
@@ -8989,6 +9027,7 @@ var mountTutorial = (container, navigate2, startStop) => {
     if (clamped === stopIdx) return;
     cancelPresolve();
     stopIdx = clamped;
+    introCursorPos = null;
     if (!onWelcome()) stopDemo();
     const stop = stopAt(stopIdx);
     rerootAtBeat(stop.kind === "beat" ? stop.beatIdx : beatForStop(stopIdx));
@@ -9077,6 +9116,7 @@ var mountTutorial = (container, navigate2, startStop) => {
   const buildIntroPage = () => {
     const page = document.createElement("div");
     page.setAttribute("class", "tutorial-intro");
+    let btnHost = page;
     if (onWelcome()) {
       page.classList.add("tutorial-welcome");
       if (demoWs === null) {
@@ -9089,27 +9129,58 @@ var mountTutorial = (container, navigate2, startStop) => {
         demo.appendChild(createPlayArea(demoWs, demoCtx));
         page.appendChild(demo);
       }
+      const row = document.createElement("div");
+      row.setAttribute("class", "tutorial-welcome-buttons");
+      page.appendChild(row);
+      btnHost = row;
+      if (!demoLoopDone && !skipRevealed) {
+        page.addEventListener("pointerdown", () => {
+          if (!skipRevealed && !demoLoopDone) {
+            skipRevealed = true;
+            rerender();
+          }
+        });
+      }
     }
     const cells = [];
     const add = (label, activate) => {
       const el = createButton(label, false, activate);
-      page.appendChild(el);
+      btnHost.appendChild(el);
       cells.push({ btn: el, activate });
+      return el;
     };
     const stop = stopAt(stopIdx);
     if (stopIdx <= 0) {
-      add(t("tutorialStart"), () => jumpToStop(stopIdx + 1));
+      if (demoLoopDone) {
+        add(t("back"), () => navigate2("menu"));
+        add(t("tutorialReplay"), () => {
+          startDemo();
+          scheduleDemo(DEMO_PHASE_MS);
+          rerender();
+        });
+        add(t("tutorialStartChapter"), () => jumpToStop(stopIdx + 1));
+      } else {
+        const skipBtn = add(t("tutorialSkipDemo"), skipDemoToRest);
+        if (!skipRevealed) skipBtn.classList.add("tutorial-skip-latent");
+      }
     } else if (stop.kind === "intro" && stop.chapter === "done") {
       add(t("exitToMainMenu"), () => navigate2("menu"));
     } else {
       add(t("tutorialPrevious"), () => jumpToStop(stopIdx - 1));
-      add(t("tutorialAdvance"), () => jumpToStop(stopIdx + 1));
+      add(t("tutorialStartChapter"), () => jumpToStop(stopIdx + 1));
     }
-    const cursor = createButtonCursor([cells], {
-      startCol: cells.length - 1,
-      moveOnReveal: true
-    });
-    introCursor = { onAction: cursor.onAction, isEngaged: cursor.isEngaged };
+    const cursor = createButtonCursor(
+      [cells],
+      introCursorPos === null ? { startCol: cells.length - 1, moveOnReveal: true } : {
+        startCol: Math.min(introCursorPos.col, cells.length - 1),
+        startRevealed: true
+      }
+    );
+    const onCursorAction = (action) => {
+      cursor.onAction(action);
+      introCursorPos = cursor.getPosition();
+    };
+    introCursor = { onAction: onCursorAction, isEngaged: cursor.isEngaged };
     introDefault = cells[cells.length - 1]?.activate ?? null;
     return page;
   };
@@ -9168,13 +9239,16 @@ var mountTutorial = (container, navigate2, startStop) => {
     const taskKey = stop.kind === "beat" ? taskBeatKey[stop.beatIdx] : void 0;
     const planKey = stop.kind === "intro" ? owlChapterPlanKey[stop.chapter] : null;
     const multiKind = multiPressKind();
-    const paragraphs = onWelcome() ? [t(demoPhaseKey[demoPhase])] : presolving ? [t("tutorialOwlPresolve")] : stop.kind === "intro" ? planKey === null ? [t(owlChapterKey[stop.chapter])] : [t(owlChapterKey[stop.chapter]), t(planKey)] : beatKey === void 0 ? [] : conjectureEntry ? (
+    const paragraphs = onWelcome() && !demoResting ? [t(demoPhaseKey[demoPhase])] : presolving ? [t("tutorialOwlPresolve")] : stop.kind === "intro" ? planKey === null ? [t(owlChapterKey[stop.chapter])] : [t(owlChapterKey[stop.chapter]), t(planKey)] : beatKey === void 0 ? [] : conjectureEntry ? (
       // The entry page always instructs. The workspace behind it may
       // still be the previous solved board (nextChallenge leaves it
       // in place until Confirm replaces it), so the solved/stuck
       // readings below would be stale here.
       taskKey === void 0 ? [t(beatKey)] : [t(beatKey), t(taskKey)]
-    ) : ws.isSolved() || skipped && !skipHadSolution ? solvedClaimFree() ? [t("tutorialOwlClaimFree"), t("tutorialOwlClaimFreeAdvice")] : progressParagraphs() : skipped && skipHadSolution ? (
+    ) : ws.isSolved() || skipped && !skipHadSolution ? solvedClaimFree() ? [
+      t("tutorialOwlClaimFree"),
+      t("tutorialOwlClaimFreeAdvice")
+    ] : progressParagraphs() : skipped && skipHadSolution ? (
       // The wrong-diagnosis reveal: soften it and point at the
       // Try Again default (checked before isStuck, which would
       // otherwise read the abandoned board behind the screen).
@@ -9704,6 +9778,11 @@ var mountTutorial = (container, navigate2, startStop) => {
     }
     if (presolving) return;
     if (onIntro()) {
+      if (onWelcome() && !demoLoopDone && !skipRevealed) {
+        skipRevealed = true;
+        rerender();
+        return;
+      }
       const cursor = introCursor;
       if (cursor !== null) {
         if (cursorNavActions.has(action)) {
