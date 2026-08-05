@@ -1002,13 +1002,11 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   /* Spacing is carried by the golden spacers below, not by a uniform gap. */
   gap: 0;
 }
-/* Golden-section placement. The free space left over above and below the
-   composition is split 1 : φ, so the block settles at the optical centre
-   instead of the geometric one — a touch high, which is what reads as
-   balanced. The upper spacer's min-height doubles as the reserve for the
-   position:fixed language switcher: when the menu is too tall to centre, the
-   spacers collapse to that floor and the panel scrolls, so the title can
-   never slide under the switcher. */
+/* The composition anchors near the top: the upper spacer is a fixed reserve
+   for the position:fixed language switcher (never grows, so the title can't
+   slide under the switcher), and the lower spacer soaks up all remaining
+   space. Vertical breathing inside the block comes from the title's
+   viewport-relative margin instead. */
 .menu::before,
 .menu::after {
   content: '';
@@ -1016,11 +1014,10 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   flex-shrink: 1;
 }
 .menu::before {
-  flex-grow: 1;
   min-height: 6rem;
 }
 .menu::after {
-  flex-grow: 1.618;
+  flex-grow: 1;
 }
 .system {
   width: 100vw;
@@ -1170,10 +1167,10 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   max-width: 90vw;
   text-align: center;
   line-height: 1.1;
-  /* One golden step up from the 2em rhythm between the buttons themselves
-     (2em × φ ≈ 62px): enough to read as a title rather than a fourth item,
-     without opening a void that splits the screen in two. */
-  margin-bottom: 3.875rem;
+  /* Viewport-relative so the gap breathes with the available space: enough
+     to read as a title rather than a fourth item on a tall screen, without
+     opening a void on a short one. */
+  margin-bottom: 10vh;
 }
 /* Studio mark, bottom-right of the title screen. The size and inset mirror the
    canvas geometry the sibling game draws its copy with — width capped at both
@@ -1203,6 +1200,21 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   font-size: 1.5em;
   padding: 0.8em 2em;
   min-width: 6em;
+}
+/* Mode-description slot under the button column. Height is reserved for two
+   lines even while empty, so a blurb appearing under the cursor or pointer
+   never reflows the composition. */
+.menu-mode-desc {
+  font-size: 1.2em;
+  min-height: 2.6em;
+  margin-top: 1.667em;
+  /* Wide enough for the longest blurb on one line; the viewport cap takes
+     over on small screens, wrapping into the reserved second line. */
+  max-width: min(36em, 90vw);
+  text-align: center;
+  line-height: 1.3;
+  color: var(--ink-inner);
+  user-select: none;
 }
 .rules-sheet {
   display: none;

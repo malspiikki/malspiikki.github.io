@@ -3441,6 +3441,9 @@ var en = {
   prevBranch: "Prev",
   nextBranch: "Next",
   versus: "Versus",
+  versusDesc: "Solve timed challenges racing another player",
+  randomDesc: "Solve relaxing challenges at your own pace",
+  tutorialDesc: "Solve guided challenges to grow as a player",
   player1: "Player 1",
   player2: "Player 2",
   tie: "Tie!",
@@ -3598,7 +3601,10 @@ var fi = {
   gallery: "Galleria",
   prevBranch: "Edellinen",
   nextBranch: "Seuraava",
-  versus: "Vastakkain",
+  versus: "Taistelu",
+  versusDesc: "Ratkaise kellotettuja haasteita kilpaa toisen pelaajan kanssa",
+  randomDesc: "Ratkaise rentouttavia haasteita omaan tahtiin",
+  tutorialDesc: "Ratkaise ohjattuja haasteita kehitty\xE4ksesi pelaajana",
   player1: "Pelaaja 1",
   player2: "Pelaaja 2",
   tie: "Tasapeli!",
@@ -3611,7 +3617,7 @@ var fi = {
   gamepad1: "Ohjain 1",
   gamepad2: "Ohjain 2",
   npc: "NPC",
-  tutorial: "Opastus",
+  tutorial: "Harjoittelu",
   tutorialBasics: "Perusteet",
   tutorialLogic: "Seuraamukset",
   tutorialAdvance: "Seuraava aihe",
@@ -3756,6 +3762,9 @@ var es = {
   prevBranch: "Anterior",
   nextBranch: "Siguiente",
   versus: "Versus",
+  versusDesc: "Resuelve desaf\xEDos cronometrados compitiendo con otro jugador",
+  randomDesc: "Resuelve desaf\xEDos relajantes a tu propio ritmo",
+  tutorialDesc: "Resuelve desaf\xEDos guiados para crecer como jugador",
   player1: "Jugador 1",
   player2: "Jugador 2",
   tie: "\xA1Empate!",
@@ -3913,6 +3922,9 @@ var cs = {
   prevBranch: "P\u0159edchoz\xED",
   nextBranch: "Dal\u0161\xED",
   versus: "Versus",
+  versusDesc: "\u0158e\u0161 v\xFDzvy na \u010Das v z\xE1vod\u011B s druh\xFDm hr\xE1\u010Dem",
+  randomDesc: "\u0158e\u0161 odpo\u010Dinkov\xE9 v\xFDzvy vlastn\xEDm tempem",
+  tutorialDesc: "\u0158e\u0161 v\xFDzvy s pr\u016Fvodcem a zlep\u0161uj se jako hr\xE1\u010D",
   player1: "Hr\xE1\u010D 1",
   player2: "Hr\xE1\u010D 2",
   tie: "Rem\xEDza!",
@@ -4070,6 +4082,9 @@ var pl = {
   prevBranch: "Poprzedni",
   nextBranch: "Nast\u0119pny",
   versus: "Versus",
+  versusDesc: "Rozwi\u0105zuj wyzwania na czas, \u015Bcigaj\u0105c si\u0119 z innym graczem",
+  randomDesc: "Rozwi\u0105zuj relaksuj\u0105ce wyzwania we w\u0142asnym tempie",
+  tutorialDesc: "Rozwi\u0105zuj wyzwania z przewodnikiem i rozwijaj si\u0119 jako gracz",
   player1: "Gracz 1",
   player2: "Gracz 2",
   tie: "Remis!",
@@ -6896,6 +6911,8 @@ var setupGamepad = (dispatch, gamepadIndex = 0) => {
 var mountMenu = (container, navigate2) => {
   let clicks = 0;
   let cursor = null;
+  let syncDescription = () => {
+  };
   const render = () => {
     container.innerHTML = "";
     const panel = document.createElement("div");
@@ -6912,31 +6929,51 @@ var mountMenu = (container, navigate2) => {
     const modes = document.createElement("div");
     modes.setAttribute("class", "menu-modes");
     const cells = [];
-    const addMode = (label, activate) => {
+    const descriptions = [];
+    const description = document.createElement("div");
+    description.setAttribute("class", "menu-mode-desc");
+    const cursorDescription = () => {
+      const pos = cursor?.getPosition() ?? null;
+      return pos === null ? "" : descriptions[pos.row] ?? "";
+    };
+    syncDescription = () => {
+      description.textContent = cursorDescription();
+    };
+    const addMode = (label, blurb, activate) => {
       const btn = document.createElement("div");
       btn.setAttribute("class", "button menu-mode");
       btn.textContent = label;
       btn.onclick = activate;
+      btn.onmouseenter = () => {
+        description.textContent = blurb;
+      };
+      btn.onmouseleave = syncDescription;
       modes.appendChild(btn);
       cells.push({ btn, activate });
+      descriptions.push(blurb);
     };
-    addMode(t("versus"), () => navigate2("versus-config"));
-    addMode(t("random"), () => navigate2("random"));
-    addMode(t("tutorial"), () => navigate2("tutorial"));
+    addMode(t("versus"), t("versusDesc"), () => navigate2("versus-config"));
+    addMode(t("random"), t("randomDesc"), () => navigate2("random"));
+    addMode(t("tutorial"), t("tutorialDesc"), () => navigate2("tutorial"));
     panel.appendChild(modes);
+    panel.appendChild(description);
     container.appendChild(panel);
     container.appendChild(createStudioLogo());
     cursor = createButtonCursor(cells.map((c) => [c]));
   };
   render();
+  const handleAction = (action) => {
+    cursor?.onAction(action);
+    syncDescription();
+  };
   const handleKey = (ev) => {
     if (ev.ctrlKey || ev.metaKey || ev.altKey) return;
     markKeyboardInput();
     const action = qwertyKeyMap[ev.code];
-    if (action !== void 0) cursor?.onAction(action);
+    if (action !== void 0) handleAction(action);
   };
   document.addEventListener("keydown", handleKey);
-  const cleanupGamepad = setupGamepad((action) => cursor?.onAction(action));
+  const cleanupGamepad = setupGamepad(handleAction);
   return {
     cleanup: () => {
       document.removeEventListener("keydown", handleKey);
