@@ -227,6 +227,7 @@ var atom = (value) => ({
   kind: "atom",
   value
 });
+var isAtom = (p) => p.kind === "atom";
 var falsum = {
   kind: "falsum"
 };
@@ -3420,7 +3421,7 @@ var en = {
   conjunctionWeight: "Conjunction",
   disjunctionWeight: "Disjunction",
   filter: "Parameters",
-  bypassPercent: "Chaoticity (\u{1F480}%)",
+  trapPercent: "Traps (\u{1F480}%)",
   targetNonStructural: "Solution Size",
   continue: "Continue",
   start: "Start",
@@ -3488,7 +3489,7 @@ var en = {
   tutorialOwlBranchingCrossing: "Destructing an implication ( \u2192 ) on the left side of the gate ( \u22A2 ) shatters the sentence: the most intricate of the rules combines both the parts dividing across the gate and the tree branching.",
   tutorialOwlOptimization: "The third chapter is about optimizing solutions.",
   tutorialOwlClaims: "You can add a claim of your own choosing to the selected branch. Claims never affect whether a challenge can be solved, but they can sometimes shorten the solution.",
-  tutorialOwlSolvability: "The fourth chapter is about telling which challenges can be solved. Recognizing solvability matters if you take on chaotic ( \u{1F480} ) challenges.",
+  tutorialOwlSolvability: "The fourth chapter is about telling which challenges can be solved. Recognizing solvability matters if you take on trap ( \u{1F480} ) challenges.",
   tutorialOwlUnsolvable: "We have created some peculiar challenges here, so that you can ponder their solvability.",
   tutorialOwlConjecture: "In this sandbox you can try to solve challenges of your own choosing.",
   tutorialTaskClose: "Try to close every branch of this tree.",
@@ -3581,7 +3582,7 @@ var fi = {
   conjunctionWeight: "Konjunktio",
   disjunctionWeight: "Disjunktio",
   filter: "Parametrit",
-  bypassPercent: "Kaoottisuus (\u{1F480}%)",
+  trapPercent: "Ansat (\u{1F480}%)",
   targetNonStructural: "Ratkaisun koko",
   continue: "Jatka",
   start: "Aloita",
@@ -3649,7 +3650,7 @@ var fi = {
   tutorialOwlBranchingCrossing: "Implikaation ( \u2192 ) purkaminen portin ( \u22A2 ) vasemmalta puolelta sirpaloittaa lauseen: s\xE4\xE4nn\xF6ist\xE4 monimutkaisin yhdist\xE4\xE4 sek\xE4 osien jakautumisen portin eri puolille ett\xE4 puun haarautumisen.",
   tutorialOwlOptimization: "Kolmannessa luvussa tutustumme ratkaisujen optimointiin.",
   tutorialOwlClaims: "Voit lis\xE4t\xE4 valittuun oksaan vapaavalintaisen v\xE4itt\xE4m\xE4n. V\xE4itt\xE4m\xE4t eiv\xE4t vaikuta haasteen ratkeavuuteen, mutta ne voivat joskus lyhent\xE4\xE4 ratkaisua.",
-  tutorialOwlSolvability: "Nelj\xE4nness\xE4 luvussa pohdimme, millaiset haasteet ovat ratkeavia. Ratkeavuuden tunnistaminen on oleellista, mik\xE4li koitat ratkaista kaoottisia ( \u{1F480} ) haasteita.",
+  tutorialOwlSolvability: "Nelj\xE4nness\xE4 luvussa pohdimme, millaiset haasteet ovat ratkeavia. Ratkeavuuden tunnistaminen on oleellista, mik\xE4li koitat ratkaista ansoja ( \u{1F480} ).",
   tutorialOwlUnsolvable: "Loimme t\xE4h\xE4n eriskummallisia haasteita, jotta voit pohtia niiden ratkeavuutta.",
   tutorialOwlConjecture: "Hiekkalaatikossa voit kokeilla ratkaista vapaavalintaisia haasteita.",
   tutorialTaskClose: "Yrit\xE4 sulkea puun jokainen oksa.",
@@ -3741,7 +3742,7 @@ var es = {
   conjunctionWeight: "Conjunci\xF3n",
   disjunctionWeight: "Disyunci\xF3n",
   filter: "Par\xE1metros",
-  bypassPercent: "Caoticidad (\u{1F480}%)",
+  trapPercent: "Trampas (\u{1F480}%)",
   targetNonStructural: "Tama\xF1o de soluci\xF3n",
   continue: "Continuar",
   start: "Comenzar",
@@ -3809,7 +3810,7 @@ var es = {
   tutorialOwlBranchingCrossing: "Destruir una implicaci\xF3n ( \u2192 ) en el lado izquierdo de la puerta ( \u22A2 ) fragmenta la oraci\xF3n: la regla m\xE1s compleja combina el reparto de las partes entre ambos lados y la ramificaci\xF3n del \xE1rbol.",
   tutorialOwlOptimization: "El tercer cap\xEDtulo trata de optimizar las soluciones.",
   tutorialOwlClaims: "Puedes a\xF1adir una afirmaci\xF3n de tu elecci\xF3n a la rama elegida. Las afirmaciones nunca afectan a la resolubilidad del desaf\xEDo, pero a veces pueden acortar la soluci\xF3n.",
-  tutorialOwlSolvability: "En el cuarto cap\xEDtulo consideramos qu\xE9 desaf\xEDos tienen soluci\xF3n. Reconocer la resolubilidad es esencial si intentas resolver desaf\xEDos ca\xF3ticos ( \u{1F480} ).",
+  tutorialOwlSolvability: "En el cuarto cap\xEDtulo consideramos qu\xE9 desaf\xEDos tienen soluci\xF3n. Reconocer la resolubilidad es esencial si intentas resolver desaf\xEDos trampa ( \u{1F480} ).",
   tutorialOwlUnsolvable: "Hemos creado aqu\xED desaf\xEDos peculiares para que reflexiones sobre su resolubilidad.",
   tutorialOwlConjecture: "En este arenero puedes intentar resolver desaf\xEDos de tu propia elecci\xF3n.",
   tutorialTaskClose: "Intenta cerrar todas las ramas de este \xE1rbol.",
@@ -3901,7 +3902,7 @@ var cs = {
   conjunctionWeight: "Konjunkce",
   disjunctionWeight: "Disjunkce",
   filter: "Parametry",
-  bypassPercent: "Chaos (\u{1F480}%)",
+  trapPercent: "Pasti (\u{1F480}%)",
   targetNonStructural: "Velikost \u0159e\u0161en\xED",
   continue: "Pokra\u010Dovat",
   start: "Start",
@@ -3969,7 +3970,7 @@ var cs = {
   tutorialOwlBranchingCrossing: "Zni\u010Den\xED implikace ( \u2192 ) na lev\xE9 stran\u011B br\xE1ny ( \u22A2 ) v\u011Btu rozt\u0159\xED\u0161t\xED: nejslo\u017Eit\u011Bj\u0161\xED z pravidel spojuje jak rozd\u011Blen\xED \u010D\xE1st\xED na ob\u011B strany br\xE1ny, tak v\u011Btven\xED stromu.",
   tutorialOwlOptimization: "T\u0159et\xED kapitola se v\u011Bnuje optimalizaci \u0159e\u0161en\xED.",
   tutorialOwlClaims: "Na vybranou v\u011Btev m\u016F\u017Ee\u0161 p\u0159idat tvrzen\xED podle vlastn\xED volby. Tvrzen\xED nikdy neovlivn\xED \u0159e\u0161itelnost v\xFDzvy, ale n\u011Bkdy mohou \u0159e\u0161en\xED zkr\xE1tit.",
-  tutorialOwlSolvability: "Ve \u010Dtvrt\xE9 kapitole se zam\xFD\u0161l\xEDme nad t\xEDm, jak\xE9 v\xFDzvy jsou \u0159e\u0161iteln\xE9. Rozpoznat \u0159e\u0161itelnost je z\xE1sadn\xED, pokud se pust\xED\u0161 do chaotick\xFDch ( \u{1F480} ) v\xFDzev.",
+  tutorialOwlSolvability: "Ve \u010Dtvrt\xE9 kapitole se zam\xFD\u0161l\xEDme nad t\xEDm, jak\xE9 v\xFDzvy jsou \u0159e\u0161iteln\xE9. Rozpoznat \u0159e\u0161itelnost je z\xE1sadn\xED, pokud se pust\xED\u0161 do past\xED ( \u{1F480} ).",
   tutorialOwlUnsolvable: "Vytvo\u0159ili jsme tu prapodivn\xE9 v\xFDzvy, a\u0165 m\u016F\u017Ee\u0161 p\u0159em\xEDtat o jejich \u0159e\u0161itelnosti.",
   tutorialOwlConjecture: "Na tomto p\xEDskovi\u0161ti si m\u016F\u017Ee\u0161 zkusit vy\u0159e\u0161it v\xFDzvy podle vlastn\xED volby.",
   tutorialTaskClose: "Zkus zav\u0159\xEDt ka\u017Edou v\u011Btev tohoto stromu.",
@@ -4061,7 +4062,7 @@ var pl = {
   conjunctionWeight: "Koniunkcja",
   disjunctionWeight: "Alternatywa",
   filter: "Parametry",
-  bypassPercent: "Chaos (\u{1F480}%)",
+  trapPercent: "Pu\u0142apki (\u{1F480}%)",
   targetNonStructural: "Rozmiar rozwi\u0105zania",
   continue: "Kontynuuj",
   start: "Start",
@@ -4129,7 +4130,7 @@ var pl = {
   tutorialOwlBranchingCrossing: "Zniszczenie implikacji ( \u2192 ) po lewej stronie bramy ( \u22A2 ) rozbija zdanie: najbardziej z\u0142o\u017Cona z regu\u0142 \u0142\u0105czy rozdzielenie cz\u0119\u015Bci na obie strony bramy i rozga\u0142\u0119zienie drzewa.",
   tutorialOwlOptimization: "Trzeci rozdzia\u0142 dotyczy optymalizacji rozwi\u0105za\u0144.",
   tutorialOwlClaims: "Do wybranej ga\u0142\u0119zi mo\u017Cesz doda\u0107 twierdzenie w\u0142asnego wyboru. Twierdzenia nigdy nie wp\u0142ywaj\u0105 na rozwi\u0105zywalno\u015B\u0107 wyzwania, ale czasem mog\u0105 skr\xF3ci\u0107 rozwi\u0105zanie.",
-  tutorialOwlSolvability: "W czwartym rozdziale zastanawiamy si\u0119, jakie wyzwania da si\u0119 rozwi\u0105za\u0107. Rozpoznawanie rozwi\u0105zywalno\u015Bci jest istotne, je\u015Bli mierzysz si\u0119 z chaotycznymi ( \u{1F480} ) wyzwaniami.",
+  tutorialOwlSolvability: "W czwartym rozdziale zastanawiamy si\u0119, jakie wyzwania da si\u0119 rozwi\u0105za\u0107. Rozpoznawanie rozwi\u0105zywalno\u015Bci jest istotne, je\u015Bli mierzysz si\u0119 z pu\u0142apkami ( \u{1F480} ).",
   tutorialOwlUnsolvable: "Stworzyli\u015Bmy tu osobliwe wyzwania, przy kt\xF3rych mo\u017Cesz rozwa\u017Ca\u0107 ich rozwi\u0105zywalno\u015B\u0107.",
   tutorialOwlConjecture: "W tej piaskownicy mo\u017Cesz spr\xF3bowa\u0107 rozwi\u0105za\u0107 wyzwania w\u0142asnego wyboru.",
   tutorialTaskClose: "Spr\xF3buj zamkn\u0105\u0107 ka\u017Cd\u0105 ga\u0142\u0105\u017A tego drzewa.",
@@ -4197,7 +4198,7 @@ var notationStems = {
     "disjunkc",
     "falsum",
     "verum",
-    "chaotick"
+    "past"
   ],
   en: [
     "gate",
@@ -4208,7 +4209,7 @@ var notationStems = {
     "disjunction",
     "falsum",
     "verum",
-    "chaotic"
+    "trap"
   ],
   es: [
     "puerta",
@@ -4219,7 +4220,7 @@ var notationStems = {
     "disyunci",
     "falsum",
     "verum",
-    "ca\xF3tic"
+    "tramp"
   ],
   fi: [
     "portti",
@@ -4231,7 +4232,8 @@ var notationStems = {
     "disjunktio",
     "falsum",
     "verum",
-    "kaootti"
+    "ansa",
+    "anso"
   ],
   pl: [
     "bram",
@@ -4242,7 +4244,7 @@ var notationStems = {
     "alternatyw",
     "falsum",
     "verum",
-    "chaotyczn"
+    "pu\u0142apk"
   ]
 };
 var detectLocale = () => {
@@ -11697,7 +11699,7 @@ var defaultRandomConfig = () => ({
     verum: 1
   },
   targetNonStructural: 10,
-  bypassPercent: 0
+  trapPercent: 0
 });
 
 // src/web/challenge-protocol.ts
@@ -11718,8 +11720,7 @@ var atomKeys = [
   "u",
   "v"
 ];
-var parseConfigFromParams = (params) => {
-  const defaults = defaultRandomConfig();
+var parseConfigFromParams = (params, defaults = defaultRandomConfig()) => {
   const symbolsParam = params.get("symbols");
   const connectivesParam = params.get("connectives");
   const symbols = { ...defaults.symbols };
@@ -11746,7 +11747,7 @@ var parseConfigFromParams = (params) => {
       "proof_size",
       defaults.targetNonStructural
     ),
-    bypassPercent: pickNumber(params, "chaoticity", defaults.bypassPercent),
+    trapPercent: pickNumber(params, "traps", defaults.trapPercent),
     connectives: connectives2,
     symbols
   };
@@ -11768,7 +11769,7 @@ var setConfigParams = (config, params) => {
     "proof_size",
     config.targetNonStructural === Infinity ? "" : String(config.targetNonStructural)
   );
-  params.set("chaoticity", String(config.bypassPercent));
+  params.set("traps", String(config.trapPercent));
 };
 var TARGET_COUNT = 10;
 var entryDistance = (nonStructural, config) => {
@@ -11807,7 +11808,6 @@ var createPreviewWorker = (config, onResult) => {
   };
   const workerConfig = () => ({
     ...config,
-    bypassPercent: 0,
     targetNonStructural: Infinity
   });
   send({ type: "configure", config: serializeConfig(workerConfig()) });
@@ -11891,6 +11891,18 @@ var createSection = (title) => {
   section2.appendChild(heading);
   return section2;
 };
+var createTrapRow = (config, onChange) => {
+  const input = createNumberInput(
+    config.trapPercent,
+    (v2) => {
+      config.trapPercent = v2;
+      onChange();
+    },
+    0,
+    100
+  );
+  return { row: createRow(t("trapPercent"), input), input };
+};
 var buildFormulaSettingsSection = (config, onChange, prependFilterRows = []) => {
   const createToggle = (content, useHtml, title, isActive, onToggle) => {
     const btn = document.createElement("pre");
@@ -11919,20 +11931,6 @@ var buildFormulaSettingsSection = (config, onChange, prependFilterRows = []) => 
   for (const row of prependFilterRows) {
     shapeSection.appendChild(row);
   }
-  shapeSection.appendChild(
-    createRow(
-      t("bypassPercent"),
-      createNumberInput(
-        config.bypassPercent,
-        (v2) => {
-          config.bypassPercent = v2;
-          onChange();
-        },
-        0,
-        100
-      )
-    )
-  );
   shapeSection.appendChild(
     createRow(
       t("targetNonStructural"),
@@ -12131,7 +12129,11 @@ var mountRandomConfig = (container, _navigate, onStart) => {
     columns.className = "config-columns";
     const settings = document.createElement("div");
     settings.className = "config-settings";
-    settings.appendChild(buildFormulaSettingsSection(config, restartSearch));
+    settings.appendChild(
+      buildFormulaSettingsSection(config, restartSearch, [
+        createTrapRow(config, syncUrl).row
+      ])
+    );
     const buttons = document.createElement("div");
     buttons.className = "config-buttons";
     const backBtn = document.createElement("div");
@@ -12216,7 +12218,10 @@ var setNpcKnobsParams = (knobs, params, prefix) => {
 
 // src/web/versus-config.ts
 var defaultVersusConfig = () => ({
-  randomConfig: defaultRandomConfig(),
+  // Versus deals traps by default: a fifth of the serves are sabotaged, so
+  // recognizing solvability is part of the match. Zen keeps the trapless
+  // default from defaultRandomConfig.
+  randomConfig: { ...defaultRandomConfig(), trapPercent: 20 },
   gameDurationSeconds: 300,
   p1Input: "keyboard",
   p2Input: "npc",
@@ -12245,7 +12250,7 @@ var pickInput = (params, key, fallback) => {
 var parseVersusConfigFromParams = (params) => {
   const defaults = defaultVersusConfig();
   return {
-    randomConfig: parseConfigFromParams(params),
+    randomConfig: parseConfigFromParams(params, defaults.randomConfig),
     gameDurationSeconds: pickNumber3(
       params,
       "versus_time",
@@ -12450,6 +12455,10 @@ var mountVersusConfig = (container, _navigate, onStart) => {
       if (ev.code === "Enter" || ev.code === "Escape") minutesInput.blur();
     };
     const matchLengthRow = createRow(t("matchLength"), minutesInput);
+    const trap = createTrapRow(config.randomConfig, syncUrl);
+    trap.input.onkeydown = (ev) => {
+      if (ev.code === "Enter" || ev.code === "Escape") trap.input.blur();
+    };
     const buttons = document.createElement("div");
     buttons.className = "config-buttons";
     const goBack = () => history.back();
@@ -12482,6 +12491,7 @@ var mountVersusConfig = (container, _navigate, onStart) => {
       inputSection.appendChild(p2Label);
       inputSection.appendChild(p2Group.el);
       inputSection.appendChild(matchLengthRow);
+      inputSection.appendChild(trap.row);
       settings.appendChild(inputSection);
       settings.appendChild(buttons);
       settings.appendChild(
@@ -12510,6 +12520,7 @@ var mountVersusConfig = (container, _navigate, onStart) => {
       card.appendChild(createRow(t("player1"), p1Group.el));
       card.appendChild(createRow(t("player2"), p2Group.el));
       card.appendChild(matchLengthRow);
+      card.appendChild(trap.row);
       card.appendChild(buttons);
       layout.appendChild(card);
     }
@@ -12525,6 +12536,15 @@ var mountVersusConfig = (container, _navigate, onStart) => {
             activate: () => {
               minutesInput.focus();
               minutesInput.select();
+            }
+          }
+        ],
+        [
+          {
+            btn: trap.input,
+            activate: () => {
+              trap.input.focus();
+              trap.input.select();
             }
           }
         ],
@@ -12601,6 +12621,89 @@ var mountVersusConfig = (container, _navigate, onStart) => {
   };
 };
 
+// src/random/near-miss.ts
+var MAX_COUNTERMODEL_FRACTION = 0.25;
+var uniform = (names, value) => {
+  const v2 = {};
+  for (const name2 of names) {
+    v2[name2] = value;
+  }
+  return v2;
+};
+var isConvincing = (p) => {
+  const names = atoms(p);
+  if (names.length === 0) return false;
+  let total = 0;
+  let counter = 0;
+  for (const v2 of valuations(names)()) {
+    total += 1;
+    if (isCountermodel(v2, p)) counter += 1;
+  }
+  if (counter === 0) return false;
+  if (counter / total > MAX_COUNTERMODEL_FRACTION) return false;
+  if (isCountermodel(uniform(names, true), p)) return false;
+  if (isCountermodel(uniform(names, false), p)) return false;
+  return true;
+};
+var nodeMutants = (p, atomPool) => {
+  if (isConjunction(p)) return [disjunction(p.leftConjunct, p.rightConjunct)];
+  if (isDisjunction(p)) return [conjunction(p.leftDisjunct, p.rightDisjunct)];
+  if (isImplication(p)) return [implication(p.consequent, p.antecedent)];
+  if (isNegation(p)) return [p.negand];
+  if (isAtom(p)) {
+    return atomPool.filter((name2) => name2 !== p.value).map(atom);
+  }
+  if (p.kind === "falsum") return [verum];
+  return [falsum];
+};
+var mutants = (p, atomPool) => {
+  const here = nodeMutants(p, atomPool);
+  if (isNegation(p)) {
+    return [...here, ...mutants(p.negand, atomPool).map(negation)];
+  }
+  if (isImplication(p)) {
+    return [
+      ...here,
+      ...mutants(p.antecedent, atomPool).map(
+        (a87) => implication(a87, p.consequent)
+      ),
+      ...mutants(p.consequent, atomPool).map(
+        (c) => implication(p.antecedent, c)
+      )
+    ];
+  }
+  if (isConjunction(p)) {
+    return [
+      ...here,
+      ...mutants(p.leftConjunct, atomPool).map(
+        (l) => conjunction(l, p.rightConjunct)
+      ),
+      ...mutants(p.rightConjunct, atomPool).map(
+        (r) => conjunction(p.leftConjunct, r)
+      )
+    ];
+  }
+  if (isDisjunction(p)) {
+    return [
+      ...here,
+      ...mutants(p.leftDisjunct, atomPool).map(
+        (l) => disjunction(l, p.rightDisjunct)
+      ),
+      ...mutants(p.rightDisjunct, atomPool).map(
+        (r) => disjunction(p.leftDisjunct, r)
+      )
+    ];
+  }
+  return here;
+};
+var nearMiss = (p) => {
+  const shuffled = mutants(p, atoms(p)).map((candidate) => ({ candidate, key: Math.random() })).sort((x, y) => x.key - y.key);
+  for (const { candidate } of shuffled) {
+    if (isConvincing(candidate)) return candidate;
+  }
+  return null;
+};
+
 // src/web/challenge-pool.ts
 var POOL_TARGET = 8;
 var LOOSE_POOL_CAP = 20;
@@ -12645,6 +12748,18 @@ var generateProvableBypass = (config) => {
     result = generateBypass(config);
   }
   return result;
+};
+var sabotage = (source) => {
+  const formula = source.challenge.goal.succedent[0];
+  if (formula === void 0) return null;
+  const mutated = nearMiss(formula);
+  if (mutated === null) return null;
+  return {
+    challenge: { rules: source.challenge.rules, goal: conclusion(mutated) },
+    nonStructuralCount: 0,
+    bypassed: true,
+    formulasTried: source.formulasTried
+  };
 };
 var ChallengePool = class {
   pool = [];
@@ -12723,7 +12838,6 @@ var ChallengePool = class {
         type: "configure",
         config: serializeConfig({
           ...config,
-          bypassPercent: 0,
           targetNonStructural: Infinity
         })
       });
@@ -12734,9 +12848,20 @@ var ChallengePool = class {
     }
   }
   take() {
-    if (this.currentConfig && Math.random() < this.currentConfig.bypassPercent / 100) {
-      return generateBypass(this.currentConfig);
+    const trap = this.currentConfig !== void 0 && Math.random() < this.currentConfig.trapPercent / 100;
+    const source = this.takeSource();
+    if (trap) {
+      const sabotaged = sabotage(source);
+      if (sabotaged !== null) return sabotaged;
     }
+    if (source.challenge.solution === void 0) {
+      this.requestRetroSolve(source);
+    }
+    return source;
+  }
+  // The serve order genuine challenges follow; traps sabotage
+  // whatever this yields.
+  takeSource() {
     const result = this.pool.shift();
     if (this.pool.length < POOL_TARGET) {
       this.send({ type: "resume" });
@@ -12744,11 +12869,7 @@ var ChallengePool = class {
     if (result !== void 0) return result;
     const loose = this.loosePool.shift();
     if (loose !== void 0) return loose;
-    const fallback = generateProvableBypass(
-      this.currentConfig ?? defaultRandomConfig()
-    );
-    this.requestRetroSolve(fallback);
-    return fallback;
+    return generateProvableBypass(this.currentConfig ?? defaultRandomConfig());
   }
   // Ask the worker to brute-solve a challenge that already went out unsolved.
   // Only verified tautologies are sent: the search is unbounded (that is what
@@ -12815,7 +12936,7 @@ var navigate = (screen) => {
         "connectives",
         "formula_size",
         "proof_size",
-        "chaoticity"
+        "traps"
       ]) {
         const val = currentParams.get(key);
         if (val !== null) nextParams.set(key, val);
@@ -12827,7 +12948,7 @@ var navigate = (screen) => {
         "connectives",
         "formula_size",
         "proof_size",
-        "chaoticity",
+        "traps",
         "versus_time",
         "versus_p1",
         "versus_p2"

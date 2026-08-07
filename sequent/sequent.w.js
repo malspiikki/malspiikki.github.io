@@ -1539,7 +1539,6 @@
   function* randomConfiguredStep(config, getTimeout = () => 5e3) {
     const rules2 = RULES;
     const maxDepth = config.targetNonStructural + 10;
-    const bypass = config.bypassPercent / 100;
     let formulasTried = 0;
     let tautologiesFound = 0;
     let solved = 0;
@@ -1555,17 +1554,6 @@
       const formula = randomWeighted(size, connectives2, symbols)();
       formulasTried += 1;
       yield progress();
-      const isBypassed = Math.random() < bypass;
-      if (isBypassed) {
-        return {
-          challenge: { rules: rules2, goal: conclusion(formula) },
-          nonStructuralCount: 0,
-          bypassed: true,
-          formulasTried,
-          tautologiesFound,
-          solved
-        };
-      }
       if (!isTautology(formula)) continue;
       tautologiesFound += 1;
       const solver = bruteSearch({
