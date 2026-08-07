@@ -2388,6 +2388,11 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   gap: 1em;
   justify-content: center;
 }
+/* The overlay's light text is for the title; buttons keep their chrome
+   background and need ink text on it, matching .pause-buttons .button. */
+.versus-breakdown-actions .button {
+  color: var(--ink);
+}
 
 /* Minimal safe fallback when too narrow for the table: rows stack into cards and
    the latent per-cell labels appear. A polished card design is a later pass. */
