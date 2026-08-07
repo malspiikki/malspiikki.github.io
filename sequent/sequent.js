@@ -3453,6 +3453,7 @@ var en = {
   players: "Players",
   matchLength: "Match Length (min)",
   mouse: "Mouse",
+  touch: "Touch",
   keyboard: "Keyboard",
   gamepad1: "Gamepad 1",
   gamepad2: "Gamepad 2",
@@ -3614,6 +3615,7 @@ var fi = {
   players: "Pelaajat",
   matchLength: "Ottelun kesto (min)",
   mouse: "Hiiri",
+  touch: "Kosketusn\xE4ytt\xF6",
   keyboard: "N\xE4pp\xE4imist\xF6",
   gamepad1: "Ohjain 1",
   gamepad2: "Ohjain 2",
@@ -3774,6 +3776,7 @@ var es = {
   players: "Jugadores",
   matchLength: "Duraci\xF3n (min)",
   mouse: "Rat\xF3n",
+  touch: "T\xE1ctil",
   keyboard: "Teclado",
   gamepad1: "Mando 1",
   gamepad2: "Mando 2",
@@ -3934,6 +3937,7 @@ var cs = {
   players: "Hr\xE1\u010Di",
   matchLength: "D\xE9lka z\xE1pasu (min)",
   mouse: "My\u0161",
+  touch: "Dotyk",
   keyboard: "Kl\xE1vesnice",
   gamepad1: "Ovlada\u010D 1",
   gamepad2: "Ovlada\u010D 2",
@@ -4094,6 +4098,7 @@ var pl = {
   players: "Gracze",
   matchLength: "Czas meczu (min)",
   mouse: "Mysz",
+  touch: "Dotyk",
   keyboard: "Klawiatura",
   gamepad1: "Pad 1",
   gamepad2: "Pad 2",
@@ -5774,6 +5779,8 @@ var markKeyboardInput = () => {
 if (typeof window !== "undefined" && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
   document.documentElement.classList.add("keyboard-detected");
 }
+var isKeyboardDetected = () => typeof document !== "undefined" && document.documentElement.classList.contains("keyboard-detected");
+var hasFinePointer = () => typeof window !== "undefined" && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 var markGamepadInput = () => setActiveInput("gamepad");
 var onGamepadConnected = () => setActiveInput("gamepad");
 var onGamepadDisconnected = () => setActiveInput("pointer");
@@ -12286,7 +12293,10 @@ var defaultVersusConfig = () => ({
   // default from defaultRandomConfig.
   randomConfig: { ...defaultRandomConfig(), trapPercent: 20 },
   gameDurationSeconds: 300,
-  p1Input: "keyboard",
+  // P1 defaults to whatever the device can actually drive: keyboard when one
+  // is known to exist (capability probe or a real keypress), otherwise the
+  // pointer/touch UI. A `versus_p1` URL param still overrides.
+  p1Input: isKeyboardDetected() ? "keyboard" : "mouse",
   p2Input: "npc",
   npc1Knobs: defaultNpcKnobs(),
   npc2Knobs: defaultNpcKnobs()
@@ -12334,14 +12344,14 @@ var setVersusConfigParams = (config, params) => {
   setNpcKnobsParams(config.npc2Knobs, params, "npc2_");
 };
 var inputLabel = (input) => {
-  if (input === "mouse") return t("mouse");
+  if (input === "mouse") return t(hasFinePointer() ? "mouse" : "touch");
   if (input === "keyboard") return t("keyboard");
   if (input === "gamepad1") return t("gamepad1");
   if (input === "gamepad2") return t("gamepad2");
   return t("npc");
 };
 var inputEmoji = (input) => {
-  if (input === "mouse") return "\u{1F5B1}\uFE0F";
+  if (input === "mouse") return hasFinePointer() ? "\u{1F5B1}\uFE0F" : "\u{1F446}";
   if (input === "keyboard") return "\u2328\uFE0F";
   if (input === "gamepad1") return "\u{1F3AE}\u2081";
   if (input === "gamepad2") return "\u{1F3AE}\u2082";
