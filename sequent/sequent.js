@@ -10837,6 +10837,12 @@ var mountVersus = (container, navigate2, pool2, versusConfig) => {
     clock.textContent = formatTime(timeLeft);
     timerEl = clock;
     thermo.appendChild(clock);
+    const openBand = document.createElement("div");
+    openBand.setAttribute("class", "versus-thermo-open");
+    requestAnimationFrame(() => {
+      if (openBand.scrollHeight > openBand.clientHeight)
+        openBand.classList.add("overflowing");
+    });
     const thermoRows = document.createElement("div");
     thermoRows.setAttribute("class", "versus-thermo-rows");
     const ci1 = currentChallengeIdx1();
@@ -10854,6 +10860,14 @@ var mountVersus = (container, navigate2, pool2, versusConfig) => {
       if (i88 !== ci) return resolved.get(i88);
       const entry = resolved.get(ci);
       return typeof entry === "number" ? entry : "current";
+    };
+    const isOpenRow = (e1, e2, i88) => {
+      if (e1 === "current" || e2 === "current") return true;
+      if (e1 === void 0 || e2 === void 0) return true;
+      if (e1 === "skip" && e2 === "skip") return false;
+      if (e1 === "skip") return !skipSynthetic1.has(i88);
+      if (e2 === "skip") return !skipSynthetic2.has(i88);
+      return false;
     };
     const entryMoves = (e, cur, synthetic) => {
       if (e === void 0) return "";
@@ -10883,12 +10897,37 @@ var mountVersus = (container, navigate2, pool2, versusConfig) => {
       cell2.appendChild(ptsEl);
       return cell2;
     };
-    for (let i88 = maxIdx; i88 >= 0; i88 -= 1) {
+    const leadKind = (e1, e2) => {
+      if (e1 !== void 0 && e1 !== "current" && e2 === void 0) return "p1";
+      if (e2 !== void 0 && e2 !== "current" && e1 === void 0) return "p2";
+      return null;
+    };
+    const makeRunRow = (kind, count, skips) => {
+      const row = document.createElement("div");
+      row.setAttribute("class", "versus-thermo-row");
+      for (const playerClass of ["p1", "p2"]) {
+        const cell2 = document.createElement("div");
+        cell2.setAttribute("class", `versus-thermo-cell ${playerClass}`);
+        const movesEl = document.createElement("div");
+        movesEl.setAttribute("class", "versus-thermo-moves run");
+        movesEl.textContent = playerClass === kind ? `\xD7${String(count)}` : "";
+        const ptsEl = document.createElement("div");
+        ptsEl.setAttribute("class", "versus-thermo-points");
+        ptsEl.textContent = playerClass === kind && skips > 0 ? `\u2298${String(skips)}` : "";
+        cell2.appendChild(movesEl);
+        cell2.appendChild(ptsEl);
+        row.appendChild(cell2);
+      }
+      return row;
+    };
+    const makeRow = (i88) => {
+      const e1 = displayEntry(resolved1, ci1, i88);
+      const e2 = displayEntry(resolved2, ci2, i88);
       const row = document.createElement("div");
       row.setAttribute("class", "versus-thermo-row");
       row.appendChild(
         makeCell(
-          displayEntry(resolved1, ci1, i88),
+          e1,
           currentMoves1,
           levelPoints1.get(i88),
           skipSynthetic1.get(i88),
@@ -10897,15 +10936,43 @@ var mountVersus = (container, navigate2, pool2, versusConfig) => {
       );
       row.appendChild(
         makeCell(
-          displayEntry(resolved2, ci2, i88),
+          e2,
           currentMoves2,
           levelPoints2.get(i88),
           skipSynthetic2.get(i88),
           "p2"
         )
       );
-      thermoRows.appendChild(row);
+      return row;
+    };
+    let run = null;
+    const flushRun = () => {
+      if (run === null) return;
+      const [only] = run.indices;
+      if (only !== void 0 && run.indices.length === 1)
+        openBand.appendChild(makeRow(only));
+      else
+        openBand.appendChild(
+          makeRunRow(run.kind, run.indices.length, run.skips)
+        );
+      run = null;
+    };
+    for (let i88 = maxIdx; i88 >= 0; i88 -= 1) {
+      const e1 = displayEntry(resolved1, ci1, i88);
+      const e2 = displayEntry(resolved2, ci2, i88);
+      const kind = leadKind(e1, e2);
+      if (kind !== null) {
+        if (run !== null && run.kind !== kind) flushRun();
+        if (run === null) run = { kind, indices: [], skips: 0 };
+        run.indices.push(i88);
+        if (e1 === "skip" || e2 === "skip") run.skips += 1;
+        continue;
+      }
+      flushRun();
+      const band = isOpenRow(e1, e2, i88) ? openBand : thermoRows;
+      band.appendChild(makeRow(i88));
     }
+    flushRun();
     const thermoTotal = document.createElement("div");
     thermoTotal.setAttribute("class", "versus-thermo-total");
     const totalCell1 = document.createElement("div");
@@ -10917,6 +10984,7 @@ var mountVersus = (container, navigate2, pool2, versusConfig) => {
     thermoTotal.appendChild(totalCell1);
     thermoTotal.appendChild(totalCell2);
     thermo.appendChild(thermoTotal);
+    thermo.appendChild(openBand);
     thermo.appendChild(thermoRows);
     const menuBtn = createButton("\u22EE", false, () => setPaused(true));
     menuBtn.classList.add("versus-menu-btn");

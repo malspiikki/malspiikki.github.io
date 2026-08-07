@@ -2102,6 +2102,34 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   padding: 0.3em 0;
   border-bottom: 1px solid var(--divider);
 }
+/* Pinned band for open rows — levels whose score is still in play (in
+   progress, unreached by one player, or an unresolved skip). It never scrolls
+   away; settled history flows and fades below it. Capped so a pathological
+   pile of open rows can't push the menu button off screen. */
+.versus-thermo-open {
+  flex-shrink: 0;
+  max-height: 60%;
+  overflow-y: auto;
+  scrollbar-width: none;
+  padding: 0.3em 0;
+  border-bottom: 1px solid var(--divider);
+}
+.versus-thermo-open::-webkit-scrollbar {
+  display: none;
+}
+/* Applied from JS once the band exceeds its cap, so the clipped tail reads
+   as scrollable overflow rather than a half-cut row. */
+.versus-thermo-open.overflowing {
+  mask-image: linear-gradient(to bottom, black calc(100% - 2em), transparent);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black calc(100% - 2em),
+    transparent
+  );
+}
+.versus-thermo-open:empty {
+  display: none;
+}
 .versus-thermo-rows {
   /* Fill the column so the fade is a fixed band at the bottom of the visible
      area: scores only fade as they reach the bottom (and on scroll overflow). */
@@ -2143,6 +2171,15 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
 }
 .versus-thermo-moves {
   font-size: 1.4em;
+}
+/* Collapsed run of lead levels (passed by the front-runner, unreached by the
+   opponent): one count row instead of a stack — smaller and muted so it can't
+   be mistaken for a move count. The points line carries the skipped-level
+   count within the run. */
+.versus-thermo-moves.run {
+  font-size: 1em;
+  padding: 0.2em 0;
+  opacity: 0.7;
 }
 .versus-thermo-points {
   font-size: 0.85em;
