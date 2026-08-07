@@ -10516,11 +10516,6 @@ var createNpcDriver = (opts) => {
     const ws = opts.getWorkspace();
     const goal87 = ws.currentConjecture().derivation.result;
     const rules3 = ws.availableRules().filter((r) => !isReverseId1(r));
-    if (!isTautology2(goal87)) {
-      startObserving();
-      opts.skip();
-      return;
-    }
     const searchRef = { proof: null, exhausted: false };
     const handle = solver.solveChunked(
       { goal: goal87, rules: rules3 },
