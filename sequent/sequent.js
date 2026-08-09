@@ -3401,6 +3401,8 @@ var en = {
   playAgain: "Play Again",
   playAgainShort: "Again",
   matchSetup: "Match Setup",
+  pauseSetupWarning: "Match Setup ends the current match.",
+  pauseSetupConfirm: "End Match",
   newChallenge: "New Challenge",
   prevLevel: "Prev Level",
   prevLevelShort: "Prev",
@@ -3563,6 +3565,8 @@ var fi = {
   playAgain: "Pelaa uudestaan",
   playAgainShort: "Uudestaan",
   matchSetup: "Ottelun asetukset",
+  pauseSetupWarning: "Ottelun asetukset p\xE4\xE4tt\xE4v\xE4t k\xE4ynniss\xE4 olevan ottelun.",
+  pauseSetupConfirm: "P\xE4\xE4t\xE4 ottelu",
   newChallenge: "Uusi haaste",
   prevLevel: "Edellinen",
   prevLevelShort: "Edellinen",
@@ -3724,6 +3728,8 @@ var es = {
   playAgain: "Jugar de nuevo",
   playAgainShort: "De nuevo",
   matchSetup: "Configuraci\xF3n de partida",
+  pauseSetupWarning: "La configuraci\xF3n termina la partida en curso.",
+  pauseSetupConfirm: "Terminar partida",
   newChallenge: "Nuevo desaf\xEDo",
   prevLevel: "Nivel anterior",
   prevLevelShort: "Anterior",
@@ -3885,6 +3891,8 @@ var cs = {
   playAgain: "Hr\xE1t znovu",
   playAgainShort: "Znovu",
   matchSetup: "Nastaven\xED z\xE1pasu",
+  pauseSetupWarning: "Nastaven\xED z\xE1pasu ukon\u010D\xED prob\xEDhaj\xEDc\xED z\xE1pas.",
+  pauseSetupConfirm: "Ukon\u010Dit z\xE1pas",
   newChallenge: "Nov\xE1 v\xFDzva",
   prevLevel: "P\u0159edchoz\xED \xFArove\u0148",
   prevLevelShort: "P\u0159edchoz\xED",
@@ -4046,6 +4054,8 @@ var pl = {
   playAgain: "Zagraj ponownie",
   playAgainShort: "Ponownie",
   matchSetup: "Ustawienia meczu",
+  pauseSetupWarning: "Ustawienia meczu zako\u0144cz\u0105 trwaj\u0105cy mecz.",
+  pauseSetupConfirm: "Zako\u0144cz mecz",
   newChallenge: "Nowe wyzwanie",
   prevLevel: "Poprzedni poziom",
   prevLevelShort: "Poprz.",
@@ -7759,6 +7769,88 @@ var mountSecret = (container, navigate2) => {
   }, rerender: render };
 };
 
+// src/web/demo-machine.ts
+var DEMO_MOVE_MS = 1300;
+var DEMO_PHASE_MS = 3600;
+var DEMO_DONE_MS = 8e3;
+var isClosingEvent = (ev) => ev.kind === "reverse0" && (ev.rev === "i" || ev.rev === "f" || ev.rev === "v");
+var createDemoMachine = (ws, queue) => {
+  let remaining = queue;
+  let phase = "sequent";
+  let returnPending = false;
+  let resting = false;
+  const tick = () => {
+    if (returnPending) {
+      returnPending = false;
+      ws.applyEvent(nextBranch());
+      phase = "other";
+      return { kind: "step", dwellMs: DEMO_PHASE_MS };
+    }
+    const ev = remaining[0];
+    if (ws.isSolved() || ev === void 0) {
+      resting = true;
+      return { kind: "rest" };
+    }
+    remaining = remaining.slice(1);
+    ws.applyEvent(ev);
+    let dwell = DEMO_MOVE_MS;
+    if (phase === "sequent") {
+      phase = "grow";
+      dwell = DEMO_PHASE_MS;
+    }
+    if (isClosingEvent(ev)) {
+      if (ws.isSolved()) {
+        phase = "done";
+        dwell = DEMO_DONE_MS;
+      } else {
+        ws.applyEvent(prevBranch());
+        returnPending = true;
+        phase = "closed";
+        dwell = DEMO_PHASE_MS;
+      }
+    }
+    return { kind: "step", dwellMs: dwell };
+  };
+  const skipToRest = () => {
+    if (returnPending) {
+      ws.applyEvent(nextBranch());
+      returnPending = false;
+    }
+    for (const ev of remaining) ws.applyEvent(ev);
+    remaining = [];
+    phase = "done";
+    resting = true;
+  };
+  return {
+    ws,
+    phase: () => phase,
+    resting: () => resting,
+    tick,
+    skipToRest
+  };
+};
+
+// src/web/presolve-machine.ts
+var PRESOLVE_DWELL_MS = 1800;
+var PRESOLVE_MOVE_MS = 550;
+var createPresolveMachine = (pending, queue) => {
+  const ws = new Workspace({
+    challenge: { rules: pending.rules, goal: pending.goal }
+  });
+  let remaining = queue;
+  const tick = () => {
+    const ev = remaining[0];
+    if (ev === void 0) {
+      return { kind: "handover", ws: new Workspace({ challenge: pending }) };
+    }
+    remaining = remaining.slice(1);
+    ws.applyEvent(ev);
+    return { kind: "step", dwellMs: PRESOLVE_MOVE_MS };
+  };
+  const cancel = () => new Workspace({ challenge: pending });
+  return { ws, tick, cancel };
+};
+
 // src/model/closure.ts
 var sidedRules = (p) => fold(p, {
   atom: () => ({ left: [], right: [] }),
@@ -8612,6 +8704,41 @@ var stopFail = () => {
   throw new Error("empty tutorial stop list");
 };
 
+// src/web/tutorial-progress.ts
+var targetByBeat = [
+  3,
+  3,
+  3,
+  3,
+  3,
+  3,
+  3,
+  3,
+  2,
+  2,
+  1
+];
+var createTutorialProgress = () => {
+  const completions = tutorialCurriculum.map(() => 0);
+  const creditedBoards = /* @__PURE__ */ new WeakSet();
+  const count = (beat) => completions[beat] ?? 0;
+  const target = (beat) => targetByBeat[beat] ?? 0;
+  return {
+    completions: count,
+    target,
+    quotaMet: (beat) => count(beat) >= target(beat),
+    perpetual: (beat) => beat === tutorialCurriculum.length - 1,
+    creditBoard: (beat, board, countIt) => {
+      if (creditedBoards.has(board)) return;
+      creditedBoards.add(board);
+      if (countIt) completions[beat] = count(beat) + 1;
+    },
+    creditSkip: (beat) => {
+      completions[beat] = count(beat) + 1;
+    }
+  };
+};
+
 // src/npc/proof-walker.ts
 var extractAuxFormula = (rule, deps) => {
   const dep0 = deps[0];
@@ -8742,7 +8869,6 @@ var taskBeatKey = [
   "tutorialTaskUnsolvable",
   "tutorialTaskConjecture"
 ];
-var targetByBeat = [3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 1];
 var demoPhaseKey = {
   sequent: "tutorialDemoSequent",
   grow: "tutorialDemoGrow",
@@ -8750,12 +8876,6 @@ var demoPhaseKey = {
   other: "tutorialDemoOther",
   done: "tutorialDemoDone"
 };
-var DEMO_MOVE_MS = 1300;
-var DEMO_PHASE_MS = 3600;
-var DEMO_DONE_MS = 8e3;
-var isClosingEvent = (ev) => ev.kind === "reverse0" && (ev.rev === "i" || ev.rev === "f" || ev.rev === "v");
-var PRESOLVE_DWELL_MS = 1800;
-var PRESOLVE_MOVE_MS = 550;
 var appendWithReserved = (parent, text) => {
   const stems = notationStems[getLocale()] ?? [];
   text.split(/(\p{L}+)/u).forEach((part, i88) => {
@@ -8812,12 +8932,11 @@ var mountTutorial = (container, navigate2, startStop) => {
   let beatIdx = beatForStop(stopIdx);
   const onIntro = () => stopAt(stopIdx).kind === "intro";
   const onConjecture = () => beatAt(beatIdx).conjecture;
-  const completions = tutorialCurriculum.map(() => 0);
-  const creditedBoards = /* @__PURE__ */ new WeakSet();
-  const beatCompletions = () => completions[beatIdx] ?? 0;
-  const beatTarget = () => targetByBeat[beatIdx] ?? 0;
-  const quotaMet = () => beatCompletions() >= beatTarget();
-  const perpetualBeat = () => beatIdx === tutorialCurriculum.length - 1;
+  const progress = createTutorialProgress();
+  const beatCompletions = () => progress.completions(beatIdx);
+  const beatTarget = () => progress.target(beatIdx);
+  const quotaMet = () => progress.quotaMet(beatIdx);
+  const perpetualBeat = () => progress.perpetual(beatIdx);
   const advanceLabel = () => perpetualBeat() ? t("tutorialComplete") : stopAt(stopIdx + 1).kind === "intro" ? t("tutorialEndChapter") : t("tutorialAdvance");
   const progressParagraphs = () => {
     const praise = t("tutorialOwlProgress").replace("{count}", String(beatCompletions())).replace("{topic}", stopLabel(stopIdx));
@@ -8836,13 +8955,9 @@ var mountTutorial = (container, navigate2, startStop) => {
     }
   };
   const onWelcome = () => stopIdx === 0;
-  let demoWs = null;
-  let demoQueue = [];
-  let demoPhase = "sequent";
+  let demo = null;
   let demoTimer = null;
-  let demoReturn = false;
   let demoLoopDone = false;
-  let demoResting = false;
   let skipRevealed = false;
   const demoCtx = {
     ...createBenchCtx(false, true, false, false),
@@ -8857,83 +8972,62 @@ var mountTutorial = (container, navigate2, startStop) => {
   const startDemo = () => {
     const challenge2 = generateDemoChallenge().challenge;
     const solution87 = challenge2.solution;
-    demoWs = new Workspace({ challenge: challenge2 });
-    demoQueue = solution87 === void 0 ? [] : linearize(solution87, { shuffle: false });
-    demoPhase = "sequent";
-    demoReturn = false;
-    demoResting = false;
+    demo = createDemoMachine(
+      new Workspace({ challenge: challenge2 }),
+      solution87 === void 0 ? [] : linearize(solution87, { shuffle: false })
+    );
   };
   const stopDemo = () => {
     if (demoTimer !== null) window.clearTimeout(demoTimer);
     demoTimer = null;
-    demoWs = null;
+    demo = null;
   };
   const skipDemoToRest = () => {
     if (demoTimer !== null) window.clearTimeout(demoTimer);
     demoTimer = null;
-    if (demoWs !== null) {
-      if (demoReturn) {
-        demoWs.applyEvent(nextBranch());
-        demoReturn = false;
-      }
-      for (const ev of demoQueue) demoWs.applyEvent(ev);
-      demoQueue = [];
-    }
-    demoPhase = "done";
+    demo?.skipToRest();
     demoLoopDone = true;
-    demoResting = true;
     introCursorPos = null;
     rerender();
   };
+  const rerenderDemoTick = () => {
+    const host = container.querySelector(".tutorial-demo");
+    const owl = container.querySelector(".tutor-owl");
+    if (host === null || owl === null || demo === null) {
+      rerender();
+      return;
+    }
+    host.innerHTML = "";
+    host.appendChild(createPlayArea(demo.ws, demoCtx));
+    owl.replaceWith(buildOwl());
+    syncOwlAboveControls();
+  };
   const demoStep = () => {
     demoTimer = null;
-    if (!onWelcome() || demoWs === null) return;
+    if (!onWelcome() || demo === null) return;
     if (paused) {
       scheduleDemo(DEMO_MOVE_MS);
       return;
     }
-    if (demoReturn) {
-      demoReturn = false;
-      demoWs.applyEvent(nextBranch());
-      demoPhase = "other";
-      rerender();
-      scheduleDemo(DEMO_PHASE_MS);
-      return;
-    }
-    const ev = demoQueue[0];
-    if (demoWs.isSolved() || ev === void 0) {
+    const step = demo.tick();
+    if (step.kind === "rest") {
+      const buttonsSwap = !demoLoopDone;
       demoLoopDone = true;
-      demoResting = true;
-      introCursorPos = null;
-      rerender();
+      if (buttonsSwap) {
+        introCursorPos = null;
+        rerender();
+      } else {
+        rerenderDemoTick();
+      }
       return;
     }
-    demoQueue = demoQueue.slice(1);
-    demoWs.applyEvent(ev);
-    let dwell = DEMO_MOVE_MS;
-    if (demoPhase === "sequent") {
-      demoPhase = "grow";
-      dwell = DEMO_PHASE_MS;
-    }
-    if (isClosingEvent(ev)) {
-      if (demoWs.isSolved()) {
-        demoPhase = "done";
-        dwell = DEMO_DONE_MS;
-      } else {
-        demoWs.applyEvent(prevBranch());
-        demoReturn = true;
-        demoPhase = "closed";
-        dwell = DEMO_PHASE_MS;
-      }
-    }
-    rerender();
-    scheduleDemo(dwell);
+    rerenderDemoTick();
+    scheduleDemo(step.dwellMs);
   };
-  let presolving = false;
-  let presolvePending;
-  let presolveQueue = [];
+  let presolve = null;
   let presolveTimer = null;
   const presolveDone = /* @__PURE__ */ new WeakSet();
+  const presolving = () => presolve !== null;
   const schedulePresolve = (ms) => {
     if (presolveTimer !== null) window.clearTimeout(presolveTimer);
     presolveTimer = window.setTimeout(() => presolveStep(), ms);
@@ -8941,12 +9035,10 @@ var mountTutorial = (container, navigate2, startStop) => {
   const cancelPresolve = () => {
     if (presolveTimer !== null) window.clearTimeout(presolveTimer);
     presolveTimer = null;
-    if (presolving && presolvePending !== void 0) {
-      ws = new Workspace({ challenge: presolvePending });
+    if (presolve !== null) {
+      ws = presolve.cancel();
+      presolve = null;
     }
-    presolving = false;
-    presolvePending = void 0;
-    presolveQueue = [];
   };
   const startPresolveIfAny = () => {
     if (onIntro()) return;
@@ -8955,32 +9047,26 @@ var mountTutorial = (container, navigate2, startStop) => {
     if (conf === void 0 || start === void 0) return;
     if (presolveDone.has(start)) return;
     presolveDone.add(start);
-    presolvePending = conf;
-    presolveQueue = linearizeStart(start);
-    ws = new Workspace({ challenge: { rules: conf.rules, goal: conf.goal } });
-    presolving = true;
+    presolve = createPresolveMachine(conf, linearizeStart(start));
+    ws = presolve.ws;
     schedulePresolve(PRESOLVE_DWELL_MS);
   };
   const presolveStep = () => {
     presolveTimer = null;
-    if (!presolving) return;
+    if (presolve === null) return;
     if (paused) {
       schedulePresolve(PRESOLVE_MOVE_MS);
       return;
     }
-    const ev = presolveQueue[0];
-    if (ev === void 0) {
-      const pending = presolvePending;
-      presolving = false;
-      presolvePending = void 0;
-      if (pending !== void 0) ws = new Workspace({ challenge: pending });
+    const step = presolve.tick();
+    if (step.kind === "handover") {
+      ws = step.ws;
+      presolve = null;
       rerender();
       return;
     }
-    presolveQueue = presolveQueue.slice(1);
-    ws.applyEvent(ev);
     rerender();
-    schedulePresolve(PRESOLVE_MOVE_MS);
+    schedulePresolve(step.dwellMs);
   };
   let paused = false;
   let pausePopup = null;
@@ -9106,7 +9192,7 @@ var mountTutorial = (container, navigate2, startStop) => {
     ctx.setGazeModeActive(false);
     skipHadSolution = isTautology2(ws.currentConjecture().derivation.result);
     if (skipHadSolution) solvableSkipReveals += 1;
-    if (!skipHadSolution) completions[beatIdx] = beatCompletions() + 1;
+    if (!skipHadSolution) progress.creditSkip(beatIdx);
     skipped = true;
     skipUsedStop = stopIdx;
     rerender();
@@ -9120,7 +9206,7 @@ var mountTutorial = (container, navigate2, startStop) => {
     return valid;
   };
   const isStuck = () => {
-    if (onIntro() || skipped || presolving || conjectureEntry) return false;
+    if (onIntro() || skipped || presolving() || conjectureEntry) return false;
     if (ws.isSolved() || !rootValid()) return false;
     return !isTautology2(activeSequent(ws.currentConjecture()));
   };
@@ -9141,7 +9227,7 @@ var mountTutorial = (container, navigate2, startStop) => {
     return start === void 0 || subDerivation(start, parentPath)?.kind !== "transformation";
   };
   const multiPressKind = () => {
-    if (onIntro() || skipped || presolving || conjectureEntry) return null;
+    if (onIntro() || skipped || presolving() || conjectureEntry) return null;
     if (!ctx.isGazeModeActive() || ws.isSolved()) return null;
     if (!rotationJustMade()) return null;
     const seq = activeSequent(ws.currentConjecture());
@@ -9157,7 +9243,7 @@ var mountTutorial = (container, navigate2, startStop) => {
     const el = document.createElement("div");
     el.setAttribute("class", "controls");
     const canUndo2 = ws.canUndo();
-    const enabled = !presolving && (canUndo2 || ctx.isGazeModeActive());
+    const enabled = !presolving() && (canUndo2 || ctx.isGazeModeActive());
     const undoBtn = createButton(t("undo"), !enabled, () => {
       if (canUndo2) {
         ws.applyEvent(undo2());
@@ -9178,15 +9264,15 @@ var mountTutorial = (container, navigate2, startStop) => {
     let btnHost = page;
     if (onWelcome()) {
       page.classList.add("tutorial-welcome");
-      if (demoWs === null) {
+      if (demo === null) {
         startDemo();
         scheduleDemo(DEMO_PHASE_MS);
       }
-      if (demoWs !== null) {
-        const demo = document.createElement("div");
-        demo.setAttribute("class", "tutorial-demo");
-        demo.appendChild(createPlayArea(demoWs, demoCtx));
-        page.appendChild(demo);
+      if (demo !== null) {
+        const demoHost = document.createElement("div");
+        demoHost.setAttribute("class", "tutorial-demo");
+        demoHost.appendChild(createPlayArea(demo.ws, demoCtx));
+        page.appendChild(demoHost);
       }
       const row = document.createElement("div");
       row.setAttribute("class", "tutorial-welcome-buttons");
@@ -9298,7 +9384,7 @@ var mountTutorial = (container, navigate2, startStop) => {
     const taskKey = stop.kind === "beat" ? taskBeatKey[stop.beatIdx] : void 0;
     const planKey = stop.kind === "intro" ? owlChapterPlanKey[stop.chapter] : null;
     const multiKind = multiPressKind();
-    const paragraphs = onWelcome() && !demoResting ? [t(demoPhaseKey[demoPhase])] : presolving ? [t("tutorialOwlPresolve")] : stop.kind === "intro" ? planKey === null ? [t(owlChapterKey[stop.chapter])] : [t(owlChapterKey[stop.chapter]), t(planKey)] : beatKey === void 0 ? [] : conjectureEntry ? (
+    const paragraphs = onWelcome() && demo !== null && !demo.resting() ? [t(demoPhaseKey[demo.phase()])] : presolving() ? [t("tutorialOwlPresolve")] : stop.kind === "intro" ? planKey === null ? [t(owlChapterKey[stop.chapter])] : [t(owlChapterKey[stop.chapter]), t(planKey)] : beatKey === void 0 ? [] : conjectureEntry ? (
       // The entry page always instructs. The workspace behind it may
       // still be the previous solved board (nextChallenge leaves it
       // in place until Confirm replaces it), so the solved/stuck
@@ -9389,7 +9475,7 @@ var mountTutorial = (container, navigate2, startStop) => {
     if (stop.kind !== "beat") return;
     const key = keyControlByBeat[stop.beatIdx] ?? null;
     if (key === null) return;
-    if (presolving) return;
+    if (presolving()) return;
     if (keyStopSeen !== stopIdx) {
       keyStopSeen = stopIdx;
       keyControlDone = false;
@@ -9503,7 +9589,7 @@ var mountTutorial = (container, navigate2, startStop) => {
     if (stop.kind !== "beat") return;
     const referent = owlReferentByBeat[stop.beatIdx] ?? null;
     if (referent === null) return;
-    if (presolving) return;
+    if (presolving()) return;
     if (referentStopSeen !== stopIdx) {
       referentStopSeen = stopIdx;
       referentEngaged = false;
@@ -9703,14 +9789,13 @@ var mountTutorial = (container, navigate2, startStop) => {
     return { hurray, buttons };
   };
   const rerender = () => {
-    if (!onIntro() && ws.isSolved() && !creditedBoards.has(ws)) {
-      creditedBoards.add(ws);
-      if (!solvedClaimFree()) completions[beatIdx] = beatCompletions() + 1;
+    if (!onIntro() && ws.isSolved()) {
+      progress.creditBoard(beatIdx, ws, !solvedClaimFree());
     }
     container.innerHTML = "";
     const screen = document.createElement("div");
     screen.setAttribute("class", "tutorial-screen");
-    if (presolving) screen.classList.add("tutorial-presolving");
+    if (presolving()) screen.classList.add("tutorial-presolving");
     if (onIntro()) {
       screen.appendChild(buildIntroPage());
     } else if (skipped) {
@@ -9737,7 +9822,7 @@ var mountTutorial = (container, navigate2, startStop) => {
           lemmaSession
         )
       );
-      if (presolving) {
+      if (presolving()) {
         screen.querySelectorAll(".controls .button").forEach((el) => {
           el.classList.add("disabled");
         });
@@ -9843,7 +9928,7 @@ var mountTutorial = (container, navigate2, startStop) => {
       setPaused(true);
       return;
     }
-    if (presolving) return;
+    if (presolving()) return;
     if (onIntro()) {
       if (onWelcome() && !demoLoopDone && !skipRevealed) {
         skipRevealed = true;
@@ -10673,6 +10758,178 @@ var createNpcDriver = (opts) => {
   };
 };
 
+// src/web/thermo-model.ts
+var entryMoves = (e, cur, synthetic) => {
+  if (e === void 0) return "";
+  if (e === "current") return String(cur);
+  if (e === "skip")
+    return synthetic !== void 0 ? `(${String(synthetic)})` : "\u2013";
+  return String(e);
+};
+var entryPts = (e, pts) => {
+  if (e === void 0 || e === "current" || e === "skip") return "";
+  const bonus = (pts ?? 1) - 1;
+  return bonus > 0 ? `+${String(bonus)}` : "";
+};
+var thermoModel = (p1, p2) => {
+  const maxIdx = Math.max(
+    p1.current,
+    p2.current,
+    ...Array.from(p1.resolved.keys()),
+    ...Array.from(p2.resolved.keys())
+  );
+  const display = (p, i88) => {
+    if (i88 !== p.current) return p.resolved.get(i88);
+    const entry = p.resolved.get(p.current);
+    return typeof entry === "number" ? entry : "current";
+  };
+  const isOpenRow = (e1, e2, i88) => {
+    if (e1 === "current" || e2 === "current") return true;
+    if (e1 === void 0 || e2 === void 0) return true;
+    if (e1 === "skip" && e2 === "skip") return false;
+    if (e1 === "skip") return !p1.skipSynthetic.has(i88);
+    if (e2 === "skip") return !p2.skipSynthetic.has(i88);
+    return false;
+  };
+  const leadKind = (e1, e2) => {
+    if (e1 !== void 0 && e1 !== "current" && e2 === void 0) return "p1";
+    if (e2 !== void 0 && e2 !== "current" && e1 === void 0) return "p2";
+    return null;
+  };
+  const cellOf = (p, e, i88) => ({
+    moves: entryMoves(e, p.currentMoves, p.skipSynthetic.get(i88)),
+    points: entryPts(e, p.points.get(i88)),
+    current: e === "current"
+  });
+  const levelRow = (i88) => ({
+    kind: "level",
+    index: i88,
+    p1: cellOf(p1, display(p1, i88), i88),
+    p2: cellOf(p2, display(p2, i88), i88)
+  });
+  const open = [];
+  const settled = [];
+  let run = null;
+  const flushRun = () => {
+    if (run === null) return;
+    const [only] = run.indices;
+    if (only !== void 0 && run.indices.length === 1) {
+      open.push(levelRow(only));
+    } else {
+      open.push({
+        kind: "run",
+        player: run.kind,
+        count: run.indices.length,
+        skips: run.skips
+      });
+    }
+    run = null;
+  };
+  for (let i88 = maxIdx; i88 >= 0; i88 -= 1) {
+    const e1 = display(p1, i88);
+    const e2 = display(p2, i88);
+    const kind = leadKind(e1, e2);
+    if (kind !== null) {
+      if (run !== null && run.kind !== kind) flushRun();
+      if (run === null) run = { kind, indices: [], skips: 0 };
+      run.indices.push(i88);
+      if (e1 === "skip" || e2 === "skip") run.skips += 1;
+      continue;
+    }
+    flushRun();
+    if (isOpenRow(e1, e2, i88)) {
+      open.push(levelRow(i88));
+    } else {
+      settled.push(levelRow(i88));
+    }
+  }
+  flushRun();
+  return { open, settled };
+};
+
+// src/web/versus-ledger.ts
+var createVersusLedger = () => {
+  const fresh = () => ({
+    resolved: /* @__PURE__ */ new Map(),
+    points: /* @__PURE__ */ new Map(),
+    skipSynthetic: /* @__PURE__ */ new Map(),
+    pending: [],
+    score: 0,
+    current: 0,
+    nextIndex: 1,
+    committed: false
+  });
+  const players = { 1: fresh(), 2: fresh() };
+  const other = (p) => p === 1 ? 2 : 1;
+  const awardBonus = (faster, i88, diff) => {
+    faster.score += diff;
+    faster.points.set(i88, (faster.points.get(i88) ?? 1) + diff);
+  };
+  const commitSolve = (p, moves) => {
+    const self = players[p];
+    const opp = players[other(p)];
+    if (self.committed) return;
+    self.committed = true;
+    const i88 = self.current;
+    const isRetry = self.resolved.get(i88) === "skip";
+    self.resolved.set(i88, moves);
+    self.score += 1;
+    self.points.set(i88, 1);
+    const oppEntry = opp.resolved.get(i88);
+    if (isRetry) {
+      if (typeof oppEntry === "number") {
+        self.skipSynthetic.delete(i88);
+        const diff = Math.abs(moves - oppEntry);
+        if (moves < oppEntry) awardBonus(self, i88, diff);
+        else if (oppEntry < moves) awardBonus(opp, i88, diff);
+      }
+      return;
+    }
+    if (typeof oppEntry === "number") {
+      const diff = Math.abs(moves - oppEntry);
+      if (moves < oppEntry) awardBonus(self, i88, diff);
+      else if (oppEntry < moves) awardBonus(opp, i88, diff);
+    } else if (oppEntry === "skip") {
+      opp.pending = [...opp.pending, i88];
+    }
+  };
+  const skip = (p) => {
+    const self = players[p];
+    const opp = players[other(p)];
+    const i88 = self.current;
+    self.resolved.set(i88, "skip");
+    const oppEntry = opp.resolved.get(i88);
+    if (typeof oppEntry === "number") {
+      self.skipSynthetic.set(i88, 2 * oppEntry);
+      opp.score += oppEntry;
+      opp.points.set(i88, (opp.points.get(i88) ?? 1) + oppEntry);
+    }
+  };
+  const advance = (p) => {
+    const self = players[p];
+    self.committed = false;
+    const [next2, ...rest] = self.pending;
+    if (next2 !== void 0) {
+      self.current = next2;
+      self.pending = rest;
+    } else {
+      self.current = self.nextIndex;
+      self.nextIndex += 1;
+    }
+    return self.current;
+  };
+  return {
+    score: (p) => players[p].score,
+    current: (p) => players[p].current,
+    resolved: (p) => players[p].resolved,
+    points: (p) => players[p].points,
+    skipSynthetic: (p) => players[p].skipSynthetic,
+    commitSolve,
+    skip,
+    advance
+  };
+};
+
 // src/web/versus.ts
 var formatTime = (s) => {
   const m = Math.floor(s / 60);
@@ -10692,24 +10949,9 @@ var mountVersus = (container, navigate2, pool2, versusConfig) => {
     while (sharedChallenges.length <= i88 + 2) sharedChallenges.push(pool2.take());
   };
   ensureChallenge(0);
-  let wsIdx1 = 0;
-  let index1 = 1;
-  let score1 = 0;
-  const resolved1 = /* @__PURE__ */ new Map();
-  const levelPoints1 = /* @__PURE__ */ new Map();
-  const skipSynthetic1 = /* @__PURE__ */ new Map();
-  let pending1 = [];
-  let scoreCommitted1 = false;
-  let wsIdx2 = 0;
-  let index2 = 1;
-  let score2 = 0;
-  const resolved2 = /* @__PURE__ */ new Map();
-  const levelPoints2 = /* @__PURE__ */ new Map();
-  const skipSynthetic2 = /* @__PURE__ */ new Map();
-  let pending2 = [];
-  let scoreCommitted2 = false;
-  const currentChallengeIdx1 = () => wsIdx1;
-  const currentChallengeIdx2 = () => wsIdx2;
+  const ledger = createVersusLedger();
+  const currentChallengeIdx1 = () => ledger.current(1);
+  const currentChallengeIdx2 = () => ledger.current(2);
   const makeWorkspace = (i88) => {
     ensureChallenge(i88);
     const item = sharedChallenges[i88];
@@ -10718,28 +10960,10 @@ var mountVersus = (container, navigate2, pool2, versusConfig) => {
     return new Workspace({ challenge: item.challenge });
   };
   const advancePlayer1 = () => {
-    scoreCommitted1 = false;
-    const [next1, ...rest1] = pending1;
-    if (next1 !== void 0) {
-      wsIdx1 = next1;
-      pending1 = rest1;
-    } else {
-      wsIdx1 = index1;
-      index1 += 1;
-    }
-    ws1 = makeWorkspace(wsIdx1);
+    ws1 = makeWorkspace(ledger.advance(1));
   };
   const advancePlayer2 = () => {
-    scoreCommitted2 = false;
-    const [next2, ...rest2] = pending2;
-    if (next2 !== void 0) {
-      wsIdx2 = next2;
-      pending2 = rest2;
-    } else {
-      wsIdx2 = index2;
-      index2 += 1;
-    }
-    ws2 = makeWorkspace(wsIdx2);
+    ws2 = makeWorkspace(ledger.advance(2));
   };
   let ws1 = makeWorkspace(0);
   let ws2 = makeWorkspace(0);
@@ -10847,142 +11071,73 @@ var mountVersus = (container, navigate2, pool2, versusConfig) => {
     });
     const thermoRows = document.createElement("div");
     thermoRows.setAttribute("class", "versus-thermo-rows");
-    const ci1 = currentChallengeIdx1();
-    const ci2 = currentChallengeIdx2();
-    const allKeys = [
-      ci1,
-      ci2,
-      ...Array.from(resolved1.keys()),
-      ...Array.from(resolved2.keys())
-    ];
-    const maxIdx = Math.max(...allKeys);
-    const currentMoves1 = totalMoves(ws1);
-    const currentMoves2 = totalMoves(ws2);
-    const displayEntry = (resolved, ci, i88) => {
-      if (i88 !== ci) return resolved.get(i88);
-      const entry = resolved.get(ci);
-      return typeof entry === "number" ? entry : "current";
-    };
-    const isOpenRow = (e1, e2, i88) => {
-      if (e1 === "current" || e2 === "current") return true;
-      if (e1 === void 0 || e2 === void 0) return true;
-      if (e1 === "skip" && e2 === "skip") return false;
-      if (e1 === "skip") return !skipSynthetic1.has(i88);
-      if (e2 === "skip") return !skipSynthetic2.has(i88);
-      return false;
-    };
-    const entryMoves = (e, cur, synthetic) => {
-      if (e === void 0) return "";
-      if (e === "current") return String(cur);
-      if (e === "skip")
-        return synthetic !== void 0 ? `(${String(synthetic)})` : "\u2013";
-      return String(e);
-    };
-    const entryPts = (e, pts) => {
-      if (e === void 0 || e === "current" || e === "skip") return "";
-      const bonus = (pts ?? 1) - 1;
-      return bonus > 0 ? `+${String(bonus)}` : "";
-    };
-    const makeCell = (entry, cur, pts, synthetic, playerClass) => {
-      const cell2 = document.createElement("div");
-      cell2.setAttribute(
+    const model = thermoModel(
+      {
+        resolved: ledger.resolved(1),
+        current: currentChallengeIdx1(),
+        currentMoves: totalMoves(ws1),
+        points: ledger.points(1),
+        skipSynthetic: ledger.skipSynthetic(1)
+      },
+      {
+        resolved: ledger.resolved(2),
+        current: currentChallengeIdx2(),
+        currentMoves: totalMoves(ws2),
+        points: ledger.points(2),
+        skipSynthetic: ledger.skipSynthetic(2)
+      }
+    );
+    const makeCell = (cell2, playerClass) => {
+      const el = document.createElement("div");
+      el.setAttribute(
         "class",
-        `versus-thermo-cell ${playerClass}${entry === "current" ? " current" : ""}`
+        `versus-thermo-cell ${playerClass}${cell2.current ? " current" : ""}`
       );
       const movesEl = document.createElement("div");
       movesEl.setAttribute("class", "versus-thermo-moves");
-      movesEl.textContent = entryMoves(entry, cur, synthetic);
+      movesEl.textContent = cell2.moves;
       const ptsEl = document.createElement("div");
       ptsEl.setAttribute("class", "versus-thermo-points");
-      ptsEl.textContent = entryPts(entry, pts);
+      ptsEl.textContent = cell2.points;
+      el.appendChild(movesEl);
+      el.appendChild(ptsEl);
+      return el;
+    };
+    const makeRunCell = (row, playerClass) => {
+      const cell2 = document.createElement("div");
+      cell2.setAttribute("class", `versus-thermo-cell ${playerClass}`);
+      const movesEl = document.createElement("div");
+      movesEl.setAttribute("class", "versus-thermo-moves run");
+      movesEl.textContent = playerClass === row.player ? `\xD7${String(row.count)}` : "";
+      const ptsEl = document.createElement("div");
+      ptsEl.setAttribute("class", "versus-thermo-points");
+      ptsEl.textContent = playerClass === row.player && row.skips > 0 ? `\u2298${String(row.skips)}` : "";
       cell2.appendChild(movesEl);
       cell2.appendChild(ptsEl);
       return cell2;
     };
-    const leadKind = (e1, e2) => {
-      if (e1 !== void 0 && e1 !== "current" && e2 === void 0) return "p1";
-      if (e2 !== void 0 && e2 !== "current" && e1 === void 0) return "p2";
-      return null;
-    };
-    const makeRunRow = (kind, count, skips) => {
-      const row = document.createElement("div");
-      row.setAttribute("class", "versus-thermo-row");
-      for (const playerClass of ["p1", "p2"]) {
-        const cell2 = document.createElement("div");
-        cell2.setAttribute("class", `versus-thermo-cell ${playerClass}`);
-        const movesEl = document.createElement("div");
-        movesEl.setAttribute("class", "versus-thermo-moves run");
-        movesEl.textContent = playerClass === kind ? `\xD7${String(count)}` : "";
-        const ptsEl = document.createElement("div");
-        ptsEl.setAttribute("class", "versus-thermo-points");
-        ptsEl.textContent = playerClass === kind && skips > 0 ? `\u2298${String(skips)}` : "";
-        cell2.appendChild(movesEl);
-        cell2.appendChild(ptsEl);
-        row.appendChild(cell2);
+    const renderRow = (row) => {
+      const el = document.createElement("div");
+      el.setAttribute("class", "versus-thermo-row");
+      if (row.kind === "level") {
+        el.appendChild(makeCell(row.p1, "p1"));
+        el.appendChild(makeCell(row.p2, "p2"));
+      } else {
+        el.appendChild(makeRunCell(row, "p1"));
+        el.appendChild(makeRunCell(row, "p2"));
       }
-      return row;
+      return el;
     };
-    const makeRow = (i88) => {
-      const e1 = displayEntry(resolved1, ci1, i88);
-      const e2 = displayEntry(resolved2, ci2, i88);
-      const row = document.createElement("div");
-      row.setAttribute("class", "versus-thermo-row");
-      row.appendChild(
-        makeCell(
-          e1,
-          currentMoves1,
-          levelPoints1.get(i88),
-          skipSynthetic1.get(i88),
-          "p1"
-        )
-      );
-      row.appendChild(
-        makeCell(
-          e2,
-          currentMoves2,
-          levelPoints2.get(i88),
-          skipSynthetic2.get(i88),
-          "p2"
-        )
-      );
-      return row;
-    };
-    let run = null;
-    const flushRun = () => {
-      if (run === null) return;
-      const [only] = run.indices;
-      if (only !== void 0 && run.indices.length === 1)
-        openBand.appendChild(makeRow(only));
-      else
-        openBand.appendChild(
-          makeRunRow(run.kind, run.indices.length, run.skips)
-        );
-      run = null;
-    };
-    for (let i88 = maxIdx; i88 >= 0; i88 -= 1) {
-      const e1 = displayEntry(resolved1, ci1, i88);
-      const e2 = displayEntry(resolved2, ci2, i88);
-      const kind = leadKind(e1, e2);
-      if (kind !== null) {
-        if (run !== null && run.kind !== kind) flushRun();
-        if (run === null) run = { kind, indices: [], skips: 0 };
-        run.indices.push(i88);
-        if (e1 === "skip" || e2 === "skip") run.skips += 1;
-        continue;
-      }
-      flushRun();
-      const band = isOpenRow(e1, e2, i88) ? openBand : thermoRows;
-      band.appendChild(makeRow(i88));
-    }
-    flushRun();
+    for (const row of model.open) openBand.appendChild(renderRow(row));
+    for (const row of model.settled) thermoRows.appendChild(renderRow(row));
     const thermoTotal = document.createElement("div");
     thermoTotal.setAttribute("class", "versus-thermo-total");
     const totalCell1 = document.createElement("div");
     totalCell1.setAttribute("class", "versus-thermo-cell p1 total");
-    totalCell1.textContent = String(score1);
+    totalCell1.textContent = String(ledger.score(1));
     const totalCell2 = document.createElement("div");
     totalCell2.setAttribute("class", "versus-thermo-cell p2 total");
-    totalCell2.textContent = String(score2);
+    totalCell2.textContent = String(ledger.score(2));
     thermoTotal.appendChild(totalCell1);
     thermoTotal.appendChild(totalCell2);
     thermo.appendChild(thermoTotal);
@@ -11018,21 +11173,38 @@ var mountVersus = (container, navigate2, pool2, versusConfig) => {
     panel.appendChild(title);
     const buttons = document.createElement("div");
     buttons.setAttribute("class", "pause-buttons");
-    const cells = [];
-    const addButton = (label, activate) => {
-      const el = createButton(label, false, activate);
-      buttons.appendChild(el);
-      cells.push({ btn: el, activate });
+    let cursor = {
+      onAction: () => {
+      }
     };
-    addButton(t("resumeGame"), () => setPaused(false));
-    addButton(t("playAgain"), () => navigate2("versus"));
-    addButton(t("matchSetup"), () => navigate2("versus-config"));
-    addButton(t("exitToMainMenu"), () => navigate2("menu"));
+    const fill = (confirmingSetup) => {
+      buttons.innerHTML = "";
+      const cells = [];
+      const addButton = (label, activate) => {
+        const el = createButton(label, false, activate);
+        buttons.appendChild(el);
+        cells.push({ btn: el, activate });
+      };
+      if (confirmingSetup) {
+        const note = document.createElement("div");
+        note.setAttribute("class", "pause-note");
+        note.textContent = t("pauseSetupWarning");
+        buttons.appendChild(note);
+        addButton(t("back"), () => fill(false));
+        addButton(t("pauseSetupConfirm"), () => navigate2("versus-config"));
+      } else {
+        addButton(t("resumeGame"), () => setPaused(false));
+        addButton(t("playAgain"), () => navigate2("versus"));
+        addButton(t("matchSetup"), () => fill(true));
+        addButton(t("exitToMainMenu"), () => navigate2("menu"));
+      }
+      cursor = createButtonCursor(cells.map((c) => [c]));
+    };
+    fill(false);
     panel.appendChild(buttons);
     shroud.appendChild(panel);
     shroud.appendChild(createLangSwitcher());
-    const cursor = createButtonCursor(cells.map((c) => [c]));
-    return { el: shroud, onAction: cursor.onAction };
+    return { el: shroud, onAction: (action) => cursor.onAction(action) };
   };
   const rerender = () => {
     if (ws1.isSolved()) commitScore1();
@@ -11119,8 +11291,8 @@ var mountVersus = (container, navigate2, pool2, versusConfig) => {
     const maxIdx = Math.max(
       ci1,
       ci2,
-      ...Array.from(resolved1.keys()),
-      ...Array.from(resolved2.keys())
+      ...Array.from(ledger.resolved(1).keys()),
+      ...Array.from(ledger.resolved(2).keys())
     );
     const moves1 = totalMoves(ws1);
     const moves2 = totalMoves(ws2);
@@ -11129,7 +11301,7 @@ var mountVersus = (container, navigate2, pool2, versusConfig) => {
     overlay.setAttribute("class", "versus-result");
     const title = document.createElement("div");
     title.setAttribute("class", "versus-breakdown-title");
-    title.textContent = score1 > score2 ? t("winsTemplate").replace("{player}", t("player1")) : score2 > score1 ? t("winsTemplate").replace("{player}", t("player2")) : t("tie");
+    title.textContent = ledger.score(1) > ledger.score(2) ? t("winsTemplate").replace("{player}", t("player1")) : ledger.score(2) > ledger.score(1) ? t("winsTemplate").replace("{player}", t("player2")) : t("tie");
     overlay.appendChild(title);
     const grid = document.createElement("div");
     grid.setAttribute("class", "versus-breakdown-grid");
@@ -11140,12 +11312,12 @@ var mountVersus = (container, navigate2, pool2, versusConfig) => {
     p1Name.textContent = t("player1");
     const p1Score = document.createElement("div");
     p1Score.setAttribute("class", "vb-title-score-cell p1");
-    p1Score.innerHTML = `<span class="vb-title-score">${String(score1)}</span>`;
+    p1Score.innerHTML = `<span class="vb-title-score">${String(ledger.score(1))}</span>`;
     const spacer = document.createElement("div");
     spacer.setAttribute("class", "vb-title-spacer");
     const p2Score = document.createElement("div");
     p2Score.setAttribute("class", "vb-title-score-cell p2");
-    p2Score.innerHTML = `<span class="vb-title-score">${String(score2)}</span>`;
+    p2Score.innerHTML = `<span class="vb-title-score">${String(ledger.score(2))}</span>`;
     const p2Name = document.createElement("div");
     p2Name.setAttribute("class", "vb-title-name p2");
     p2Name.textContent = t("player2");
@@ -11180,19 +11352,19 @@ var mountVersus = (container, navigate2, pool2, versusConfig) => {
     });
     grid.appendChild(sub);
     for (let i88 = 0; i88 <= maxIdx; i88 += 1) {
-      const e1 = breakdownEntry(resolved1, ci1, i88);
-      const e2 = breakdownEntry(resolved2, ci2, i88);
+      const e1 = breakdownEntry(ledger.resolved(1), ci1, i88);
+      const e2 = breakdownEntry(ledger.resolved(2), ci2, i88);
       const s1 = sideCells(
         e1,
         moves1,
-        levelPoints1.get(i88),
-        skipSynthetic1.get(i88)
+        ledger.points(1).get(i88),
+        ledger.skipSynthetic(1).get(i88)
       );
       const s2 = sideCells(
         e2,
         moves2,
-        levelPoints2.get(i88),
-        skipSynthetic2.get(i88)
+        ledger.points(2).get(i88),
+        ledger.skipSynthetic(2).get(i88)
       );
       const row = document.createElement("div");
       row.setAttribute("class", "vb-level");
@@ -11243,50 +11415,7 @@ var mountVersus = (container, navigate2, pool2, versusConfig) => {
     return { el: overlay, onAction: cursor.onAction };
   };
   const commitScore1 = () => {
-    if (scoreCommitted1) return;
-    scoreCommitted1 = true;
-    const challengeIdx = currentChallengeIdx1();
-    const moves1 = totalMoves(ws1);
-    const isRetry = resolved1.get(challengeIdx) === "skip";
-    resolved1.set(challengeIdx, moves1);
-    score1 += 1;
-    levelPoints1.set(challengeIdx, 1);
-    if (isRetry) {
-      const p2Moves = resolved2.get(challengeIdx);
-      if (typeof p2Moves === "number") {
-        skipSynthetic1.delete(challengeIdx);
-        const diff = moves1 - p2Moves;
-        const bonus = Math.abs(diff);
-        if (moves1 < p2Moves) {
-          score1 += bonus;
-          levelPoints1.set(challengeIdx, 1 + bonus);
-        } else if (p2Moves < moves1) {
-          score2 += bonus;
-          levelPoints2.set(
-            challengeIdx,
-            (levelPoints2.get(challengeIdx) ?? 1) + bonus
-          );
-        }
-      }
-    } else {
-      const p2Entry = resolved2.get(challengeIdx);
-      if (typeof p2Entry === "number") {
-        const diff = moves1 - p2Entry;
-        const bonus = Math.abs(diff);
-        if (moves1 < p2Entry) {
-          score1 += bonus;
-          levelPoints1.set(challengeIdx, 1 + bonus);
-        } else if (p2Entry < moves1) {
-          score2 += bonus;
-          levelPoints2.set(
-            challengeIdx,
-            (levelPoints2.get(challengeIdx) ?? 1) + bonus
-          );
-        }
-      } else if (p2Entry === "skip") {
-        pending2 = [...pending2, challengeIdx];
-      }
-    }
+    ledger.commitSolve(1, totalMoves(ws1));
   };
   const solvePlayer1 = () => {
     commitScore1();
@@ -11295,50 +11424,7 @@ var mountVersus = (container, navigate2, pool2, versusConfig) => {
     rebuildThermo();
   };
   const commitScore2 = () => {
-    if (scoreCommitted2) return;
-    scoreCommitted2 = true;
-    const challengeIdx = currentChallengeIdx2();
-    const moves2 = totalMoves(ws2);
-    const isRetry = resolved2.get(challengeIdx) === "skip";
-    resolved2.set(challengeIdx, moves2);
-    score2 += 1;
-    levelPoints2.set(challengeIdx, 1);
-    if (isRetry) {
-      const p1Moves = resolved1.get(challengeIdx);
-      if (typeof p1Moves === "number") {
-        skipSynthetic2.delete(challengeIdx);
-        const diff = moves2 - p1Moves;
-        const bonus = Math.abs(diff);
-        if (moves2 < p1Moves) {
-          score2 += bonus;
-          levelPoints2.set(challengeIdx, 1 + bonus);
-        } else if (p1Moves < moves2) {
-          score1 += bonus;
-          levelPoints1.set(
-            challengeIdx,
-            (levelPoints1.get(challengeIdx) ?? 1) + bonus
-          );
-        }
-      }
-    } else {
-      const p1Entry = resolved1.get(challengeIdx);
-      if (typeof p1Entry === "number") {
-        const diff = moves2 - p1Entry;
-        const bonus = Math.abs(diff);
-        if (moves2 < p1Entry) {
-          score2 += bonus;
-          levelPoints2.set(challengeIdx, 1 + bonus);
-        } else if (p1Entry < moves2) {
-          score1 += bonus;
-          levelPoints1.set(
-            challengeIdx,
-            (levelPoints1.get(challengeIdx) ?? 1) + bonus
-          );
-        }
-      } else if (p1Entry === "skip") {
-        pending1 = [...pending1, challengeIdx];
-      }
-    }
+    ledger.commitSolve(2, totalMoves(ws2));
   };
   const solvePlayer2 = () => {
     commitScore2();
@@ -11348,38 +11434,14 @@ var mountVersus = (container, navigate2, pool2, versusConfig) => {
   };
   const skipPlayer1 = () => {
     if (gameOver) return;
-    const challengeIdx = wsIdx1;
-    resolved1.set(challengeIdx, "skip");
-    const p2Entry = resolved2.get(challengeIdx);
-    if (typeof p2Entry === "number") {
-      const synthetic = 2 * p2Entry;
-      skipSynthetic1.set(challengeIdx, synthetic);
-      const bonus = p2Entry;
-      score2 += bonus;
-      levelPoints2.set(
-        challengeIdx,
-        (levelPoints2.get(challengeIdx) ?? 1) + bonus
-      );
-    }
+    ledger.skip(1);
     advancePlayer1();
     rerenderHalf1();
     rebuildThermo();
   };
   const skipPlayer2 = () => {
     if (gameOver) return;
-    const challengeIdx = wsIdx2;
-    resolved2.set(challengeIdx, "skip");
-    const p1Entry = resolved1.get(challengeIdx);
-    if (typeof p1Entry === "number") {
-      const synthetic = 2 * p1Entry;
-      skipSynthetic2.set(challengeIdx, synthetic);
-      const bonus = p1Entry;
-      score1 += bonus;
-      levelPoints1.set(
-        challengeIdx,
-        (levelPoints1.get(challengeIdx) ?? 1) + bonus
-      );
-    }
+    ledger.skip(2);
     advancePlayer2();
     rerenderHalf2();
     rebuildThermo();
@@ -11660,7 +11722,7 @@ var mountVersus = (container, navigate2, pool2, versusConfig) => {
   } else if (versusConfig.p1Input === "npc") {
     const driver = createNpcDriver({
       getWorkspace: () => ws1,
-      getChallengeIdx: () => wsIdx1,
+      getChallengeIdx: () => ledger.current(1),
       getTotalMoves: () => totalMoves(ws1),
       applyEvent: (ev) => {
         ws1.applyEvent(ev);
@@ -11696,7 +11758,7 @@ var mountVersus = (container, navigate2, pool2, versusConfig) => {
   } else if (versusConfig.p2Input === "npc") {
     const driver = createNpcDriver({
       getWorkspace: () => ws2,
-      getChallengeIdx: () => wsIdx2,
+      getChallengeIdx: () => ledger.current(2),
       getTotalMoves: () => totalMoves(ws2),
       applyEvent: (ev) => {
         ws2.applyEvent(ev);
@@ -12854,8 +12916,8 @@ var ChallengePool = class {
   // patched challenge's par can refresh it. Single subscriber is enough:
   // only one screen shows pars at a time.
   onRetroSolved;
-  constructor() {
-    this.worker = new Worker("sequent.w.js");
+  constructor(createWorker = () => new Worker("sequent.w.js")) {
+    this.worker = createWorker();
     this.worker.onmessage = (e) => {
       if (e.data.type === "solved") {
         const pending = this.pendingSolves.get(e.data.requestId);

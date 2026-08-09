@@ -751,6 +751,13 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
 .pause-buttons-spacer {
   height: 1em;
 }
+/* The Match Setup confirm step's warning line: what the swap will cost,
+   stated before it happens. */
+.pause-note {
+  max-width: 16em;
+  text-align: center;
+  line-height: 1.4;
+}
 .level-select {
   position: absolute;
   width: 80%;
