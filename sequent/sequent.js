@@ -3414,7 +3414,6 @@ var en = {
   sideLeft: "L",
   sideRight: "R",
   randomConfig: "Zen",
-  formulaShape: "Settings",
   size: "Formula Length",
   connectives: "Connectives",
   symbols: "Symbols",
@@ -3422,7 +3421,6 @@ var en = {
   implicationWeight: "Implication",
   conjunctionWeight: "Conjunction",
   disjunctionWeight: "Disjunction",
-  filter: "Parameters",
   trapPercent: "Traps (\u{1F480}%)",
   targetNonStructural: "Solution Size",
   continue: "Continue",
@@ -3435,7 +3433,6 @@ var en = {
   bonus: "Bonus",
   done: "Done",
   goal: "Goal",
-  statsTemplate: "Generated {formulas} formulas ({rate}/s), {tautologies} tautologies, {solved} solved. Updated {sinceUpdate}s ago.",
   challengeSetup: "Challenge Setup",
   lemmaConfirm: "Confirm",
   lemma: "Claim",
@@ -3454,6 +3451,7 @@ var en = {
   skip: "Skip",
   players: "Players",
   matchLength: "Match Length (min)",
+  advancedSettings: "Advanced",
   mouse: "Mouse",
   touch: "Touch",
   keyboard: "Keyboard",
@@ -3578,7 +3576,6 @@ var fi = {
   sideLeft: "V",
   sideRight: "O",
   randomConfig: "Zen",
-  formulaShape: "Asetukset",
   size: "Kaavan pituus",
   connectives: "Konnektiivit",
   symbols: "Symbolit",
@@ -3586,7 +3583,6 @@ var fi = {
   implicationWeight: "Implikaatio",
   conjunctionWeight: "Konjunktio",
   disjunctionWeight: "Disjunktio",
-  filter: "Parametrit",
   trapPercent: "Ansat (\u{1F480}%)",
   targetNonStructural: "Ratkaisun koko",
   continue: "Jatka",
@@ -3599,7 +3595,6 @@ var fi = {
   bonus: "Bonus",
   done: "Valmis",
   goal: "Tavoite",
-  statsTemplate: "Tuotettu {formulas} kaavaa ({rate}/s), {tautologies} tautologiaa, {solved} ratkaisua. P\xE4ivitetty {sinceUpdate}s sitten.",
   challengeSetup: "Haasteen asetukset",
   lemmaConfirm: "Vahvista",
   lemma: "V\xE4it\xE4",
@@ -3618,6 +3613,7 @@ var fi = {
   skip: "Ohita",
   players: "Pelaajat",
   matchLength: "Ottelun kesto (min)",
+  advancedSettings: "Lis\xE4asetukset",
   mouse: "Hiiri",
   touch: "Kosketusn\xE4ytt\xF6",
   keyboard: "N\xE4pp\xE4imist\xF6",
@@ -3741,7 +3737,6 @@ var es = {
   sideLeft: "I",
   sideRight: "D",
   randomConfig: "Zen",
-  formulaShape: "Ajustes",
   size: "Longitud de f\xF3rmula",
   connectives: "Conectivos",
   symbols: "S\xEDmbolos",
@@ -3749,7 +3744,6 @@ var es = {
   implicationWeight: "Implicaci\xF3n",
   conjunctionWeight: "Conjunci\xF3n",
   disjunctionWeight: "Disyunci\xF3n",
-  filter: "Par\xE1metros",
   trapPercent: "Trampas (\u{1F480}%)",
   targetNonStructural: "Tama\xF1o de soluci\xF3n",
   continue: "Continuar",
@@ -3762,7 +3756,6 @@ var es = {
   bonus: "Bonus",
   done: "Hecho",
   goal: "Objetivo",
-  statsTemplate: "Generadas {formulas} f\xF3rmulas ({rate}/s), {tautologies} tautolog\xEDas, {solved} resueltas. Actualizado hace {sinceUpdate}s.",
   challengeSetup: "Configuraci\xF3n del desaf\xEDo",
   lemmaConfirm: "Confirmar",
   lemma: "Afirmar",
@@ -3781,6 +3774,7 @@ var es = {
   skip: "Saltar",
   players: "Jugadores",
   matchLength: "Duraci\xF3n (min)",
+  advancedSettings: "Avanzado",
   mouse: "Rat\xF3n",
   touch: "T\xE1ctil",
   keyboard: "Teclado",
@@ -3904,7 +3898,6 @@ var cs = {
   sideLeft: "L",
   sideRight: "P",
   randomConfig: "Zen",
-  formulaShape: "Nastaven\xED",
   size: "D\xE9lka formule",
   connectives: "Spojky",
   symbols: "Symboly",
@@ -3912,7 +3905,6 @@ var cs = {
   implicationWeight: "Implikace",
   conjunctionWeight: "Konjunkce",
   disjunctionWeight: "Disjunkce",
-  filter: "Parametry",
   trapPercent: "Pasti (\u{1F480}%)",
   targetNonStructural: "Velikost \u0159e\u0161en\xED",
   continue: "Pokra\u010Dovat",
@@ -3925,7 +3917,6 @@ var cs = {
   bonus: "Bonus",
   done: "Hotovo",
   goal: "C\xEDl",
-  statsTemplate: "Vygenerov\xE1no {formulas} formul\xED ({rate}/s), {tautologies} tautologi\xED, {solved} vy\u0159e\u0161eno. Aktualizov\xE1no p\u0159ed {sinceUpdate}s.",
   challengeSetup: "Nastaven\xED v\xFDzvy",
   lemmaConfirm: "Potvrdit",
   lemma: "Tvrdit",
@@ -3944,6 +3935,7 @@ var cs = {
   skip: "P\u0159esko\u010Dit",
   players: "Hr\xE1\u010Di",
   matchLength: "D\xE9lka z\xE1pasu (min)",
+  advancedSettings: "Pokro\u010Dil\xE9",
   mouse: "My\u0161",
   touch: "Dotyk",
   keyboard: "Kl\xE1vesnice",
@@ -4067,7 +4059,6 @@ var pl = {
   sideLeft: "L",
   sideRight: "P",
   randomConfig: "Zen",
-  formulaShape: "Ustawienia",
   size: "D\u0142ugo\u015B\u0107 formu\u0142y",
   connectives: "Sp\xF3jniki",
   symbols: "Symbole",
@@ -4075,7 +4066,6 @@ var pl = {
   implicationWeight: "Implikacja",
   conjunctionWeight: "Koniunkcja",
   disjunctionWeight: "Alternatywa",
-  filter: "Parametry",
   trapPercent: "Pu\u0142apki (\u{1F480}%)",
   targetNonStructural: "Rozmiar rozwi\u0105zania",
   continue: "Kontynuuj",
@@ -4088,7 +4078,6 @@ var pl = {
   bonus: "Bonus",
   done: "Gotowe",
   goal: "Cel",
-  statsTemplate: "Wygenerowano {formulas} formu\u0142 ({rate}/s), {tautologies} tautologii, {solved} rozwi\u0105zanych. Zaktualizowano {sinceUpdate}s temu.",
   challengeSetup: "Ustawienia wyzwania",
   lemmaConfirm: "Zatwierd\u017A",
   lemma: "Twierd\u017A",
@@ -4107,6 +4096,7 @@ var pl = {
   skip: "Pomi\u0144",
   players: "Gracze",
   matchLength: "Czas meczu (min)",
+  advancedSettings: "Zaawansowane",
   mouse: "Mysz",
   touch: "Dotyk",
   keyboard: "Klawiatura",
@@ -4309,19 +4299,6 @@ var clearLangOverride = () => {
   rerenderHook();
 };
 var t = (key) => (messages[locale] ?? en)[key] ?? en[key];
-var formatStats = (p) => {
-  const values = {
-    formulas: p.formulas,
-    rate: p.rate,
-    tautologies: p.tautologies,
-    solved: p.solved,
-    sinceUpdate: p.sinceUpdate
-  };
-  return t("statsTemplate").replace(
-    /\{(\w+)\}/g,
-    (_, key) => String(values[key] ?? `{${key}}`)
-  );
-};
 
 // src/web/lang-switcher.ts
 var createLangSwitcher = () => {
@@ -10017,6 +9994,593 @@ var mountTutorial = (container, navigate2, startStop) => {
   };
 };
 
+// src/web/expander.ts
+var createExpanderPanel = (opts) => {
+  const el = document.createElement("div");
+  el.className = "expander" + (opts.open ? " open" : "");
+  const header = document.createElement("div");
+  header.className = "button expander-header";
+  header.textContent = opts.label;
+  header.onclick = opts.onToggle;
+  el.appendChild(header);
+  let body = null;
+  if (opts.open) {
+    body = document.createElement("div");
+    body.className = "expander-body";
+    el.appendChild(body);
+  }
+  return { el, body, cell: { btn: header, activate: opts.onToggle } };
+};
+
+// src/random/config.ts
+var defaultRandomConfig = () => ({
+  size: 10,
+  connectives: {
+    negation: 1,
+    implication: 3,
+    conjunction: 3,
+    disjunction: 3
+  },
+  symbols: {
+    p: 6,
+    q: 5,
+    r: 5,
+    s: 2,
+    u: 1,
+    v: 1,
+    falsum: 1,
+    verum: 1
+  },
+  targetNonStructural: 10,
+  trapPercent: 0
+});
+
+// src/web/setup-input.ts
+var setupConfigInput = (dispatch) => {
+  const dispatchGamepad = (action) => {
+    const el = document.activeElement;
+    if (el instanceof HTMLInputElement && el.type === "number") {
+      if (action === "gazeConnective" || action === "leftConnective") {
+        el.stepUp();
+        el.dispatchEvent(new Event("change"));
+      } else if (action === "gazeWeakening" || action === "leftWeakening") {
+        el.stepDown();
+        el.dispatchEvent(new Event("change"));
+      } else if (action === "axiom" || action === "undo") {
+        el.blur();
+      }
+      return;
+    }
+    dispatch(action);
+  };
+  const onKeyDown = (ev) => {
+    if (ev.ctrlKey || ev.metaKey || ev.altKey) return;
+    if (ev.target instanceof HTMLInputElement) return;
+    markKeyboardInput();
+    const action = qwertyKeyMap[ev.code];
+    if (action !== void 0) dispatch(action);
+  };
+  document.addEventListener("keydown", onKeyDown);
+  const cleanupGamepad = setupGamepad(dispatchGamepad);
+  return () => {
+    document.removeEventListener("keydown", onKeyDown);
+    cleanupGamepad();
+  };
+};
+
+// src/web/challenge-protocol.ts
+var serializeConfig = (config) => config;
+
+// src/web/random-config.ts
+var pickNumber = (params, key, fallback) => {
+  const raw2 = params.get(key);
+  if (raw2 === null || raw2 === "") return fallback;
+  const value = parseFloat(raw2);
+  return Number.isFinite(value) ? value : fallback;
+};
+var atomKeys = [
+  "p",
+  "q",
+  "r",
+  "s",
+  "u",
+  "v"
+];
+var parseConfigFromParams = (params, defaults = defaultRandomConfig()) => {
+  const symbolsParam = params.get("symbols");
+  const connectivesParam = params.get("connectives");
+  const symbols = { ...defaults.symbols };
+  if (symbolsParam !== null) {
+    for (const key of atomKeys) {
+      symbols[key] = symbolsParam.includes(key) ? defaults.symbols[key] : 0;
+    }
+  }
+  if (connectivesParam !== null) {
+    symbols.falsum = connectivesParam.includes("f") ? defaults.symbols.falsum : 0;
+    symbols.verum = connectivesParam.includes("v") ? defaults.symbols.verum : 0;
+  }
+  const connectives2 = { ...defaults.connectives };
+  if (connectivesParam !== null) {
+    connectives2.implication = connectivesParam.includes("i") ? defaults.connectives.implication : 0;
+    connectives2.conjunction = connectivesParam.includes("c") ? defaults.connectives.conjunction : 0;
+    connectives2.disjunction = connectivesParam.includes("d") ? defaults.connectives.disjunction : 0;
+    connectives2.negation = connectivesParam.includes("n") ? defaults.connectives.negation : 0;
+  }
+  return {
+    size: pickNumber(params, "formula_size", defaults.size),
+    targetNonStructural: pickNumber(
+      params,
+      "proof_size",
+      defaults.targetNonStructural
+    ),
+    trapPercent: pickNumber(params, "traps", defaults.trapPercent),
+    connectives: connectives2,
+    symbols
+  };
+};
+var setConfigParams = (config, params) => {
+  const symbols = atomKeys.filter((k) => config.symbols[k] > 0).join("");
+  const connectives2 = [
+    config.connectives.implication > 0 ? "i" : "",
+    config.connectives.conjunction > 0 ? "c" : "",
+    config.connectives.disjunction > 0 ? "d" : "",
+    config.connectives.negation > 0 ? "n" : "",
+    config.symbols.falsum > 0 ? "f" : "",
+    config.symbols.verum > 0 ? "v" : ""
+  ].join("");
+  params.set("symbols", symbols);
+  params.set("connectives", connectives2);
+  params.set("formula_size", String(config.size));
+  params.set(
+    "proof_size",
+    config.targetNonStructural === Infinity ? "" : String(config.targetNonStructural)
+  );
+  params.set("traps", String(config.trapPercent));
+};
+var generatorSettingsDiffer = (a87, b) => {
+  if (a87.size !== b.size) return true;
+  if (a87.targetNonStructural !== b.targetNonStructural) return true;
+  const connectiveKeys = [
+    "negation",
+    "implication",
+    "conjunction",
+    "disjunction"
+  ];
+  const symbolKeys = [
+    ...atomKeys,
+    "falsum",
+    "verum"
+  ];
+  return connectiveKeys.some(
+    (key) => a87.connectives[key] > 0 !== b.connectives[key] > 0
+  ) || symbolKeys.some((key) => a87.symbols[key] > 0 !== b.symbols[key] > 0);
+};
+var TARGET_COUNT = 10;
+var entryDistance = (nonStructural, config) => {
+  const diff = nonStructural - config.targetNonStructural;
+  if (diff === 0) return 0;
+  return diff > 0 ? diff * 2 - 1 : -diff * 2;
+};
+var insertSorted = (entries2, entry) => {
+  const result = [...entries2];
+  const idx = result.findIndex((e) => e.distance > entry.distance);
+  if (idx === -1) {
+    result.push(entry);
+  } else {
+    result.splice(idx, 0, entry);
+  }
+  return result.slice(0, TARGET_COUNT);
+};
+var isDone = (entries2) => entries2.length >= TARGET_COUNT && entries2.every((e) => e.distance === 0);
+var renderAtom = (name2) => html(fromAtom(atom(name2))(basic));
+var renderFormula = (p) => {
+  const segments = fromProp(p)(basic);
+  return html(segments);
+};
+var timeoutForBuffer = (bufferSize) => {
+  if (bufferSize === 0) return 3e4;
+  if (bufferSize < 5) return 1e4;
+  return 2e3;
+};
+var createPreviewWorker = (config, onResult) => {
+  const worker = new Worker("sequent.w.js");
+  worker.onmessage = (e) => {
+    onResult(e.data);
+  };
+  const send = (msg) => {
+    worker.postMessage(msg);
+  };
+  const workerConfig = () => ({
+    ...config,
+    targetNonStructural: Infinity
+  });
+  send({ type: "configure", config: serializeConfig(workerConfig()) });
+  send({ type: "timeout", ms: timeoutForBuffer(0) });
+  send({ type: "resume" });
+  return {
+    configure: (newConfig) => {
+      config = newConfig;
+      send({ type: "pause" });
+      send({
+        type: "configure",
+        config: serializeConfig(workerConfig())
+      });
+      send({ type: "timeout", ms: timeoutForBuffer(0) });
+      send({ type: "resume" });
+    },
+    updateTimeout: (bufferSize) => {
+      send({ type: "timeout", ms: timeoutForBuffer(bufferSize) });
+    },
+    terminate: () => {
+      worker.terminate();
+    }
+  };
+};
+var renderPreviewList = (list, entries2) => {
+  list.innerHTML = "";
+  for (const entry of entries2) {
+    const item = document.createElement("div");
+    item.className = "config-preview-item" + (entry.distance > 0 ? " approximate" : "");
+    const count = document.createElement("span");
+    count.className = "config-preview-count";
+    count.textContent = String(entry.nonStructural);
+    item.appendChild(count);
+    const formula = document.createElement("span");
+    formula.innerHTML = renderFormula(entry.formula);
+    item.appendChild(formula);
+    list.appendChild(item);
+  }
+};
+var createNumberInput = (value, onChange, min = 0, max, step = 1, placeholder) => {
+  const input = document.createElement("input");
+  input.type = "number";
+  input.className = "config-input";
+  input.min = String(min);
+  if (max !== void 0) input.max = String(max);
+  input.step = String(step);
+  if (value === Infinity) {
+    input.value = "";
+    input.placeholder = placeholder ?? "";
+  } else {
+    input.value = String(value);
+  }
+  input.onchange = () => {
+    const parsed = parseFloat(input.value);
+    if (input.value === "") {
+      onChange(Infinity);
+    } else if (!isNaN(parsed)) {
+      onChange(parsed);
+    }
+  };
+  return input;
+};
+var createRow = (label, input) => {
+  const row = document.createElement("div");
+  row.className = "config-row";
+  const labelEl = document.createElement("label");
+  labelEl.className = "config-label";
+  labelEl.textContent = label;
+  row.appendChild(labelEl);
+  row.appendChild(input);
+  return row;
+};
+var createTrapRow = (config, onChange) => {
+  const input = createNumberInput(
+    config.trapPercent,
+    (v2) => {
+      config.trapPercent = v2;
+      onChange();
+    },
+    0,
+    100
+  );
+  return { row: createRow(t("trapPercent"), input), input };
+};
+var numberInputCell = (input) => ({
+  btn: input,
+  activate: () => {
+    input.focus();
+    input.select();
+  }
+});
+var createGeneratorControls = (config, onChange) => {
+  const createToggle = (content, useHtml, title, isActive, onToggle) => {
+    const btn = document.createElement("pre");
+    btn.className = "button toggle";
+    if (useHtml) {
+      btn.innerHTML = content;
+    } else {
+      btn.textContent = content;
+    }
+    btn.title = title;
+    const led = document.createElement("span");
+    led.className = "led" + (isActive() ? " on" : "");
+    btn.appendChild(led);
+    const activate = () => {
+      onToggle();
+      led.className = "led" + (isActive() ? " on" : "");
+      onChange();
+    };
+    btn.onclick = activate;
+    return { btn, activate };
+  };
+  const proofSizeInput = createNumberInput(
+    config.targetNonStructural,
+    (v2) => {
+      config.targetNonStructural = v2;
+      onChange();
+    },
+    1
+  );
+  const sizeInput = createNumberInput(
+    config.size,
+    (v2) => {
+      config.size = v2;
+      onChange();
+    },
+    1,
+    30
+  );
+  const defaultConnectives = defaultRandomConfig().connectives;
+  const connectiveKeys = [
+    { key: "implication", label: t("implicationWeight"), symbol: "\u2192" },
+    { key: "conjunction", label: t("conjunctionWeight"), symbol: "\u2227" },
+    { key: "disjunction", label: t("disjunctionWeight"), symbol: "\u2228" },
+    { key: "negation", label: t("negationWeight"), symbol: "\xAC" }
+  ];
+  const connectiveCells = [];
+  const connectiveToggles = document.createElement("div");
+  connectiveToggles.className = "config-toggles";
+  for (const { key, label, symbol } of connectiveKeys) {
+    const cell = createToggle(
+      symbol,
+      false,
+      label,
+      () => config.connectives[key] > 0,
+      () => {
+        config.connectives[key] = config.connectives[key] > 0 ? 0 : defaultConnectives[key];
+      }
+    );
+    connectiveCells.push(cell);
+    connectiveToggles.appendChild(cell.btn);
+  }
+  const defaultSymbols = defaultRandomConfig().symbols;
+  const constantKeys = [
+    { key: "falsum", symbol: "\u22A5" },
+    { key: "verum", symbol: "\u22A4" }
+  ];
+  for (const { key, symbol } of constantKeys) {
+    const cell = createToggle(
+      symbol,
+      false,
+      symbol,
+      () => config.symbols[key] > 0,
+      () => {
+        config.symbols[key] = config.symbols[key] > 0 ? 0 : defaultSymbols[key];
+      }
+    );
+    connectiveCells.push(cell);
+    connectiveToggles.appendChild(cell.btn);
+  }
+  const symbolKeys = ["p", "q", "r", "s", "u", "v"];
+  const symbolCells = [];
+  const symbolToggles = document.createElement("div");
+  symbolToggles.className = "config-toggles";
+  for (const key of symbolKeys) {
+    const cell = createToggle(
+      renderAtom(key),
+      true,
+      key,
+      () => config.symbols[key] > 0,
+      () => {
+        config.symbols[key] = config.symbols[key] > 0 ? 0 : defaultSymbols[key];
+      }
+    );
+    symbolCells.push(cell);
+    symbolToggles.appendChild(cell.btn);
+  }
+  return {
+    proofSizeInput,
+    sizeInput,
+    connectives: { el: connectiveToggles, cells: connectiveCells },
+    symbols: { el: symbolToggles, cells: symbolCells }
+  };
+};
+var createAdvancedAnnex = (config, syncUrl) => {
+  let entries2 = [];
+  let previewWorker = void 0;
+  let listEl = null;
+  let searchedConfig = void 0;
+  const handleResult = (msg) => {
+    if (msg.type === "challenge") {
+      if (isDone(entries2)) return;
+      const { challenge: challenge2, nonStructuralCount } = msg.result;
+      const formula = challenge2.goal.succedent[0];
+      if (formula === void 0) return;
+      const distance = entryDistance(nonStructuralCount, config);
+      const entry = {
+        formula,
+        nonStructural: nonStructuralCount,
+        distance
+      };
+      entries2 = insertSorted(entries2, entry);
+      if (listEl !== null) renderPreviewList(listEl, entries2);
+      previewWorker?.updateTimeout(entries2.length);
+      if (isDone(entries2) && previewWorker) {
+        previewWorker.terminate();
+        previewWorker = void 0;
+      }
+    }
+  };
+  const restartSearch = () => {
+    syncUrl();
+    entries2 = [];
+    searchedConfig = {
+      ...config,
+      connectives: { ...config.connectives },
+      symbols: { ...config.symbols }
+    };
+    if (previewWorker) previewWorker.terminate();
+    previewWorker = createPreviewWorker(config, handleResult);
+    if (listEl !== null) renderPreviewList(listEl, entries2);
+  };
+  const build = (open, onToggle) => {
+    const panel = createExpanderPanel({
+      label: t("advancedSettings"),
+      open,
+      onToggle
+    });
+    let settingsRows = [];
+    if (panel.body !== null) {
+      const controls = createGeneratorControls(config, restartSearch);
+      for (const input of [controls.proofSizeInput, controls.sizeInput]) {
+        input.onkeydown = (ev) => {
+          if (ev.code === "Enter" || ev.code === "Escape") input.blur();
+        };
+      }
+      panel.body.appendChild(
+        createRow(t("targetNonStructural"), controls.proofSizeInput)
+      );
+      panel.body.appendChild(createRow(t("size"), controls.sizeInput));
+      const connectivesRow = createRow(
+        t("connectives"),
+        controls.connectives.el
+      );
+      connectivesRow.classList.add("config-row-stacked");
+      panel.body.appendChild(connectivesRow);
+      const symbolsRow = createRow(t("symbols"), controls.symbols.el);
+      symbolsRow.classList.add("config-row-stacked");
+      panel.body.appendChild(symbolsRow);
+      const previewTitle = document.createElement("div");
+      previewTitle.className = "config-subsection-title";
+      previewTitle.textContent = t("preview");
+      panel.body.appendChild(previewTitle);
+      const list = document.createElement("div");
+      list.className = "config-preview-list";
+      panel.body.appendChild(list);
+      listEl = list;
+      settingsRows = [
+        [numberInputCell(controls.proofSizeInput)],
+        [numberInputCell(controls.sizeInput)],
+        controls.connectives.cells,
+        controls.symbols.cells
+      ];
+    }
+    return { el: panel.el, headerCell: panel.cell, settingsRows };
+  };
+  const sync = (open) => {
+    if (open) {
+      if (searchedConfig === void 0 || generatorSettingsDiffer(config, searchedConfig)) {
+        restartSearch();
+      } else if (listEl !== null) {
+        renderPreviewList(listEl, entries2);
+      }
+    } else {
+      listEl = null;
+      searchedConfig = void 0;
+      if (previewWorker) {
+        previewWorker.terminate();
+        previewWorker = void 0;
+      }
+    }
+  };
+  const cleanup = () => {
+    if (previewWorker) {
+      previewWorker.terminate();
+      previewWorker = void 0;
+    }
+  };
+  return { build, sync, cleanup };
+};
+var mountRandomConfig = (container, _navigate, onStart) => {
+  const config = parseConfigFromParams(
+    new URLSearchParams(window.location.search)
+  );
+  container.innerHTML = "";
+  const root = document.createElement("div");
+  container.appendChild(root);
+  const syncUrl = () => {
+    const params = new URLSearchParams(window.location.search);
+    setConfigParams(config, params);
+    history.replaceState(history.state, "", `?${params.toString()}`);
+  };
+  let advancedVisible = generatorSettingsDiffer(config, defaultRandomConfig());
+  const annex = createAdvancedAnnex(config, syncUrl);
+  let cursor = null;
+  const rerender = () => {
+    root.innerHTML = "";
+    const layout = document.createElement("div");
+    layout.className = "random-config config-simple";
+    layout.appendChild(createLangSwitcher());
+    const title = document.createElement("div");
+    title.className = "config-title";
+    title.textContent = t("randomConfig");
+    layout.appendChild(title);
+    const card = document.createElement("div");
+    card.className = "config-card";
+    const trap = createTrapRow(config, syncUrl);
+    trap.input.onkeydown = (ev) => {
+      if (ev.code === "Enter" || ev.code === "Escape") trap.input.blur();
+    };
+    card.appendChild(trap.row);
+    const buttons = document.createElement("div");
+    buttons.className = "config-buttons";
+    const goBack = () => history.back();
+    const backBtn = document.createElement("div");
+    backBtn.className = "button";
+    backBtn.textContent = t("back");
+    backBtn.onclick = goBack;
+    buttons.appendChild(backBtn);
+    const start = () => onStart(config);
+    const startBtn = document.createElement("div");
+    startBtn.className = "button";
+    startBtn.textContent = t("start");
+    startBtn.onclick = start;
+    buttons.appendChild(startBtn);
+    card.appendChild(buttons);
+    layout.appendChild(card);
+    const toggleAdvanced = () => {
+      advancedVisible = !advancedVisible;
+      rerender();
+    };
+    const annexView = annex.build(advancedVisible, toggleAdvanced);
+    layout.appendChild(annexView.el);
+    root.appendChild(layout);
+    const rows = [
+      [numberInputCell(trap.input)],
+      [
+        { btn: backBtn, activate: goBack },
+        { btn: startBtn, activate: start }
+      ],
+      [annexView.headerCell],
+      ...annexView.settingsRows
+    ];
+    const prev2 = cursor?.getPosition() ?? null;
+    const prevRow = prev2 === null ? 0 : Math.min(prev2.row, rows.length - 1);
+    const prevCol = Math.min(prev2?.col ?? 0, (rows[prevRow]?.length ?? 1) - 1);
+    cursor = createButtonCursor(
+      rows,
+      prev2 === null ? {} : { startRow: prevRow, startCol: prevCol, startRevealed: true }
+    );
+    annex.sync(advancedVisible);
+  };
+  const cleanupInput = setupConfigInput((action) => {
+    if (action === "menu") {
+      history.back();
+      return;
+    }
+    cursor?.onAction(action);
+  });
+  rerender();
+  return {
+    cleanup: () => {
+      cleanupInput();
+      annex.cleanup();
+    },
+    rerender
+  };
+};
+
 // src/web/gallery.ts
 var specimen = (el, caption) => {
   const box = document.createElement("div");
@@ -10114,6 +10678,34 @@ var mutatingSection = () => {
   return section(
     "Mutating buttons",
     "Solid buttons commit a move: applying a rule, undoing one, skipping the challenge. The filled body signals that game state changes when the button is pressed.",
+    strip
+  );
+};
+var expanderSection = () => {
+  const strip = document.createElement("div");
+  strip.setAttribute("class", "gallery-strip");
+  const closed = createExpanderPanel({
+    label: t("advancedSettings"),
+    open: false,
+    onToggle: () => void 0
+  });
+  strip.appendChild(specimen(closed.el, "closed"));
+  const open = createExpanderPanel({
+    label: t("advancedSettings"),
+    open: true,
+    onToggle: () => void 0
+  });
+  if (open.body !== null) {
+    const input = document.createElement("input");
+    input.setAttribute("type", "number");
+    input.setAttribute("class", "config-input");
+    input.value = "10";
+    open.body.appendChild(createRow(t("size"), input));
+  }
+  strip.appendChild(specimen(open.el, "open"));
+  return section(
+    "Expander panel",
+    "A slim disclosure bar that unfolds a framed annex panel in place, for secondary settings that most players never need. The unfolded body itself signals the open state, and the flattened header reads as furniture rather than a primary action. Used for the Advanced section of the Versus setup.",
     strip
   );
 };
@@ -10492,6 +11084,7 @@ var mountGallery = (container, navigate2) => {
     doc.appendChild(metaSection());
     doc.appendChild(inertSection());
     doc.appendChild(mutatingSection());
+    doc.appendChild(expanderSection());
     doc.appendChild(ruleCardSection());
     doc.appendChild(treeSection());
     doc.appendChild(gazeGhostSection());
@@ -11811,503 +12404,6 @@ var mountVersus = (container, navigate2, pool2, versusConfig) => {
   };
 };
 
-// src/random/config.ts
-var defaultRandomConfig = () => ({
-  size: 10,
-  connectives: {
-    negation: 1,
-    implication: 3,
-    conjunction: 3,
-    disjunction: 3
-  },
-  symbols: {
-    p: 6,
-    q: 5,
-    r: 5,
-    s: 2,
-    u: 1,
-    v: 1,
-    falsum: 1,
-    verum: 1
-  },
-  targetNonStructural: 10,
-  trapPercent: 0
-});
-
-// src/web/challenge-protocol.ts
-var serializeConfig = (config) => config;
-
-// src/web/random-config.ts
-var pickNumber = (params, key, fallback) => {
-  const raw2 = params.get(key);
-  if (raw2 === null || raw2 === "") return fallback;
-  const value = parseFloat(raw2);
-  return Number.isFinite(value) ? value : fallback;
-};
-var atomKeys = [
-  "p",
-  "q",
-  "r",
-  "s",
-  "u",
-  "v"
-];
-var parseConfigFromParams = (params, defaults = defaultRandomConfig()) => {
-  const symbolsParam = params.get("symbols");
-  const connectivesParam = params.get("connectives");
-  const symbols = { ...defaults.symbols };
-  if (symbolsParam !== null) {
-    for (const key of atomKeys) {
-      symbols[key] = symbolsParam.includes(key) ? defaults.symbols[key] : 0;
-    }
-  }
-  if (connectivesParam !== null) {
-    symbols.falsum = connectivesParam.includes("f") ? defaults.symbols.falsum : 0;
-    symbols.verum = connectivesParam.includes("v") ? defaults.symbols.verum : 0;
-  }
-  const connectives2 = { ...defaults.connectives };
-  if (connectivesParam !== null) {
-    connectives2.implication = connectivesParam.includes("i") ? defaults.connectives.implication : 0;
-    connectives2.conjunction = connectivesParam.includes("c") ? defaults.connectives.conjunction : 0;
-    connectives2.disjunction = connectivesParam.includes("d") ? defaults.connectives.disjunction : 0;
-    connectives2.negation = connectivesParam.includes("n") ? defaults.connectives.negation : 0;
-  }
-  return {
-    size: pickNumber(params, "formula_size", defaults.size),
-    targetNonStructural: pickNumber(
-      params,
-      "proof_size",
-      defaults.targetNonStructural
-    ),
-    trapPercent: pickNumber(params, "traps", defaults.trapPercent),
-    connectives: connectives2,
-    symbols
-  };
-};
-var setConfigParams = (config, params) => {
-  const symbols = atomKeys.filter((k) => config.symbols[k] > 0).join("");
-  const connectives2 = [
-    config.connectives.implication > 0 ? "i" : "",
-    config.connectives.conjunction > 0 ? "c" : "",
-    config.connectives.disjunction > 0 ? "d" : "",
-    config.connectives.negation > 0 ? "n" : "",
-    config.symbols.falsum > 0 ? "f" : "",
-    config.symbols.verum > 0 ? "v" : ""
-  ].join("");
-  params.set("symbols", symbols);
-  params.set("connectives", connectives2);
-  params.set("formula_size", String(config.size));
-  params.set(
-    "proof_size",
-    config.targetNonStructural === Infinity ? "" : String(config.targetNonStructural)
-  );
-  params.set("traps", String(config.trapPercent));
-};
-var TARGET_COUNT = 10;
-var entryDistance = (nonStructural, config) => {
-  const diff = nonStructural - config.targetNonStructural;
-  if (diff === 0) return 0;
-  return diff > 0 ? diff * 2 - 1 : -diff * 2;
-};
-var insertSorted = (entries2, entry) => {
-  const result = [...entries2];
-  const idx = result.findIndex((e) => e.distance > entry.distance);
-  if (idx === -1) {
-    result.push(entry);
-  } else {
-    result.splice(idx, 0, entry);
-  }
-  return result.slice(0, TARGET_COUNT);
-};
-var isDone = (entries2) => entries2.length >= TARGET_COUNT && entries2.every((e) => e.distance === 0);
-var renderAtom = (name2) => html(fromAtom(atom(name2))(basic));
-var renderFormula = (p) => {
-  const segments = fromProp(p)(basic);
-  return html(segments);
-};
-var timeoutForBuffer = (bufferSize) => {
-  if (bufferSize === 0) return 3e4;
-  if (bufferSize < 5) return 1e4;
-  return 2e3;
-};
-var createPreviewWorker = (config, onResult) => {
-  const worker = new Worker("sequent.w.js");
-  worker.onmessage = (e) => {
-    onResult(e.data);
-  };
-  const send = (msg) => {
-    worker.postMessage(msg);
-  };
-  const workerConfig = () => ({
-    ...config,
-    targetNonStructural: Infinity
-  });
-  send({ type: "configure", config: serializeConfig(workerConfig()) });
-  send({ type: "timeout", ms: timeoutForBuffer(0) });
-  send({ type: "resume" });
-  return {
-    configure: (newConfig) => {
-      config = newConfig;
-      send({ type: "pause" });
-      send({
-        type: "configure",
-        config: serializeConfig(workerConfig())
-      });
-      send({ type: "timeout", ms: timeoutForBuffer(0) });
-      send({ type: "resume" });
-    },
-    updateTimeout: (bufferSize) => {
-      send({ type: "timeout", ms: timeoutForBuffer(bufferSize) });
-    },
-    terminate: () => {
-      worker.terminate();
-    }
-  };
-};
-var renderPreviewList = (entries2) => {
-  const list = document.querySelector(".config-preview-list");
-  if (!list) return;
-  list.innerHTML = "";
-  for (const entry of entries2) {
-    const item = document.createElement("div");
-    item.className = "config-preview-item" + (entry.distance > 0 ? " approximate" : "");
-    const count = document.createElement("span");
-    count.className = "config-preview-count";
-    count.textContent = String(entry.nonStructural);
-    item.appendChild(count);
-    const formula = document.createElement("span");
-    formula.innerHTML = renderFormula(entry.formula);
-    item.appendChild(formula);
-    list.appendChild(item);
-  }
-};
-var createNumberInput = (value, onChange, min = 0, max, step = 1, placeholder) => {
-  const input = document.createElement("input");
-  input.type = "number";
-  input.className = "config-input";
-  input.min = String(min);
-  if (max !== void 0) input.max = String(max);
-  input.step = String(step);
-  if (value === Infinity) {
-    input.value = "";
-    input.placeholder = placeholder ?? "";
-  } else {
-    input.value = String(value);
-  }
-  input.onchange = () => {
-    const parsed = parseFloat(input.value);
-    if (input.value === "") {
-      onChange(Infinity);
-    } else if (!isNaN(parsed)) {
-      onChange(parsed);
-    }
-  };
-  return input;
-};
-var createRow = (label, input) => {
-  const row = document.createElement("div");
-  row.className = "config-row";
-  const labelEl = document.createElement("label");
-  labelEl.className = "config-label";
-  labelEl.textContent = label;
-  row.appendChild(labelEl);
-  row.appendChild(input);
-  return row;
-};
-var createSection = (title) => {
-  const section2 = document.createElement("div");
-  section2.className = "config-section";
-  const heading = document.createElement("div");
-  heading.className = "config-section-title";
-  heading.textContent = title;
-  section2.appendChild(heading);
-  return section2;
-};
-var createTrapRow = (config, onChange) => {
-  const input = createNumberInput(
-    config.trapPercent,
-    (v2) => {
-      config.trapPercent = v2;
-      onChange();
-    },
-    0,
-    100
-  );
-  return { row: createRow(t("trapPercent"), input), input };
-};
-var buildFormulaSettingsSection = (config, onChange, prependFilterRows = []) => {
-  const createToggle = (content, useHtml, title, isActive, onToggle) => {
-    const btn = document.createElement("pre");
-    btn.className = "button toggle";
-    if (useHtml) {
-      btn.innerHTML = content;
-    } else {
-      btn.textContent = content;
-    }
-    btn.title = title;
-    const led = document.createElement("span");
-    led.className = "led" + (isActive() ? " on" : "");
-    btn.appendChild(led);
-    btn.onclick = () => {
-      onToggle();
-      led.className = "led" + (isActive() ? " on" : "");
-      onChange();
-    };
-    return btn;
-  };
-  const shapeSection = createSection(t("formulaShape"));
-  const filterHeading = document.createElement("div");
-  filterHeading.className = "config-subsection-title";
-  filterHeading.textContent = t("filter");
-  shapeSection.appendChild(filterHeading);
-  for (const row of prependFilterRows) {
-    shapeSection.appendChild(row);
-  }
-  shapeSection.appendChild(
-    createRow(
-      t("targetNonStructural"),
-      createNumberInput(
-        config.targetNonStructural,
-        (v2) => {
-          config.targetNonStructural = v2;
-          onChange();
-        },
-        1
-      )
-    )
-  );
-  shapeSection.appendChild(
-    createRow(
-      t("size"),
-      createNumberInput(
-        config.size,
-        (v2) => {
-          config.size = v2;
-          onChange();
-        },
-        1,
-        30
-      )
-    )
-  );
-  const defaultConnectives = defaultRandomConfig().connectives;
-  const connectiveKeys = [
-    { key: "implication", label: t("implicationWeight"), symbol: "\u2192" },
-    { key: "conjunction", label: t("conjunctionWeight"), symbol: "\u2227" },
-    { key: "disjunction", label: t("disjunctionWeight"), symbol: "\u2228" },
-    { key: "negation", label: t("negationWeight"), symbol: "\xAC" }
-  ];
-  const connectiveHeading = document.createElement("div");
-  connectiveHeading.className = "config-subsection-title";
-  connectiveHeading.textContent = t("connectives");
-  shapeSection.appendChild(connectiveHeading);
-  const connectiveToggles = document.createElement("div");
-  connectiveToggles.className = "config-toggles";
-  for (const { key, label, symbol } of connectiveKeys) {
-    connectiveToggles.appendChild(
-      createToggle(
-        symbol,
-        false,
-        label,
-        () => config.connectives[key] > 0,
-        () => {
-          config.connectives[key] = config.connectives[key] > 0 ? 0 : defaultConnectives[key];
-        }
-      )
-    );
-  }
-  const defaultSymbols = defaultRandomConfig().symbols;
-  const constantKeys = [
-    { key: "falsum", symbol: "\u22A5" },
-    { key: "verum", symbol: "\u22A4" }
-  ];
-  for (const { key, symbol } of constantKeys) {
-    connectiveToggles.appendChild(
-      createToggle(
-        symbol,
-        false,
-        symbol,
-        () => config.symbols[key] > 0,
-        () => {
-          config.symbols[key] = config.symbols[key] > 0 ? 0 : defaultSymbols[key];
-        }
-      )
-    );
-  }
-  shapeSection.appendChild(connectiveToggles);
-  const symbolHeading = document.createElement("div");
-  symbolHeading.className = "config-subsection-title";
-  symbolHeading.textContent = t("symbols");
-  shapeSection.appendChild(symbolHeading);
-  const symbolKeys = ["p", "q", "r", "s", "u", "v"];
-  const symbolToggles = document.createElement("div");
-  symbolToggles.className = "config-toggles";
-  for (const key of symbolKeys) {
-    symbolToggles.appendChild(
-      createToggle(
-        renderAtom(key),
-        true,
-        key,
-        () => config.symbols[key] > 0,
-        () => {
-          config.symbols[key] = config.symbols[key] > 0 ? 0 : defaultSymbols[key];
-        }
-      )
-    );
-  }
-  shapeSection.appendChild(symbolToggles);
-  return shapeSection;
-};
-var mountRandomConfig = (container, _navigate, onStart) => {
-  const config = parseConfigFromParams(
-    new URLSearchParams(window.location.search)
-  );
-  const syncUrl = () => {
-    const params = new URLSearchParams(window.location.search);
-    setConfigParams(config, params);
-    history.replaceState(history.state, "", `?${params.toString()}`);
-  };
-  let entries2 = [];
-  let totalFormulasTried = 0;
-  let totalTautologiesFound = 0;
-  let totalSolved = 0;
-  let searchStartTime = Date.now();
-  let lastWorkerUpdate = Date.now();
-  let clockInterval;
-  const updateStats = () => {
-    const el = document.querySelector(".config-stats");
-    if (!el) return;
-    const now = Date.now();
-    const elapsed = (now - searchStartTime) / 1e3;
-    const rate = elapsed > 0 ? totalFormulasTried / elapsed : 0;
-    const sinceUpdate = ((now - lastWorkerUpdate) / 1e3).toFixed(1);
-    el.textContent = formatStats({
-      formulas: totalFormulasTried,
-      rate: rate.toFixed(1),
-      tautologies: totalTautologiesFound,
-      solved: totalSolved,
-      sinceUpdate
-    });
-  };
-  const startClock = () => {
-    stopClock();
-    clockInterval = setInterval(updateStats, 200);
-  };
-  const stopClock = () => {
-    if (clockInterval !== void 0) {
-      clearInterval(clockInterval);
-      clockInterval = void 0;
-    }
-  };
-  const handleResult = (msg) => {
-    lastWorkerUpdate = Date.now();
-    if (msg.type === "stats") {
-      totalFormulasTried += msg.formulasTried;
-      totalTautologiesFound += msg.tautologiesFound;
-      totalSolved += msg.solved;
-      updateStats();
-      return;
-    }
-    if (msg.type === "challenge") {
-      totalFormulasTried += msg.result.formulasTried;
-      updateStats();
-      if (isDone(entries2)) return;
-      const { challenge: challenge2, nonStructuralCount } = msg.result;
-      const formula = challenge2.goal.succedent[0];
-      if (formula === void 0) return;
-      const distance = entryDistance(nonStructuralCount, config);
-      const entry = {
-        formula,
-        nonStructural: nonStructuralCount,
-        distance
-      };
-      entries2 = insertSorted(entries2, entry);
-      renderPreviewList(entries2);
-      previewWorker?.updateTimeout(entries2.length);
-      if (isDone(entries2) && previewWorker) {
-        previewWorker.terminate();
-        previewWorker = void 0;
-        stopClock();
-      }
-    }
-  };
-  let previewWorker = createPreviewWorker(
-    config,
-    handleResult
-  );
-  const restartSearch = () => {
-    syncUrl();
-    entries2 = [];
-    totalFormulasTried = 0;
-    totalTautologiesFound = 0;
-    totalSolved = 0;
-    searchStartTime = Date.now();
-    lastWorkerUpdate = Date.now();
-    if (previewWorker) previewWorker.terminate();
-    previewWorker = createPreviewWorker(config, handleResult);
-    renderPreviewList(entries2);
-    startClock();
-  };
-  const rerender = () => {
-    container.innerHTML = "";
-    const layout = document.createElement("div");
-    layout.className = "random-config";
-    layout.appendChild(createLangSwitcher());
-    const title = document.createElement("div");
-    title.className = "config-title";
-    title.textContent = t("randomConfig");
-    layout.appendChild(title);
-    const columns = document.createElement("div");
-    columns.className = "config-columns";
-    const settings = document.createElement("div");
-    settings.className = "config-settings";
-    settings.appendChild(
-      buildFormulaSettingsSection(config, restartSearch, [
-        createTrapRow(config, syncUrl).row
-      ])
-    );
-    const buttons = document.createElement("div");
-    buttons.className = "config-buttons";
-    const backBtn = document.createElement("div");
-    backBtn.className = "button";
-    backBtn.textContent = t("back");
-    backBtn.onclick = () => history.back();
-    buttons.appendChild(backBtn);
-    const startBtn = document.createElement("div");
-    startBtn.className = "button";
-    startBtn.textContent = t("start");
-    startBtn.onclick = () => onStart(config);
-    buttons.appendChild(startBtn);
-    settings.appendChild(buttons);
-    columns.appendChild(settings);
-    const preview = document.createElement("div");
-    preview.className = "config-preview";
-    const previewTitle = document.createElement("div");
-    previewTitle.className = "config-section-title";
-    previewTitle.textContent = t("preview");
-    preview.appendChild(previewTitle);
-    const stats = document.createElement("div");
-    stats.className = "config-stats";
-    preview.appendChild(stats);
-    const list = document.createElement("div");
-    list.className = "config-preview-list";
-    preview.appendChild(list);
-    columns.appendChild(preview);
-    layout.appendChild(columns);
-    container.appendChild(layout);
-    restartSearch();
-  };
-  rerender();
-  const cleanup = () => {
-    stopClock();
-    if (previewWorker) {
-      previewWorker.terminate();
-      previewWorker = void 0;
-    }
-  };
-  return { cleanup, rerender };
-};
-
 // src/npc/knobs.ts
 var defaultNpcKnobs = () => ({
   // Tuned 2026-06-12 so the default opponent is not trivially beatable:
@@ -12326,6 +12422,9 @@ var pickNumber2 = (params, key, fallback) => {
   const value = parseFloat(raw2);
   return Number.isFinite(value) ? value : fallback;
 };
+var npcKnobParamKeys = (prefix) => ["think", "jitter", "skip_time", "skip_stuck", "depth"].map(
+  (suffix) => prefix + suffix
+);
 var parseNpcKnobsFromParams = (params, prefix) => {
   const defaults = defaultNpcKnobs();
   return {
@@ -12429,97 +12528,19 @@ var mountVersusConfig = (container, _navigate, onStart) => {
   const config = parseVersusConfigFromParams(
     new URLSearchParams(window.location.search)
   );
-  let devPresses = 0;
-  let devVisible = false;
-  const onDevKey = () => {
-    devPresses += 1;
-    if (devPresses < 3) return;
-    devVisible = !devVisible;
-    rerender();
-  };
+  container.innerHTML = "";
+  const root = document.createElement("div");
+  container.appendChild(root);
+  let advancedVisible = generatorSettingsDiffer(
+    config.randomConfig,
+    defaultVersusConfig().randomConfig
+  );
   const syncUrl = () => {
     const params = new URLSearchParams(window.location.search);
     setVersusConfigParams(config, params);
     history.replaceState(history.state, "", `?${params.toString()}`);
   };
-  let entries2 = [];
-  let totalFormulasTried = 0;
-  let totalTautologiesFound = 0;
-  let totalSolved = 0;
-  let searchStartTime = Date.now();
-  let lastWorkerUpdate = Date.now();
-  let clockInterval;
-  const updateStats = () => {
-    const el = document.querySelector(".config-stats");
-    if (!el) return;
-    const now = Date.now();
-    const elapsed = (now - searchStartTime) / 1e3;
-    const rate = elapsed > 0 ? totalFormulasTried / elapsed : 0;
-    const sinceUpdate = ((now - lastWorkerUpdate) / 1e3).toFixed(1);
-    el.textContent = formatStats({
-      formulas: totalFormulasTried,
-      rate: rate.toFixed(1),
-      tautologies: totalTautologiesFound,
-      solved: totalSolved,
-      sinceUpdate
-    });
-  };
-  const startClock = () => {
-    stopClock();
-    clockInterval = setInterval(updateStats, 200);
-  };
-  const stopClock = () => {
-    if (clockInterval !== void 0) {
-      clearInterval(clockInterval);
-      clockInterval = void 0;
-    }
-  };
-  const handleResult = (msg) => {
-    lastWorkerUpdate = Date.now();
-    if (msg.type === "stats") {
-      totalFormulasTried += msg.formulasTried;
-      totalTautologiesFound += msg.tautologiesFound;
-      totalSolved += msg.solved;
-      updateStats();
-      return;
-    }
-    if (msg.type === "challenge") {
-      totalFormulasTried += msg.result.formulasTried;
-      updateStats();
-      if (isDone(entries2)) return;
-      const { challenge: challenge2, nonStructuralCount } = msg.result;
-      const formula = challenge2.goal.succedent[0];
-      if (formula === void 0) return;
-      const distance = entryDistance(nonStructuralCount, config.randomConfig);
-      const entry = {
-        formula,
-        nonStructural: nonStructuralCount,
-        distance
-      };
-      entries2 = insertSorted(entries2, entry);
-      renderPreviewList(entries2);
-      previewWorker?.updateTimeout(entries2.length);
-      if (isDone(entries2) && previewWorker) {
-        previewWorker.terminate();
-        previewWorker = void 0;
-        stopClock();
-      }
-    }
-  };
-  let previewWorker = void 0;
-  const restartSearch = () => {
-    syncUrl();
-    entries2 = [];
-    totalFormulasTried = 0;
-    totalTautologiesFound = 0;
-    totalSolved = 0;
-    searchStartTime = Date.now();
-    lastWorkerUpdate = Date.now();
-    if (previewWorker) previewWorker.terminate();
-    previewWorker = createPreviewWorker(config.randomConfig, handleResult);
-    renderPreviewList(entries2);
-    startClock();
-  };
+  const annex = createAdvancedAnnex(config.randomConfig, syncUrl);
   const canStart = () => isInputAvailable(config.p1Input) && isInputAvailable(config.p2Input);
   let cursor = null;
   const createRadioGroup = (options, getActive, getLabel, getContent, isDisabled, onChange) => {
@@ -12547,9 +12568,9 @@ var mountVersusConfig = (container, _navigate, onStart) => {
     return { el: group, cells };
   };
   const rerender = () => {
-    container.innerHTML = "";
+    root.innerHTML = "";
     const layout = document.createElement("div");
-    layout.className = "random-config versus-config" + (devVisible ? "" : " versus-config-simple");
+    layout.className = "random-config versus-config config-simple";
     layout.appendChild(createLangSwitcher());
     const title = document.createElement("div");
     title.className = "config-title";
@@ -12610,147 +12631,59 @@ var mountVersusConfig = (container, _navigate, onStart) => {
       startBtn.onclick = start;
     }
     buttons.appendChild(startBtn);
-    if (devVisible) {
-      const settings = document.createElement("div");
-      settings.className = "config-settings";
-      const inputSection = document.createElement("div");
-      inputSection.className = "config-section";
-      const p1Label = document.createElement("div");
-      p1Label.className = "config-subsection-title";
-      p1Label.textContent = t("player1");
-      inputSection.appendChild(p1Label);
-      inputSection.appendChild(p1Group.el);
-      const p2Label = document.createElement("div");
-      p2Label.className = "config-subsection-title";
-      p2Label.textContent = t("player2");
-      inputSection.appendChild(p2Label);
-      inputSection.appendChild(p2Group.el);
-      inputSection.appendChild(matchLengthRow);
-      inputSection.appendChild(trap.row);
-      settings.appendChild(inputSection);
-      settings.appendChild(buttons);
-      settings.appendChild(
-        buildFormulaSettingsSection(config.randomConfig, restartSearch)
-      );
-      const columns = document.createElement("div");
-      columns.className = "config-columns";
-      columns.appendChild(settings);
-      const preview = document.createElement("div");
-      preview.className = "config-preview";
-      const previewTitle = document.createElement("div");
-      previewTitle.className = "config-section-title";
-      previewTitle.textContent = t("preview");
-      preview.appendChild(previewTitle);
-      const stats = document.createElement("div");
-      stats.className = "config-stats";
-      preview.appendChild(stats);
-      const list = document.createElement("div");
-      list.className = "config-preview-list";
-      preview.appendChild(list);
-      columns.appendChild(preview);
-      layout.appendChild(columns);
-    } else {
-      const card = document.createElement("div");
-      card.className = "versus-card";
-      card.appendChild(createRow(t("player1"), p1Group.el));
-      card.appendChild(createRow(t("player2"), p2Group.el));
-      card.appendChild(matchLengthRow);
-      card.appendChild(trap.row);
-      card.appendChild(buttons);
-      layout.appendChild(card);
-    }
-    container.appendChild(layout);
-    const prev2 = cursor?.getPosition() ?? null;
-    cursor = createButtonCursor(
+    const card = document.createElement("div");
+    card.className = "config-card";
+    card.appendChild(createRow(t("player1"), p1Group.el));
+    card.appendChild(createRow(t("player2"), p2Group.el));
+    card.appendChild(matchLengthRow);
+    card.appendChild(trap.row);
+    card.appendChild(buttons);
+    layout.appendChild(card);
+    const toggleAdvanced = () => {
+      advancedVisible = !advancedVisible;
+      rerender();
+    };
+    const annexView = annex.build(advancedVisible, toggleAdvanced);
+    layout.appendChild(annexView.el);
+    root.appendChild(layout);
+    const rows = [
+      p1Group.cells,
+      p2Group.cells,
+      [numberInputCell(minutesInput)],
+      [numberInputCell(trap.input)],
       [
-        p1Group.cells,
-        p2Group.cells,
-        [
-          {
-            btn: minutesInput,
-            activate: () => {
-              minutesInput.focus();
-              minutesInput.select();
-            }
-          }
-        ],
-        [
-          {
-            btn: trap.input,
-            activate: () => {
-              trap.input.focus();
-              trap.input.select();
-            }
-          }
-        ],
-        [
-          { btn: backBtn, activate: goBack },
-          { btn: startBtn, activate: start, isEnabled: canStart }
-        ]
+        { btn: backBtn, activate: goBack },
+        { btn: startBtn, activate: start, isEnabled: canStart }
       ],
-      prev2 === null ? {} : { startRow: prev2.row, startCol: prev2.col, startRevealed: true }
+      [annexView.headerCell],
+      ...annexView.settingsRows
+    ];
+    const prev2 = cursor?.getPosition() ?? null;
+    const prevRow = prev2 === null ? 0 : Math.min(prev2.row, rows.length - 1);
+    const prevCol = Math.min(prev2?.col ?? 0, (rows[prevRow]?.length ?? 1) - 1);
+    cursor = createButtonCursor(
+      rows,
+      prev2 === null ? {} : { startRow: prevRow, startCol: prevCol, startRevealed: true }
     );
-    if (devVisible) {
-      restartSearch();
-    } else {
-      stopClock();
-      if (previewWorker) {
-        previewWorker.terminate();
-        previewWorker = void 0;
-      }
-    }
+    annex.sync(advancedVisible);
   };
   const onGamepadChange = () => rerender();
   window.addEventListener("gamepadconnected", onGamepadChange);
   window.addEventListener("gamepaddisconnected", onGamepadChange);
-  const dispatch = (action) => {
+  const cleanupInput = setupConfigInput((action) => {
     if (action === "menu") {
       history.back();
       return;
     }
     cursor?.onAction(action);
-  };
-  const dispatchGamepad = (action) => {
-    const el = document.activeElement;
-    if (el instanceof HTMLInputElement && el.type === "number") {
-      if (action === "gazeConnective" || action === "leftConnective") {
-        el.stepUp();
-        el.dispatchEvent(new Event("change"));
-      } else if (action === "gazeWeakening" || action === "leftWeakening") {
-        el.stepDown();
-        el.dispatchEvent(new Event("change"));
-      } else if (action === "axiom" || action === "undo") {
-        el.blur();
-      }
-      return;
-    }
-    dispatch(action);
-  };
-  const onKeyDown = (ev) => {
-    if (ev.ctrlKey || ev.metaKey || ev.altKey) return;
-    if (ev.target instanceof HTMLInputElement) return;
-    if (ev.code === "Backquote") {
-      onDevKey();
-      return;
-    }
-    markKeyboardInput();
-    const action = qwertyKeyMap[ev.code];
-    if (action !== void 0) dispatch(action);
-  };
-  document.addEventListener("keydown", onKeyDown);
-  const cleanupGamepad = setupGamepad(dispatchGamepad);
+  });
   rerender();
   return {
     cleanup: () => {
       window.removeEventListener("gamepadconnected", onGamepadChange);
       window.removeEventListener("gamepaddisconnected", onGamepadChange);
-      document.removeEventListener("keydown", onKeyDown);
-      cleanupGamepad();
-      stopClock();
-      if (previewWorker) {
-        previewWorker.terminate();
-        previewWorker = void 0;
-      }
+      cleanupInput();
+      annex.cleanup();
     },
     rerender
   };
@@ -13086,7 +13019,9 @@ var navigate = (screen) => {
         "traps",
         "versus_time",
         "versus_p1",
-        "versus_p2"
+        "versus_p2",
+        ...npcKnobParamKeys("npc1_"),
+        ...npcKnobParamKeys("npc2_")
       ]) {
         const val = currentParams.get(key);
         if (val !== null) nextParams.set(key, val);

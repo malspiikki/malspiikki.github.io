@@ -820,24 +820,6 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   padding-left: 0.5em;
   user-select: text;
 }
-.config-columns {
-  display: flex;
-  gap: 3em;
-  align-items: flex-start;
-  width: 100%;
-}
-.config-settings {
-  flex: 0 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5em;
-}
-.config-preview {
-  flex: 2 1 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
-}
 .config-preview-list {
   display: flex;
   flex-direction: column;
@@ -861,25 +843,6 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
 }
 .config-preview-item.approximate {
   opacity: 0.4;
-}
-.config-stats {
-  font-size: 0.85em;
-  opacity: 0.6;
-  user-select: text;
-}
-.config-section {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
-  width: 100%;
-  max-width: 400px;
-}
-.config-section-title {
-  font-size: 1.3em;
-  font-weight: bold;
-  border-bottom: 2px solid var(--ink-hairline);
-  padding-bottom: 0.3em;
-  user-select: text;
 }
 .config-subsection-title {
   font-size: 1.1em;
@@ -935,32 +898,93 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   padding: 0.6em 2em;
   min-width: 5em;
 }
-/* Versus config in its default trim (dev sections hidden via §): title over
-   one framed card, placed at the golden section like the main menu. The
-   spacer floors mirror .menu's: the top one reserves room for the fixed
-   language switcher. */
-.versus-config-simple {
+/* Expander: a slim disclosure bar that unfolds a framed annex panel in
+   place; the unfolded body itself signals the open state. The header borrows
+   .button chrome but flattens into a full-width bar, so the panel reads as
+   quiet furniture rather than a primary action. */
+.expander {
+  width: min(28em, 100%);
+  box-sizing: border-box;
+  background-color: var(--chrome);
+  border: 3px solid var(--selection);
+  border-radius: 20px;
+}
+.expander-header.button {
+  display: block;
+  border: none;
+  background: none;
+  border-radius: 17px;
+  font-size: 1em;
+  padding: 0.5em 1em;
+}
+.expander-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2em;
+  padding: 0.5em 2em 1.5em;
+}
+.expander-body .config-toggles {
+  margin: 0;
+  justify-content: flex-end;
+}
+/* Stacked rows put the label above the control at every width, for controls
+   (like a full toggle strip) that no locale's label leaves room for. The
+   strip keeps the annex's control alignment: label left, buttons right. */
+.expander-body .config-row-stacked {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.4em;
+}
+/* No scroller of its own: the list lives in the page scroll, but its height
+   must not depend on its contents — entries keep to one line each (an
+   overlong formula just clips at the panel edge) and the reserve covers a
+   full batch — so filling or restarting the search never moves the page
+   under the pointer. */
+.expander-body .config-preview-list {
+  min-height: 24em;
+  max-height: none;
+  overflow-x: hidden;
+}
+.expander-body .config-preview-item {
+  white-space: nowrap;
+}
+@media (max-width: 600px) {
+  .expander-body .config-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.4em;
+  }
+  .expander-body .config-toggles {
+    justify-content: flex-start;
+  }
+}
+
+/* Versus config: title over one framed card, placed at the golden section
+   like the main menu; the Advanced expander below the card discloses the
+   generator settings and preview. The spacer floors mirror .menu's: the top
+   one reserves room for the fixed language switcher. */
+.config-simple {
   justify-content: flex-start;
 }
-.versus-config-simple::before,
-.versus-config-simple::after {
+.config-simple::before,
+.config-simple::after {
   content: '';
   flex-basis: 0;
   flex-shrink: 1;
 }
-.versus-config-simple::before {
+.config-simple::before {
   flex-grow: 1;
   min-height: 4rem;
 }
-.versus-config-simple::after {
+.config-simple::after {
   flex-grow: 1.618;
 }
-.versus-config-simple .config-title {
+.config-simple .config-title {
   text-align: center;
   align-self: center;
   padding-left: 0;
 }
-.versus-card {
+.config-card {
   display: flex;
   flex-direction: column;
   gap: 1.2em;
@@ -971,14 +995,14 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   border: 4px solid var(--selection);
   border-radius: 20px;
 }
-.versus-card .config-toggles {
+.config-card .config-toggles {
   margin: 0;
   justify-content: flex-end;
 }
-.versus-card .config-buttons {
+.config-card .config-buttons {
   margin-top: 0.3em;
 }
-.versus-card .config-buttons .button {
+.config-card .config-buttons .button {
   flex: 1;
   text-align: center;
 }
@@ -986,12 +1010,12 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
    picker grid into a ragged wrap, so each row collapses to label above
    control instead. */
 @media (max-width: 600px) {
-  .versus-card .config-row {
+  .config-card .config-row {
     flex-direction: column;
     align-items: stretch;
     gap: 0.4em;
   }
-  .versus-card .config-toggles {
+  .config-card .config-toggles {
     justify-content: flex-start;
   }
 }
@@ -1532,22 +1556,6 @@ html.mode-single.input-gamepad .controls .legend-bind.for-gamepad {
   }
   .config-title {
     font-size: 1.5em;
-  }
-  .config-columns {
-    flex-direction: column;
-    gap: 1.5em;
-  }
-  .config-settings {
-    width: 100%;
-  }
-  .config-section {
-    max-width: none;
-  }
-  .config-preview {
-    width: 100%;
-  }
-  .config-preview-list {
-    max-height: none;
   }
   .config-buttons {
     flex-direction: row;
