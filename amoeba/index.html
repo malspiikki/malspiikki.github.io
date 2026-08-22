@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Amoeba Marmalade</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Nunito:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="lab centered">
+  <main id="game">
+    <div id="board-wrap">
+      <div id="strip-row">
+        <b id="level-tag"></b>
+        <div id="tier-strip"></div>
+      </div>
+      <div id="dish">
+        <svg id="board"></svg>
+        <div id="overlay" class="hidden">
+          <div class="panel-box overlay-card">
+            <h2 id="overlay-title"></h2>
+            <p id="overlay-score"></p>
+            <button id="restart">restart (R)</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <aside id="panel">
+      <div class="panel-box"><h2>next</h2><svg id="next"></svg><p class="species" id="next-name"></p></div>
+      <div class="panel-box"><h2>hold</h2><svg id="hold"></svg><p class="species" id="hold-name"></p></div>
+      <div class="panel-box"><h2>score</h2><p id="score">0</p></div>
+      <!-- level-selection UX undecided; #level=N in the URL still works -->
+      <div class="panel-box" hidden><h2>start at</h2><select id="start-level"></select></div>
+      <p class="keys">
+        move: ←, →<br>
+        rotate ⟳: X, ↑<br>
+        rotate ⟲: Z<br>
+        soft drop: ↓<br>
+        hard drop: space<br>
+        hold: C, shift<br>
+        <br>
+        pause: P, esc<br>
+        restart: R
+      </p>
+    </aside>
+  </main>
+  <script src="polyomino.js"></script>
+  <script src="jelly.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
