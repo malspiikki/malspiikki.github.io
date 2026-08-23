@@ -315,7 +315,6 @@ body.centered {
   opacity: 0.5;
   box-shadow: none;
 }
-
 #board {
   display: block;
   width: min(24rem, 90vw);
@@ -353,7 +352,7 @@ body.centered {
   to { opacity: 1; }
 }
 
-#overlay {
+.veil {
   position: absolute;
   inset: 0;
   display: flex;
@@ -387,11 +386,36 @@ body.centered {
   display: none;
 }
 
-#overlay.hidden {
+.veil.hidden {
   display: none;
 }
 
-#overlay button {
+.help-card {
+  align-items: stretch;
+  max-width: min(21rem, 85vw);
+  max-height: 100%;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.help-card h2 {
+  text-align: center;
+}
+
+.help-card .rules p {
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.help-card .rules p + p {
+  margin-top: 0.55rem;
+}
+
+.help-card button {
+  align-self: center;
+}
+
+.veil button {
   font: inherit;
   font-size: 1.1rem;
   font-weight: 800;

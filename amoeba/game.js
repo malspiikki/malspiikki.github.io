@@ -77,6 +77,8 @@
   const overlay = document.getElementById('overlay');
   const overlayTitle = document.getElementById('overlay-title');
   const overlayScore = document.getElementById('overlay-score');
+  const helpEl = document.getElementById('help');
+  const resumeBtn = document.getElementById('resume');
   // 1..9 above the board: cyan = in the drop window, red = rescue drop,
   // gray = not dropping right now
   const tierStrip = document.getElementById('tier-strip');
@@ -125,6 +127,8 @@
     level: startLevel,
     over: false,
     paused: false,
+    helpOpen: false,
+    pausedByHelp: false,
   };
   const cellMap = new Map();
   const key = (x, y) => x + ',' + y;
@@ -507,19 +511,48 @@
   // Pausing must stop the clocks, not just gravity: the lock timer would
   // fire mid-pause, and the spawn grace is wall-clock based, so we cancel
   // the timer and push bornAt forward by the pause duration on resume.
+  function stopClocks() {
+    state.paused = true;
+    state.pausedAt = Date.now();
+    clearLockTimer();
+  }
+
+  function resumeClocks() {
+    state.paused = false;
+    if (state.falling) state.falling.bornAt += Date.now() - state.pausedAt;
+    updateLockState(false);
+  }
+
   function togglePause() {
     if (state.over) return;
-    state.paused = !state.paused;
     if (state.paused) {
-      state.pausedAt = Date.now();
-      clearLockTimer();
+      overlay.classList.add('hidden');
+      resumeClocks();
+    } else {
+      stopClocks();
       overlayTitle.textContent = 'paused';
       overlayScore.textContent = '';
+      resumeBtn.hidden = false;
       overlay.classList.remove('hidden');
+    }
+  }
+
+  // Help freezes a live game the same way pause does, but leaves an
+  // existing pause or game-over untouched so closing it returns there.
+  function toggleHelp() {
+    state.helpOpen = !state.helpOpen;
+    if (state.helpOpen) {
+      if (!state.over && !state.paused) {
+        stopClocks();
+        state.pausedByHelp = true;
+      }
+      helpEl.classList.remove('hidden');
     } else {
-      if (state.falling) state.falling.bornAt += Date.now() - state.pausedAt;
-      overlay.classList.add('hidden');
-      updateLockState(false);
+      helpEl.classList.add('hidden');
+      if (state.pausedByHelp) {
+        state.pausedByHelp = false;
+        resumeClocks();
+      }
     }
   }
 
@@ -541,6 +574,7 @@
     state.falling = null;
     overlayTitle.textContent = 'game over';
     overlayScore.textContent = state.score;
+    resumeBtn.hidden = true;
     overlay.classList.remove('hidden');
   }
 
@@ -552,6 +586,8 @@
     state.level = startLevel;
     state.over = false;
     state.paused = false;
+    state.helpOpen = false;
+    state.pausedByHelp = false;
     state.next = null;
     state.hold = null;
     state.canHold = true;
@@ -560,6 +596,7 @@
     shapeQueues.clear();
     renderHold();
     overlay.classList.add('hidden');
+    helpEl.classList.add('hidden');
     scoreEl.textContent = '0';
     renderLevel();
     spawn();
@@ -646,6 +683,11 @@
     }[e.key];
     if (keyAct) e.preventDefault();
     if (e.key === 'r' || e.key === 'R') return restart();
+    if (e.key === 'h' || e.key === 'H' || e.key === '?') return toggleHelp();
+    if (state.helpOpen) { // help swallows the rest; esc backs out of it
+      if (e.key === 'Escape') toggleHelp();
+      return;
+    }
     if (e.key === 'p' || e.key === 'P' || e.key === 'Escape') return togglePause();
     if (state.over || state.paused || !state.falling || !keyAct) return;
     actions[keyAct]();
@@ -653,6 +695,15 @@
   });
 
   document.getElementById('restart').addEventListener('click', restart);
+  resumeBtn.addEventListener('click', () => {
+    resumeBtn.blur(); // hand the keys back to the game
+    togglePause();
+  });
+  const helpClose = document.getElementById('help-close');
+  helpClose.addEventListener('click', () => {
+    helpClose.blur(); // hand the keys back to the game
+    toggleHelp();
+  });
 
   renderLevel();
   spawn();

@@ -18,11 +18,39 @@
       </div>
       <div id="dish">
         <svg id="board"></svg>
-        <div id="overlay" class="hidden">
+        <div id="overlay" class="veil hidden">
           <div class="panel-box overlay-card">
             <h2 id="overlay-title"></h2>
             <p id="overlay-score"></p>
+            <button id="resume" hidden>resume (P)</button>
             <button id="restart">restart (R)</button>
+          </div>
+        </div>
+        <div id="help" class="veil hidden">
+          <div class="panel-box overlay-card help-card">
+            <h2>how to play</h2>
+            <div class="rules">
+              <p>Amoebas of the same size merge when they touch &mdash;
+                they fuse into one amoeba a single cell bigger.
+                Shape doesn't matter, only size.</p>
+              <p>The fused blob has extra cells, and they melt from the
+                top: highest first, leftmost within a row, skipping any
+                cell whose loss would split the amoeba. The survivor
+                keeps the lower part of the fused shape.</p>
+              <p>Merging is the only way to score. Fusing three or more
+                at once scores extra, but the result still grows just
+                one size.</p>
+              <p>Merges can cascade: the fused blob shrinks, everything
+                settles, and new touches can merge again.</p>
+              <p>The lit numbers above the dish show which sizes are
+                dropping; the mix shifts as your level rises. A red
+                number is a rescue &mdash; that size is still on the
+                board, so it stays in the draw.</p>
+              <p>Sizes 10 and 11 never drop &mdash; you can only grow
+                them. When two size-11 elderberry amoebas meet, they
+                dissolve and clear away.</p>
+            </div>
+            <button id="help-close">back (H)</button>
           </div>
         </div>
       </div>
@@ -41,6 +69,7 @@
         hard drop: space<br>
         hold: C, shift<br>
         <br>
+        help: H<br>
         pause: P, esc<br>
         restart: R
       </p>
