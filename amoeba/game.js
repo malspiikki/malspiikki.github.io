@@ -79,8 +79,9 @@
   const overlayScore = document.getElementById('overlay-score');
   const helpEl = document.getElementById('help');
   const resumeBtn = document.getElementById('resume');
-  // 1..9 above the board: cyan = in the drop window, red = rescue drop,
-  // gray = not dropping right now
+  // 1..9 above the board: berry-lit = in the drop window, dashed faded
+  // berry = rescue drop, dashed gray = not dropping right now (painted by
+  // Jelly.stripDot, shared with the style guide)
   const tierStrip = document.getElementById('tier-strip');
   const tierEls = [];
   for (let t = 1; t <= TIER_CYCLE; t++) {
@@ -134,7 +135,7 @@
   const key = (x, y) => x + ',' + y;
   // piece look (berry palette + jelly SVG) lives in jelly.js, shared with
   // the style guide at explorer/styleguide.html so the two can never drift
-  const { tierName, colors: tierColors, shapePaths } = Jelly;
+  const { tierName, shapePaths } = Jelly;
   const fmt = v => Math.round(v * 1000) / 1000;
 
   function el(name, attrs) {
@@ -301,18 +302,7 @@
     const rescue = strandedSizes(tiers);
     tierEls.forEach((span, i) => {
       const t = i + 1;
-      const cls = dropping.has(t) ? 'drop' : rescue.has(t) ? 'rescue' : 'off';
-      span.className = cls;
-      if (cls === 'off') {
-        span.removeAttribute('style');
-      } else {
-        // berry-colored specimen dots; rescue fades the body but keeps the
-        // number at full strength so it stays readable (AA-audited inks)
-        const c = tierColors(t);
-        span.style.background = cls === 'rescue' ? c.rescueFill : c.stripFill;
-        span.style.borderColor = c.line;
-        span.style.color = cls === 'rescue' ? c.rescueInk : c.labelInk;
-      }
+      Jelly.stripDot(span, t, dropping.has(t) ? 'drop' : rescue.has(t) ? 'rescue' : 'off');
     });
   }
 

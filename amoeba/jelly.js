@@ -204,7 +204,24 @@
     return group;
   }
 
-  const api = { TIERS, WIN_TIER, CORNER_RADIUS, tierName, colors, labelPos, shapePaths };
+  // tier-strip LEDs: paint one dot for tier t in state 'drop' | 'rescue' |
+  // 'off'. Lives here beside stripFill/rescueFill so the game and the style
+  // guide share one painter and can't drift. Rescue reads as a phantom
+  // window member — ghost-dashed ring, no glow, faded body — because fill
+  // opacity alone was too close to a lit dot at both ends of the ramp; the
+  // number keeps full-strength ink so it stays readable (AA-audited).
+  function stripDot(span, t, state) {
+    span.className = state;
+    if (state === 'off') { span.removeAttribute('style'); return; }
+    const c = colors(t);
+    const rescue = state === 'rescue';
+    span.style.background = rescue ? c.rescueFill : c.stripFill;
+    span.style.border = `2px ${rescue ? 'dashed' : 'solid'} ${c.line}`;
+    span.style.boxShadow = rescue ? 'none' : '';
+    span.style.color = rescue ? c.rescueInk : c.labelInk;
+  }
+
+  const api = { TIERS, WIN_TIER, CORNER_RADIUS, tierName, colors, labelPos, shapePaths, stripDot };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else global.Jelly = api;
 })(this);

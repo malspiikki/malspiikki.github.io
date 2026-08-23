@@ -534,6 +534,13 @@ body.centered {
   line-height: 1.7;
 }
 
+/* the drop-indicator demo: cap the row at the dish's width (board plus
+   its padding) so it lays out like the real instrument row */
+#guide #strip-row {
+  max-width: min(24rem + 20px, 90vw);
+  margin-bottom: 1rem;
+}
+
 .spec-row {
   display: flex;
   flex-wrap: wrap;
