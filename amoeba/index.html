@@ -11,7 +11,14 @@
 </head>
 <body class="lab centered">
   <main id="game">
+    <aside id="supply">
+      <div><h2>hold</h2><svg id="hold"></svg></div>
+      <!-- level-selection UX undecided; #level=N in the URL still works -->
+      <div hidden><h2>start at</h2><select id="start-level"></select></div>
+      <p class="keys">help: H</p>
+    </aside>
     <div id="board-wrap">
+      <div id="score-box"><p id="score">0</p></div>
       <div id="strip-row">
         <b id="level-tag"></b>
         <div id="tier-strip"></div>
@@ -30,6 +37,21 @@
           <div class="panel-box overlay-card help-card">
             <h2>how to play</h2>
             <div class="rules">
+              <div class="key-cols">
+                <p class="keys">
+                  move: ←, →<br>
+                  rotate ⟳: X, ↑<br>
+                  rotate ⟲: Z<br>
+                  soft drop: ↓<br>
+                  hard drop: space
+                </p>
+                <p class="keys">
+                  hold: C, shift<br>
+                  help: H<br>
+                  pause: P, esc<br>
+                  restart: R
+                </p>
+              </div>
               <p>Amoebas of the same size merge when they touch &mdash;
                 they fuse into one amoeba a single cell bigger.
                 Shape doesn't matter, only size.</p>
@@ -47,8 +69,16 @@
                 number is a rescue &mdash; that size is still on the
                 board, so it stays in the draw.</p>
               <p>Sizes 10 and 11 never drop &mdash; you can only grow
-                them. When two size-11 elderberry amoebas meet, they
-                dissolve and clear away.</p>
+                them. When two size-11 elderberry amoebas meet, the
+                size-12 amoeba they fuse into breaks the bounds of the
+                dish &mdash; the first of its kind to leave home &mdash;
+                and settles the colony.</p>
+              <p>The colony is beyond your reach and beyond all danger.
+                There is no up or down out there: settlers drift toward
+                their common center of mass, merge on contact, and pack
+                into a little round world. Past the elderberry the
+                berries cycle around &mdash; size 12 is a white currant
+                again, born under a new sun.</p>
             </div>
             <button id="help-close">back (H)</button>
           </div>
@@ -56,23 +86,11 @@
       </div>
     </div>
     <aside id="panel">
-      <div class="panel-box"><h2>next</h2><svg id="next"></svg><p class="species" id="next-name"></p></div>
-      <div class="panel-box"><h2>hold</h2><svg id="hold"></svg><p class="species" id="hold-name"></p></div>
-      <div class="panel-box"><h2>score</h2><p id="score">0</p></div>
-      <!-- level-selection UX undecided; #level=N in the URL still works -->
-      <div class="panel-box" hidden><h2>start at</h2><select id="start-level"></select></div>
-      <p class="keys">
-        move: ←, →<br>
-        rotate ⟳: X, ↑<br>
-        rotate ⟲: Z<br>
-        soft drop: ↓<br>
-        hard drop: space<br>
-        hold: C, shift<br>
-        <br>
-        help: H<br>
-        pause: P, esc<br>
-        restart: R
-      </p>
+      <div><h2>next</h2><svg id="next"></svg></div>
+      <div id="colony-wrap">
+        <b id="colony-tag">colony</b>
+        <svg id="colony"></svg>
+      </div>
     </aside>
   </main>
   <script src="polyomino.js"></script>

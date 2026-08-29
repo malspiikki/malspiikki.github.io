@@ -7,7 +7,7 @@
 
   const SVG_NS = 'http://www.w3.org/2000/svg';
   const CORNER_RADIUS = 0.4;
-  const WIN_TIER = 12; // merging to this tier pops; it never has a look
+  const WIN_TIER = 12; // outgrows the dish; in the game it emigrates to the colony
 
   // Tier identity: berry marmalade (canvas Berry Pantry, 2026-08-21).
   // Every tier IS a berry, ordered by ripeness/concentration — paler is
@@ -31,13 +31,16 @@
     { name: 'Black currant', L: 30, C: 0.12, h: 330 },
     { name: 'Elderberry', L: 22, C: 0.05, h: 290 },
   ];
-  const tierName = t => t >= WIN_TIER ? 'Dissolution' : TIERS[t - 1].name;
+  // Past elderberry the colony keeps counting, so the berries cycle:
+  // tier 12 is a white currant again (the nucleus number tells them apart).
+  const berry = t => TIERS[(t - 1) % TIERS.length];
+  const tierName = t => berry(t).name;
 
   // daylight petri-dish palette: berry marmalade lit from within. Dark
   // berries flip the recipe — glossy light membrane and a light nucleus
   // with dark text, since darker-than-the-fill would vanish.
   function colors(t) {
-    const g = TIERS[t - 1];
+    const g = berry(t);
     const { h, L, C } = g;
     const dark = L < 45;
     return {
