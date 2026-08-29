@@ -559,15 +559,21 @@
   // offsets first — wall kicks, then down (slot entry), then up (floor
   // kick), then diagonals — expanding out to ceil(box/2). Small enough to
   // stay predictable; scales with the piece so big shapes can turn near
-  // walls at all.
+  // walls at all. Pure vertical kicks alone continue out to box - 1: a
+  // bar lying in the far row of its box needs that much lift to stand up
+  // off the stack (or drop to hang below an overhang), and the short cap
+  // left grounded flat pieces unrotatable despite open headroom.
   function tryRotate(dir) {
     const cells = rotatedInBox(state.falling.cells, state.falling.box, dir);
     if (tryMove(0, 0, cells)) return true;
     const range = Math.ceil(state.falling.box / 2);
     // mirror the horizontal preference for CCW, like SRS mirrors its tables
     const s = dir < 0 ? -1 : 1;
-    for (let d = 1; d <= range; d++) {
-      for (const [dx, dy] of [[-d * s, 0], [d * s, 0], [0, d], [0, -d], [-d * s, d], [d * s, d], [-d * s, -d], [d * s, -d]]) {
+    for (let d = 1; d < state.falling.box; d++) {
+      const offsets = d <= range
+        ? [[-d * s, 0], [d * s, 0], [0, d], [0, -d], [-d * s, d], [d * s, d], [-d * s, -d], [d * s, -d]]
+        : [[0, d], [0, -d]];
+      for (const [dx, dy] of offsets) {
         if (tryMove(dx, dy, cells)) return true;
       }
     }
