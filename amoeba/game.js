@@ -74,9 +74,9 @@
   const levelEl = document.getElementById('level-tag');
   const overlay = document.getElementById('overlay');
   const overlayTitle = document.getElementById('overlay-title');
-  const overlayScore = document.getElementById('overlay-score');
   const helpEl = document.getElementById('help');
   const resumeBtn = document.getElementById('resume');
+  const tallyEl = document.getElementById('tally');
   // 1..9 above the board: berry-lit = in the drop window, dashed faded
   // berry = rescue drop, dashed gray = not dropping right now (painted by
   // Jelly.stripDot, shared with the style guide)
@@ -138,6 +138,14 @@
   // out as it grows.
   const board = { w: W, h: H, pieces: [], cells: new Map(), erode };
   const colony = { pieces: [], cells: new Map(), erode: erodeToCenter };
+  // Specimen census for the game-over field report: how many of each
+  // size came into being, split by origin — merged (fused into existence,
+  // dish or colony) vs dropped (locked into the dish from the supply).
+  const census = []; // tier -> { merged, dropped }
+  function recordSpecimen(tier, kind) {
+    const c = census[tier] || (census[tier] = { merged: 0, dropped: 0 });
+    c[kind]++;
+  }
   const key = (x, y) => x + ',' + y;
   // piece look (berry palette + jelly SVG) lives in jelly.js, shared with
   // the style guide at explorer/styleguide.html so the two can never drift
@@ -295,6 +303,7 @@
       } else {
         addPiece(field, field.erode(fused, target), target).fresh = true;
       }
+      recordSpecimen(target, 'merged');
       state.score += target * target * (group.length - 1);
     }
     return merged;
@@ -622,6 +631,9 @@
 
   function lock() {
     clearLockTimer();
+    // a supply piece is encountered when it actually joins the culture,
+    // so a piece parked in hold at game over never counts
+    recordSpecimen(state.falling.tier, 'dropped');
     addPiece(board, fallingCells(state.falling), state.falling.tier);
     state.falling = null;
     state.canHold = true;
@@ -659,7 +671,7 @@
     } else {
       stopClocks();
       overlayTitle.textContent = 'paused';
-      overlayScore.textContent = '';
+      tallyEl.textContent = ''; // empty collapses it (CSS :empty)
       resumeBtn.hidden = false;
       overlay.classList.remove('hidden');
     }
@@ -700,10 +712,16 @@
   function gameOver() {
     state.over = true;
     state.falling = null;
+    // no score line: the score already stands above the dish, and the
+    // frosted veil keeps it in view
     overlayTitle.textContent = 'game over';
-    overlayScore.textContent = state.score.toLocaleString();
+    // the specimen tally (tally.js, shared with the explorer game-over
+    // mock): rarest first, padded with unobserved rows down the whole
+    // dish cycle
+    Tally.render(tallyEl, census, COLONY_TIER);
     resumeBtn.hidden = true;
     overlay.classList.remove('hidden');
+    Tally.openAtBest(tallyEl);
   }
 
   function restart() {
@@ -723,6 +741,7 @@
     state.canHold = true;
     state.bag = null;
     state.bagLevel = 0;
+    census.length = 0;
     shapeQueues.clear();
     renderHold();
     overlay.classList.add('hidden');

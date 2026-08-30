@@ -339,7 +339,8 @@ body.centered::after {
   gap: 0.3rem;
 }
 
-#tier-strip span {
+#tier-strip span,
+.tally-row .dot {
   width: 1.7em;
   height: 1.7em;
   border-radius: 50%;
@@ -352,7 +353,8 @@ body.centered::after {
   box-shadow: var(--lab-shadow);
 }
 
-#tier-strip .off {
+#tier-strip .off,
+.tally-row .off {
   border: 2px dashed var(--lab-muted);
   color: var(--lab-muted);
   opacity: 0.5;
@@ -457,8 +459,104 @@ body.centered::after {
   font-size: 2.4rem;
 }
 
-#overlay-score:empty {
+/* the specimen tally (tally.js): the game-over card's field report,
+   rarest size first — a .tally class, not an id, because the explorer
+   game-over mock lays out several of them side by side. The card caps
+   at the dish and only the ledger scrolls, so the title, score and
+   restart button stay put */
+#overlay .overlay-card {
+  max-height: 100%;
+}
+
+/* a real four-column table (dot | name | dropped | merged): rows are
+   display:contents so every cell joins the shared grid and the number
+   columns align down the ledger instead of floating per row */
+.tally {
+  align-self: stretch;
+  min-height: 0;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) max-content max-content;
+  align-items: center;
+  column-gap: 0.6rem;
+  row-gap: 0.3rem;
+  padding: 0.2rem 0.1rem;
+  text-align: left;
+}
+
+.tally:empty {
   display: none;
+}
+
+/* one micro head line shaped like the rows it explains ("dropped +
+   merged"), in the same muted label voice as next/hold/score, so the
+   split needs no legend. It spans the whole grid: per-column heads
+   would set the number columns wider than the numbers */
+.tally-head {
+  grid-column: 1 / -1;
+  justify-self: end;
+  font-size: 0.62rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--lab-muted);
+}
+
+.tally-row {
+  display: contents;
+}
+
+/* a breath between palette cycles: the row starting each chunk of 11
+   (elderberry, reading down) gets extra space above it — applied to
+   the cells, since a contents row has no box of its own */
+.tally-row.cycle-top > * {
+  margin-top: 0.45rem;
+}
+
+.tally-row .dot {
+  font-size: 0.85rem;
+}
+
+.tally-row .name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+  /* the numbers own the right edge: a name that can't fit gives way
+     with an ellipsis rather than pushing the count out of the card */
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* eleven repeats of the species word shouldn't shout — the berry is
+   the row's identity, amoeba/amonaut its quiet family name */
+.tally-row .name .species {
+  color: var(--lab-muted);
+}
+
+.tally-row.unseen .name {
+  color: var(--lab-muted);
+  font-style: italic;
+}
+
+.tally-row .dropped,
+.tally-row .merged {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  justify-self: end;
+}
+
+.tally-row .dropped,
+.tally-row .merged .plus,
+.tally-row.unseen .merged {
+  font-weight: 600;
+  color: var(--lab-muted);
+}
+
+.tally-row .merged {
+  font-weight: 700;
 }
 
 .veil.hidden {

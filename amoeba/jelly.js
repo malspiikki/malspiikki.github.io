@@ -35,6 +35,12 @@
   // tier 12 is a white currant again (the nucleus number tells them apart).
   const berry = t => TIERS[(t - 1) % TIERS.length];
   const tierName = t => berry(t).name;
+  // Species naming: every size is a berry amoeba while it belongs to
+  // the dish's own cycle; the sizes past elderberry — the ones that
+  // only exist out in the colony — are amonauts, the same berries on
+  // their second lap, born under a new sun.
+  const speciesName = t =>
+    `${tierName(t).toLowerCase()} ${t > TIERS.length ? 'amonaut' : 'amoeba'}`;
 
   // daylight petri-dish palette: berry marmalade lit from within. Dark
   // berries flip the recipe — glossy light membrane and a light nucleus
@@ -224,7 +230,7 @@
     span.style.color = rescue ? c.rescueInk : c.labelInk;
   }
 
-  const api = { TIERS, WIN_TIER, CORNER_RADIUS, tierName, colors, labelPos, shapePaths, stripDot };
+  const api = { TIERS, WIN_TIER, CORNER_RADIUS, tierName, speciesName, colors, labelPos, shapePaths, stripDot };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else global.Jelly = api;
 })(this);
