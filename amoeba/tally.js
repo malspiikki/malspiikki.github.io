@@ -47,7 +47,7 @@
       const dot = document.createElement('span');
       Jelly.stripDot(dot, t, seen ? 'drop' : 'off');
       dot.classList.add('dot');
-      dot.textContent = t;
+      dot.textContent = String(t);
       const name = cell('span', 'name');
       if (seen) {
         // the berry carries the row; the repeated species word
@@ -58,7 +58,11 @@
       } else {
         name.textContent = 'unobserved';
       }
-      const drops = cell('small', 'dropped', dropped ? dropped.toLocaleString() : '');
+      const drops = cell(
+        'small',
+        'dropped',
+        dropped ? dropped.toLocaleString() : '',
+      );
       const merges = cell('b', 'merged');
       if (merged) {
         // the joining + stays muted with the drops — only the earned

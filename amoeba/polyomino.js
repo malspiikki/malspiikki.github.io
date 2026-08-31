@@ -4,7 +4,8 @@
   // A polyomino is an array of [x, y] cells, screen coordinates (y grows down).
 
   function normalize(cells) {
-    let minX = Infinity, minY = Infinity;
+    let minX = Infinity,
+      minY = Infinity;
     for (const [x, y] of cells) {
       if (x < minX) minX = x;
       if (y < minY) minY = y;
@@ -15,7 +16,7 @@
   }
 
   function cellsKey(cells) {
-    return cells.map(c => c.join(',')).join(';');
+    return cells.map((c) => c.join(',')).join(';');
   }
 
   const TRANSFORMS = [
@@ -34,7 +35,8 @@
 
   function canonicalForm(cells, symmetry) {
     const count = SYMMETRY_COUNT[symmetry];
-    let bestKey = null, bestCells = null;
+    let bestKey = null,
+      bestCells = null;
     for (let i = 0; i < count; i++) {
       const candidate = normalize(cells.map(TRANSFORMS[i]));
       const key = cellsKey(candidate);
@@ -46,21 +48,31 @@
     return { key: bestKey, cells: bestCells };
   }
 
-  const NEIGHBORS = [[1, 0], [-1, 0], [0, 1], [0, -1]];
+  const NEIGHBORS = [
+    [1, 0],
+    [-1, 0],
+    [0, 1],
+    [0, -1],
+  ];
 
   function enumerate(n, symmetry) {
-    if (!(symmetry in SYMMETRY_COUNT)) throw new Error('bad symmetry: ' + symmetry);
+    if (!(symmetry in SYMMETRY_COUNT))
+      throw new Error('bad symmetry: ' + symmetry);
     let shapes = [[[0, 0]]];
     for (let size = 2; size <= n; size++) {
       const seen = new Set();
       const next = [];
       for (const cells of shapes) {
-        const occupied = new Set(cells.map(c => c.join(',')));
+        const occupied = new Set(cells.map((c) => c.join(',')));
         for (const [x, y] of cells) {
           for (const [dx, dy] of NEIGHBORS) {
-            const nx = x + dx, ny = y + dy;
+            const nx = x + dx,
+              ny = y + dy;
             if (occupied.has(nx + ',' + ny)) continue;
-            const { key, cells: canon } = canonicalForm(cells.concat([[nx, ny]]), symmetry);
+            const { key, cells: canon } = canonicalForm(
+              cells.concat([[nx, ny]]),
+              symmetry,
+            );
             if (!seen.has(key)) {
               seen.add(key);
               next.push(canon);
@@ -81,9 +93,9 @@
   // from its occupied-neighbor count.
   // aging (optional): per-step decay so growth follows recently touched sites.
   const GROWTH_MODELS = {
-    blob: { base: c => c * c },
-    branch: { base: c => (c === 1 ? 1 : 0.02) },
-    worm: { base: c => (c === 1 ? 1 : 0.05), aging: 0.85 },
+    blob: { base: (c) => c * c },
+    branch: { base: (c) => (c === 1 ? 1 : 0.02) },
+    worm: { base: (c) => (c === 1 ? 1 : 0.05), aging: 0.85 },
   };
 
   function randomPolyomino(n, model) {
@@ -121,7 +133,7 @@
       for (let i = cap; i > 0; i -= i & -i) sum += tree[i];
       return sum;
     };
-    const treeSample = r => {
+    const treeSample = (r) => {
       let pos = 0;
       for (let step = highBit; step > 0; step >>= 1) {
         const next = pos + step;
@@ -139,7 +151,7 @@
     // recency is positional instead of numeric.
     const stack = aging ? [] : null;
     const logAging = aging ? Math.log(aging) : 0;
-    const liveAt = idx => {
+    const liveAt = (idx) => {
       const s = stack[idx];
       return candidates.get(pack(slotX[s], slotY[s])) === s ? s : -1;
     };
@@ -192,7 +204,8 @@
     addCell(0, 0);
     while (cells.length < n) {
       const slot = aging ? pickAged() : pickWeighted();
-      const x = slotX[slot], y = slotY[slot];
+      const x = slotX[slot],
+        y = slotY[slot];
       candidates.delete(pack(x, y));
       if (!aging) setWeight(slot, 0);
       freeSlots.push(slot);
@@ -214,16 +227,19 @@
 
     // Flat grid window, recentered/regrown when the shape nears the border.
     let W = 0;
-    let grid, posOf, perimAt, vis, labelG;
+    /** @type {Uint8Array} */ let grid;
+    let posOf, perimAt, vis, labelG;
     let cellsIdx = [];
     let perimArr = [];
     let stamp = 0;
     const DIRS = [1, -1, 0, 0];
 
-    const refreshSite = idx => {
+    const refreshSite = (idx) => {
       const p =
-        !grid[idx] && (grid[idx + 1] || grid[idx - 1] || grid[idx + W] || grid[idx - W])
-          ? 1 : 0;
+        !grid[idx] &&
+        (grid[idx + 1] || grid[idx - 1] || grid[idx + W] || grid[idx - W])
+          ? 1
+          : 0;
       const at = perimAt[idx];
       if (p && !at) {
         perimArr.push(idx);
@@ -238,8 +254,11 @@
       }
     };
 
-    const rebuild = coords => {
-      let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+    const rebuild = (coords) => {
+      let minX = Infinity,
+        minY = Infinity,
+        maxX = -Infinity,
+        maxY = -Infinity;
       for (const [x, y] of coords) {
         if (x < minX) minX = x;
         if (y < minY) minY = y;
@@ -272,7 +291,7 @@
       for (const idx of cellsIdx) for (const d of DIRS) refreshSite(idx + d);
     };
 
-    const toCoords = () => cellsIdx.map(idx => [idx % W, (idx / W) | 0]);
+    const toCoords = () => cellsIdx.map((idx) => [idx % W, (idx / W) | 0]);
     rebuild(start);
 
     const moveCell = (from, to) => {
@@ -296,11 +315,11 @@
     const frontiers = [[], [], [], []];
     const heads = [0, 0, 0, 0];
     const parent = [0, 1, 2, 3];
-    const find = a => {
+    const find = (a) => {
       while (parent[a] !== a) a = parent[a] = parent[parent[a]];
       return a;
     };
-    const staysConnectedWithout = c => {
+    const staysConnectedWithout = (c) => {
       const around = [];
       for (const d of DIRS) if (grid[c + d]) around.push(c + d);
       if (around.length <= 1) return true;
@@ -325,7 +344,8 @@
             const m = node + d;
             if (m === c || !grid[m]) continue;
             if (vis[m] === stamp) {
-              const ra = find(labelG[node]), rb = find(labelG[m]);
+              const ra = find(labelG[node]),
+                rb = find(labelG[m]);
               if (ra !== rb) {
                 parent[ra] = rb;
                 if (--groups === 1) return true;
@@ -342,8 +362,9 @@
       return true;
     };
 
-    const nearBorder = idx => {
-      const x = idx % W, y = (idx / W) | 0;
+    const nearBorder = (idx) => {
+      const x = idx % W,
+        y = (idx / W) | 0;
       return x < 3 || y < 3 || x >= W - 3 || y >= W - 3;
     };
 
@@ -364,7 +385,8 @@
   }
 
   function bounds(cells) {
-    let w = 0, h = 0;
+    let w = 0,
+      h = 0;
     for (const [x, y] of cells) {
       if (x + 1 > w) w = x + 1;
       if (y + 1 > h) h = y + 1;
@@ -377,10 +399,15 @@
   function fillPath(cells) {
     const sorted = [...cells].sort((a, b) => a[1] - b[1] || a[0] - b[0]);
     let d = '';
-    for (let i = 0; i < sorted.length; ) {
+    for (let i = 0; i < sorted.length;) {
       const [x, y] = sorted[i];
       let j = i + 1;
-      while (j < sorted.length && sorted[j][1] === y && sorted[j][0] === sorted[j - 1][0] + 1) j++;
+      while (
+        j < sorted.length &&
+        sorted[j][1] === y &&
+        sorted[j][0] === sorted[j - 1][0] + 1
+      )
+        j++;
       d += `M${x} ${y}h${j - i}v1h${i - j}z`;
       i = j;
     }
@@ -391,7 +418,7 @@
   // with collinear vertices merged away. The outer loop runs clockwise and
   // holes counterclockwise, so a nonzero-rule fill leaves holes open.
   function boundaryLoops(cells) {
-    const occupied = new Set(cells.map(c => c.join(',')));
+    const occupied = new Set(cells.map((c) => c.join(',')));
     const has = (x, y) => occupied.has(x + ',' + y);
 
     const edges = new Map();
@@ -418,10 +445,14 @@
       const starts = edges.get(startKey);
       let [cx, cy] = starts.pop();
       if (!starts.length) edges.delete(startKey);
-      let dx = cx - sx, dy = cy - sy;
+      let dx = cx - sx,
+        dy = cy - sy;
       const loop = [[sx, sy]];
       while (cx !== sx || cy !== sy) {
-        if (loop.length > 1 && sameDir(loop[loop.length - 2], loop[loop.length - 1], [cx, cy])) {
+        if (
+          loop.length > 1 &&
+          sameDir(loop[loop.length - 2], loop[loop.length - 1], [cx, cy])
+        ) {
           loop[loop.length - 1] = [cx, cy];
         } else {
           loop.push([cx, cy]);
@@ -431,10 +462,17 @@
         let pick = 0;
         if (candidates.length > 1) {
           // At a checkerboard corner keep loops separate: prefer the left turn.
-          const prefs = [[dy, -dx], [dx, dy], [-dy, dx]];
+          const prefs = [
+            [dy, -dx],
+            [dx, dy],
+            [-dy, dx],
+          ];
           outer: for (const [px, py] of prefs) {
             for (let i = 0; i < candidates.length; i++) {
-              if (candidates[i][0] - cx === px && candidates[i][1] - cy === py) {
+              if (
+                candidates[i][0] - cx === px &&
+                candidates[i][1] - cy === py
+              ) {
                 pick = i;
                 break outer;
               }
@@ -449,8 +487,13 @@
         cy = ey;
       }
       // the trace can't merge across the seam, so clean up around the start
-      if (loop.length > 2 && sameDir(loop[loop.length - 2], loop[loop.length - 1], loop[0])) loop.pop();
-      if (loop.length > 2 && sameDir(loop[loop.length - 1], loop[0], loop[1])) loop.shift();
+      if (
+        loop.length > 2 &&
+        sameDir(loop[loop.length - 2], loop[loop.length - 1], loop[0])
+      )
+        loop.pop();
+      if (loop.length > 2 && sameDir(loop[loop.length - 1], loop[0], loop[1]))
+        loop.shift();
       loops.push(loop);
     }
     return loops;
@@ -460,21 +503,26 @@
   // short of the vertex and the vertex itself is the control point. Concave
   // corners round the same way, giving merged blobs a soft, grouted look.
   function outlinePath(cells, radius) {
-    const fmt = v => Math.round(v * 1000) / 1000;
+    const fmt = (v) => Math.round(v * 1000) / 1000;
     let d = '';
     for (const loop of boundaryLoops(cells)) {
       if (!radius) {
-        d += loop.map(([x, y], i) => `${i ? 'L' : 'M'}${x} ${y}`).join('') + 'Z';
+        d +=
+          loop.map(([x, y], i) => `${i ? 'L' : 'M'}${x} ${y}`).join('') + 'Z';
         continue;
       }
       const n = loop.length;
       for (let i = 0; i < n; i++) {
-        const p = loop[(i + n - 1) % n], v = loop[i], q = loop[(i + 1) % n];
+        const p = loop[(i + n - 1) % n],
+          v = loop[i],
+          q = loop[(i + 1) % n];
         const lenIn = Math.abs(v[0] - p[0]) + Math.abs(v[1] - p[1]);
         const lenOut = Math.abs(q[0] - v[0]) + Math.abs(q[1] - v[1]);
         const r = Math.min(radius, lenIn / 2, lenOut / 2);
-        const ax = v[0] - Math.sign(v[0] - p[0]) * r, ay = v[1] - Math.sign(v[1] - p[1]) * r;
-        const bx = v[0] + Math.sign(q[0] - v[0]) * r, by = v[1] + Math.sign(q[1] - v[1]) * r;
+        const ax = v[0] - Math.sign(v[0] - p[0]) * r,
+          ay = v[1] - Math.sign(v[1] - p[1]) * r;
+        const bx = v[0] + Math.sign(q[0] - v[0]) * r,
+          by = v[1] + Math.sign(q[1] - v[1]) * r;
         d += `${i ? 'L' : 'M'}${fmt(ax)} ${fmt(ay)}Q${v[0]} ${v[1]} ${fmt(bx)} ${fmt(by)}`;
       }
       d += 'Z';
@@ -483,8 +531,14 @@
   }
 
   const api = {
-    normalize, canonicalForm, enumerate, randomPolyomino, uniformPolyomino,
-    bounds, fillPath, outlinePath,
+    normalize,
+    canonicalForm,
+    enumerate,
+    randomPolyomino,
+    uniformPolyomino,
+    bounds,
+    fillPath,
+    outlinePath,
   };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else global.Polyomino = api;

@@ -1,101 +1,125 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Amoeba Marmalade</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Nunito:wght@600;700;800&display=swap">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body class="lab centered">
-  <main id="game">
-    <aside id="supply">
-      <div><h2>hold</h2><svg id="hold"></svg></div>
-      <!-- level-selection UX undecided; #level=N in the URL still works -->
-      <div hidden><h2>start at</h2><select id="start-level"></select></div>
-      <p class="keys">help: H</p>
-    </aside>
-    <div id="board-wrap">
-      <div id="score-box"><p id="score">0</p></div>
-      <div id="strip-row">
-        <b id="level-tag"></b>
-        <div id="tier-strip"></div>
-      </div>
-      <div id="dish">
-        <svg id="board"></svg>
-        <div id="overlay" class="veil hidden">
-          <div class="panel-box overlay-card">
-            <h2 id="overlay-title"></h2>
-            <div id="tally" class="tally"></div>
-            <button id="resume" hidden>resume (P)</button>
-            <button id="restart">restart (R)</button>
-          </div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Amoeba Marmalade</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Nunito:wght@600;700;800&display=swap"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="lab centered">
+    <main id="game">
+      <aside id="supply">
+        <div>
+          <h2>hold</h2>
+          <svg id="hold"></svg>
         </div>
-        <div id="help" class="veil hidden">
-          <div class="panel-box overlay-card help-card">
-            <h2>how to play</h2>
-            <div class="rules">
-              <div class="key-cols">
-                <p class="keys">
-                  move: ←, →<br>
-                  rotate ⟳: X, ↑<br>
-                  rotate ⟲: Z<br>
-                  soft drop: ↓<br>
-                  hard drop: space
+        <!-- level-selection UX undecided; #level=N in the URL still works -->
+        <div hidden>
+          <h2>start at</h2>
+          <select id="start-level"></select>
+        </div>
+        <p class="keys">help: H</p>
+      </aside>
+      <div id="board-wrap">
+        <div id="score-box"><p id="score">0</p></div>
+        <div id="strip-row">
+          <b id="level-tag"></b>
+          <div id="tier-strip"></div>
+        </div>
+        <div id="dish">
+          <svg id="board"></svg>
+          <div id="overlay" class="veil hidden">
+            <div class="panel-box overlay-card">
+              <h2 id="overlay-title"></h2>
+              <div id="tally" class="tally"></div>
+              <button id="resume" hidden>resume (P)</button>
+              <button id="restart">restart (R)</button>
+            </div>
+          </div>
+          <div id="help" class="veil hidden">
+            <div class="panel-box overlay-card help-card">
+              <h2>how to play</h2>
+              <div class="rules">
+                <div class="key-cols">
+                  <p class="keys">
+                    move: ←, →<br />
+                    rotate ⟳: X, ↑<br />
+                    rotate ⟲: Z<br />
+                    soft drop: ↓<br />
+                    hard drop: space
+                  </p>
+                  <p class="keys">
+                    hold: C, shift<br />
+                    help: H<br />
+                    pause: P, esc<br />
+                    restart: R
+                  </p>
+                </div>
+                <p>
+                  Amoebas of the same size merge when they touch &mdash; they
+                  fuse into one amoeba a single cell bigger. Shape doesn't
+                  matter, only size.
                 </p>
-                <p class="keys">
-                  hold: C, shift<br>
-                  help: H<br>
-                  pause: P, esc<br>
-                  restart: R
+                <p>
+                  The fused blob has extra cells, and they melt from the top:
+                  highest first, leftmost within a row, skipping any cell whose
+                  loss would split the amoeba. The survivor keeps the lower part
+                  of the fused shape.
+                </p>
+                <p>
+                  Merging is the only way to score. Fusing three or more at once
+                  scores extra, but the result still grows just one size.
+                </p>
+                <p>
+                  Merges can cascade: the fused blob shrinks, everything
+                  settles, and new touches can merge again.
+                </p>
+                <p>
+                  The lit numbers above the dish show which sizes are dropping;
+                  the mix shifts as your level rises. A red number is a rescue
+                  &mdash; that size is still on the board, so it stays in the
+                  draw.
+                </p>
+                <p>
+                  Sizes 10 and 11 never drop &mdash; you can only grow them.
+                  When two size-11 elderberry amoebas meet, the size-12 amoeba
+                  they fuse into breaks the bounds of the dish &mdash; the first
+                  of its kind to leave home &mdash; and settles the colony.
+                </p>
+                <p>
+                  The colony is beyond your reach and beyond all danger. There
+                  is no up or down out there: settlers drift toward their common
+                  center of mass, merge on contact, and pack into a little round
+                  world. Past the elderberry the berries cycle around &mdash;
+                  size 12 is a white currant again, born under a new sun.
                 </p>
               </div>
-              <p>Amoebas of the same size merge when they touch &mdash;
-                they fuse into one amoeba a single cell bigger.
-                Shape doesn't matter, only size.</p>
-              <p>The fused blob has extra cells, and they melt from the
-                top: highest first, leftmost within a row, skipping any
-                cell whose loss would split the amoeba. The survivor
-                keeps the lower part of the fused shape.</p>
-              <p>Merging is the only way to score. Fusing three or more
-                at once scores extra, but the result still grows just
-                one size.</p>
-              <p>Merges can cascade: the fused blob shrinks, everything
-                settles, and new touches can merge again.</p>
-              <p>The lit numbers above the dish show which sizes are
-                dropping; the mix shifts as your level rises. A red
-                number is a rescue &mdash; that size is still on the
-                board, so it stays in the draw.</p>
-              <p>Sizes 10 and 11 never drop &mdash; you can only grow
-                them. When two size-11 elderberry amoebas meet, the
-                size-12 amoeba they fuse into breaks the bounds of the
-                dish &mdash; the first of its kind to leave home &mdash;
-                and settles the colony.</p>
-              <p>The colony is beyond your reach and beyond all danger.
-                There is no up or down out there: settlers drift toward
-                their common center of mass, merge on contact, and pack
-                into a little round world. Past the elderberry the
-                berries cycle around &mdash; size 12 is a white currant
-                again, born under a new sun.</p>
+              <button id="help-close">back (H)</button>
             </div>
-            <button id="help-close">back (H)</button>
           </div>
         </div>
       </div>
-    </div>
-    <aside id="panel">
-      <div><h2>next</h2><svg id="next"></svg></div>
-      <div id="colony-wrap">
-        <b id="colony-tag">colony</b>
-        <svg id="colony"></svg>
-      </div>
-    </aside>
-  </main>
-  <script src="polyomino.js"></script>
-  <script src="jelly.js"></script>
-  <script src="tally.js"></script>
-  <script src="game.js"></script>
-</body>
+      <aside id="panel">
+        <div>
+          <h2>next</h2>
+          <svg id="next"></svg>
+        </div>
+        <div id="colony-wrap">
+          <b id="colony-tag">colony</b>
+          <svg id="colony"></svg>
+        </div>
+      </aside>
+    </main>
+    <script src="polyomino.js"></script>
+    <script src="rules.js"></script>
+    <script src="jelly.js"></script>
+    <script src="tally.js"></script>
+    <script src="game.js"></script>
+  </body>
 </html>
